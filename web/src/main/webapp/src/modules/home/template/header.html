@@ -2,14 +2,14 @@
     <div class="md-toolbar-tools">
         <div flex="20" ng-include="'../../assets/svg/logo_mon_with_typographic-02.svg'" hide-sm></div>
         <div flex="20" ng-include="'../../assets/svg/only_waldo_logo.svg'" hide show-sm></div>
-        <div flex="45">
+        <div flex="20">
             <md-button class="md-raised md-accent" ng-click="createPost()">
                 <md-icon md-svg-icon="plus-circle"></md-icon>
                 <span hide-sm>Шинэ зар нэмэх</span>
             </md-button>
         </div>
-        <div ng-controller="UserController">
-            <div flex="35" layout="row" ng-hide="auth" layout-sm="column">
+        <div ng-controller="UserController" flex="60" >
+            <div layout="row" ng-hide="auth" layout-sm="column" class="right">
                 <div layout="column">
                     <div layout="row">
                         <input type="text" placeholder="Нэвтрэх нэр" data-ng-model="username" class="login-field"/>
@@ -27,13 +27,42 @@
 
             </div>
 
-            <div flex="40" layout="row" layout-sm="column" ng-show="auth">
-                {{username}} Хэрэглэгч амжилттай нэвтэрлээ
-                <md-button class="md-raised" data-ng-click="logout()">
-                    <md-icon md-svg-icon="account"></md-icon>
-                    <span hide-sm>Гарах</span>
-                </md-button>
+
+            <div ng-show="auth" layout="row" layout-align="center center" flex>
+
+                <img ng-src="ws/profile/image/{{username}}.png"
+                     class="toolbar-profile-image"/>
+                <md-menu flex>
+                    <md-whiteframe class="md-whiteframe-z1 toolbar-profile" layout="row">
+                        <md-button aria-label="Profile menu"
+                                   ng-click="ToolBarCtrl.openMenu($mdOpenMenu, $event)">
+                            <span class="toolbar-profile-name">{{firstname}}&nbsp;{{lastname}}</span>
+                            <md-icon md-svg-icon="unfold-more"></md-icon>
+                        </md-button>
+                    </md-whiteframe>
+                    <md-menu-content width="2">
+                        <md-menu-item>
+                            <md-button disabled="disabled" ng-click="logout()">
+                                <span>{{firstname}}&nbsp;{{lastname}}</span>
+                            </md-button>
+                        </md-menu-item>
+                        <md-menu-divider></md-menu-divider>
+                        <md-menu-item>
+                            <md-button ng-click="ToolBarCtrl.getProfileDialog()">
+                                <md-icon md-svg-icon="account" md-menu-align-target></md-icon>
+                                <span>Миний тухай</span>
+                            </md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ng-click="logout()">
+                                <md-icon md-svg-icon="close"></md-icon>
+                                <span>Гарах</span>
+                            </md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+                </md-menu>
             </div>
+
         </div>
 
     </div>

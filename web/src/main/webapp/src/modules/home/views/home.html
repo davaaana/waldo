@@ -1,10 +1,22 @@
+<div flex layout="row">
+    <div flex="85"  layout="column">
+        Шүүлтүүр: Зарын төрөл:Бүх зар
+    </div>
+    <div flex="15"  layout="column">
+        <md-select placeholder="Сүүлд орсон" flex ng-model="filterCtrl.quickFilter"
+                   ng-change="filterCtrl.changeValue()">
+            <md-option value="-createdDate">Сүүлд орсон</md-option>
+            <md-option value="-requestNum">Их үзсэн</md-option>
+        </md-select>
+    </div>
+</div>
 <div id="call_dialog">
     <md-grid-list
             md-cols-sm="1" md-cols-gt-sm="2" md-cols-gt-lg="2"
             md-row-height="210px"
             md-gutter="6px" md-gutter-gt-sm="3px" flex>
         <md-grid-tile
-                ng-repeat="post in posts | filter:filter.postType | filter:filter.toLocation  | filter:filter.fromLocation | filter:{when:filter.tooDate} | filter:{arrive:filter.froomDate} | filter:filter.transportationType | orderBy:filter.quickFilter"
+                ng-repeat="post in posts | filter:allPostCtrl.filterResult.postType | filter:{to:allPostCtrl.filterResult.toLocation}  | filter:{from:allPostCtrl.filterResult.fromLocation} | filter:{when: allPostCtrl.filterResult.toDate} | filter:{arrive: allPostCtrl.filterResult.fromDate} | filter:allPostCtrl.filterResult.transportationType | orderBy:allPostCtrl.filterResult.quickFilter"
                 ng-class="{carrier_post: post.type==='CARRIER', sender_post: post.type==='SENDER'}">
 
             <md-card flex
