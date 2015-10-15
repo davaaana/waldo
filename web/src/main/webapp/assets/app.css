@@ -207,9 +207,7 @@ form {
     color: #d6d6d6;
 }
 
-.post_user_data_text {
-    font-weight: 600;
-}
+
 
 .new_post_review_header {
     color: #646054;
@@ -225,7 +223,7 @@ form {
 
 .sender_post .post_type_label {
     color: #3fc4ff;
-    font-size: 1em;
+    font-size: 12px;
     font-weight: bold;
 }
 
@@ -240,7 +238,7 @@ form {
 
 .carrier_post .post_type_label {
     color: #ffcc89;
-    font-size: 1em;
+    font-size: 12px;
     font-weight: bold;
 }
 
@@ -282,10 +280,7 @@ form {
     font-size: 11px;
 }
 
-.user-male-icon {
-    height: 70px;
-    width: 70px;
-}
+
 
 .user_profile_name {
     word-wrap: break-word !important;
@@ -554,4 +549,43 @@ a.md-button.md-warn.md-raised, a.md-button.md-warn.md-fab, .md-button.md-warn.md
 .title-red{
     color: red;
     text-transform: uppercase;
+}
+
+.post_user_data_text {
+    font-weight: 600;
+    font-size: 11px;
+}
+
+.fromTitle{
+    color: rgb(255,152,0);
+}
+
+.toTitle{
+    color: rgb(68,138,255);
+}
+
+.sender_post .post_body{
+    background-color: #e2f6ff;
+}
+
+.carrier_post .post_body {
+    background-color: #fffbce;
+}
+
+.post-title{
+    margin-bottom: 15px;
+    color:rgb(68,138,255);
+    font-weight: bold;
+}
+
+.user-male-icon {
+    height: 70px;
+    width: 70px;
+    padding-top: 5px;
+}
+
+.postMore a{
+    font-width: bold;
+    color: rgb(68,138,255);
+    text-decoration: none;
 }
