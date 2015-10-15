@@ -519,8 +519,7 @@ body > .md-dialog-container {
 
 .filter-area{
     background: white;
-    width: 250px;
-
+    width: 180px;
 }
 
 .filter-area2{
@@ -529,8 +528,30 @@ body > .md-dialog-container {
 }
 
 .datepicker-filter-adjust {
-    background-color: inherit;
+    background-color: #fff;
     margin-top: 0;
     padding: 0;
     margin-right: 5px;
+}
+
+.label-title{
+    color:#448aff;
+    font-size: 18px;
+    text-shadow: 0 0 20px #fff, 0 0 20px #fff;
+    -webkit-transform: translate3d(0, 6px, 0) scale(0.75);
+    transform: translate3d(0, 6px, 0) scale(0.75);
+}
+
+a.md-button.md-warn.md-raised, a.md-button.md-warn.md-fab, .md-button.md-warn.md-raised, .md-button.md-warn.md-fab{
+    background: rgb(255,152,0);
+}
+
+
+
+
+
+
+.title-red{
+    color: red;
+    text-transform: uppercase;
 }

@@ -12,6 +12,16 @@
             <div layout="column">
                 <div layout="row" flex class="middle-filter-area">
                     <md-input-container class="input-container-adjust">
+                        <label>Зарын төрөл</label>
+                        <md-select ng-model="filterCtrl.postType" ng-change="filterCtrl.changeValue()"
+                                   class="filter-area2">
+                            <md-option value="">Бүх зар</md-option>
+                            <md-option value="SENDER">Зөвхөн ачаа илгээх</md-option>
+                            <md-option value="CARRIER">Зөвхөн ачаа авч явах</md-option>
+                        </md-select>
+                    </md-input-container>
+
+                    <md-input-container class="input-container-adjust">
                         <label>Хаанаас</label>
                         <md-select ng-model="cityId" ng-change="changeValue()"
                                    layout-align="center center" class="filter-area">
@@ -26,32 +36,28 @@
                         <md-select ng-model="filterCtrl.toFilter" ng-change="filterCtrl.changeValue()"
                                    layout-align="center center" class="filter-area">
                             <md-option value="">Бүх сум</md-option>
-                            <md-option ng-repeat="district in districts track by district.name" value="{{district.id}}">{{district.name}}
+                            <md-option ng-repeat="city in cities track by city.name" value="{{city.id}}">{{city.name}}
                             </md-option>
                         </md-select>
                     </md-input-container>
 
-                    <md-input-container class="input-container-adjust">
-                        <label>Зарын төрөл</label>
-                        <md-select ng-model="filterCtrl.postType" ng-change="filterCtrl.changeValue()"
-                                   class="filter-area2">
-                            <md-option value="">Бүх зар</md-option>
-                            <md-option value="SENDER">Зөвхөн ачаа илгээх</md-option>
-                            <md-option value="CARRIER">Зөвхөн ачаа авч явах</md-option>
-                        </md-select>
-                    </md-input-container>
+
                 </div>
 
                 <div layout="row" flex class="middle-filter-area">
-                    <md-datepicker ng-model="filterCtrl.toDateFilter" md-placeholder="Явах өдөр"
-                                   ng-change="filterCtrl.changeValue()"
-                                   class="datepicker-filter-adjust"></md-datepicker>
-
-                    <md-datepicker ng-model="filterCtrl.fromDateFilter" md-placeholder="Очих өдөр"
-                                   ng-change="filterCtrl.changeValue()"
-                                   class="datepicker-filter-adjust"></md-datepicker>
-
-                    <md-button class="md-button" ng-click="filterCtrl.clearFilterOptions()">
+                    <div layout="column">
+                        <label class="label-title">Огноо</label>
+                        <md-datepicker ng-model="filterCtrl.toDateFilter" md-placeholder="Явах өдөр"
+                                       ng-change="filterCtrl.changeValue()"
+                                       class="datepicker-filter-adjust"></md-datepicker>
+                    </div>
+                    <div layout="column">
+                        <label  class="label-title" >Огноо</label>
+                        <md-datepicker ng-model="filterCtrl.fromDateFilter" md-placeholder="Очих өдөр"
+                                        ng-change="filterCtrl.changeValue()"
+                                        class="datepicker-filter-adjust"></md-datepicker>
+                    </div>
+                    <md-button class="md-raised md-warn md-button md-ink-ripple" ng-click="filterCtrl.clearFilterOptions()">
                         <md-icon md-svg-icon="filter-remove"></md-icon>
                         <span>Цэвэрлэх!</span>
                     </md-button>
