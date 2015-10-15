@@ -7,7 +7,11 @@ mainApp.controller('UserController', ['$rootScope', '$scope','$http','$mdDialog'
 
         $scope.auth = UserService.getAuthentication();
 
-        $scope.user = {};
+        try{
+            $scope.user = JSON.parse(window.sessionStorage["userInfo"]);
+        }catch (e){}
+
+
         $scope.signin = function () {
             UserService.loginTo($scope);
         };

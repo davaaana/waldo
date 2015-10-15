@@ -1,14 +1,16 @@
+
 <div class="header">
+    <md-toolbar>
     <div class="md-toolbar-tools">
         <div flex="20" ng-include="'../../assets/svg/logo_mon_with_typographic-02.svg'" hide-sm></div>
         <div flex="20" ng-include="'../../assets/svg/only_waldo_logo.svg'" hide show-sm></div>
-        <div flex="20">
+        <div flex="40">
             <md-button class="md-raised md-accent" ng-click="createPost()">
                 <md-icon md-svg-icon="plus-circle"></md-icon>
                 <span hide-sm>Шинэ зар нэмэх</span>
             </md-button>
         </div>
-        <div ng-controller="UserController" flex="60" >
+        <div ng-controller="UserController" flex="40" >
             <div layout="row" ng-hide="auth" layout-sm="column" class="right">
                 <div layout="column">
                     <div layout="row">
@@ -28,7 +30,7 @@
             </div>
 
 
-            <div ng-show="auth" layout="row" layout-align="center center" flex>
+            <div ng-show="auth" layout="row" layout-align="center center" flex="40">
 
                 <img ng-src="ws/profile/image/{{user.username}}.png"
                      class="toolbar-profile-image"/>
@@ -66,6 +68,7 @@
         </div>
 
     </div>
+</md-toolbar>
 </div>
 
 
