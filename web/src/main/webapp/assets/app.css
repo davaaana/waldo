@@ -386,12 +386,6 @@ md-select {
     margin: 0;
 }
 
-.datepicker-filter-adjust {
-    background-color: #d8f3ff;
-    margin-top: 0;
-    padding: 0;
-}
-
 .createPostChoose md-radio-button {
     font-size: 16px;
 }
@@ -480,6 +474,7 @@ body > .md-dialog-container {
     border-top:5px solid rgb(255,152,0);
     border-bottom: 1px solid rgb(255,152,0);
     background: url("../image/map.jpg") no-repeat;
+
 }
 
 #innerwrap{
@@ -497,16 +492,45 @@ body > .md-dialog-container {
     font-size: 30px;
     text-align: center;
     margin-top: 20px;
-    bottom: 20px;
+    margin-bottom: 8px;
 }
 
 .middle-text2{
     color:rgb(255,152,0);
-    font-size: 18px;
+    font-size: 22px;
     text-align: center;
-    bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .middle-number{
  color:#448aff;
+}
+
+.middle-filter-area{
+    padding-left: 40px;
+    padding-bottom: 20px;
+}
+
+.middle-filter-area md-input-container:not(.md-input-invalid).md-input-has-value label{
+    color:#448aff;
+    font-size: 18px;
+    text-shadow: 0 0 20px #fff, 0 0 20px #fff;
+}
+
+.filter-area{
+    background: white;
+    width: 250px;
+
+}
+
+.filter-area2{
+    background: white;
+    width: 180px;
+}
+
+.datepicker-filter-adjust {
+    background-color: inherit;
+    margin-top: 0;
+    padding: 0;
+    margin-right: 5px;
 }

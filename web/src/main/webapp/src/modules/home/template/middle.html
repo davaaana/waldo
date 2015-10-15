@@ -4,7 +4,61 @@
             ХОТ ХООРОНДЫН АЧАА ТЭЭВЭР ЗУУЧЛАЛЫН ЗАРЫН САЙТ
         </div>
         <div class="middle-text2">
-           Манай сайтад идэвхтэй <span class="middle-number">{{num}}12313</span> зар байна.
+            Манай сайтад идэвхтэй <span class="middle-number">{{num}}12313</span> зар байна.
+        </div>
+
+        <div layout="row" flex="50"
+             ng-controller="FilterController as filterCtrl">
+            <div layout="column">
+                <div layout="row" flex class="middle-filter-area">
+                    <md-input-container class="input-container-adjust">
+                        <label>Хаанаас</label>
+                        <md-select ng-model="filterCtrl.fromFilter" ng-change="filterCtrl.changeValue()"
+                                   layout-align="center center" class="filter-area">
+                            <md-option value="">Бүх аймаг</md-option>
+                            <md-option ng-repeat="cities in city" value="{{cities.name}}">{{cities.name}}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+
+                    <md-input-container class="input-container-adjust">
+                        <label>Хаашаа</label>
+                        <md-select ng-model="filterCtrl.toFilter" ng-change="filterCtrl.changeValue()"
+                                   layout-align="center center" class="filter-area">
+                            <md-option value="">Бүх аймаг</md-option>
+                            <md-option ng-repeat="cities in city" value="{{cities.name}}">{{cities.name}}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+
+                    <md-input-container class="input-container-adjust">
+                        <label>Зарын төрөл</label>
+                        <md-select ng-model="filterCtrl.postType" ng-change="filterCtrl.changeValue()"
+                                   class="filter-area2">
+                            <md-option value="">Бүх зар</md-option>
+                            <md-option value="SENDER">Зөвхөн ачаа илгээх</md-option>
+                            <md-option value="CARRIER">Зөвхөн ачаа авч явах</md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+
+                <div layout="row" flex class="middle-filter-area">
+                    <md-datepicker ng-model="filterCtrl.toDateFilter" md-placeholder="Явах өдөр"
+                                   ng-change="filterCtrl.changeValue()"
+                                   class="datepicker-filter-adjust"></md-datepicker>
+
+                    <md-datepicker ng-model="filterCtrl.fromDateFilter" md-placeholder="Очих өдөр"
+                                   ng-change="filterCtrl.changeValue()"
+                                   class="datepicker-filter-adjust"></md-datepicker>
+
+                    <md-button class="md-button" ng-click="filterCtrl.clearFilterOptions()">
+                        <md-icon md-svg-icon="filter-remove"></md-icon>
+                        <span>Цэвэрлэх!</span>
+                    </md-button>
+                </div>
+
+
+            </div>
         </div>
     </div>
 </div>
