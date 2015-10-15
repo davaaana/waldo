@@ -1,0 +1,82 @@
+<md-dialog aria-label="Sign-in">
+    <md-toolbar class="md-accent">
+        <span class="md-toolbar-tools">
+            <md-icon md-svg-icon="account"></md-icon>
+            <span>Нэвтрэх хуудас</span>
+            <span flex></span>
+            <md-button ng-click="closeDialog()" aria-label="Close" class="md-icon-button">
+                <md-icon md-svg-icon="close"></md-icon>
+            </md-button>
+        </span>
+    </md-toolbar>
+    <md-dialog-content>
+        <section>
+            <md-content layout="row" layout-sm="column" layout-fill>
+                <div layout="row">
+                    <form method="post" name="loginForm" flex>
+                        <div layout="column" layout-align="center center" layout-padding>
+                            <h3>Та хэрвээ Waldo-д бүртгэлтэй бол нэвтэрч орно уу</h3>
+                            <span>{{errorMessage}}</span>
+                            <md-input-container flex >
+                                <label>Хэрэглэгчийн нэр</label>
+                                <input ng-model="username" name="username" type="username" required autofocus>
+                            </md-input-container>
+                            <md-input-container flex>
+                                <label>Нууц үг</label>
+                                <input ng-model="password" name="password" type="password" required>
+                            </md-input-container>
+                            <md-button ng-click="signin()"
+                                       ng-disabled="!username || !password">Нэвтрэх
+                            </md-button>
+
+                        </div>
+                    </form>
+                </div>
+
+
+                <md-divider></md-divider>
+                <div layout="column" layout-align="start center" layout-padding>
+
+                    <form id="fbSignIn" name="fbSignIn" action="/ws/signin/facebook" method="post">
+                        <md-button class="md-raised md-accent" type="submit">
+                            <span>Facebook-ээр нэвтрэх</span>
+                        </md-button>
+                    </form>
+                    <div flex></div>
+                    <span class="md-primary">Хэрэв таньд бүртгэл байхгүй бол : <md-button ng-click="signup()">
+                        БҮРТГҮҮЛЭХ
+                    </md-button></span>
+                </div>
+            </md-content>
+        </section>
+    </md-dialog-content>
+</md-dialog>
+
+<!--
+<div ng-controller="UserController">
+    <div id="login" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 style="color: #000000">Нэвтрэх</h4>
+                </div>
+                <div class="modal-body">
+                    <h3>Та хэрвээ Waldo-д бүртгэлтэй бол нэвтэрч орно уу</h3>
+                    <span>{{errorMessage}}</span>
+                    <md-input-container flex>
+                        <label>Хэрэглэгчийн нэр</label>
+                        <input ng-model="username" name="username" type="username" required autofocus>
+                    </md-input-container>
+                    <md-input-container flex>
+                        <label>Нууц үг</label>
+                        <input ng-model="password" name="password" type="password" required>
+                    </md-input-container>
+                    <md-button ng-click="signin()"
+                               ng-disabled="!username || !password">Нэвтрэх
+                    </md-button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>-->

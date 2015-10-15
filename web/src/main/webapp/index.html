@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html ng-app="waldoApp">
+<head lang="en">
+
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no"/>
+
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
+    <link rel="stylesheet" href="./bower_components/angular-material/angular-material.css"/>
+    <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap-theme.css"/>
+    <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap-theme.css"/>
+    <link rel="stylesheet" href="./bower_components/bootstrap3-dialog/dist/css/bootstrap-dialog.min.css"/>
+
+    <link rel="stylesheet" href="assets/app.css"/>
+    <title>Waldo</title>
+</head>
+<body layout="column">
+<div>
+    <!--<div ng-include="'src/modules/layout/header.html'"></div>-->
+    <div ui-view flex></div>
+
+    <!--<div ng-include="'src/modules/layout/footer.html'"></div>-->
+</div>
+
+
+<!-- DEVELOPMENT NOT MINIFIED DEPENDENCIES-->
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>-->
+<script src="./bower_components/angular/angular.js"></script>
+<script src="./bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="./bower_components/angular-material/angular-material.js"></script>
+<script src="./bower_components/angular-animate/angular-animate.js"></script>
+<script src="./bower_components/angular-aria/angular-aria.js"></script>
+<script src="./bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+<script src="./bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+<script src="./bower_components/jquery-1.9.1/jquery.min.js"></script>
+<script src="./bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+
+<!--Project javascript dependencies-->
+<!--<div ng-include="'src/template/javascript_import.html'"></div>-->
+
+<!--all module-->
+<script src="src/script/config.js"></script>
+<script src="src/script/icons.themes.module.js"></script>
+
+<!--all routes-->
+<script src="src/script/route/core.client.routes.js"></script>
+
+<!--all services-->
+<script src="src/modules/user/service/user.client.service.js"></script>
+<script src="src/modules/home/service/home.client.service.js"></script>
+
+<!--all controllers-->
+<script src="src/modules/user/controllers/user.client.controller.js"></script>
+<script src="src/modules/home/controllers/filter.client.controller.js"></script>
+<script src="src/modules/home/controllers/home.client.controller.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,459 @@
+html, body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    height: 100%;
+    margin: auto;
+    padding: 0;
+    background-color: #fff;
+}
+
+/* Toolbar area */
+
+.menu {
+    background-color: transparent;
+    border: none;
+    height: 38px;
+    margin: 16px;
+    width: 36px;
+}
+
+.star-red{
+    color:red;
+}
+/* Primary content area */
+
+#content {
+    overflow: hidden;
+}
+
+#content {
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 5px;
+}
+
+#content .md-button.share {
+    background-color: transparent;
+    border: none;
+    width: 48px;
+    height: 48px;
+    margin: 8px auto 16px 0;
+    position: absolute;
+    top: 10px;
+    right: 25px;
+}
+
+#content md-icon.avatar {
+    margin-top: 10px;
+}
+
+#content .md-button.share > md-icon {
+    fill: black;
+    width: 36px;
+    height: 36px;
+}
+
+md-content {
+    overflow: hidden;
+}
+
+md-card md-card-content {
+    padding: 0;
+}
+
+md-button.menuBtn > md-icon {
+    fill: white;
+    width: 24px;
+    height: 24px;
+}
+
+#content .md-button.share:active > md-icon {
+    background-color: #dadada;
+    border-radius: 75%;
+    padding: 4px;
+    transition: all 100ms ease-out 30ms;
+}
+
+#content img {
+    display: block;
+    height: auto;
+    max-width: 500px;
+}
+
+/* Utils */
+
+.content-wrapper {
+    position: relative;
+}
+
+/* Typography support coming in 0.8.0 */
+
+md-toolbar h1 {
+    font-size: 1.250em;
+    font-weight: 400;
+}
+
+.avatar {
+    position: relative;
+    width: 128px;
+    height: 128px;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    display: inline-block;
+    overflow: hidden;
+    margin: 0;
+    vertical-align: middle;
+    zoom: 0.70;
+    transform: translateZ(0);
+    -webkit-transform: scale(0.70);
+    -moz-transform: scale(0.70);
+}
+
+span.name {
+    font-weight: bold;
+    font-size: 1.1em;
+    padding-left: 5px;
+}
+
+.waldo_logo_svg {
+    margin: 5px 5px 5px 20px;
+    height: 44px;
+}
+
+footer {
+    height: 55px;
+    background-color: #CCCCCC;
+    padding: 10px;
+    color: #727272;
+}
+
+[layout=row] > md-divider {
+    border-top: 0;
+    border-left: 1px solid;
+    border-left-color: rgba(0, 0, 0, 0.12);
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+.new_post_inactive {
+    color: #ccc;
+    padding-left: 20px;
+    padding-right: 20px
+}
+
+.new_post_inactive > .step_number {
+    background-color: #ccc;
+    color: white;
+    padding: 5px 10px 5px 10px;
+    border-radius: 5px;
+    font-size: 1.3em;
+}
+
+.new_post_active {
+    color: orange;
+    font-weight: bold;
+}
+
+.new_post_active > .step_number {
+    background-color: orange;
+    color: white;
+    padding: 5px 10px 5px 10px;
+    border-radius: 5px;
+    font-size: 1.3em;
+
+}
+
+.new_post_done {
+    color: #458bff;
+    padding-left: 20px;
+    padding-right: 20px
+}
+
+.new_post_done > .step_number {
+    background-color: #458bff;
+    color: white;
+    padding: 5px 10px 5px 10px;
+    border-radius: 5px;
+    font-size: 1.3em;
+}
+
+.text {
+    padding-top: 3px;
+    padding-left: 3px;
+}
+
+.mypostText {
+    padding-top: 3px;
+    padding-left: 3px;
+    color: #5a6770;
+}
+
+/*
+.md-button{
+    line-height:24px;
+    min-height: 24px;
+}*/
+
+form {
+    outline: none;
+}
+
+.dim-text {
+    color: #646054;
+    padding: 2px;
+}
+
+.dimmest-text {
+    color: #d6d6d6;
+}
+
+.post_user_data_text {
+    font-weight: 600;
+}
+
+.new_post_review_header {
+    color: #646054;
+    padding-left: 1em;
+    font-size: 1.2em;
+    font-weight: 600;
+
+}
+
+.sender_post > .post_body {
+    background-color: #e2f6ff;
+}
+
+.sender_post .post_type_label {
+    color: #3fc4ff;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.sender_post .a {
+    color: #3fc4ff;
+    font-size: 11px;
+}
+
+.carrier_post > .post_body {
+    background-color: #fffbce;
+}
+
+.carrier_post .post_type_label {
+    color: #ffcc89;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.post_date_label {
+    color: #6b6b6b;
+    font-size: 0.8em;
+    padding-top: 0.4em;
+    margin: 0;
+}
+
+.post_date {
+    font-weight: bold;
+    color: #6b6b6b;
+    font-size: 0.9em;
+    padding: 0;
+    margin: 0;
+}
+
+.carrier-icon {
+    color: #ffcc89;
+    height: 44px;
+    width: 44px;
+}
+
+.sender-icon {
+    color: #3fc4ff;
+    height: 44px;
+    width: 44px;
+}
+
+.new_post_dialog_icon {
+    color: white !important;
+    height: 34px !important;
+    width: 34px !important;
+}
+
+.carrier_post .a {
+    color: #ffcc89;
+    font-size: 11px;
+}
+
+.user-male-icon {
+    height: 70px;
+    width: 70px;
+}
+
+.user_profile_name {
+    word-wrap: break-word !important;
+    width: 80% !important;
+    text-align: center !important;
+    color: #6b6b6b !important;
+}
+
+.link {
+    color: #767676;
+    overflow: hidden;
+}
+
+md-input-container {
+    padding-bottom: 0;
+}
+
+md-option {
+    height: 30px;
+}
+
+md-select {
+    margin-top: 0;
+}
+
+.datePickerFilter {
+    width: 90%;
+}
+
+.filter {
+    margin-top: 0px;
+}
+
+.header-filter {
+    height: 3em;
+    padding: 10px;
+    font-size: 11pt;
+    background-color: #ffffff;
+    border-radius: 2px;
+    width: 100%;
+}
+
+.toolbar-profile-image {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: 2px solid white;
+    position: absolute;
+    top: 8px;
+    /*padding-left: 1em;*/
+    margin-left: 1em;
+    background-color: white;
+}
+
+.mini-profile-image {
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+.toolbar-profile {
+    background-color: white;
+    height: 35px;
+    margin-left: 3.1em;
+    border-radius: 2px;
+}
+
+.toolbar-profile > md-button {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 30px;
+}
+
+.mini-star {
+    height: 18px;
+    width: 18px;
+}
+
+.create-post-back {
+    background-color: #f2f2f2;
+    padding: 10px 5px;
+}
+
+.profile-back {
+    background-color: #ffffff;
+    height: 3em;
+}
+
+.createPostChoose {
+    padding-top: 4em;
+    padding-bottom: 4em;
+    padding-left: 10em;
+}
+
+.input-container-adjust > md-select {
+    margin: 0;
+}
+
+.datepicker-filter-adjust {
+    background-color: #d8f3ff;
+    margin-top: 0;
+    padding: 0;
+}
+
+.createPostChoose md-radio-button {
+    font-size: 16px;
+}
+
+.createPostChoose .md-checked {
+    font-weight: bold;
+}
+
+div.border_bottom {
+    border-bottom: 1pt solid #829cb3;
+
+}
+
+.grey-border-bottom {
+    border-bottom: 1px solid #ccc;
+}
+
+.light-blue-back {
+    background-color: rgba(63, 196, 255, 0.2);
+}
+
+.about-waldo {
+    color: #6b6b6b;
+
+}
+
+.about-waldo > ul > li {
+    padding-top: 0.5em;
+}
+
+/*Temp*/
+
+body > .md-dialog-container {
+    height: 100vh !important;
+}
+
+.clock {
+    position: absolute;
+    right: 0;
+    top: 68px;
+}
+
+.today {
+    float: right;
+    padding-right: 10px;
+    font-weight: bold;
+}
+
+.day {
+    display: block;
+    color: rgb(255, 152, 0);
+    font-size: 20px;
+    padding-right: 10px;
+
+}
+
+.top5x{
+    padding-top: 5px
+}
+
+.hide-menu{
+    margin:0px;
+}
+
+/* Temp end*/

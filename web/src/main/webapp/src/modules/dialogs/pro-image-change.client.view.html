@@ -1,0 +1,22 @@
+<md-dialog aria-label="Image change">
+    <md-dialog-content>
+        <md-toolbar class="md-accent">
+        <span class="md-toolbar-tools">
+            <md-icon md-svg-icon="account"></md-icon>
+            <span>Change image</span>
+            <span flex></span>
+        </span>
+        </md-toolbar>
+        <section>
+            <md-content layout="row" layout-fill>
+                <form method="post" action="/ws/profile/image" name="changeImage"   enctype="multipart/form-data" flex>
+                    <img>
+                    <div layout="column" layout-align="start center" layout-padding>
+                        <input type="file" name="image">
+                        <input type="submit" value="UPLOAD">
+                    </div>
+                </form>
+            </md-content>
+        </section>
+    </md-dialog-content>
+</md-dialog>

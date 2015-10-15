@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<h1>Waldo Service</h1>
+
+<form method="post" action="/ws/profile">
+    <input type="text" name="username"/>
+    <input type="text" name="password"/>
+    <input type="text" name="firstname"/>
+    <input type="text" name="lastname"/>
+    <input type="text" name="email"/>
+    <input type="text" name="phone"/>
+    <input type="submit" value="SEND"/>
+</form>
+<form method="post" action="/ws/security/signin">
+    <input type="text" name="username"/>
+    <input type="text" name="password"/>
+    <input type="submit" value="LOGIN"/>
+</form>
+<form method="post" action="/ws/profile/image" enctype="multipart/form-data">
+    <input type="file" name="image"/>
+    <input type="submit" value="LOGIN"/>
+</form>
+<form method="post" action="/ws/signin/facebook">
+    <input type="submit" value="FACEBOOK LOGIN"/>
+</form>
+</body>
+</html>

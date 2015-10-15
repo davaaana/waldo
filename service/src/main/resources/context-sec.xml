@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:sec="http://www.springframework.org/schema/security"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+    <!--<bean id="saltSource" class="org.springframework.security.authentication.dao.ReflectionSaltSource">
+        <property name="userPropertyToUse" value="salt"/>
+    </bean>-->
+
+    <context:component-scan base-package="com.monsource.waldo.security"/>
+    <sec:global-method-security pre-post-annotations="enabled"/>
+
+    <sec:http use-expressions="true" auto-config="false" create-session="always" disable-url-rewriting="true"
+              entry-point-ref="ajaxAuthenticationEntryPoint">
+        <sec:intercept-url pattern="/post" method="POST" access="isAuthenticated()"/>
+        <sec:intercept-url pattern="/post" method="DELETE" access="isAuthenticated()"/>
+        <sec:intercept-url pattern="/post/own" method="GET" access="isAuthenticated()"/>
+        <sec:intercept-url pattern="/post/contacted" method="GET" access="isAuthenticated()"/>
+        <sec:intercept-url pattern="/profile" method="GET" access="isAuthenticated()"/>
+        <sec:intercept-url pattern="/profile" method="PUT" access="isAuthenticated()"/>
+        <sec:intercept-url pattern="/profile/password" method="POST" access="isAuthenticated()"/>
+        <sec:intercept-url pattern="/profile/image" method="POST" access="isAuthenticated()"/>
+        <sec:intercept-url pattern="/contact/**" access="isAuthenticated()"/>
+        <sec:intercept-url pattern="/rate" method="POST" access="isAuthenticated()"/>
+        <sec:csrf disabled="true"/>
+        <sec:access-denied-handler ref="accessDeniedHandler"/>
+        <sec:form-login
+                authentication-failure-handler-ref="ajaxAuthenticationEntryPoint"
+                login-processing-url="/security/signin"
+                username-parameter="username"
+                password-parameter="password"
+                />
+        <sec:logout
+                invalidate-session="true"
+                logout-url="/security/signout"
+                />
+    </sec:http>
+
+    <sec:authentication-manager>
+        <sec:authentication-provider user-service-ref="authService">
+            <sec:password-encoder hash="plaintext">
+                <!--<sec:salt-source ref="saltSource" user-property="salt"/>-->
+            </sec:password-encoder>
+        </sec:authentication-provider>
+    </sec:authentication-manager>
+
+</beans>

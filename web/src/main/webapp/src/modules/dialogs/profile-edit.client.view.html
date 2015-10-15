@@ -1,0 +1,69 @@
+<md-dialog aria-label="Profile" ng-controller="UserProfileController">
+    <md-toolbar class="md-accent">
+        <span class="md-toolbar-tools">
+            <md-icon md-svg-icon="account"></md-icon>
+            <span>Хэрэглэгчийн мэдээлэл шинчилэх / {{profileInfo.username}} /</span>
+            <span flex></span>
+            <md-button ng-click="cancel()" aria-label="Close" class="md-icon-button">
+                <md-icon md-svg-icon="close"></md-icon>
+            </md-button>
+        </span>
+    </md-toolbar>
+    <md-dialog-content>
+        <section>
+            <md-content>
+                <form method="post" name="profile" enctype="multipart/form-data" flex>
+                    <div layout="row">
+                        <div flex="50" flex-sm="50">
+                            <md-input-container>
+                                <label>Нэр</label>
+                                <input ng-model="profileInfo.firstname" name="firstname" type="text" required>
+                            </md-input-container>
+                            <md-input-container>
+                                <label>Овог</label>
+                                <input ng-model="profileInfo.lastname" name="lastname" type="text" required>
+                            </md-input-container>
+                            <md-input-container>
+                                <label>И-мэйл</label>
+                                <input ng-model="profileInfo.email" name="email" type="email" required>
+                            </md-input-container>
+                            <md-input-container>
+                                <label>Утас</label>
+                                <input ng-model="profileInfo.phone" name="phone" type="tel" required>
+                            </md-input-container>
+
+                        </div>
+                        <md-divider></md-divider>
+                        <div flex="50" flex-sm="50">
+                            <!--<input type="file"  file-model="myFile" style="padding-top: 26px;">-->
+                            <input type="file" name="file" onchange="angular.element(this).scope().uploadFile(this.files)" style="padding-top: 26px;"/>
+
+                            <md-input-container layout-fill>
+                                <label>Хуучин нууц үг</label>
+                                <input ng-model="profilePass.oldPassword" name="oldPassword" type="password"
+                                        >
+                            </md-input-container>
+                            <md-input-container layout-fill>
+                                <label>Шинэ нууц үг</label>
+                                <input ng-model="profilePass.newPassword" name="password" type="password"min="4" ng-disabled="!profilePass.oldPassword">
+                            </md-input-container>
+                            <md-input-container layout-fill>
+                                <label>Шинэ нууц үг давтах</label>
+                                <input ng-model="profilePass.confirmPassword" name="confirmPassword" type="password" min="4" ng-disabled="!profilePass.oldPassword"
+                                        >
+                            </md-input-container>
+                            <md-button ng-click="cancel()" class="btn btn-lg  btn-block btn-success">
+                                Гарах
+                            </md-button>
+                            <md-button ng-click="updateProfile()" class="btn btn-lg  btn-block btn-success" ng-disabled="profilePass.newPassword!=profilePass.confirmPassword">
+                                Шинчилэх
+                            </md-button>
+
+                        </div>
+
+                    </div>
+                </form>
+            </md-content>
+        </section>
+    </md-dialog-content>
+</md-dialog>
