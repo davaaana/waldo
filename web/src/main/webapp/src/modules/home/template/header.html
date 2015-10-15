@@ -30,20 +30,20 @@
 
             <div ng-show="auth" layout="row" layout-align="center center" flex>
 
-                <img ng-src="ws/profile/image/{{username}}.png"
+                <img ng-src="ws/profile/image/{{user.username}}.png"
                      class="toolbar-profile-image"/>
                 <md-menu flex>
                     <md-whiteframe class="md-whiteframe-z1 toolbar-profile" layout="row">
                         <md-button aria-label="Profile menu"
                                    ng-click="ToolBarCtrl.openMenu($mdOpenMenu, $event)">
-                            <span class="toolbar-profile-name">{{firstname}}&nbsp;{{lastname}}</span>
+                            <span class="toolbar-profile-name">{{user.firstname}}&nbsp;{{user.lastname}}</span>
                             <md-icon md-svg-icon="unfold-more"></md-icon>
                         </md-button>
                     </md-whiteframe>
                     <md-menu-content width="2">
                         <md-menu-item>
                             <md-button disabled="disabled" ng-click="logout()">
-                                <span>{{firstname}}&nbsp;{{lastname}}</span>
+                                <span>{{user.firstname}}&nbsp;{{user.lastname}}</span>
                             </md-button>
                         </md-menu-item>
                         <md-menu-divider></md-menu-divider>
