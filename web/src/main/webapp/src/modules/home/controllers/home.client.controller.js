@@ -2,7 +2,7 @@
 
 mainApp.controller('HomeController', ['$rootScope', '$scope','$http','$mdDialog', 'UserService','$location',
     function ($rootScope, $scope,$http,dialog,AuthService,$location) {
-        $('#category').modal('show');
+
         $scope.logout = function () {
             AuthService.logout();
         };

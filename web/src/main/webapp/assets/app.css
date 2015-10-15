@@ -456,4 +456,9 @@ body > .md-dialog-container {
     margin:0px;
 }
 
-/* Temp end*/
+/* Temp end------------------------------------------------------------------------------------------------*/
+
+.header{
+    width: 1020px;
+    margin: auto;
+}
