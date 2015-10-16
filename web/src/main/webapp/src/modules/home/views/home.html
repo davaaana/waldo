@@ -1,43 +1,16 @@
 <div flex layout="row">
-    <div flex="85"  layout="row" class="filter-result">
-        <div layout="column">Шүүлтүүр:</div><div layout="column">Зарын төрөл:Бүх зар</div>
+    <div flex="80" layout="row" class="filter-result">
+        <div layout="column">Шүүлтүүр:</div>
+        <div layout="column">Зарын төрөл:Бүх зар</div>
     </div>
-    <div flex="15"  layout="column">
-        <!--<md-select placeholder="Сүүлд орсон" flex ng-model="filter.quickFilter"-->
-                   <!--ng-change="filter.changeValue()">-->
-        <md-menu md-position-mode="target-right target" >
-            <md-button aria-label="Open demo menu" class="md-icon-button" ng-click="$mdOpenMenu($event)">
-                <md-icon md-menu-origin md-svg-icon="call:portable-wifi-off"> gsdfgs fdg</md-icon>
-            </md-button>
-            <md-menu-content width="4" >
-                <md-menu-item>
-                    <md-button ng-click="ctrl.announceClick($index)">
-                        <div layout="row">
-                            <p flex>Сүүлд орсон</p>
-                            <md-icon md-menu-align-target md-svg-icon="call:portable-wifi-off" style="margin: auto 3px auto 0;"></md-icon>
-                        </div>
-                    </md-button>
-                    <md-button ng-click="ctrl.announceClick($index)">
-                        <div layout="row">
-                            <p flex>Их үзсэн</p>
-                            <md-icon md-menu-align-target md-svg-icon="call:portable-wifi-off" style="margin: auto 3px auto 0;"></md-icon>
-                        </div>
-                    </md-button>
-                </md-menu-item>
-            </md-menu-content>
-        </md-menu>
+    <div flex="20" layout="row" class="filter-result">
+        <div  layout="column" class="quick-title">Эрэмблэх:</div>
+        <select ng-model="filterCtrl.quickFilter" ng-change="filterCtrl.changeValue()" class="quick-filter"  layout="column">>
+            <option value="-createdDate">Сүүлд орсон</option>
+            <option value=-requestNum>Их үзсэн</option>
+        </select>
 
 
-        <!--<md-radio-group ng-model="filterCtrl.quickFilter" ng-change="filterCtrl.changeValue()">-->
-            <!--<md-radio-button value="-createdDate" class="md-primary">Apple</md-radio-button>-->
-            <!--<md-radio-button value=-requestNum> Banana </md-radio-button>-->
-        <!--</md-radio-group>-->
-
-       <!-- <md-select placeholder="Сүүлд орсон" flex ng-model="filterCtrl.quickFilter"
-                   ">
-            <md-option value="-createdDate">Сүүлд орсон</md-option>
-            <md-option value="-requestNum">Их үзсэн</md-option>
-        </md-select>-->
     </div>
 </div>
 <div id="call_dialog">

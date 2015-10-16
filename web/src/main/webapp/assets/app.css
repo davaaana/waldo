@@ -128,6 +128,11 @@ footer {
     color: #727272;
 }
 
+.footer{
+    width: 1020px;
+    margin: auto;
+}
+
 [layout=row] > md-divider {
     border-top: 0;
     border-left: 1px solid;
@@ -476,6 +481,7 @@ body > .md-dialog-container {
     width: 1020px;
     margin: auto;
     box-shadow: 0 2px 8px #666666;
+    min-height: 530px;
 }
 
 .middle {
@@ -600,7 +606,7 @@ a.md-button.md-warn.md-raised, a.md-button.md-warn.md-fab, .md-button.md-warn.md
     padding-left: 10px;
     /*font-weight: bold;*/
     color:slategray;
-    font-size: 10px;
+    font-size: 11px;
 }
 
 .middle-menu div{
@@ -615,6 +621,16 @@ a.md-button.md-warn.md-raised, a.md-button.md-warn.md-fab, .md-button.md-warn.md
      cursor: pointer;
 }
 
+.middle-menu div:hover{
+    opacity: 0.8;
+}
+
+.middle-menu .select:hover {
+    background: rgb(255, 152, 0);
+    opacity: 0.8;
+    color:white;
+    border-bottom: 2px solid rgb(255, 152, 0);
+}
 .middle-menu .select{
     background: white;
     font-weight: bold;
@@ -631,4 +647,12 @@ a.md-button.md-warn.md-raised, a.md-button.md-warn.md-fab, .md-button.md-warn.md
 .middle-height{
     min-height: 156px;
     max-height: 156px;
+}
+.quick-filter{
+    width: 127px;
+}
+
+.quick-title{
+    padding-right: 5px;
+    padding-top: 2px;
 }
