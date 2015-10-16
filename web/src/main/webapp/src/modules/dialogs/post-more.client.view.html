@@ -1,0 +1,327 @@
+<md-dialog aria-label="Creating new post" style="width: 800px;" id="postMore">
+    <md-toolbar class="md-accent">
+         <span class="md-toolbar-tools">
+
+            <span ng-if="rateStep==1">Холбогдсон зар дэлгэрэнгүй</span>
+             <span ng-if="rateStep==2">Үнэлгээ өгөх</span>
+            <span flex></span>
+            <md-button ng-click="closeDialog()" aria-label="Close" class="md-icon-button">
+                <md-icon md-svg-icon="close"></md-icon>
+            </md-button>
+        </span>
+    </md-toolbar>
+    <md-dialog-content>
+        <div ng-switch="rateStep">
+            <div ng-switch-when="1">
+                <md-whiteframe class="md-whiteframe-z2" layout layout-align="center center">
+                    <div layout="column" flex>
+                        <div layout="row" flex class="{{contact.type}}" style="border-bottom: 1px solid #ccc">
+                            <md-card-content flex="20" layout="column" layout-align="center center"
+                                             style="padding: 10px 0; float: left; width: 20%">
+                                <div style="color:red; font-size: 10px">
+                                    {{contact.policy}}
+                                </div>
+                                <img ng-src="ws/profile/image/{{contact.username}}.png"
+                                     style="height: 70px; width: 70px"/>
+
+                                <div>{{contact.username}}</div>
+                                <!--  <div ng-if="contact.postInfo.rate==null">
+                                      <md-icon md-svg-icon="star-empty" class="mini-star"></md-icon>
+                                      <md-icon md-svg-icon="star-empty" class="mini-star"></md-icon>
+                                      <md-icon md-svg-icon="star-empty" class="mini-star"></md-icon>
+                                  </div>
+                                  <div ng-if="contact.postInfo.rate==1">
+                                      <md-icon md-svg-icon="star" class="mini-star"></md-icon>
+                                      <md-icon md-svg-icon="star-empty" class="mini-star"></md-icon>
+                                      <md-icon md-svg-icon="star-empty" class="mini-star"></md-icon>
+                                  </div>
+                                  <div ng-if="contact.postInfo.rate==2">
+                                      <md-icon md-svg-icon="star" class="mini-star"></md-icon>
+                                      <md-icon md-svg-icon="star" class="mini-star"></md-icon>
+                                      <md-icon md-svg-icon="star-empty" class="mini-star"></md-icon>
+                                  </div>
+                                  <div ng-if="contact.postInfo.rate==3">
+                                      <md-icon md-svg-icon="star" class="mini-star"></md-icon>
+                                      <md-icon md-svg-icon="star" class="mini-star"></md-icon>
+                                      <md-icon md-svg-icon="star" class="mini-star"></md-icon>
+                                  </div>-->
+
+                            </md-card-content>
+
+
+                            <md-card-content layout="column" flex="20" layout-align="start center" class="body" style=" float: left; width: 20%; height: 125px">
+                                <div layout="row" layout-padding class="dim-text" style="padding-top: 25px; ">
+                                    <md-icon md-svg-icon="phone"></md-icon>
+                                    <div class="text">Утас:</div>
+                                </div>
+                                <div layout="row" layout-padding class="dim-text">
+                                    <md-icon md-svg-icon="mail"></md-icon>
+                                    <div class="text">Мэйл:</div>
+                                </div>
+
+                            </md-card-content>
+                            <md-card-content layout="column" flex="40" class="body" style="float: left; width: 40% ;  height: 125px">
+                                <div layout="row" layout-padding class="dim-text" style="min-height: 28px;   padding-top: 30px">
+                                    {{contact.postInfo.phone}}
+                                </div>
+                                <div layout="row" layout-padding class="dim-text" style="min-height: 28px;   padding-top: 5px;
+}">
+                                    {{contact.postInfo.email}}
+                                </div>
+
+                            </md-card-content>
+                            <md-card-content layout="column" flex="20" style="padding-top: 30px; float: left; width: 20%">
+                                <div class="md-title md-primary">
+                                    <div ng-if="contact.type === 'SENDER'" class="type">
+                                        ИЛГЭЭГЧ
+                                        <div class="icon"></div>
+                                    </div>
+
+                                    <div ng-if="contact.type === 'CARRIER'" class="type">
+                                        ТЭЭВЭРЛЭГЧ
+                                        <div class="icon"></div>
+                                    </div>
+                                </div>
+                                <div class="dimmest-text">{{contact.createdDate}}</div>
+                                <div class="dimmest-text">{{contact.createdTime}}</div>
+                            </md-card-content>
+                        </div>
+                        <div layout="row" flex ng-if="contact.postInfo.rates!=null">
+
+                            <!--     <div ng-if="contact.postInfo.rates.length>=2" flex>
+                                     <md-whiteframe class="md-whiteframe-z1" layout layout-align="center center" flex="47"
+                                                    style="background: #fbfbfb; margin: 8px; padding: 8px;">
+                                         <div layout="column" flex>
+                                             <div layout="row" flex>
+                                                 Үнэлгээ:
+                                                 <div ng-if="contact.postInfo.rates[0].rate==null">
+                                                     <md-icon md-svg-icon="star-empty" class="mini-star"></md-icon>
+                                                     <md-icon md-svg-icon="star-empty" class="mini-star"></md-icon>
+                                                     <md-icon md-svg-icon="star-empty" class="mini-star"></md-icon>
+                                                 </div>
+                                                 <div ng-if="contact.postInfo.rates[0].rate==1">
+                                                     <md-icon md-svg-icon="star" class="mini-star"></md-icon>
+                                                     <md-icon md-svg-icon="star-empty" class="mini-star"></md-icon>
+                                                     <md-icon md-svg-icon="star-empty" class="mini-star"></md-icon>
+                                                 </div>
+                                                 <div ng-if="contact.postInfo.rates[0].rate==2">
+                                                     <md-icon md-svg-icon="star" class="mini-star"></md-icon>
+                                                     <md-icon md-svg-icon="star" class="mini-star"></md-icon>
+                                                     <md-icon md-svg-icon="star-empty"  class="mini-star"></md-icon>
+                                                 </div>
+                                                 <div ng-if="contact.postInfo.rates[0].rate==3">
+                                                     <md-icon md-svg-icon="star" class="mini-star"></md-icon>
+                                                     <md-icon md-svg-icon="star" class="mini-star"></md-icon>
+                                                     <md-icon md-svg-icon="star" class="mini-star"></md-icon>
+                                                 </div>
+                                             </div>
+                                             <div layout="row" flex style="padding-top: 3px;">
+                                                 {{contact.postInfo.rates[0].comment}}
+                                             </div>
+                                             <div layout="row" flex layout-align="end center">
+                                                 <img ng-src="ws/profile/image/{{contact.username}}.png"
+                                                      class="mini-profile-image"> {{contact.postInfo.rates[0].rateAccountName}}
+                                             </div>
+                                         </div>
+                                     </md-whiteframe>
+
+                                     <md-whiteframe class="md-whiteframe-z1" layout layout-align="center center" flex="47"
+                                                    style="background: #fbfbfb; margin: 8px; padding: 8px;">
+                                         <div layout="column" flex>
+                                             <div layout="row" flex>
+                                                 Үнэлгээ:
+                                                 <div ng-if="contact.postInfo.rates[1].rate==null">
+                                                     <md-icon md-svg-icon="star-empty" class="mini-star"></md-icon>
+                                                     <md-icon md-svg-icon="star-empty" class="mini-star"></md-icon>
+                                                     <md-icon md-svg-icon="star-empty" class="mini-star"></md-icon>
+                                                 </div>
+                                                 <div ng-if="contact.postInfo.rates[1].rate==1">
+                                                     <md-icon md-svg-icon="star" class="mini-star"></md-icon>
+                                                     <md-icon md-svg-icon="star-empty" class="mini-star"></md-icon>
+                                                     <md-icon md-svg-icon="star-empty" class="mini-star"></md-icon>
+                                                 </div>
+                                                 <div ng-if="contact.postInfo.rates[1].rate==2">
+                                                     <md-icon md-svg-icon="star" class="mini-star"></md-icon>
+                                                     <md-icon md-svg-icon="star" class="mini-star"></md-icon>
+                                                     <md-icon md-svg-icon="star-empty"  class="mini-star"></md-icon>
+                                                 </div>
+                                                 <div ng-if="contact.postInfo.rates[1].rate==3">
+                                                     <md-icon md-svg-icon="star" class="mini-star"></md-icon>
+                                                     <md-icon md-svg-icon="star" class="mini-star"></md-icon>
+                                                     <md-icon md-svg-icon="star" class="mini-star"></md-icon>
+                                                 </div>
+                                             </div>
+                                             <div layout="row" flex style="padding-top: 3px;">
+                                                 {{contact.postInfo.rates[1].comment}}
+                                             </div>
+                                             <div layout="row" flex layout-align="end center">
+                                                 <img ng-src="ws/profile/image/{{contact.username}}.png"
+                                                      class="mini-profile-image"> {{contact.postInfo.rates[1].rateAccountName}}
+                                             </div>
+                                         </div>
+                                     </md-whiteframe>
+                                 </div>
+                                 <div ng-if="contact.postInfo.rates.length=1" flex>
+                                     <md-whiteframe class="md-whiteframe-z1" layout layout-align="center center" flex="95"
+                                                    style="background: #fbfbfb; margin: 8px;  padding: 8px;">
+                                         <div layout="column" flex>
+                                             <div layout="row" flex>
+                                                 Үнэлгээ:
+                                                 <div ng-if="contact.postInfo.rates[0].rate==null">
+                                                     <md-icon md-svg-icon="star-empty" class="mini-star"></md-icon>
+                                                     <md-icon md-svg-icon="star-empty" class="mini-star"></md-icon>
+                                                     <md-icon md-svg-icon="star-empty" class="mini-star"></md-icon>
+                                                 </div>
+                                                 <div ng-if="contact.postInfo.rates[0].rate==1">
+                                                     <md-icon md-svg-icon="star" class="mini-star"></md-icon>
+                                                     <md-icon md-svg-icon="star-empty" class="mini-star"></md-icon>
+                                                     <md-icon md-svg-icon="star-empty" class="mini-star"></md-icon>
+                                                 </div>
+                                                 <div ng-if="contact.postInfo.rates[0].rate==2">
+                                                     <md-icon md-svg-icon="star" class="mini-star"></md-icon>
+                                                     <md-icon md-svg-icon="star" class="mini-star"></md-icon>
+                                                     <md-icon md-svg-icon="star-empty"  class="mini-star"></md-icon>
+                                                 </div>
+                                                 <div ng-if="contact.postInfo.rates[0].rate==3">
+                                                     <md-icon md-svg-icon="star" class="mini-star"></md-icon>
+                                                     <md-icon md-svg-icon="star" class="mini-star"></md-icon>
+                                                     <md-icon md-svg-icon="star" class="mini-star"></md-icon>
+                                                 </div>
+                                             </div>
+                                             <div layout="row" flex style="padding-top: 3px;">
+                                                 {{contact.postInfo.rates[0].comment}}
+                                             </div>
+                                             <div layout="row" flex layout-align="end center">
+                                                 <img ng-src="ws/profile/image/{{contact.username}}.png"
+                                                      class="mini-profile-image"> {{contact.postInfo.rates[0].rateAccountName}}
+                                             </div>
+                                         </div>
+                                     </md-whiteframe>
+                                 </div>-->
+                        </div>
+
+                    </div>
+
+                </md-whiteframe>
+
+
+                <md-divider></md-divider>
+                <md-card-footer layout="row" layout-padding layout-align="space-between center">
+                    <div style=" padding-left: 20px;">
+                        <md-icon md-svg-icon="view" style="margin:0;"></md-icon>
+                        <span style="padding-left: 8px">{{contact.requestNum}}</span></div>
+                    <md-button ng-click="closeDialog()">Гарах</md-button>
+                    <!-- <md-button class="md-accent" ng-click="rate()"
+                                ng-hide="contact.postInfo.alreadyRated">Үнэлгээ өгөх
+                     </md-button>
+ -->
+                </md-card-footer>
+            </div>
+            <div ng-switch-when="2">
+                <md-dialog-content class="sticky-container">.
+                    <md-whiteframe class="md-whiteframe-z2" layout layout-align="center center">
+                        <div layout="row" flex class="{{contact.type}}" style="width:100%">
+                            <md-card-content flex="30" layout="column" layout-align="center center"
+                                             style="padding: 10px 0; float: left; width: 30%">
+                                <img src="image-url" height="80px" width="80px"/>
+
+                                <div>{{contact.username}}</div>
+                                <div style="font-size: 9px"> {{contact.postInfo.phone}}</div>
+                                <div style="font-size: 9px"> {{contact.postInfo.email}}</div>
+                            </md-card-content>
+                            <md-card-content flex="55" layout="column" layout-align="center center"
+                                             style="padding: 10px 0; float: left; width: 55%" class="body">
+
+                                <div style="text-align: center; font-weight: bold">
+                                    Та тохирох үнэлгээгээ өгнө үү
+                                </div>
+                                <div style="text-align: center">
+                                    <div ng-switch="rateScore">
+                                        <div ng-switch-when="0">
+                                            <a href="#" ng-click="rating(1)">
+                                                <md-icon md-svg-icon="star-empty"></md-icon>
+                                            </a>
+                                            <a href="#" ng-click="rating(2)">
+                                                <md-icon md-svg-icon="star-empty"></md-icon>
+                                            </a>
+                                            <a href="#" ng-click="rating(3)">
+                                                <md-icon md-svg-icon="star-empty"></md-icon>
+                                            </a>
+                                        </div>
+                                        <div ng-switch-when="1">
+                                            <a href="#" ng-click="rating(1)">
+                                                <md-icon md-svg-icon="star"></md-icon>
+                                            </a>
+                                            <a href="#" ng-click="rating(2)">
+                                                <md-icon md-svg-icon="star-empty"></md-icon>
+                                            </a>
+                                            <a href="#" ng-click="rating(3)">
+                                                <md-icon md-svg-icon="star-empty"></md-icon>
+                                            </a>
+                                        </div>
+                                        <div ng-switch-when="2">
+                                            <a href="#" ng-click="rating(1)">
+                                                <md-icon md-svg-icon="star"></md-icon>
+                                            </a>
+                                            <a href="#" ng-click="rating(2)">
+                                                <md-icon md-svg-icon="star"></md-icon>
+                                            </a>
+                                            <a href="#" ng-click="rating(3)">
+                                                <md-icon md-svg-icon="star-empty"></md-icon>
+                                            </a>
+                                        </div>
+                                        <div ng-switch-when="3">
+                                            <a href="#" ng-click="rating(1)">
+                                                <md-icon md-svg-icon="star"></md-icon>
+                                            </a>
+                                            <a href="#" ng-click="rating(2)">
+                                                <md-icon md-svg-icon="star"></md-icon>
+                                            </a>
+                                            <a href="#" ng-click="rating(3)">
+                                                <md-icon md-svg-icon="star"></md-icon>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <md-input-container flex>
+                                        <label>Сэтгэгдэл</label>
+                                        <textarea ng-model="user.comment" columns="1" md-maxlength="150"
+                                                  style="width: 280px;"></textarea>
+                                    </md-input-container>
+                                </div>
+                            </md-card-content>
+                            <md-card-content flex="15" layout="column" layout-align="center center"
+                                             style="padding: 10px 0; float: left; width: 15%">
+
+                                <div class="md-title md-primary">
+                                    <div ng-if="contact.type === 'SENDER'" class="type">
+                                        ИЛГЭЭГЧ
+                                        <div class="icon"></div>
+                                    </div>
+
+                                    <div ng-if="contact.type === 'CARRIER'" class="type">
+                                        ТЭЭВЭРЛЭГЧ
+                                        <div class="icon"></div>
+                                    </div>
+                                </div>
+                            </md-card-content>
+                        </div>
+
+                    </md-whiteframe>
+                    <md-divider></md-divider>
+                    <md-card-footer layout="row" layout-padding layout-align="space-between center">
+                        <div>
+                <span style="padding-left: 150px; font-weight:bold; font-size: 15px;">Та <md-icon
+                        md-svg-icon="star"></md-icon> {{rateScore}} сонгосон байна</span></div>
+                        <md-button ng-click="cancelRate()">Гарах</md-button>
+                        <md-button class="md-accent"
+                                   ng-click="rateSubmit(contact.id,rateScore,user.comment,contact.username)">Илгээх
+                        </md-button>
+
+                    </md-card-footer>
+                </md-dialog-content>
+            </div>
+        </div>
+    </md-dialog-content>
+</md-dialog>

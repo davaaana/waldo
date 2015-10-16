@@ -1,0 +1,94 @@
+<md-dialog aria-label="Creating new post">
+    <md-toolbar class="md-accent">
+
+         <span class="md-toolbar-tools">
+
+            <span>
+                <span ng-show="step === 2 || step === 4">
+                    <md-icon md-svg-icon="package-with-hand" class="new_post_dialog_icon"></md-icon>
+                    ТЭЭВЭРЛЭХ
+                </span>
+                <span ng-show="step === 3 || step === 5">
+                    <md-icon md-svg-icon="package" class="new_post_dialog_icon"></md-icon>
+                    ИЛГЭЭХ
+                </span>
+                ЗАР НЭМЭХ</span>
+            <span flex></span>
+            <md-button ng-click="cancelNewPost()" aria-label="Close" class="md-icon-button">
+                <md-icon md-svg-icon="close"></md-icon>
+            </md-button>
+        </span>
+
+
+    </md-toolbar>
+
+    <md-dialog-content class="sticky-container">
+        <section layout="row" layout-padding layout-align="space-around center">
+            <!--========================================= STEPS INDICATION ===============================================-->
+            <div ng-class="{new_post_active : step ===1, new_post_done: step > 1}">
+                <span class="step_number">1</span>
+                <span class="step_text">Зарын төрөл</span>
+            </div>
+            <div ng-class="{new_post_inactive: step <3, new_post_active : step ===2 || step ===3, new_post_done: step > 3}">
+                <span class="step_number">2</span>
+                <span class="step_text">Зарын мэдээлэл</span>
+            </div>
+            <div ng-class="{new_post_inactive: step <4, new_post_active : step ===4 || step ===5}">
+                <span class="step_number">3</span>
+                <span class="step_text">Нятлан шалгах</span>
+            </div>
+        </section>
+        <md-progress-linear md-mode="determinate" value="{{newPostProgress}}"></md-progress-linear>
+
+        <section>
+            <form name="newPostForm" novalidate>
+                <div ng-switch="step">
+                    <!--========================================= TYPE FORM ===============================================-->
+                    <div ng-switch-when="1">
+                        <md-content layout="column" layout-fill>
+                            <div class="createPostChoose">
+
+                                <md-radio-group ng-model="newPostData.type" flex>
+                                    <md-radio-button value="CARRIER" class="md-primary">
+                                        <md-icon md-svg-icon="package-with-hand" class="carrier-icon"></md-icon>
+                                        <span>ТЭЭВЭРЛЭХ ЗАР</span>
+                                    </md-radio-button>
+                                    <md-radio-button value="SENDER" class="md-accent">
+                                        <md-icon md-svg-icon="package" class="sender-icon"></md-icon>
+                                        <span>АЧАА ИЛГЭЭХ ЗАР</span>
+                                    </md-radio-button>
+                                </md-radio-group>
+                            </div>
+                            <div layout="row" layout-align="end center" layout-margin>
+                                <md-button ng-click="cancelNewPost()">Цуцлах</md-button>
+                                <md-button ng-click="newPostSteps(newPostData.type)" class="md-primary"
+                                           ng-disabled="!newPostData.type">Дараагийн алхам
+                                </md-button>
+                            </div>
+                        </md-content>
+                    </div>
+                    <!--========================================= CARRIER FORM ===============================================-->
+                    <div ng-switch-when="2">
+                        <ng-include src="'src/modules/post/new-post/carrier/carrier_data_input_step.html'"></ng-include>
+                    </div>
+                    <!--========================================= SENDER FORM ===============================================-->
+                    <div ng-switch-when="3">
+                        <ng-include src="'src/modules/post/new-post/sender/sender_data_input_step.html'"></ng-include>
+                    </div>
+                    <!--============================ CARRIER REVIEW STEP =====================================-->
+                    <div ng-switch-when="4">
+                        <ng-include
+                                src="'src/modules/post/new-post/carrier/carrier_post_review_step.html'"></ng-include>
+                    </div>
+                    <!--============================ SENDER REVIEW STEP =====================================-->
+                    <div ng-switch-when="5">
+                        <ng-include src="'src/modules/post/new-post/sender/sender_post_review_step.html'"></ng-include>
+
+                    </div>
+                </div>
+
+            </form>
+        </section>
+    </md-dialog-content>
+</md-dialog>
+

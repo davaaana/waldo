@@ -7,6 +7,9 @@ mainApp.controller('HomeController', ['$rootScope', '$scope','$http','$mdDialog'
             AuthService.logout();
         };
 
+        $scope.closeDialog = function () {
+            dialog.cancel();
+        }
 
         $scope.openMenu = function ($mdOpenMenu, ev) {
             $scope.originatorEv = ev;
@@ -18,7 +21,22 @@ mainApp.controller('HomeController', ['$rootScope', '$scope','$http','$mdDialog'
                 templateUrl: './src/modules/dialogs/login.client.view.html',
                 controller: 'UserController'
             });
-        }
+        };
+
+        $scope.editProfile = function () {
+            if(AuthService.getAuthentication() == true){
+                dialog.show({
+                    templateUrl: './src/modules/dialogs/profile-edit.client.view.html',
+                    controller: 'UserController'
+                });
+            }else{
+                dialog.show({
+                    templateUrl: './src/modules/dialogs/login.client.view.html',
+                    controller: 'UserController'
+                });
+            }
+
+        };
 
         setInterval(function () {
             $scope.clock = Date.now();

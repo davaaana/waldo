@@ -148,42 +148,61 @@ mainApp.controller('PostController', ['$rootScope', '$scope','$http','$mdDialog'
             $scope.searchText1 = '';
         };
 
-        $scope.more = function (mpost) {
-            PostService.getPostMore(mpost).then(function(data){
-                if (data.success === false) {
-                    dialog.show({
-                        templateUrl: './src/modules/users/sign-in/dialog.sign.html',
-                        controller: 'signInCtrl'
-                    });
-                }
-                else if (data.success === true) {
+        $scope.more = function (post) {
+            if(AuthService.getAuthentication() == true){
+                $scope.morePost = post;
+                dialog.show({
+                    templateUrl: './src/modules/dialogs/post-more.client.view.html',
+                    controller: 'PostController'
+                });
+            }else{
+                dialog.show({
+                    templateUrl: './src/modules/dialogs/login.client.view.html',
+                    controller: 'UserController'
+                });
+            }
+        }
 
-                    $scope.stepExchange = 1;
-                    $scope.mpost = data.data;
-                    var user;
-                    try{
-                        user = JSON.parse(window.sessionStorage['userInfo']).username;
-                    }catch (e){
-                        user = window.sessionStorage['userInfo'].username;
-                    }
+        $scope.closeDialog = function () {
+            dialog.cancel();
+        }
 
-                    if(user==$scope.mpost.username) {
-                        $scope.ownBool = true;
-                    }
-                    else{
-                        $scope.ownBool = false;
-                    }
-
-                    dialog.show({
-                        parent: angular.element(document.body),
-                        scope: $scope.$new(),
-                        controller: 'postCtrl',
-                        templateUrl: 'src/modules/post/dialog-more.html'
-                    });
-
-                }
-            })
-        };
+        //$scope.more = function (mpost) {
+        //    PostService.getPostMore(mpost).then(function(data){
+        //        if (data.success === false) {
+        //            dialog.show({
+        //                templateUrl: './src/modules/users/sign-in/dialog.sign.html',
+        //                controller: 'signInCtrl'
+        //            });
+        //        }
+        //        else if (data.success === true) {
+        //
+        //            $scope.stepExchange = 1;
+        //            $scope.mpost = data.data;
+        //            var user;
+        //            try{
+        //                user = JSON.parse(window.sessionStorage['userInfo']).username;
+        //            }catch (e){
+        //                user = window.sessionStorage['userInfo'].username;
+        //            }
+        //
+        //            if(user==$scope.mpost.username) {
+        //                $scope.ownBool = true;
+        //            }
+        //            else{
+        //                $scope.ownBool = false;
+        //            }
+        //
+        //            dialog.show({
+        //                parent: angular.element(document.body),
+        //                scope: $scope.$new(),
+        //                controller: 'postCtrl',
+        //                templateUrl: 'src/modules/post/dialog-more.html'
+        //            });
+        //
+        //        }
+        //    })
+        //};
 
         $scope.paging = function () {
 

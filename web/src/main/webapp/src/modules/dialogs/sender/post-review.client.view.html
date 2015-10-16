@@ -1,0 +1,87 @@
+<md-content layout="column" layout-fill>
+    <section layout="row" flex layout-padding>
+        <div layout="column" flex class="create-post-back" layout-padding>
+            <h4 style="color:#646054; padding-left: 10px; padding-left: 10px">Зараа та шалгана
+                уу. Хэрэв өөрчлөлт байгаа бол буцах товч дээр дарна уу!</h4>
+
+            <div layout="row" layout-padding>
+                <div class="dim-text">
+                    <div>
+                        <md-icon md-svg-icon="crosshairs-gps" style="margin:0;"></md-icon>
+                        Хаанаас:
+                    </div>
+                    <div>
+                        <md-icon md-svg-icon="map-marker" style="margin:0;"></md-icon>
+                        Хаашаа:
+                    </div>
+                    <div>
+                        <md-icon md-svg-icon="calendar-blank" style="margin:0;"></md-icon>
+                        Эхлэх:
+                    </div>
+                    <div>
+                        <md-icon md-svg-icon="calendar-blank" style="margin:0;"></md-icon>
+                        Дуусах:
+                    </div>
+                    <div>
+                        <md-icon md-svg-icon="passenger" style="margin:0;"></md-icon>
+                        Зорчигчийн тоо:
+                    </div>
+                    <div>
+                        <md-icon md-svg-icon="carry" style="margin:0;"></md-icon>
+                        Авч явах зүйлс:
+                    </div>
+
+                </div>
+                <div>
+                    <div class="post_user_data_text">
+                        {{newPostData.fromCityId.name}}-{{newPostData.fromDistrictId.name}}
+                    </div>
+                    <div class="post_user_data_text">
+                        {{newPostData.toCityId.name}}-{{newPostData.toDistrictId.name}}
+                    </div>
+                    <div class="post_user_data_text"> {{newPostDataCheck.leaveDate |
+                        date:'yyyy-MM-dd'}}
+                    </div>
+                    <div class="post_user_data_text"> {{newPostDataCheck.arriveDate |
+                        date:'yyyy-MM-dd'}}
+                    </div>
+                    <div class="post_user_data_text"><span
+                            data-ng-show="newPostDataCheck.passanger">{{newPostData.passanger}}</span><span
+                            data-ng-hide="newPostDataCheck.passanger">Зорчигч байхгүй</span>
+                    </div>
+                    <div class="post_user_data_text"><span
+                            data-ng-show="newPostData.stuff"> {{newPostData.stuff}}</span><span
+                            data-ng-show="newPostData.animal"> {{newPostData.animal}}</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div layout="column" flex>
+            <md-select placeholder="Миний нөхцөл"
+                       ng-model="newPostData.policies">
+
+                <md-option ng-repeat="policies in myPolicy"
+                           ng-value="{{policies}}"
+                           ng-selected="{{policies.id == newPostData.policies.id}}">
+                    {{policies.policy}}
+                </md-option>
+            </md-select>
+            <md-input-container>
+                <label>Миний дүрэм:</label>
+                <textarea ng-model="newPostData.description" columns="4"></textarea>
+
+            </md-input-container>
+            <md-input-container>
+                <label>Холбоо барих мэдээлэл:</label>
+                <textarea ng-model="newPostData.contact" columns="4"></textarea>
+            </md-input-container>
+        </div>
+    </section>
+    <div layout="row" layout-align="end center">
+        <md-button ng-click="newPostSteps(3)">Буцах</md-button>
+        <md-button ng-click="completePost()" class="md-primary"
+                   ng-disabled="!newPostData.policies">Зар үүсгэх
+        </md-button>
+    </div>
+</md-content>

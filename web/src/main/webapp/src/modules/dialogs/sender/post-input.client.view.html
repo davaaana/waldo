@@ -1,0 +1,126 @@
+<md-content layout="column" layout-fill>
+    <section layout="row" flex>
+        <div layout="column" flex="50" layout-padding layout-align="center center">
+            <span>Илгээх зүйлс</span>
+
+            <div layout="column">
+                <div layout="column">
+                    <md-checkbox ng-model="newPostDataCheck.stuff"
+                                 aria-label="stuff_checkbox">Ачаа
+                    </md-checkbox>
+                    <md-input-container>
+                        <label>Ачааны тайлбар</label>
+                        <textarea ng-model="newPostData.stuff" type="text"
+                                  ng-disabled="!newPostDataCheck.stuff"
+                                  md-maxlength="70"  maxlength="70"></textarea>
+                    </md-input-container>
+                </div>
+                <!--  <div id="text"></div>-->
+
+                <div layout="row">
+                    <md-checkbox ng-model="newPostDataCheck.passanger"
+                                 aria-label="passanger_checkbox">Зорчигч
+                    </md-checkbox>
+                    <md-input-container>
+                        <input ng-model="newPostData.passanger" type="number"
+                               ng-disabled="!newPostDataCheck.passanger" min="1" max="50">
+                    </md-input-container>
+                </div>
+
+                <div layout="column">
+                    <md-checkbox ng-model="newPostDataCheck.animal"
+                                 aria-label="animal_checkbox">Амьтан
+                    </md-checkbox>
+                    <md-input-container>
+                        <label>Амьтаны тайлбар</label>
+                        <textarea ng-model="newPostData.animal" type="text"
+                                  ng-disabled="!newPostDataCheck.animal"
+                                  md-maxlength="70"  maxlength="70"></textarea>
+                    </md-input-container>
+                </div>
+
+            </div>
+        </div>
+        <md-divider></md-divider>
+        <div layout="column" flex="50" layout-padding layout-align="space-around center">
+            <div layout="row">
+
+                <md-input-container layout="column" flex="50">
+                    <label>Явах хот аймаг<span class="star-red">*</span></label>
+                    <md-select
+                            ng-model="newPostData.fromCityId">
+                        <md-option
+                                ng-selected="{{carrierFromCities.id == newPostData.fromCityId.id}}"
+                                ng-repeat="carrierFromCities in city"
+                                ng-value="{{carrierFromCities}}"
+                                ng-click="district(carrierFromCities.id)">
+                            {{carrierFromCities.name}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+
+                <md-input-container layout="column" flex="50">
+                    <label>Явах дүүрэг сум<span class="star-red">*</span></label>
+                    <md-select
+                            ng-model="newPostData.fromDistrictId" flex>
+                        <md-option ng-repeat="carrierFromDistrict in districtdata"
+                                   ng-value="{{carrierFromDistrict}}"
+                                   ng-selected="{{carrierFromDistrict.id == newPostData.fromDistrictId.id}}">
+                            {{carrierFromDistrict.name}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
+
+
+            <div layout="row">
+                <md-input-container layout="column" flex="50">
+                    <label>Очих хот аймаг<span class="star-red">*</span></label>
+                    <md-select
+                            ng-model="newPostData.toCityId">
+
+                        <md-option ng-repeat="carrierToCities in city"
+                                   ng-value="{{carrierToCities}}"
+                                   ng-click="district2(carrierToCities.id)"
+                                   ng-selected="{{carrierToCities.id == newPostData.toCityId.id}}">
+                            {{carrierToCities.name}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+
+                <md-input-container layout="column" flex="50">
+                    <label>Очих дүүрэг сум<span class="star-red">*</span></label>
+                    <md-select
+                            ng-model="newPostData.toDistrictId">
+                        <md-option ng-repeat="carrierToDistrict in district2data"
+                                   ng-value="{{carrierToDistrict}}"
+                                   ng-selected="{{carrierToDistrict.id == newPostData.toDistrictId.id}}">
+                            {{carrierToDistrict.name}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
+            <div layout="column">
+                <div layout="row" layout-align="center center">
+                    <label>Хөдлөх<span class="star-red">*</span></label>
+                    <md-datepicker ng-model="newPostDataCheck.leaveDate"
+                                   md-placeholder="Явах өдөр"></md-datepicker>
+                </div>
+
+                <div layout="row" layout-align="center center">
+                    <label>Хүрэх<span class="star-red">*</span></label>
+                    <md-datepicker ng-model="newPostDataCheck.arriveDate"
+                                   md-placeholder="Очих өдөр"></md-datepicker>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <div layout="row" layout-align="end center">
+        <md-button ng-click="newPostSteps(1)">Буцах</md-button>
+        <md-button ng-click="newPostSteps(5)" class="md-primary"
+                   ng-disabled="!newPostData.toCityId.name || !newPostData.fromCityId.name || !newPostDataCheck.leaveDate || !newPostDataCheck.arriveDate || (!newPostData.stuff && !newPostData.passanger && !newPostData.animal)">
+            Сүүлчийн алхам
+        </md-button>
+    </div>
+</md-content>
