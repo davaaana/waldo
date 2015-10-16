@@ -21,6 +21,7 @@ mainApp.factory('UserService', function ($http) {
                     scope.user = data.data;
                     window.sessionStorage["userInfo"] = JSON.stringify(data.data);
                     scope.auth = me.getAuthentication();
+                    window.location.reload(true);
                 }
             }).then();
         },
