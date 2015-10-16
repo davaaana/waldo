@@ -2,18 +2,50 @@
 
 mainApp.controller('PostController', ['$rootScope', '$scope','$http','$mdDialog','PostService', 'UserService','$location',
     function ($rootScope, $scope,$http,dialog,PostService,AuthService,$location) {
-
+        $scope.filter = {
+            froomDate:'',
+            tooDate:''
+        };
         $scope.ownBool = false;
         $scope.page = 1;
-        $scope.filterResult = filterOptions;
+
 
         PostService.getAllPostData().then(function(posts){
             $scope.posts = posts.data;
         });
 
+        PostService.getCity().then(function (data) {
+            $scope.cities = data;
+        });
+
         $scope.convertToDate = function (string) {
             return convertToDate(string);
-        }
+        };
+
+        $scope.$watch('filter.toDate', function (el) {
+            try{
+                var date = new Date(el).toJSON().slice(0, 10);
+                $scope.filter.tooDate = date;
+            }catch (e){
+
+            }
+
+        });
+
+        $scope.$watch('filter.fromDate', function (el) {
+            try{
+                var date = new Date(el).toJSON().slice(0, 10);
+                $scope.filter.froomDate = date;
+            }catch(e){
+
+            }
+
+        });
+
+        $scope.filterClear = function () {
+            $scope.filter={};
+        };
+
         $scope.more = function (mpost) {
             PostService.getPostMore(mpost).then(function(data){
                 if (data.success === false) {
