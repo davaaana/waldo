@@ -1,5 +1,9 @@
 hello world
 
-<div id="call_dialog">
-
+<div id="call_dialog" ng-controller="PostController">
+    <table>
+        <tr ng-repeat="post in posts">
+            <td>{{post}}</td>
+        </tr>
+    </table>
 </div>
