@@ -125,7 +125,14 @@ mainApp.controller('PostController', ['$rootScope', '$scope','$http','$mdDialog'
             }catch(e){
 
             }
+        });
 
+        $scope.$watch('filter.fromLocation', function (el) {
+                $scope.filter.fromLocation = el == 'Бүх аймаг' ? '' : el;
+        });
+
+        $scope.$watch('filter.toLocation', function (el) {
+            $scope.filter.toLocation = el == 'Бүх аймаг' ? '' : el;
         });
 
         $scope.onSelection = function(item) {
