@@ -11,21 +11,23 @@
     </md-toolbar>
     <md-dialog-content>
         <section>
+            <div layout="row" layout-align="center center" >
+                <span>{{errorMessage}}</span>
+            </div>
             <md-content layout="row" layout-sm="column" layout-fill>
+
                 <div layout="row">
                     <form method="post" name="loginForm" flex>
                         <div layout="column" layout-align="center center" layout-padding>
-                            <h3>Та хэрвээ Waldo-д бүртгэлтэй бол нэвтэрч орно уу</h3>
-                            <span>{{errorMessage}}</span>
-                            <md-input-container flex >
+                            <md-input-container >
                                 <label>Хэрэглэгчийн нэр</label>
-                                <input ng-model="username" name="username" type="username" required autofocus>
+                                <input ng-model="username" name="username" type="username"  placeholder="Хэрэглэгчийн нэр" required autofocus>
                             </md-input-container>
-                            <md-input-container flex>
+                            <md-input-container >
                                 <label>Нууц үг</label>
-                                <input ng-model="password" name="password" type="password" required>
+                                <input ng-model="password" name="password" type="password"  placeholder="Нууц үг" required>
                             </md-input-container>
-                            <md-button ng-click="signin()"
+                            <md-button class="md-raised md-button md-ink-ripple" ng-click="signin()"
                                        ng-disabled="!username || !password">Нэвтрэх
                             </md-button>
 
@@ -35,17 +37,20 @@
 
 
                 <md-divider></md-divider>
-                <div layout="column" layout-align="start center" layout-padding>
+                <div layout="column" layout-align="center center" layout-padding>
 
                     <form id="fbSignIn" name="fbSignIn" action="/ws/signin/facebook" method="post">
                         <md-button class="md-raised md-accent" type="submit">
                             <span>Facebook-ээр нэвтрэх</span>
                         </md-button>
                     </form>
-                    <div flex></div>
-                    <span class="md-primary">Хэрэв таньд бүртгэл байхгүй бол : <md-button ng-click="signup()">
-                        БҮРТГҮҮЛЭХ
-                    </md-button></span>
+
+                    <span class="md-primary">Хэрэв таньд бүртгэл байхгүй бол</span>
+                    <center>
+                        <md-button class="md-primary md-hue-1 md-button md-ink-ripple" ng-click="signup()">
+                            БҮРТГҮҮЛЭХ
+                        </md-button>
+                    </center>
                 </div>
             </md-content>
         </section>

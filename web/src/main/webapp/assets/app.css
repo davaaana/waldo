@@ -531,6 +531,10 @@ body > .md-dialog-container {
     width: 180px;
 }
 
+.adds-area{
+    width: 440px;
+}
+
 .filter-area2 {
     background: white;
     width: 180px;
@@ -542,6 +546,17 @@ body > .md-dialog-container {
     padding: 0;
     margin-right: 5px;
     width: 200px;
+    height: 40px;
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+
+}
+
+.datepicker-filter-adjust2 {
+    background-color: rgb(250,250,250);
+    margin-top: 0;
+    padding: 0;
+    margin-right: 8px;
+    width: 190px;
     height: 40px;
     box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
 
@@ -635,7 +650,7 @@ a.md-button.md-warn.md-raised, a.md-button.md-warn.md-fab, .md-button.md-warn.md
     text-align: center;
     text-transform: uppercase;
     padding-top: 7px;
-    padding-bottom: 6px;
+    padding-bottom: 8px;
     color:white;
      cursor: pointer;
 }
@@ -653,6 +668,7 @@ a.md-button.md-warn.md-raised, a.md-button.md-warn.md-fab, .md-button.md-warn.md
 .middle-menu .select{
     background: white;
     font-weight: bold;
+    padding-bottom: 6px;
     color: rgb(255, 152, 0);
     border-bottom: 2px solid white;
     border-right: 2px solid rgb(255, 152, 0);
@@ -686,9 +702,15 @@ a.md-button.md-warn.md-raised, a.md-button.md-warn.md-fab, .md-button.md-warn.md
     padding-right: 5px;
 }
 
+.adds-filed{
+    width: 190px;
+    padding-right: 8px;
+
+}
+
 .filter-button{
-    height: 30px;
-    margin-top: 20px;
+    height: 40px;
+    margin-top: 17px;
 }
 
 .filter-txt{
@@ -697,4 +719,17 @@ a.md-button.md-warn.md-raised, a.md-button.md-warn.md-fab, .md-button.md-warn.md
 
 .padding-top-5{
     padding-top: 5px;
+}
+
+.login-title{
+    width: 235px;
+    text-align: center;
+}
+
+.edit-profile{
+    min-width: 112px;
+}
+
+.middle-menu a{
+    text-decoration: none;
 }

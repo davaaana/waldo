@@ -1,132 +1,17 @@
 <md-content layout="column" layout-fill>
-    <section layout="row" flex>
+    <div layout="row" flex>
         <div layout="column" flex="50" layout-padding layout-align="center start">
-            <span>Тээвэрлэх зүйлс:</span>
-
-            <div layout="column" flex>
-                <!--_________________________________________________ PACKAGE INPUT ________________________________________________-->
-                <div layout="column">
-                    <md-checkbox ng-model="newPostDataCheck.stuff"
-                                 aria-label="stuff_checkbox">Ачаа
-                    </md-checkbox>
-                    <md-input-container>
-                        <label>Ачааны шаардлага</label>
-                        <textarea ng-model="newPostData.stuffDesc" type="text"
-                                  ng-disabled="!newPostDataCheck.stuff"
-                                  md-maxlength="70" maxlength="70"></textarea>
-                    </md-input-container>
-                </div>
-                <!--_________________________________________________ PASSANGER INPUT ________________________________________________-->
-                <div layout="row">
-                    <md-checkbox ng-model="newPostDataCheck.passanger"
-                                 aria-label="passanger_checkbox">Зорчигч
-                    </md-checkbox>
-                    <md-input-container>
-                        <input ng-model="newPostData.passanger" type="number" value="1"
-                               ng-disabled="!newPostDataCheck.passanger" min="1" max="50">
-                    </md-input-container>
-                </div>
-                <!--_________________________________________________ ANIMAL INPUT ________________________________________________-->
-                <div layout="column">
-                    <md-checkbox ng-model="newPostDataCheck.animal"
-                                 aria-label="animal_checkbox">Амьтан
-                    </md-checkbox>
-                    <md-input-container>
-                        <label>Амьтаны шаардлага</label>
-                        <textarea ng-model="newPostData.animal" type="text"
-                                  ng-disabled="!newPostDataCheck.animal"
-                                  md-maxlength="70" maxlength="70"></textarea>
-                    </md-input-container>
-                </div>
-            </div>
-        </div>
-
-        <md-divider></md-divider>
-
-        <div layout="column" flex="50" layout-padding layout-align="center start">
+            <!--_________________________________________________ PACKAGE INPUT ________________________________________________-->
             <div layout="row">
-                <!--_________________________________________________ DEPARTURE CITY OR PROVINCE ________________________________________________-->
-                <md-input-container flex>
-                    <label>Хөдлөх хот, аймаг</label>
-                    <md-select
-                            name="departureCityOrProvince"
-                            ng-model="newPostData.fromCityId"
-                            md-on-open="loadPlaceNameOptions()"
-                            required >
-                        <md-option
-                                ng-selected="{{carrierFromCities.id === newPostData.fromCityId.id}}"
-                                ng-repeat="carrierFromCities in city"
-                                ng-value="{{carrierFromCities}}"
-                                ng-click="district(carrierFromCities.id)">
-                            {{carrierFromCities.name}}
-                        </md-option>
-                    </md-select>
-                    <div class="errors" ng-messages="newPostForm.departureCityOrProvince.$invalid"
-                         ng-if="newPostForm.$dirty">
-                        <div ng-message="required">Заавал бөглөнө!</div>
-                    </div>
-
+                <md-checkbox ng-model="newPostDataCheck.stuff"
+                             aria-label="stuff_checkbox">Ачаа
+                </md-checkbox>
+                <md-input-container>
+                    <label>Ачааны шаардлага</label>
+                    <textarea ng-model="newPostData.stuffDesc" type="text"
+                              ng-disabled="!newPostDataCheck.stuff"
+                              md-maxlength="70" maxlength="70"></textarea>
                 </md-input-container>
-                <!--_________________________________________________ DEPARTURE DISTRICT OR SUM ________________________________________________-->
-                <md-input-container flex>
-                    <label>Хөдлөх дүүрэг, сум</label>
-                    <md-select
-                            required
-                            name="departureDistrictOrSum"
-                            ng-model="newPostData.fromDistrictId" flex>
-                        <md-option ng-repeat="carrierFromDistrict in districtdata"
-                                   ng-value="{{carrierFromDistrict}}"
-                                   ng-selected="{{carrierFromDistrict.id === newPostData.fromDistrictId.id}}">
-                            {{carrierFromDistrict.name}}
-                        </md-option>
-                    </md-select>
-                    <div ng-messages="newPostForm.departureDistrictOrSum.$invalid" ng-if="newPostForm.$dirty">
-                        <div ng-message="required">Заавал бөглөнө!</div>
-                    </div>
-                </md-input-container>
-            </div>
-
-
-            <div layout="row">
-                <md-input-container layout="column" flex>
-                    <label>Очих хот сум<span class="star-red">*</span></label>
-                    <md-select
-                            ng-model="newPostData.toCityId">
-                        <md-option ng-repeat="carrierToCities in city"
-                                   ng-value="{{carrierToCities}}"
-                                   ng-click="district2(carrierToCities.id)"
-                                   ng-selected="{{carrierToCities.id == newPostData.toCityId.id}}">
-                            {{carrierToCities.name}}
-                        </md-option>
-                    </md-select>
-                </md-input-container>
-
-                <md-input-container layout="column">
-                    <label>Очих сум дүүрэг<span class="star-red">*</span></label>
-                    <md-select
-                            ng-model="newPostData.toDistrictId">
-                        <md-option ng-repeat="carrierToDistrict in district2data"
-                                   ng-value="{{carrierToDistrict}}"
-                                   ng-selected="{{carrierToDistrict.id == newPostData.toDistrictId.id}}">
-                            {{carrierToDistrict.name}}
-                        </md-option>
-                    </md-select>
-                </md-input-container>
-            </div>
-
-            <div layout="column">
-                <div layout="row" layout-align="center center">
-                    <label>Хөдлөх<span class="star-red">*</span></label>
-                    <md-datepicker ng-model="newPostDataCheck.leaveDate"
-                                   md-placeholder="Явах өдөр"></md-datepicker>
-                </div>
-
-                <div layout="row" layout-align="center center">
-                    <label>Хүрэх<span class="star-red">*</span></label>
-                    <md-datepicker ng-model="newPostDataCheck.arriveDate"
-                                   md-placeholder="Очих өдөр"></md-datepicker>
-                </div>
-
             </div>
 
             <md-input-container>
@@ -141,7 +26,142 @@
                 </md-select>
             </md-input-container>
         </div>
-    </section>
+        <md-divider></md-divider>
+        <div layout="column" flex="50" layout-padding layout-align="center start">
+            <!--_________________________________________________ DEPARTURE CITY OR PROVINCE ________________________________________________-->
+            <div layout="row">
+                <md-checkbox ng-model="newPostDataCheck.animal"
+                             aria-label="animal_checkbox">Амьтан
+                </md-checkbox>
+                <md-input-container>
+                    <label>Амьтаны шаардлага</label>
+                    <textarea ng-model="newPostData.animal" type="text"
+                              ng-disabled="!newPostDataCheck.animal"
+                              md-maxlength="70" maxlength="70"></textarea>
+                </md-input-container>
+            </div>
+
+            <!--_________________________________________________ PASSANGER INPUT ________________________________________________-->
+            <div layout="row">
+                <md-checkbox ng-model="newPostDataCheck.passanger"
+                             aria-label="passanger_checkbox">Зорчигч
+                </md-checkbox>
+                <md-input-container>
+                    <input ng-model="newPostData.passanger" type="number" value="1"
+                           ng-disabled="!newPostDataCheck.passanger" min="1" max="50">
+                </md-input-container>
+            </div>
+        </div>
+
+
+        </div>
+    </div>
+    <md-divider></md-divider>
+    <div layout="row" flex>
+        <div layout="column" flex="50" layout-padding layout-align="center start">
+
+            <div layout="row">
+                <div layout="column">
+                    <label class="filter-title">Хөдлөх хот/аймаг</label>
+                    <md-autocomplete ng-disabled="isDisabled" md-no-cache="noCache" md-selected-item="selectedItem"
+                                     md-search-text-change="searchTextChange(searchText)" md-search-text="searchText"
+                                     md-selected-item-change="filter.fromLocation = item.name"
+                                     md-items="item in querySearch(searchText)" md-item-text="item.name"
+                                     md-min-length="0" placeholder="Хаанаас" class="adds-filed">
+                        <md-item-template>
+                            <span md-highlight-text="searchText" md-highlight-flags="^i">{{item.name}}</span>
+                        </md-item-template>
+                        <md-not-found>
+                            "{{searchText}}" хайлт олдсонгүй.
+                        </md-not-found>
+                    </md-autocomplete>
+                </div>
+            </div>
+
+            <div layout="row">
+                <div layout="column">
+                    <label class="filter-title">Очих хот/аймаг</label>
+                    <md-autocomplete ng-disabled="isDisabled" md-no-cache="noCache" md-selected-item="selectedItem"
+                                     md-search-text-change="searchTextChange(searchText)" md-search-text="searchText"
+                                     md-selected-item-change="filter.fromLocation = item.name"
+                                     md-items="item in querySearch(searchText)" md-item-text="item.name"
+                                     md-min-length="0" placeholder="Хаанаас" class="adds-filed">
+                        <md-item-template>
+                            <span md-highlight-text="searchText" md-highlight-flags="^i">{{item.name}}</span>
+                        </md-item-template>
+                        <md-not-found>
+                            "{{searchText}}" хайлт олдсонгүй.
+                        </md-not-found>
+                    </md-autocomplete>
+                </div>
+            </div>
+
+            <div layout="row">
+                <div layout="column">
+                    <label class="filter-title">Явах огноо эхлэх</label>
+                    <md-datepicker ng-model="newPostDataCheck.leaveDate" md-placeholder="Сонгох" format="yyyy.MM.dd"
+
+                                   class="datepicker-filter-adjust2"></md-datepicker>
+                </div>
+            </div>
+        </div>
+
+        <md-divider></md-divider>
+
+        <div layout="column" flex="50" layout-padding layout-align="center start">
+
+            <div layout="row" flex>
+                <div class="column">
+                    <label class="filter-title">Хөдлөх дүүрэг/сум</label>
+                    <md-autocomplete ng-disabled="isDisabled" md-no-cache="noCache" md-selected-item="selectedItem"
+                                     md-search-text-change="searchTextChange(searchText)" md-search-text="searchText"
+                                     md-selected-item-change="filter.fromLocation = item.name"
+                                     md-items="item in querySearch(searchText)" md-item-text="item.name"
+                                     md-min-length="0"
+                                     placeholder="Хаанаас" class="adds-filed">
+                        <md-item-template>
+                            <span md-highlight-text="searchText" md-highlight-flags="^i">{{item.name}}</span>
+                        </md-item-template>
+                        <md-not-found>
+                            "{{searchText}}" хайлт олдсонгүй.
+                        </md-not-found>
+                    </md-autocomplete>
+                </div>
+            </div>
+
+            <div layout="row">
+                <div class="column">
+                    <label class="filter-title">Очих дүүрэг/сум</label>
+                    <md-autocomplete ng-disabled="isDisabled" md-no-cache="noCache" md-selected-item="selectedItem"
+                                     md-search-text-change="searchTextChange(searchText)" md-search-text="searchText"
+                                     md-selected-item-change="filter.fromLocation = item.name"
+                                     md-items="item in querySearch(searchText)" md-item-text="item.name"
+                                     md-min-length="0"
+                                     placeholder="Хаанаас" class="adds-filed">
+                        <md-item-template>
+                            <span md-highlight-text="searchText" md-highlight-flags="^i">{{item.name}}</span>
+                        </md-item-template>
+                        <md-not-found>
+                            "{{searchText}}" хайлт олдсонгүй.
+                        </md-not-found>
+                    </md-autocomplete>
+                </div>
+            </div>
+
+            <div layout="row">
+
+                <div layout="column">
+                    <label class="filter-title">Явах огноо дуусах</label>
+                    <md-datepicker ng-model="newPostDataCheck.arriveDate" md-placeholder="Сонгох"
+
+                                   class="datepicker-filter-adjust2"
+                                   md-min-date="newPostDataCheck.leaveDate"></md-datepicker>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
     <div layout="row" layout-align="end center">
         <md-button ng-click="newPostSteps(1)">Буцах</md-button>
         <md-button ng-click="newPostSteps(4)" class="md-primary"

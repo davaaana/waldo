@@ -15,8 +15,16 @@ mainApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
                 controller: 'HomeController'
             })
             .state('home.my-post', {
-                url: 'my-post',
+                url: '/my-post',
                 templateUrl: 'src/modules/home/views/my-post.html',
+                controller: 'HomeController'
+            }).state('home.contacted-post', {
+                url: '/contacted-post',
+                templateUrl: 'src/modules/home/views/contacted-post.html',
+                controller: 'HomeController'
+            }).state('home.about', {
+                url: '/about',
+                templateUrl: 'src/modules/home/views/about.html',
                 controller: 'HomeController'
             });
     }
