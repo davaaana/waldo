@@ -97,7 +97,11 @@ mainApp.controller('PostController', ['$rootScope', '$scope','$http','$mdDialog'
         });
 
         PostService.getCity().then(function (data) {
-            $scope.cities = data;
+            var cit = [{id:0,name:'Бүх аймаг'}];
+            for(var i=0; i<data.length-1;i++){
+                cit.push(data[i]);
+            }
+            $scope.cities = cit;
         });
 
         $scope.convertToDate = function (string) {
