@@ -8,22 +8,32 @@
                 <span hide-sm>Шинэ зар нэмэх</span>
             </md-button>
         </div>
+        <div ng-controller="UserController">
+            <div flex="35" layout="row" ng-hide="auth" layout-sm="column">
+                <div layout="column">
+                    <div layout="row">
+                        <input type="text" placeholder="Нэвтрэх нэр" data-ng-model="username" class="login-field"/>
+                        <input type="password" placeholder="Нууц үг" data-ng-model="password" class="login-field"/>
+                    </div>
+                    <div layout="row">
+                        <a href="#" class="login-link">Хэрэгчийн нэр мартсан</a><a href="#" class="login-link">Нууц үг
+                        мартсан</a>
+                    </div>
+                </div>
+                <md-button class="md-raised" data-ng-click="signin()">
+                    <md-icon md-svg-icon="account"></md-icon>
+                    <span hide-sm>Нэвтрэх</span>
+                </md-button>
 
-        <div ng-controller="UserController" flex="35" layout="row" layout-sm="column">
-            <div layout="column">
-                <div  layout="row">
-                    <input type="text" placeholder="Нэвтрэх нэр" data-ng-model="username" class="login-field"/>
-                    <input type="password" placeholder="Нууц үг" data-ng-model="password" class="login-field"/>
-                </div>
-                <div layout="row">
-                    <a href="#" class="login-link">Хэрэгчийн нэр мартсан</a><a href="#" class="login-link">Нууц үг мартсан</a>
-                </div>
             </div>
-            <md-button class="md-raised" data-ng-click="signin()">
-                <md-icon md-svg-icon="account"></md-icon>
-                <span hide-sm>Нэвтрэх</span>
-            </md-button>
 
+            <div flex="40" layout="row" layout-sm="column" ng-show="auth">
+                {{username}} Хэрэглэгч амжилттай нэвтэрлээ
+                <md-button class="md-raised" data-ng-click="logout()">
+                    <md-icon md-svg-icon="account"></md-icon>
+                    <span hide-sm>Гарах</span>
+                </md-button>
+            </div>
         </div>
 
     </div>
