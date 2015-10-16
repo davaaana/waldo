@@ -6,6 +6,8 @@ mainApp.controller('UserController', ['$rootScope', '$scope','$http','$mdDialog'
         $scope.errorMessage = 'nevter';
 
         $scope.auth = UserService.getAuthentication();
+
+        $scope.user = {};
         $scope.signin = function () {
             UserService.loginTo($scope);
         };
