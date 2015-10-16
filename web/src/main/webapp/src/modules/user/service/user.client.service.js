@@ -18,7 +18,7 @@ mainApp.factory('UserService', function ($http) {
             var me = this;
             $http.get(SERVICE_URL + '/profile').success(function (data) {
                 if (data.success == true) {
-                    scope.user = data;
+                    scope.user = data.data;
                     window.sessionStorage["userInfo"] = JSON.stringify(data.data);
                     scope.auth = me.getAuthentication();
                 }
