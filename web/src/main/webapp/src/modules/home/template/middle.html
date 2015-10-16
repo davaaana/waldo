@@ -8,15 +8,15 @@
         </div>
 
         <div layout="row" flex="50"
-             ng-controller="FilterController as filterCtrl">
+             ng-controller="FilterController">
             <div layout="column">
                 <div layout="row" flex class="middle-filter-area">
                     <md-input-container class="input-container-adjust">
                         <label>Хаанаас</label>
-                        <md-select ng-model="filterCtrl.fromFilter" ng-change="filterCtrl.changeValue()"
+                        <md-select ng-model="cityId" ng-change="changeValue()"
                                    layout-align="center center" class="filter-area">
                             <md-option value="">Бүх аймаг</md-option>
-                            <md-option ng-repeat="cities in city" value="{{cities.name}}">{{cities.name}}
+                            <md-option ng-repeat="city in cities track by city.name" value="{{city.id}}">{{city.name}}
                             </md-option>
                         </md-select>
                     </md-input-container>
@@ -25,8 +25,8 @@
                         <label>Хаашаа</label>
                         <md-select ng-model="filterCtrl.toFilter" ng-change="filterCtrl.changeValue()"
                                    layout-align="center center" class="filter-area">
-                            <md-option value="">Бүх аймаг</md-option>
-                            <md-option ng-repeat="cities in city" value="{{cities.name}}">{{cities.name}}
+                            <md-option value="">Бүх сум</md-option>
+                            <md-option ng-repeat="district in districts track by district.name" value="{{district.id}}">{{district.name}}
                             </md-option>
                         </md-select>
                     </md-input-container>

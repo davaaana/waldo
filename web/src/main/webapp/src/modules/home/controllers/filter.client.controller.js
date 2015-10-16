@@ -1,7 +1,7 @@
 'use strict';
 
-mainApp.controller('FilterController', ['$rootScope', '$scope','$http', 'UserService','$location',
-    function ($rootScope, $scope,$http, AuthService,$location) {
+mainApp.controller('FilterController', ['$rootScope', '$scope','$http','PostService', 'UserService','$location',
+    function ($rootScope, $scope,$http,PostService, AuthService,$location) {
         var filter = this;
 
         filter.postType = '';
@@ -11,6 +11,16 @@ mainApp.controller('FilterController', ['$rootScope', '$scope','$http', 'UserSer
         filter.fromDateFilter = '';
         filter.transportationTypeFilter = '';
         filter.quickFilter = '-createdDate';
+
+        PostService.getCity().then(function (data) {
+            $scope.cities = data;
+        });
+
+        $scope.$watch('cityId', function (el) {
+            PostService.getDistrict(el).then(function (data) {
+                $scope.districts= data;
+            });
+        });
 
         filter.changeValue = function () {
             filterOptions.postType = filter.postType;
@@ -35,15 +45,14 @@ mainApp.controller('FilterController', ['$rootScope', '$scope','$http', 'UserSer
 
             function filterOptions() {
                 var options = '';
-                for (var propName in FilterService) {
+                for (var propName in filterOptions) {
                     if (filterOptions[propName] !== undefined) {
                         options += " " + filterOptions[propName];
                     }
                 }
                 return options;
+                console.log(options);
             }
-
-
         };
 
         filter.clearFilterOptions = function () {
