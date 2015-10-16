@@ -11,3 +11,9 @@ var filterOptions = {
     transportationType: '',
     quickFilter: ''
 }
+
+function convertToDate(stringDate) {
+    var dateOut = new Date(stringDate);
+    dateOut.setDate(dateOut.getDate() + 1);
+    return dateOut;
+}

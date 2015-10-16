@@ -11,6 +11,9 @@ mainApp.controller('PostController', ['$rootScope', '$scope','$http','$mdDialog'
             $scope.posts = posts.data;
         });
 
+        $scope.convertToDate = function (string) {
+            return convertToDate(string);
+        }
         $scope.more = function (mpost) {
             PostService.getPostMore(mpost).then(function(data){
                 if (data.success === false) {
