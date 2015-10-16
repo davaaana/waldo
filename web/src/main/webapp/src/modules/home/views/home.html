@@ -16,7 +16,7 @@
             md-row-height="210px"
             md-gutter="6px" md-gutter-gt-sm="3px" flex>
         <md-grid-tile
-                ng-repeat="post in posts | filter:allPostCtrl.filterResult.postType | filter:{to:allPostCtrl.filterResult.toLocation}  | filter:{from:allPostCtrl.filterResult.fromLocation} | filter:{when: allPostCtrl.filterResult.toDate} | filter:{arrive: allPostCtrl.filterResult.fromDate} | filter:allPostCtrl.filterResult.transportationType | orderBy:allPostCtrl.filterResult.quickFilter"
+                ng-repeat="post in posts | filter:filter.postType | filter:filter.toLocation  | filter:filter.fromLocation | filter:{when:filter.tooDate} | filter:{arrive:filter.froomDate} | filter:filter.transportationType | orderBy:filter.quickFilter"
                 ng-class="{carrier_post: post.type==='CARRIER', sender_post: post.type==='SENDER'}">
 
             <md-card flex
