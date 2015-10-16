@@ -2,7 +2,7 @@
     <md-toolbar class="md-accent">
         <span class="md-toolbar-tools">
             <md-icon md-svg-icon="account"></md-icon>
-            <span>Хэрэглэгчийн мэдээлэл шинчилэх / {{profileInfo.username}} /</span>
+            <span>Мэдээлэл шинчилэх</span>
             <span flex></span>
             <md-button ng-click="closeDialog()" aria-label="Close" class="md-icon-button">
                 <md-icon md-svg-icon="close"></md-icon>
@@ -14,53 +14,66 @@
             <md-content>
                 <form method="post" name="profile" enctype="multipart/form-data" flex>
                     <div layout="row">
-                        <div flex="50" flex-sm="50">
+                        <div flex="20" flex-sm="30">
+                            <img ng-src="ws/profile/image/{{user.username}}.png"
+                                 class="edit-photo"/>
+                            <input id="image" type="file" name="file" style="position:fixed;top:-100px;"
+                                   onchange="angular.element(this).scope().uploadFile(this.files)"
+                                   style="padding-top: 26px;" title=""/>
+                            <button id="image_alt" type="button" onclick="document.getElementById('image').click();">Зураг сонгох</button>
+                        </div>
+                        <md-divider></md-divider>
+                        <div flex="40" flex-sm="40">
                             <md-input-container>
-                                <label>Нэр</label>
-                                <input ng-model="profileInfo.firstname" name="firstname" type="text" required>
+                                <label>Хэрэглэгчийн нэр</label>
+                                <input ng-model="user.username" name="username" type="text" disabled>
                             </md-input-container>
                             <md-input-container>
                                 <label>Овог</label>
-                                <input ng-model="profileInfo.lastname" name="lastname" type="text" required>
+                                <input ng-model="user.firstname" name="firstname" type="text" required>
                             </md-input-container>
                             <md-input-container>
-                                <label>И-мэйл</label>
-                                <input ng-model="profileInfo.email" name="email" type="email" required>
+                                <label>Нэр</label>
+                                <input ng-model="user.lastname" name="lastname" type="text" required>
                             </md-input-container>
                             <md-input-container>
                                 <label>Утас</label>
-                                <input ng-model="profileInfo.phone" name="phone" type="tel" required>
+                                <input ng-model="user.phone" name="phone" type="tel" required>
                             </md-input-container>
-
                         </div>
                         <md-divider></md-divider>
-                        <div flex="50" flex-sm="50">
-                            <!--<input type="file"  file-model="myFile" style="padding-top: 26px;">-->
-                            <input type="file" name="file" onchange="angular.element(this).scope().uploadFile(this.files)" style="padding-top: 26px;"/>
-
+                        <div flex="40" flex-sm="40">
+                            <md-input-container>
+                                <label>И-мэйл</label>
+                                <input ng-model="user.email" name="email" type="email" required>
+                            </md-input-container>
                             <md-input-container layout-fill>
                                 <label>Хуучин нууц үг</label>
-                                <input ng-model="profilePass.oldPassword" name="oldPassword" type="password"
-                                        >
+                                <input ng-model="user.oldPassword" name="oldPassword" type="password">
                             </md-input-container>
                             <md-input-container layout-fill>
                                 <label>Шинэ нууц үг</label>
-                                <input ng-model="profilePass.newPassword" name="password" type="password"min="4" ng-disabled="!profilePass.oldPassword">
+                                <input ng-model="user.newPassword" name="password" type="password" min="4"
+                                       ng-disabled="!user.oldPassword">
                             </md-input-container>
                             <md-input-container layout-fill>
                                 <label>Шинэ нууц үг давтах</label>
-                                <input ng-model="profilePass.confirmPassword" name="confirmPassword" type="password" min="4" ng-disabled="!profilePass.oldPassword"
+                                <input ng-model="user.confirmPassword" name="confirmPassword" type="password" min="4"
+                                       ng-disabled="!user.oldPassword"
                                         >
                             </md-input-container>
-                            <md-button ng-click="cancel()" class="btn btn-lg  btn-block btn-success">
-                                Гарах
-                            </md-button>
-                            <md-button ng-click="updateProfile()" class="btn btn-lg  btn-block btn-success" ng-disabled="profilePass.newPassword!=profilePass.confirmPassword">
-                                Шинчилэх
-                            </md-button>
-
                         </div>
 
+
+                    </div>
+                    <div class="row right padding-top-5">
+                        <md-button ng-click="closeDialog()" class="md-raised md-button md-ink-ripple">
+                            Гарах
+                        </md-button>
+                        <md-button ng-click="updateProfile()" class="md-raised md-accent md-button md-default-theme"
+                                   ng-disabled="profilePass.newPassword!=profilePass.confirmPassword">
+                            Шинчилэх
+                        </md-button>
                     </div>
                 </form>
             </md-content>

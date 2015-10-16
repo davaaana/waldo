@@ -339,6 +339,11 @@ md-select {
     float: right;
 }
 
+.edit-photo{
+    height: 100px;
+    width: 100px;
+}
+
 .mini-profile-image {
     height: 25px;
     width: 25px;
@@ -688,4 +693,8 @@ a.md-button.md-warn.md-raised, a.md-button.md-warn.md-fab, .md-button.md-warn.md
 
 .filter-txt{
     font-weight: bold;
+}
+
+.padding-top-5{
+    padding-top: 5px;
 }

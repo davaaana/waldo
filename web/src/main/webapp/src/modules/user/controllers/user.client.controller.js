@@ -26,6 +26,11 @@ mainApp.controller('UserController', ['$rootScope', '$scope','$http','$mdDialog'
             console.log(el);
         });
 
+        $scope.updateUser = function () {
+            UserService.editProfile($scope).then(function(res){
+                console.log(res);
+            })
+        }
         $scope.closeDialog = function () {
             dialog.cancel();
         }

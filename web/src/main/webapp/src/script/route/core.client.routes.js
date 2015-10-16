@@ -1,4 +1,3 @@
-
 mainApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
     function ($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise('/index');
@@ -13,6 +12,11 @@ mainApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
             state('home.index', {
                 url: '',
                 templateUrl: 'src/modules/home/views/home.html',
+                controller: 'HomeController'
+            })
+            .state('home.my-post', {
+                url: 'my-post',
+                templateUrl: 'src/modules/home/views/my-post.html',
                 controller: 'HomeController'
             });
     }

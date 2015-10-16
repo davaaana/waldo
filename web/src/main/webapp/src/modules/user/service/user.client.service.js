@@ -84,9 +84,9 @@ mainApp.factory('UserService', function ($http) {
             });
         },
         updateProfile: function ($scope) {
-            $http.put(SERVICE_URL + '/profile', $scope.profileInfo).success(function (data) {
+            $http.put(SERVICE_URL + '/profile', $scope.user).success(function (data) {
                     if (data.success == true) {
-                        if ($scope.profilePass) {
+                        //if ($scope.profilePass) {
 
                             $http.post(SERVICE_URL + '/profile/password', $scope.profilePass).success(function (data) {
                                 if (data.success == true) {
@@ -96,7 +96,7 @@ mainApp.factory('UserService', function ($http) {
                                     console.log('update profile error' + data.message);
                                 }
                             })
-                        }
+                        //}
                         this.getUserInfo();
                     }
                     else {
