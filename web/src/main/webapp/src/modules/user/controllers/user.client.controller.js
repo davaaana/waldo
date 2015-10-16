@@ -5,6 +5,13 @@ mainApp.controller('UserController', ['$rootScope', '$scope','$http','$mdDialog'
 
         $scope.errorMessage = 'nevter';
 
+        var originatorEv;
+
+        $scope.openMenu = function ($mdOpenMenu, ev) {
+            originatorEv = ev;
+            $mdOpenMenu(ev);
+        };
+
         $scope.auth = UserService.getAuthentication();
 
         try{

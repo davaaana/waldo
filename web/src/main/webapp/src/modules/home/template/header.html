@@ -37,14 +37,14 @@
                 <md-menu>
                     <md-whiteframe class="md-whiteframe-z1 toolbar-profile" layout="row">
                         <md-button aria-label="Profile menu"
-                                   ng-click="ToolBarCtrl.openMenu($mdOpenMenu, $event)">
+                                   ng-click="openMenu($mdOpenMenu, $event)">
                             <span class="toolbar-profile-name">{{user.firstname}}&nbsp;{{user.lastname}}</span>
                             <md-icon md-svg-icon="unfold-more"></md-icon>
                         </md-button>
                     </md-whiteframe>
                     <md-menu-content width="2">
                         <md-menu-item>
-                            <md-button disabled="disabled" ng-click="logout()">
+                            <md-button disabled="disabled">
                                 <span>{{user.firstname}}&nbsp;{{user.lastname}}</span>
                             </md-button>
                         </md-menu-item>
