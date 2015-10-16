@@ -76,16 +76,16 @@
 
                 <div layout="row" flex class="middle-filter-area">
                     <div layout="column">
-                        <label class="filter-title">Явах огноо</label>
-                        <md-datepicker ng-model="filter.toDate" md-placeholder="Явах өдөр" format="yyyy.MM.dd"
+                        <label class="filter-title">Явах огноо эхлэх</label>
+                        <md-datepicker ng-model="filter.toDate" md-placeholder="Сонгох" format="yyyy.MM.dd"
                                        ng-change="changeValue()"
                                        class="datepicker-filter-adjust"></md-datepicker>
                     </div>
                     <div layout="column">
-                        <label class="filter-title">Огноо</label>
-                        <md-datepicker ng-model="filter.fromDate" md-placeholder="Очих өдөр"
+                        <label class="filter-title">Явах огноо дуусах</label>
+                        <md-datepicker ng-model="filter.fromDate" md-placeholder="Сонгох"
                                         ng-change="changeValue()"
-                                        class="datepicker-filter-adjust"></md-datepicker>
+                                        class="datepicker-filter-adjust" md-min-date="filter.toDate"></md-datepicker>
                     </div>
                     <md-button class="md-raised md-warn md-button md-ink-ripple filter-button" ng-click="filterClear();searchTextType='Бүх зар';selectedItemType = postType[0];searchText1='Бүх аймаг';selectedItem1 = cities[0];searchText='Бүх аймаг';selectedItem = cities[0]">
                         <md-icon md-svg-icon="filter-remove"></md-icon>
