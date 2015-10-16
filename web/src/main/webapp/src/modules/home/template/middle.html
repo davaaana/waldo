@@ -25,7 +25,6 @@
                         </md-item-template>
                         <md-not-found>
                             "{{searchTextType}}" хайлт олдсонгүй.
-                            <a ng-click="newStateType(searchTextType)">Create a new one!</a>
                         </md-not-found>
                     </md-autocomplete>
 
@@ -35,7 +34,6 @@
                         </md-item-template>
                         <md-not-found>
                             "{{searchText}}" хайлт олдсонгүй.
-                            <a ng-click="newState(searchText)">Create a new one!</a>
                         </md-not-found>
                     </md-autocomplete>
 
@@ -45,7 +43,6 @@
                         </md-item-template>
                         <md-not-found>
                             "{{searchText}}" хайлт олдсонгүй
-                            <a ng-click="newState1(searchText1)">Create a new one!</a>
                         </md-not-found>
                     </md-autocomplete>
 
@@ -85,7 +82,7 @@
                                         ng-change="changeValue()"
                                         class="datepicker-filter-adjust"></md-datepicker>
                     </div>
-                    <md-button class="md-raised md-warn md-button md-ink-ripple" ng-click="filterClear()">
+                    <md-button class="md-raised md-warn md-button md-ink-ripple" ng-click="filterClear();searchTextType='Бүх зар';selectedItemType = postType[0];searchText1='Бүх аймаг';selectedItem1 = cities[0];searchText='Бүх аймаг';selectedItem = cities[0]">
                         <md-icon md-svg-icon="filter-remove"></md-icon>
                         <span>Цэвэрлэх!</span>
                     </md-button>

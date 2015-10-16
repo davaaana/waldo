@@ -124,8 +124,17 @@ mainApp.controller('PostController', ['$rootScope', '$scope','$http','$mdDialog'
 
         });
 
+        $scope.onSelection = function(item) {
+            $scope.selectedItemType = item;
+        }
+
         $scope.filterClear = function () {
+            console.log($scope.postType[0]);
             $scope.filter={};
+            $scope.searchTextType = '';
+            //$scope.selectedItemType = $scope.postType[0];
+            $scope.searchText = '';
+            $scope.searchText1 = '';
         };
 
         $scope.more = function (mpost) {
