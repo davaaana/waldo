@@ -24,6 +24,7 @@ angular
             .icon("view", "./assets/svg/icons/view.svg", 24)
             .icon("star-empty", "./assets/svg/icons/star-empty.svg", 24)
             .icon("star", "./assets/svg/icons/star.svg", 24)
+            .icon("pass", "./assets/svg/pass.svg", 24)
             .icon("plus-circle", "./assets/svg/icons/plus-circle.svg", 24)
             .icon("unfold-more", "./assets/svg/icons/unfold-more.svg", 24)
             .icon("unfold-less", "./assets/svg/icons/unfold-less.svg", 24)

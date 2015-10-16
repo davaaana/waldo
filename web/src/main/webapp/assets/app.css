@@ -463,9 +463,18 @@ body > .md-dialog-container {
 }
 
 .login-field {
-    font-size: 10px;
-    height: 17px;
+    font-size: 11px;
+    height: 21px;
     margin: 1px;
+}
+
+.error-text{
+    color:red;
+}
+
+.more-txt{
+    font-weight: 600;
+    padding-bottom: 8px;
 }
 
 .login-link {
@@ -586,6 +595,17 @@ a.md-button.md-warn.md-raised, a.md-button.md-warn.md-fab, .md-button.md-warn.md
 .post_user_data_text {
     font-weight: 600;
     font-size: 11px;
+}
+
+.post_user_data_text2{
+    ont-weight: 600;
+    font-size: 14px;
+}
+
+.you-contacted{
+    color: rgb(255,152,0);
+    text-transform: uppercase;
+    font-weight: 600;
 }
 
 .fromTitle {
