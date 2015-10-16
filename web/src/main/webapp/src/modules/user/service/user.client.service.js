@@ -14,12 +14,14 @@ mainApp.factory('UserService', function ($http) {
                 //$mdToast.showSimple(data.message);
             });
         },
-        getUserInfo: function (successFunc, errorFunc) {
+        getUserInfo: function (scope) {
+            var me = this;
             $http.get(SERVICE_URL + '/profile').success(function (data) {
                 if (data.success == true) {
                     window.sessionStorage["userInfo"] = JSON.stringify(data.data);
+                    scope.auth = me.getAuthentication();
                 }
-            }).then(successFunc, errorFunc);
+            }).then();
         },
         loginTo: function (scope) {
             var me = this;
@@ -35,9 +37,7 @@ mainApp.factory('UserService', function ($http) {
                 },
                 data: {username: scope.username, password: scope.password}
             }).then(function () {
-                isAuth = true;
-                me.getUserInfo();
-                window.sessionStorage["isAuth"] = JSON.stringify(isAuth);
+                me.getUserInfo(scope);
                 scope.closeDialog();
             }, function () {
                 alert("Хэрэглэгчийн нэр эсвэл нууц үг буруу байна!");
@@ -117,6 +117,20 @@ mainApp.factory('UserService', function ($http) {
             }).error(function (data, status) {
                 //console.log('Бүртгүүлэх хуудасны алдаа : '+data);
             });
+        },
+        getAuthentication: function () {
+            var user = {};
+            try{
+                user = JSON.parse(window.sessionStorage["userInfo"]);
+            }catch (e){
+                user = window.sessionStorage["userInfo"];
+            }
+
+            if(user && user.username && user.username != ''){
+                return true;
+            }else{
+                return false;
+            }
         }
     };
 });
