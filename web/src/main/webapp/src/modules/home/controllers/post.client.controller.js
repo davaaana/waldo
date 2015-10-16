@@ -14,12 +14,26 @@ mainApp.controller('PostController', ['$rootScope', '$scope','$http','$mdDialog'
         $scope.ownBool = false;
         $scope.page = 1;
 
-        $scope.searchTextChange = function(text) {
-            $log.info('Text changed to ' + text);
-        }
+        $scope.postType = [
+            {
+                display:'Бүх зар',
+                value:''
+            },
+            {
+                display:'Зөвхөн ачаа илгээх',
+                value:'SENDER'
+            },
+            {
+                display:'Зөвхөн ачаа авч явах',
+                value:'CARRIER'
+            }
+        ]
 
-        $scope.querySearch = function (query) {
-            var results = query ? $scope.state.filter( $scope.createFilterFor(query) ) : $scope.states,
+        $scope.simulateQueryType = false;
+        $scope.isDisabledType = false;
+
+        $scope.querySearchType = function (query) {
+            var results = query ? $scope.postType.filter( $scope.createFilterForType(query) ) : $scope.postType,
                 deferred;
             if ($scope.simulateQuery) {
                 deferred = $q.defer();
@@ -30,41 +44,52 @@ mainApp.controller('PostController', ['$rootScope', '$scope','$http','$mdDialog'
             }
         }
 
-        $scope.selectedItemChange = function(item) {
-            $log.info('Item changed to ' + JSON.stringify(item));
-        }
-
-        /**
-         * Build `states` list of key/value pairs
-         */
-        $scope.states = function() {
-            var allStates = 'Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,\
-              Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana,\
-              Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana,\
-              Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina,\
-              North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina,\
-              South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia,\
-              Wisconsin, Wyoming';
-
-            return allStates.split(/, +/g).map( function (state) {
-                return {
-                    value: state.toLowerCase(),
-                    display: state
-                };
-            });
-        }
-
-        $scope.state = $scope.states();
-        /**
-         * Create filter function for a query string
-         */
-        $scope.createFilterFor = function(query) {
-            var lowercaseQuery = angular.lowercase(query);
-
+        $scope.createFilterForType = function(query) {
             return function filterFn(state) {
-                return (state.value.indexOf(lowercaseQuery) === 0);
+                return (state.display.indexOf(query) === 0);
             };
+        }
 
+        $scope.simulateQuery1 = false;
+        $scope.isDisabled1    = false;
+
+        $scope.querySearch = function (query) {
+            var results = query ? $scope.cities.filter( $scope.createFilterFor(query) ) : $scope.cities,
+                deferred;
+            if ($scope.simulateQuery) {
+                deferred = $q.defer();
+                setTimeout(function () { deferred.resolve( results ); }, Math.random() * 1000, false);
+                return deferred.promise;
+            } else {
+                return results;
+            }
+        }
+
+        $scope.createFilterFor = function(query) {
+            return function filterFn(state) {
+                return (state.name.indexOf(query) === 0);
+            };
+        }
+
+        $scope.simulateQuery1 = false;
+        $scope.isDisabled1    = false;
+
+        $scope.querySearch1 = function (query) {
+            var results = query ? $scope.cities.filter( $scope.createFilterFor1(query) ) : $scope.cities,
+                deferred;
+            if ($scope.simulateQuery) {
+                deferred = $q.defer();
+                setTimeout(function () { deferred.resolve( results ); }, Math.random() * 1000, false);
+                return deferred.promise;
+            } else {
+                return results;
+            }
+        }
+
+        $scope.createFilterFor1 = function(query) {
+            return function filterFn(state) {
+                return (state.name.indexOf(query) === 0);
+            };
         }
 
         PostService.getAllPostData().then(function(posts){

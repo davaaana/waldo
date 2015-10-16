@@ -10,34 +10,64 @@
         <div layout="row" flex="50" class="middle-height">
             <div layout="column">
                 <div layout="row" flex class="middle-filter-area">
-                    <md-input-container class="input-container-adjust">
-                        <label>Зарын төрөл</label>
-                        <md-select ng-model="filter.postType" class="filter-area2">
-                            <md-option value="">Бүх зар</md-option>
-                            <md-option value="SENDER">Зөвхөн ачаа илгээх</md-option>
-                            <md-option value="CARRIER">Зөвхөн ачаа авч явах</md-option>
-                        </md-select>
-                    </md-input-container>
+                    <!--<md-input-container class="input-container-adjust">-->
+                        <!--<label>Зарын төрөл</label>-->
+                        <!--<md-select ng-model="filter.postType" class="filter-area2">-->
+                            <!--<md-option value="">Бүх зар</md-option>-->
+                            <!--<md-option value="SENDER">Зөвхөн ачаа илгээх</md-option>-->
+                            <!--<md-option value="CARRIER">Зөвхөн ачаа авч явах</md-option>-->
+                        <!--</md-select>-->
+                    <!--</md-input-container>-->
 
-                    <md-input-container class="input-container-adjust">
-                        <label>Хаанаас</label>
-                        <md-select ng-model="filter.fromLocation" ng-change="changeValue()"
-                                   layout-align="center center" class="filter-area">
-                            <md-option value="">Бүх аймаг</md-option>
-                            <md-option ng-repeat="city in cities track by city.name" value="{{city.name}}">{{city.name}}
-                            </md-option>
-                        </md-select>
-                    </md-input-container>
+                    <md-autocomplete  ng-disabled="isDisabledType" md-no-cache="noCacheType" md-selected-item="selectedItemType" md-search-text-change="searchTextChangeType(searchTextType)" md-search-text="searchTextType" md-selected-item-change="filter.postType = item.value" md-items="item in querySearchType(searchTextType)" md-item-text="item.display" md-min-length="0" placeholder="Зарын төрөл">
+                        <md-item-template>
+                            <span md-highlight-text="searchTextType" md-highlight-flags="^i">{{item.display}}</span>
+                        </md-item-template>
+                        <md-not-found>
+                            "{{searchTextType}}" хайлт олдсонгүй.
+                            <a ng-click="newStateType(searchTextType)">Create a new one!</a>
+                        </md-not-found>
+                    </md-autocomplete>
 
-                    <md-input-container class="input-container-adjust">
-                        <label>Хаашаа</label>
-                        <md-select ng-model="filter.toLocation" ng-change="filterCtrl.changeValue()"
-                                   layout-align="center center" class="filter-area">
-                            <md-option value="">Бүх сум</md-option>
-                            <md-option ng-repeat="city in cities track by city.name" value="{{city.name}}">{{city.name}}
-                            </md-option>
-                        </md-select>
-                    </md-input-container>
+                    <md-autocomplete ng-disabled="isDisabled" md-no-cache="noCache" md-selected-item="selectedItem" md-search-text-change="searchTextChange(searchText)" md-search-text="searchText" md-selected-item-change="filter.fromLocation = item.name" md-items="item in querySearch(searchText)" md-item-text="item.name" md-min-length="0" placeholder="Хаанаас">
+                        <md-item-template>
+                            <span md-highlight-text="searchText" md-highlight-flags="^i">{{item.name}}</span>
+                        </md-item-template>
+                        <md-not-found>
+                            "{{searchText}}" хайлт олдсонгүй.
+                            <a ng-click="newState(searchText)">Create a new one!</a>
+                        </md-not-found>
+                    </md-autocomplete>
+
+                    <md-autocomplete ng-disabled="isDisabled1" md-no-cache="noCache1" md-selected-item="selectedItem1" md-search-text-change="searchTextChange1(searchText1)" md-search-text="searchText1" md-selected-item-change="filter.toLocation = item.name" md-items="item in querySearch1(searchText1)" md-item-text="item.name" md-min-length="0" placeholder="Хаашаа">
+                        <md-item-template>
+                            <span md-highlight-text="searchText1" md-highlight-flags="^i">{{item.name}}</span>
+                        </md-item-template>
+                        <md-not-found>
+                            "{{searchText}}" хайлт олдсонгүй
+                            <a ng-click="newState1(searchText1)">Create a new one!</a>
+                        </md-not-found>
+                    </md-autocomplete>
+
+                    <!--<md-input-container class="input-container-adjust">-->
+                        <!--<label>Хаанаас</label>-->
+                        <!--<md-select ng-model="filter.fromLocation" ng-change="changeValue()"-->
+                                   <!--layout-align="center center" class="filter-area">-->
+                            <!--<md-option value="">Бүх аймаг</md-option>-->
+                            <!--<md-option ng-repeat="city in cities track by city.name" value="{{city.name}}">{{city.name}}-->
+                            <!--</md-option>-->
+                        <!--</md-select>-->
+                    <!--</md-input-container>-->
+
+                    <!--<md-input-container class="input-container-adjust">-->
+                        <!--<label>Хаашаа</label>-->
+                        <!--<md-select ng-model="filter.toLocation" ng-change="filterCtrl.changeValue()"-->
+                                   <!--layout-align="center center" class="filter-area">-->
+                            <!--<md-option value="">Бүх сум</md-option>-->
+                            <!--<md-option ng-repeat="city in cities track by city.name" value="{{city.name}}">{{city.name}}-->
+                            <!--</md-option>-->
+                        <!--</md-select>-->
+                    <!--</md-input-container>-->
 
 
                 </div>
