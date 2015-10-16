@@ -30,11 +30,11 @@
             </div>
 
 
-            <div ng-show="auth" layout="row" layout-align="center center" flex="40">
+            <div ng-show="auth" layout="row" layout-align="center center" flex="40" class="right">
 
                 <img ng-src="ws/profile/image/{{user.username}}.png"
                      class="toolbar-profile-image"/>
-                <md-menu flex>
+                <md-menu>
                     <md-whiteframe class="md-whiteframe-z1 toolbar-profile" layout="row">
                         <md-button aria-label="Profile menu"
                                    ng-click="ToolBarCtrl.openMenu($mdOpenMenu, $event)">

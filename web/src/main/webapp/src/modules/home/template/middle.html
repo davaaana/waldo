@@ -7,7 +7,7 @@
             Манай сайтад идэвхтэй <span class="middle-number">{{num}}12313</span> зар байна.
         </div>
 
-        <div layout="row" flex="50">
+        <div layout="row" flex="50" class="middle-height">
             <div layout="column">
                 <div layout="row" flex class="middle-filter-area">
                     <md-input-container class="input-container-adjust">
@@ -60,8 +60,21 @@
                         <span>Цэвэрлэх!</span>
                     </md-button>
                 </div>
+            </div>
+        </div>
 
-
+        <div layout="row" class="middle-menu">
+            <div class="select">
+                Бүх зар
+            </div>
+            <div class="un-select"  ng-show="auth" >
+                Миний зар
+            </div>
+            <div class="un-select"  ng-show="auth" >
+                Холбогдсон зар
+            </div>
+            <div class="un-select">
+                Валдогийн тухай
             </div>
         </div>
     </div>
