@@ -19,7 +19,8 @@ mainApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
                 controller: 'OwnPostController'
             }).state('home.contacted-post', {
                 url: '/contacted-post',
-                templateUrl: 'src/modules/home/views/contacted-post.html'
+                templateUrl: 'src/modules/home/views/contacted-post.html',
+                controller:'ContactedPostController'
             }).state('home.about', {
                 url: '/about',
                 templateUrl: 'src/modules/home/views/about.html'
