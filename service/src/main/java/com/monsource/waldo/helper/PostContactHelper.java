@@ -36,7 +36,7 @@ public class PostContactHelper {
 
         for (PostContactEntity postContactEntity : postContactEntities) {
 
-            if (postContactEntity.getHide() == true) {
+            if (postContactEntity.getHide() != null && postContactEntity.getHide() == true) {
                 continue;
             }
 
