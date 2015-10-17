@@ -41,8 +41,8 @@ mainApp.factory('PostService', function ($http) {
                 return data.data;
             });
         },
-        getOwnPostList: function () {
-            var promise = $http.get(SERVICE_URL + '/post/own').then(function (data) {
+        getOwnPostList: function (page) {
+            var promise = $http.get(SERVICE_URL + '/post/own?page='+page).then(function (data) {
                 return data.data;
             });
             return promise;
