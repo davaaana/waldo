@@ -9,6 +9,7 @@ mainApp.controller('PostController', ['$rootScope', '$scope', '$http', '$mdDialo
 
         $scope.simulateQuery = false;
         $scope.isDisabled = false;
+        $scope.postNextBtn = true;
         $scope.auth = AuthService.getAuthentication();
 
         $scope.ownBool = false;
@@ -234,14 +235,14 @@ mainApp.controller('PostController', ['$rootScope', '$scope', '$http', '$mdDialo
             PostService.allPostPaging($scope.page).then(function (data) {
 
                 for (var i = 0; i < data.data.length; i++) {
-                    $scope.posts.push(data.data[i]);
+                    $scope.postsArray.push(data.data[i]);
                 }
                 if (data.data.length != 0) {
                     $scope.page++;
                 }
                 else {
                     //$mdToast.showSimple("Tsaash medeelel baikhgui bna")
-                    $scope.allPostBoolean = false;
+                    $scope.postNextBtn = false;
                 }
             })
         }
