@@ -45,18 +45,15 @@ mainApp.factory('UserService', function ($http) {
                 scope.errorMessage = "Хэрэглэгчийн нэр эсвэл нууц үг буруу байна!";
             })
         },
-        changePassword: function ($scope) {
-            $http.post(SERVICE_URL + '/profile/password', $scope.proPass).success(function (data) {
+        changePassword: function ($scope,mdToast) {
+            $http.post(SERVICE_URL + '/profile/password', $scope.proPass).then(function (data) {
                 if (data.success == true) {
                     $scope.closeDialog();
                 }
                 else {
-                    console.log('change passwor error:' + data.message);
+                    mdToast.showSimple("Нууц үг солиход алдаа гарлаа");
                 }
-            }).error(function (data, status) {
-                //sign();
-                //errorResponse(data, status)
-            })
+            });
         },
         uploadFile: function (files, $scope) {
             console.log(files[0]);

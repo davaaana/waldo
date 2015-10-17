@@ -1,7 +1,7 @@
 'use strict';
 
-mainApp.controller('UserController', ['$rootScope', '$scope','$http','$mdDialog', 'UserService','$location',
-    function ($rootScope, $scope,$http,dialog, UserService,$location) {
+mainApp.controller('UserController', ['$rootScope', '$scope','$http','$mdDialog','$mdToast', 'UserService','$location',
+    function ($rootScope, $scope,$http,dialog,$mdToast, UserService,$location) {
 
         $scope.errorMessage = '';
 
@@ -26,7 +26,7 @@ mainApp.controller('UserController', ['$rootScope', '$scope','$http','$mdDialog'
         };
 
         $scope.changePassword = function () {
-            UserService.changePassword($scope);
+            UserService.changePassword($scope,$mdToast);
         };
 
         $scope.changePasswordDialog = function () {
