@@ -7,9 +7,15 @@ mainApp.controller('HomeController', ['$rootScope', '$scope','$http','$mdDialog'
             AuthService.logout();
         };
 
+        $scope.newPost = function () {
+            dialog.show({
+                templateUrl: './src/modules/dialogs/post-create.client.view.html'
+            });
+        };
+
         $scope.closeDialog = function () {
             dialog.cancel();
-        }
+        };
 
         $scope.openMenu = function ($mdOpenMenu, ev) {
             $scope.originatorEv = ev;
