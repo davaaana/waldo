@@ -1,99 +1,307 @@
-
-<md-content   ng-init="ownPost()">
-    <md-grid-list
-            md-cols-sm="1" md-cols-gt-sm="2" md-cols-gt-lg="3"
-            md-row-height="210px"
-            md-gutter="6px" md-gutter-gt-sm="3px" flex>
-        <md-grid-tile> <!--ng-repeat="contactedPosts in ownPosts | orderBy:'-createdDate' | filter:allPostCtrl.filterResult.postType | filter:{to:allPostCtrl.filterResult.toLocation}  | filter:{from:allPostCtrl.filterResult.fromLocation} | filter:{when: allPostCtrl.filterResult.toDate} | filter:{arrive: allPostCtrl.filterResult.fromDate} | filter:allPostCtrl.filterResult.transportationType | orderBy:allPostCtrl.filterResult.quickFilter">-->
-            <md-card layout="column" flex>
-                <div layout="row"
-                     flex
-                     ng-class="{carrier_post : contactedPosts.type==='CARRIER', sender_post: contactedPosts.type==='SENDER'}">
-
-                    <md-card-content flex="25" layout="column">
-                        <div layout="column" flex layout-align="center center" layout-padding>
-
-                            <img ng-src="ws/profile/image/{{contactedPosts.username}}.png"
-                                 class="user-male-icon"/>
-
-                            <div class="user_profile_name">{{ contactedPosts.username }}</div>
-                        </div>
-
-                    </md-card-content>
-
-
-                    <md-card-content flex="55" layout="row" layout-align="center center"
-                                     class="post_body">
-                        <div layout="column" flex layout-padding layout-align="center start">
-                            <div layout="row" layout-align="center center">
-                                <div layout="row" class="dim-text" layout-align="center center">
-                                    <md-icon md-svg-icon="crosshairs-gps"></md-icon>
-                                    <span hide show-gt-md>Хаанаас:</span>
-                                </div>
-                                <div layout="row">
-                                    <span class="post_user_data_text">{{contactedPosts.from | limitTo: 20 }}</span>
-                                    <span class="dim-text" hide-gt-md>-аас</span>
-                                </div>
-                            </div>
-                            <div layout="row" layout-align="center center">
-                                <div layout="row" layout-padding class="dim-text" layout-align="center center">
-                                    <md-icon md-svg-icon="map-marker"></md-icon>
-                                    <div hide show-gt-md>Хаашаа:</div>
-                                </div>
-                                <div layout="row">
-                                    <span class="post_user_data_text">{{contactedPosts.to | limitTo: 20 }}</span>
-                                    <span hide-gt-md>-руу</span>
-                                </div>
-                            </div>
-                            <div layout="row" layout-align="center center">
-                                <div layout="row" layout-padding class="dim-text" layout-align="center center">
-                                    <md-icon md-svg-icon="calendar-blank"></md-icon>
-                                    <div hide show-gt-md>Хэзээ:</div>
-                                </div>
-                                <div layout="row">
-                                    <span class="post_user_data_text"
-                                          ng-bind="convertToDate(contactedPosts.when) | date:'yyyy.MM.dd'"></span>-
-                                    <span class="post_user_data_text"
-                                          ng-bind="convertToDate(contactedPosts.arrive) | date:'yyyy.MM.dd'"></span>
-                                    <span hide-gt-md>-нд</span>
-                                </div>
-                            </div>
-                        </div>
-                    </md-card-content>
-
-                    <md-card-content flex="20" layout="column" layout-align="center center">
-                        <div layout="column" layout-align="center center"
-                             ng-if="contactedPosts.type === 'SENDER'">
-                            <div class="post_type_label">ИЛГЭЭХ</div>
-                            <md-icon md-svg-icon="package" class="sender-icon"></md-icon>
-                        </div>
-
-                        <div layout="column" layout-align="center center"
-                             ng-if="contactedPosts.type === 'CARRIER'">
-                            <div class="post_type_label">ТЭЭВЭРЛЭХ</div>
-                            <md-icon md-svg-icon="package-with-hand" class="carrier-icon"></md-icon>
-                        </div>
-                        <div layout="column" layout-align="center center">
-                            <p class="post_date_label">Үүссэн огноо:</p>
-
-                            <p class="post_date dim-text">{{contactedPosts.createdDate}}</p>
-                        </div>
-
-                    </md-card-content>
-                </div>
-                <md-divider></md-divider>
-                <md-card-footer layout="row" layout-padding layout-align="space-between center">
-                    <div>
-                        <md-icon md-svg-icon="view"></md-icon>
-                        <span>{{contactedPosts.requestNum}}</span>
-                    </div>
-                    <md-button class="md-accent" ng-click="exchangePost2(contactedPosts)">Дэлгэрэнгүй...</md-button>
-                </md-card-footer>
-            </md-card>
-
-        </md-grid-tile>
-    </md-grid-list>
-    <div layout="row" flex layout-align="center center">
-        <md-button class="md-accent" ng-click="moreContactedPosts()" ng-show="contactedPostBoolean">Цааш үзэх...</md-button>
+<div layout="row" flex>
+    <div layout="column" flex="25">
+        search area
     </div>
-</md-content>
+    <div layout="column" flex="75">
+        <md-content ng-init="ownPost()">
+            <md-list>
+                <md-list-item id="{{ownPost.id}}"
+                              ng-repeat="ownPost in ownPosts">
+                    <!-- | filter:allPostCtrl.filterResult.postType | filter:{to:allPostCtrl.filterResult.toLocation}  | filter:{from:allPostCtrl.filterResult.fromLocation} | filter:{when: allPostCtrl.filterResult.toDate} | filter:{arrive: allPostCtrl.filterResult.fromDate} | filter:allPostCtrl.filterResult.transportationType | orderBy:allPostCtrl.filterResult.quickFilter">-->
+                    <md-card layout="column" flex>
+                        <div layout="row" flex
+                             ng-class="{carrier_post : ownPost.type==='CARRIER', sender_post: ownPost.type==='SENDER'}">
+
+                            <!--======================================= USER PICTURE AND NAME AREA =======================================-->
+                            <md-content flex="15" layout="column" layout-align="center center">
+
+                                <div layout="column" flex layout-align="center center" layout-padding>
+
+                                    <img ng-src="ws/profile/image/{{ownPost.username}}.png"
+                                         class="user-male-icon"/>
+
+                                    <div class="user_profile_name">{{ownPost.username}}</div>
+                                </div>
+                            </md-content>
+
+                            <!--======================================= MY POST INFO AREA =======================================-->
+                            <md-card-content flex="65" layout="row" layout-align="center center"
+                                             class="post_body">
+                                <div layout="column" flex layout-padding layout-align="center start">
+                                    <div layout="row" class="post-title">
+                                        <div ng-if="ownPost.type==='CARRIER'">
+                                            АЧАА ТЭЭВЭРЛЭНЭ: <span class="title-red">{{ownPost.policy}}</span>
+                                        </div>
+                                        <div ng-if="ownPost.type==='SENDER'">
+                                            АЧАА ТЭЭВЭРЛҮҮЛНЭ: <span class="title-red">{{ownPost.policy}}</span>
+                                        </div>
+                                    </div>
+
+
+                                    <div ng-show="mpost.passanger" layout="row" class="more-txt">
+                                        <div>
+                                            <md-icon md-svg-icon="passenger"></md-icon>
+                                            <span>ЗОРЧИГЧ: {{ ownPost.passanger }}</span>
+                                        </div>
+                                    </div>
+
+                                    <div layout="row" layout-padding class="dim-text">
+                                        <md-icon md-svg-icon="car"></md-icon>
+                                        <div class="mypostText">Юугаар:</div>
+                                        <div style="color:#5a6770">{{ownPost.transportation}}</div>
+                                    </div>
+
+                                    <div layout="row" layout-padding class="dim-text">
+                                        <md-icon md-svg-icon="carry"></md-icon>
+                                        <div class="mypostText">Ачаа:</div>
+                                        <div style="color:#5a6770"><span
+                                                ng-if="ownPost.animal">{{ownPost.animal}}&nbsp;</span><span
+                                                ng-if="ownPost.stuff">{{ownPost.stuff}}</span><span
+                                                ng-if="!ownPost.stuff && !ownPost.stuff">Байхгүй</span>
+                                        </div>
+                                    </div>
+
+                                    <!--ХӨДЛӨХ ГАЗРЫН ТУХАЙ-->
+                                    <div layout="row" style="width: 100%">
+                                        <div layout="column" flex="50">
+                                            <div layout="row" class="fromTitle">
+                                                ХӨДЛӨХ ГАЗАР
+                                            </div>
+                                            <div layout="row">
+                                                <span class="post_user_data_text">{{ownPost.from }}</span>
+                                            </div>
+                                            <div layout="row">
+                                         <span class="post_user_data_text"
+                                               ng-bind="convertToDate(ownPost.when) | date:'yyyy.MM.dd'"></span>
+                                            </div>
+
+                                        </div>
+
+                                        <!--ОЧИХ ГАЗРЫН ТУХАЙ-->
+                                        <div layout="column" flex="50">
+                                            <div layout="row" class="toTitle">
+                                                ОЧИХ ГАЗАР
+                                            </div>
+                                            <div layout="row">
+                                                <span class="post_user_data_text">{{ownPost.to}}</span>
+                                            </div>
+                                            <div layout="row">
+                                        <span class="post_user_data_text"
+                                              ng-bind="convertToDate(ownPost.arrive) | date:'yyyy.MM.dd'"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </md-card-content>
+
+
+                           <!-- <md-card-content flex="65" layout="row" layout-align="start center" class="post_body">
+
+                                <div layout="column" layout-padding>
+
+                                    <div layout="row" layout-align="start center">
+                                        <div>
+
+                                            <div layout="row" layout-padding class="dim-text">
+                                                <md-icon md-svg-icon="crosshairs-gps"></md-icon>
+                                                <div class="mypostText">Хаанаас:</div>
+                                            </div>
+                                            <div layout="row" layout-padding class="dim-text">
+                                                <div layout="row" layout-padding class="dim-text">
+                                                    <md-icon md-svg-icon="map-marker"></md-icon>
+                                                    <div class="mypostText">Хаашаа:</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div layout="row" layout-padding style="padding: 7px;">
+                                                <div style="color:#5a6770">{{ownPost.from}}</div>
+                                            </div>
+                                            <div layout="row" layout-padding style="padding: 7px;">
+                                                <div style="color:#5a6770">{{ownPost.to}}</div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div layout="column" style="width: 280px" layout-padding>
+
+                                    <div layout="row" layout-align="start center">
+                                        <div>
+
+                                            <div layout="row" layout-padding class="dim-text">
+                                                <md-icon md-svg-icon="passenger"></md-icon>
+                                                <div class="mypostText">Зорчигч:</div>
+                                            </div>
+                                            <div layout="row" layout-padding class="dim-text">
+                                                <div layout="row" layout-padding class="dim-text">
+                                                    <md-icon md-svg-icon="calendar-blank"></md-icon>
+                                                    <div class="mypostText">Хэзээ:</div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                        <div>
+                                            <div layout="row" layout-padding style="padding: 7px;">
+                                                <div style="color:#5a6770">{{ownPost.passanger}}</div>
+                                            </div>
+                                            <div layout="row" layout-padding style="padding: 7px;">
+                                                <div style="color:#5a6770">
+                                                    <span ng-bind="convertToDate(ownPost.when) | date:'yyyy.MM.dd'"></span>-
+                                                    <span ng-bind="convertToDate(ownPost.arrive) | date:'yyyy.MM.dd'"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div layout="column" layout-padding>
+
+                                    <div layout="row" layout-align="start center">
+                                        <div>
+
+                                            <div layout="row" layout-padding class="dim-text">
+
+                                            </div>
+                                            <div layout="row" layout-padding class="dim-text">
+                                                <div layout="row" layout-padding class="dim-text">
+
+
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div layout="row" layout-padding
+                                                     style="padding: 7px;  min-height: 31px;">
+
+                                                </div>
+                                                <div layout="row" layout-padding
+                                                     style="padding: 7px;  min-height: 31px;">
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                            </md-card-content>-->
+
+                            <md-card-content flex="20" layout="column" layout-align="center center">
+                                <div layout="column" layout-align="center center"
+                                     ng-if="ownPost.type === 'SENDER'">
+                                    <div class="post_type_label">ИЛГЭЭХ</div>
+                                    <md-icon md-svg-icon="package" class="sender-icon"></md-icon>
+                                </div>
+
+                                <div layout="column" layout-align="center center"
+                                     ng-if="ownPost.type === 'CARRIER'">
+                                    <div class="post_type_label">ТЭЭВЭРЛЭХ</div>
+                                    <md-icon md-svg-icon="package-with-hand" class="carrier-icon"></md-icon>
+                                </div>
+
+                                <div layout="column" layout-align="center center">
+                                    <p class="post_date_label">Үүссэн огноо:</p>
+
+                                    <p class="post_date dim-text">{{ownPost.createdDate}}</p>
+                                </div>
+
+                            </md-card-content>
+                        </div>
+
+                        <md-card-footer layout="row" layout-padding layout-align="space-between center">
+                            <md-divider></md-divider>
+                            <div>
+                                <md-icon md-svg-icon="view"></md-icon>
+                                <span>{{ownPost.requestNum}}</span>
+                            </div>
+                            <md-button class="md-primary"
+                                       ng-click="ownPostContact(ownPost.id)"
+                                       ng-hide="ownPost.ownPostContactBoolean">
+                                Холбогдсон хүмүүсийг харах
+                            </md-button>
+                            <md-button ng-click="ownPostContact(ownPost.id)"
+                                       ng-show="ownPost.ownPostContactBoolean">
+                                Холбогдсон хүмүүсийг нуух
+                            </md-button>
+
+                            <md-button ng-click="ownPostHide(ownPost.id)">
+                                Зарыг идэвхгүй болгох
+                            </md-button>
+                            <md-button ng-click="getPost(ownPost)"
+                                       class="hide-menu">
+                                Зарыг засах
+                            </md-button>
+                        </md-card-footer>
+                        <md-card-content ng-show="ownPost.ownPostContactBoolean">
+                            <div layout="row" style=" border-top:1pt solid #e5e7da;">
+                                <div flex="15" layout="column" layout-align="center center" style="color:#5a6770">
+                                    <div layout="row" layout-padding style="  padding: 4px;">
+                                        <md-icon md-svg-icon="view" style="margin:0;"></md-icon>
+                                        <div style="color:#5a6770;   padding-top: 3px; padding-left: 5px">
+                                            {{ownPost.data.length}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div flex="40" layout="column" layout-align="center"
+                                     style="color:#5a6770; padding-left: 10px; font-weight: 500;">
+                                    Холбоо барих
+                                </div>
+                                <div flex="45" layout="column" layout-align="center center">
+                                    <div layout="row">
+                                        <div layout="column" layout-align="center center"
+                                             style="color:#5a6770; font-weight: 500;">
+                                            Холбогдсон
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div layout="row" ng-repeat="exchange in ownPost.data" class="border_bottom"
+                                 style="background-color: #bbdcfb" id="{{ownPost.id}}-{{exchange.username}}">
+                                <div flex="15" layout="column" layout-align="center center">
+                                    <img ng-src="ws/profile/image/{{ownPost.username}}.png"
+                                         style="height: 40px; width: 40px"/>
+
+                                    <div>{{exchange.username}}</div>
+                                </div>
+                                <div flex="40" layout="column" style="font-weight: 500">
+
+                                    <div layout="row" layout-padding style="  padding: 4px;">
+                                        <md-icon md-svg-icon="mail" style="margin:0;"></md-icon>
+                                        <div style="color:#5a6770;   padding-top: 3px; padding-left: 5px">
+                                            {{exchange.email}}
+                                        </div>
+                                    </div>
+                                    <div layout="row" layout-padding style="  padding: 4px;">
+                                        <md-icon md-svg-icon="phone" style="margin:0; color:#5a6770"></md-icon>
+                                        <div style="color:#5a6770;   padding-top: 3px; padding-left: 5px">
+                                            {{exchange.phone}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div flex="35" layout="column" style="font-weight: 500; color:#5a6770"
+                                     layout-align="center center">
+                                    {{exchange.createdDate}}
+                                </div>
+                                <div flex="10" class="top5x">
+                                    <md-button class="md-warn"
+                                               ng-click="hideLine(exchange.id,ownPost.id,exchange.username)">
+                                        Холбоо цуцлах
+                                    </md-button>
+
+                                </div>
+                            </div>
+                        </md-card-content>
+                    </md-card>
+                </md-list-item>
+            </md-list>
+            <div>
+                <md-button class="md-accent" ng-click="moreMyPosts()" ng-show="myPostBoolean">Цааш үзэх...</md-button>
+                <md-button class="md-accent" ng-click="hidePostsShow(hideOwnAds)" ng-show="myPostBoolean">Нуусан зар
+                    харах
+                </md-button>
+            </div>
+        </md-content>
+    </div>
+</div>
+
