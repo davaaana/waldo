@@ -1,14 +1,14 @@
 'use strict';
 
-mainApp.controller('PostController', ['$rootScope', '$scope','$http','$mdDialog','PostService','$log','$q', 'UserService','$location',
-    function ($rootScope, $scope,$http,dialog,PostService,$log,$q,AuthService,$location) {
+mainApp.controller('PostController', ['$rootScope', '$scope', '$http', '$mdDialog', 'PostService', '$log', '$q', 'UserService', '$location',
+    function ($rootScope, $scope, $http, dialog, PostService, $log, $q, AuthService, $location) {
         $scope.filter = {
-            froomDate:'',
-            tooDate:''
+            froomDate: '',
+            tooDate: ''
         };
 
         $scope.simulateQuery = false;
-        $scope.isDisabled    = false;
+        $scope.isDisabled = false;
         $scope.auth = AuthService.getAuthentication();
 
         $scope.ownBool = false;
@@ -16,16 +16,16 @@ mainApp.controller('PostController', ['$rootScope', '$scope','$http','$mdDialog'
 
         $scope.postType = [
             {
-                display:'Бүх зар',
-                value:''
+                display: 'Бүх зар',
+                value: ''
             },
             {
-                display:'Зөвхөн ачаа илгээх',
-                value:'SENDER'
+                display: 'Зөвхөн ачаа илгээх',
+                value: 'SENDER'
             },
             {
-                display:'Зөвхөн ачаа авч явах',
-                value:'CARRIER'
+                display: 'Зөвхөн ачаа авч явах',
+                value: 'CARRIER'
             }
         ]
 
@@ -33,72 +33,80 @@ mainApp.controller('PostController', ['$rootScope', '$scope','$http','$mdDialog'
         $scope.isDisabledType = false;
 
         $scope.querySearchType = function (query) {
-            var results = query ? $scope.postType.filter( $scope.createFilterForType(query) ) : $scope.postType,
+            var results = query ? $scope.postType.filter($scope.createFilterForType(query)) : $scope.postType,
                 deferred;
             if ($scope.simulateQuery) {
                 deferred = $q.defer();
-                setTimeout(function () { deferred.resolve( results ); }, Math.random() * 1000, false);
+                setTimeout(function () {
+                    deferred.resolve(results);
+                }, Math.random() * 1000, false);
                 return deferred.promise;
             } else {
                 return results;
             }
         }
 
-        $scope.createFilterForType = function(query) {
+        $scope.createFilterForType = function (query) {
             return function filterFn(state) {
                 return (state.display.indexOf(query) === 0);
             };
         }
 
         $scope.simulateQuery1 = false;
-        $scope.isDisabled1    = false;
+        $scope.isDisabled1 = false;
 
         $scope.querySearch = function (query) {
-            var results = query ? $scope.cities.filter( $scope.createFilterFor(query) ) : $scope.cities,
+            var results = query ? $scope.cities.filter($scope.createFilterFor(query)) : $scope.cities,
                 deferred;
             if ($scope.simulateQuery) {
                 deferred = $q.defer();
-                setTimeout(function () { deferred.resolve( results ); }, Math.random() * 1000, false);
+                setTimeout(function () {
+                    deferred.resolve(results);
+                }, Math.random() * 1000, false);
                 return deferred.promise;
             } else {
                 return results;
             }
         }
 
-        $scope.createFilterFor = function(query) {
+        $scope.createFilterFor = function (query) {
             return function filterFn(state) {
                 return (state.name.indexOf(query) === 0);
             };
         }
 
         $scope.simulateQuery1 = false;
-        $scope.isDisabled1    = false;
+        $scope.isDisabled1 = false;
 
         $scope.querySearch1 = function (query) {
-            var results = query ? $scope.cities.filter( $scope.createFilterFor1(query) ) : $scope.cities,
+            var results = query ? $scope.cities.filter($scope.createFilterFor1(query)) : $scope.cities,
                 deferred;
             if ($scope.simulateQuery) {
                 deferred = $q.defer();
-                setTimeout(function () { deferred.resolve( results ); }, Math.random() * 1000, false);
+                setTimeout(function () {
+                    deferred.resolve(results);
+                }, Math.random() * 1000, false);
                 return deferred.promise;
             } else {
                 return results;
             }
         }
 
-        $scope.createFilterFor1 = function(query) {
+        $scope.createFilterFor1 = function (query) {
             return function filterFn(state) {
                 return (state.name.indexOf(query) === 0);
             };
         }
-
-        PostService.getAllPostData().then(function(posts){
-            $scope.posts = posts.data;
-        });
+        $scope.getAllPostData = function () {
+            PostService.getAllPostData().then(function (posts) {
+                $scope.postsArray = posts.data;
+                $scope.posts = $scope.postsArray;
+            });
+        }
 
         PostService.getCity().then(function (data) {
-            var cit = [{id:0,name:'Бүх аймаг'}];
-            for(var i=0; i<data.length-1;i++){
+            var cit = [{id: 0, name: 'Бүх аймаг'}];
+            for (var i = 0; i < data.length - 1; i++) {
                 cit.push(data[i]);
             }
             $scope.cities = cit;
@@ -109,53 +117,80 @@ mainApp.controller('PostController', ['$rootScope', '$scope','$http','$mdDialog'
         };
 
         $scope.$watch('filter.toDate', function (el) {
-            try{
-                var date = new Date(el).toJSON().slice(0, 10);
-                $scope.filter.tooDate = date;
-            }catch (e){
+            $scope.posts = $scope.postsArray
+
+            var date = (new Date(el));
+            date = date.setDate(date.getDate()-1);
+
+            try {
+                if ($scope.filter.fromDate) {
+                    $scope.posts = $scope.posts.filter(function (els) {
+                        return new Date(els.when) >= date && new Date(els.when) <= new Date($scope.filter.fromDate);
+                    })
+                } else {
+                    if (el) {
+                        $scope.posts = $scope.posts.filter(function (els) {
+                            return new Date(els.when) >= date;
+                        })
+                    }
+                }
+
+            } catch (e) {
 
             }
-
         });
 
         $scope.$watch('filter.fromDate', function (el) {
-            try{
-                var date = new Date(el).toJSON().slice(0, 10);
-                $scope.filter.froomDate = date;
-            }catch(e){
+            $scope.posts = $scope.postsArray;
+            var date = (new Date($scope.filter.toDate));
+            date = date.setDate(date.getDate()-1);
+            try {
+                if ($scope.filter.toDate) {
+                    $scope.posts = $scope.posts.filter(function (els) {
+                        return new Date(els.when) <= new Date(el) && new Date(els.when) >= date;
+                    })
+                } else {
+                    if (el) {
+                        $scope.posts = $scope.posts.filter(function (els) {
+                            return new Date(els.when) <= new Date(el);
+                        })
+                    }
+                }
+
+            } catch (e) {
 
             }
         });
 
         $scope.$watch('filter.fromLocation', function (el) {
-                $scope.filter.fromLocation = el == 'Бүх аймаг' ? '' : el;
+            $scope.filter.fromLocation = el == 'Бүх аймаг' ? '' : el;
         });
 
         $scope.$watch('filter.toLocation', function (el) {
             $scope.filter.toLocation = el == 'Бүх аймаг' ? '' : el;
         });
 
-        $scope.onSelection = function(item) {
+        $scope.onSelection = function (item) {
             $scope.selectedItemType = item;
         }
 
         $scope.filterClear = function () {
             console.log($scope.postType[0]);
-            $scope.filter={};
+            $scope.filter = {};
             $scope.searchTextType = '';
-            //$scope.selectedItemType = $scope.postType[0];
+            $scope.posts = $scope.postsArray;
             $scope.searchText = '';
             $scope.searchText1 = '';
         };
 
         $scope.more = function (post) {
-            if(AuthService.getAuthentication() == true){
+            if (AuthService.getAuthentication() == true) {
                 $scope.morePost = post;
                 dialog.show({
                     templateUrl: './src/modules/dialogs/post-more.client.view.html',
                     controller: 'PostController'
                 });
-            }else{
+            } else {
                 dialog.show({
                     templateUrl: './src/modules/dialogs/login.client.view.html',
                     controller: 'UserController'
@@ -167,56 +202,19 @@ mainApp.controller('PostController', ['$rootScope', '$scope','$http','$mdDialog'
             dialog.cancel();
         }
 
-        //$scope.more = function (mpost) {
-        //    PostService.getPostMore(mpost).then(function(data){
-        //        if (data.success === false) {
-        //            dialog.show({
-        //                templateUrl: './src/modules/users/sign-in/dialog.sign.html',
-        //                controller: 'signInCtrl'
-        //            });
-        //        }
-        //        else if (data.success === true) {
-        //
-        //            $scope.stepExchange = 1;
-        //            $scope.mpost = data.data;
-        //            var user;
-        //            try{
-        //                user = JSON.parse(window.sessionStorage['userInfo']).username;
-        //            }catch (e){
-        //                user = window.sessionStorage['userInfo'].username;
-        //            }
-        //
-        //            if(user==$scope.mpost.username) {
-        //                $scope.ownBool = true;
-        //            }
-        //            else{
-        //                $scope.ownBool = false;
-        //            }
-        //
-        //            dialog.show({
-        //                parent: angular.element(document.body),
-        //                scope: $scope.$new(),
-        //                controller: 'postCtrl',
-        //                templateUrl: 'src/modules/post/dialog-more.html'
-        //            });
-        //
-        //        }
-        //    })
-        //};
-
         $scope.paging = function () {
 
-            PostService.allPostPaging($scope.page).then(function(data){
+            PostService.allPostPaging($scope.page).then(function (data) {
 
                 for (var i = 0; i < data.data.length; i++) {
                     $scope.posts.push(data.data[i]);
                 }
-                if(data.data.length!=0){
+                if (data.data.length != 0) {
                     $scope.page++;
                 }
-                else{
+                else {
                     //$mdToast.showSimple("Tsaash medeelel baikhgui bna")
-                    $scope.allPostBoolean=false;
+                    $scope.allPostBoolean = false;
                 }
             })
         }
