@@ -211,8 +211,8 @@ mainApp.controller('PostController', ['$rootScope', '$scope', '$http', '$mdDialo
 
                         dialog.show({
                             templateUrl: './src/modules/dialogs/post-more.client.view.html',
-                            controller: 'PostController',
-                            scope: $scope
+                            controller:'PostMoreController',
+                            scope: $scope.$new()
                         });
 
                     }
@@ -226,35 +226,11 @@ mainApp.controller('PostController', ['$rootScope', '$scope', '$http', '$mdDialo
             }
         };
 
-        $scope.exchangePost = function (id) {
-            $scope.contactPost2 = {
-                id: id,
-                call: true,
-                sms: true,
-                note: 'null'
-            };
-            $http.post(SERVICE_URL + '/contact', $scope.contactPost2).success(function (data) {
-                if (data.success == true) {
-                    $scope.contact = data.data;
-                    $scope.stepExchange = 2;
-                    $mdToast.showSimple('Холбоо барих хаяг амжилттай солигдлоо');
-                }
-                else {
-                    console.log('exchangepost:' + data.message);
-                }
-            })
-            .error(function (data) {
-                console.log('exchangepost:' + data.message);
-            });
-
-        }
-
         $scope.closeDialog = function () {
             dialog.cancel();
         }
 
         $scope.paging = function () {
-
             PostService.allPostPaging($scope.page).then(function (data) {
 
                 for (var i = 0; i < data.data.length; i++) {

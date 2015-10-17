@@ -6,8 +6,7 @@ mainApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
             state('home', {
                 url: '/index',
                 abstract: true,
-                templateUrl: 'src/modules/home/views/index.html',
-                controller: 'HomeController'
+                templateUrl: 'src/modules/home/views/index.html'
             }).
             state('home.index', {
                 url: '',
@@ -17,15 +16,13 @@ mainApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
             .state('home.my-post', {
                 url: '/my-post',
                 templateUrl: 'src/modules/home/views/my-post.html',
-                controller: 'HomeController'
+                controller: 'PostController'
             }).state('home.contacted-post', {
                 url: '/contacted-post',
-                templateUrl: 'src/modules/home/views/contacted-post.html',
-                controller: 'HomeController'
+                templateUrl: 'src/modules/home/views/contacted-post.html'
             }).state('home.about', {
                 url: '/about',
-                templateUrl: 'src/modules/home/views/about.html',
-                controller: 'HomeController'
+                templateUrl: 'src/modules/home/views/about.html'
             });
     }
 ]);
