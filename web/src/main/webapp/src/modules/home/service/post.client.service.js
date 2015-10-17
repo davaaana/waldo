@@ -10,9 +10,10 @@ mainApp.factory('PostService', function ($http) {
             });
         },
         getPostMore: function (mpost) {
-            return $http.get(SERVICE_URL + '/post/' + mpost.id).then(function (posts) {
+            var promise = $http.get(SERVICE_URL + '/post/' + mpost.id).then(function (posts) {
                 return posts = posts.data;
             });
+            return promise;
         },
         allPostPaging: function (page) {
             return $http.get(SERVICE_URL + '/post?page=' + page).then(function (data) {

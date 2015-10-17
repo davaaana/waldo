@@ -1,7 +1,7 @@
 'use strict';
 
-mainApp.controller('PostController', ['$rootScope', '$scope', '$http', '$mdDialog', 'PostService', '$log', '$q', 'UserService', '$location',
-    function ($rootScope, $scope, $http, dialog, PostService, $log, $q, AuthService, $location) {
+mainApp.controller('PostController', ['$rootScope', '$scope', '$http', '$mdDialog', 'PostService', '$log', '$q','$mdToast', 'UserService', '$location',
+    function ($rootScope, $scope, $http, dialog, PostService, $log, $q,$mdToast, AuthService, $location) {
         $scope.filter = {
             froomDate: '',
             tooDate: ''
@@ -120,7 +120,7 @@ mainApp.controller('PostController', ['$rootScope', '$scope', '$http', '$mdDialo
             $scope.posts = $scope.postsArray
 
             var date = (new Date(el));
-            date = date.setDate(date.getDate()-1);
+            date = date.setDate(date.getDate() - 1);
 
             try {
                 if ($scope.filter.fromDate) {
@@ -143,7 +143,7 @@ mainApp.controller('PostController', ['$rootScope', '$scope', '$http', '$mdDialo
         $scope.$watch('filter.fromDate', function (el) {
             $scope.posts = $scope.postsArray;
             var date = (new Date($scope.filter.toDate));
-            date = date.setDate(date.getDate()-1);
+            date = date.setDate(date.getDate() - 1);
             try {
                 if ($scope.filter.toDate) {
                     $scope.posts = $scope.posts.filter(function (els) {
@@ -185,17 +185,68 @@ mainApp.controller('PostController', ['$rootScope', '$scope', '$http', '$mdDialo
 
         $scope.more = function (post) {
             if (AuthService.getAuthentication() == true) {
-                $scope.morePost = post;
-                dialog.show({
-                    templateUrl: './src/modules/dialogs/post-more.client.view.html',
-                    controller: 'PostController'
-                });
+                PostService.getPostMore(post).then(function (data) {
+                    if (data.success === false) {
+                        dialog.show({
+                            templateUrl: './src/modules/dialogs/login.client.view.html',
+                            controller: 'UserController'
+                        });
+                    }
+                    else if (data.success === true) {
+                        $scope.stepExchange = 1;
+                        $scope.mpost = data.data;
+                        var user;
+                        try {
+                            user = JSON.parse(window.sessionStorage['userInfo']).username;
+                        } catch (e) {
+                            user = window.sessionStorage['userInfo'].username;
+                        }
+
+                        if (user == $scope.mpost.username) {
+                            $scope.ownBool = false;
+                        }
+                        else {
+                            $scope.ownBool = true;
+                        }
+
+                        dialog.show({
+                            templateUrl: './src/modules/dialogs/post-more.client.view.html',
+                            controller: 'PostController',
+                            scope: $scope
+                        });
+
+                    }
+                })
+
             } else {
                 dialog.show({
                     templateUrl: './src/modules/dialogs/login.client.view.html',
                     controller: 'UserController'
                 });
             }
+        };
+
+        $scope.exchangePost = function (id) {
+            $scope.contactPost2 = {
+                id: id,
+                call: true,
+                sms: true,
+                note: 'null'
+            };
+            $http.post(SERVICE_URL + '/contact', $scope.contactPost2).success(function (data) {
+                if (data.success == true) {
+                    $scope.contact = data.data;
+                    $scope.stepExchange = 2;
+                    $mdToast.showSimple('Холбоо барих хаяг амжилттай солигдлоо');
+                }
+                else {
+                    console.log('exchangepost:' + data.message);
+                }
+            })
+            .error(function (data) {
+                console.log('exchangepost:' + data.message);
+            });
+
         }
 
         $scope.closeDialog = function () {
