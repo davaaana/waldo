@@ -47,8 +47,8 @@ mainApp.factory('PostService', function ($http) {
             });
             return promise;
         },
-        getContactedPostList: function () {
-            var promise = $http.get(SERVICE_URL + '/post/contacted').then(function (data) {
+        getContactedPostList: function (page) {
+            var promise = $http.get(SERVICE_URL + '/post/contacted?page='+page).then(function (data) {
                 return data.data;
             });
             return promise;
