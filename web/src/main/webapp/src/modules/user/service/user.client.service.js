@@ -42,13 +42,13 @@ mainApp.factory('UserService', function ($http) {
                 me.getUserInfo(scope);
                 scope.closeDialog();
             }, function () {
-                alert("Хэрэглэгчийн нэр эсвэл нууц үг буруу байна!");
+                scope.errorMessage = "Хэрэглэгчийн нэр эсвэл нууц үг буруу байна!";
             })
         },
-        changePassword: function () {
-            $http.post(SERVICE_URL + '/profile/password', $scope.profilePass).success(function (data) {
+        changePassword: function ($scope) {
+            $http.post(SERVICE_URL + '/profile/password', $scope.proPass).success(function (data) {
                 if (data.success == true) {
-                    //$mdDialog.hide();
+                    $scope.closeDialog();
                 }
                 else {
                     console.log('change passwor error:' + data.message);

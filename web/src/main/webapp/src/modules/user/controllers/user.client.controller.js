@@ -3,7 +3,7 @@
 mainApp.controller('UserController', ['$rootScope', '$scope','$http','$mdDialog', 'UserService','$location',
     function ($rootScope, $scope,$http,dialog, UserService,$location) {
 
-        $scope.errorMessage = 'nevter';
+        $scope.errorMessage = '';
 
         var originatorEv;
 
@@ -25,7 +25,37 @@ mainApp.controller('UserController', ['$rootScope', '$scope','$http','$mdDialog'
             });
         };
 
+        $scope.changePassword = function () {
+            UserService.changePassword($scope);
+        };
+
+        $scope.changePasswordDialog = function () {
+            dialog.show({
+                templateUrl: './src/modules/dialogs/change-password.client.view.html'
+            });
+        };
+
         $scope.signin = function () {
+            $http({
+                method: 'POST',
+                url: SERVICE_URL + '/security/signin',
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                transformRequest: function (obj) {
+                    var str = [];
+                    for (var p in obj)
+                        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                    return str.join("&");
+                },
+                data: {username: $scope.username, password: $scope.password}
+            }).then(function () {
+                UserService.getUserInfo($scope);
+                $scope.closeDialog();
+            }, function () {
+                alert("Хэрэглэгчийн нэр эсвэл нууц үг буруу байна!");
+            })
+        };
+
+        $scope.signins = function () {
             UserService.loginTo($scope);
         };
 
