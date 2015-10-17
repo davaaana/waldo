@@ -4,23 +4,25 @@ mainApp.controller('HomeController', ['$rootScope', '$scope', '$http', '$mdDialo
     function ($rootScope, $scope, $http, dialog, AuthService, $location) {
 
         $scope.init = function () {
-            var url = window.location.hash.split('/');
-            url = url[url.length - 1];
-            if (url == "index") {
-                console.log( document.getElementById('index'));
-                document.getElementById('index').className = "select";
-            }
-            else if (url == 'own-post') {
-                document.getElementById('own-post').className = "select";
-            }
-            else if (url == 'contacted-post') {
-                document.getElementById('contacted-post').className = "select";
-            }
-            else if (url == 'about') {
-                document.getElementById('about').className = "select";
-            }
-        }
+            setTimeout(function () {
+                var url = window.location.hash.split('/');
+                url = url[url.length - 1];
+                if (url == "index") {
+                    console.log( document.getElementById('index'));
+                    document.getElementById('index').className = "select";
+                }
+                else if (url == 'own-post') {
+                    document.getElementById('own-post').className = "select";
+                }
+                else if (url == 'contacted-post') {
+                    document.getElementById('contacted-post').className = "select";
+                }
+                else if (url == 'about') {
+                    document.getElementById('about').className = "select";
+                }
+            },500)
 
+        }
 
         $scope.logout = function () {
             AuthService.logout();

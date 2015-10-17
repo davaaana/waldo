@@ -51,6 +51,23 @@ mainApp.controller('OwnPostController', ['$rootScope', '$scope', '$http', '$mdDi
             })
         };
 
+        $scope.getPost = function (ownPosts) {
+            PostService.getOwnPost(ownPosts).then(function (data) {
+                console.log(data);
+                if (data.success == true) {
+                    $scope.newPostData = data.data;
+                    dialog.show({
+                        parent: angular.element(document.body),
+                        scope: $scope.$new(),
+                        templateUrl: 'src/modules/dialogs/post-create.client.view.html',
+                        controller: 'HomeController'
+                    })
+                } else {
+                    $mdToast.showSimple('Мэдээлэл алга байна');
+                }
+            });
+        };
+
         $scope.closeDialog = function () {
             dialog.cancel();
         }

@@ -42,31 +42,37 @@ mainApp.factory('PostService', function ($http) {
             });
         },
         getOwnPostList: function (page) {
-            var promise = $http.get(SERVICE_URL + '/post/own?page='+page).then(function (data) {
+            var promise = $http.get(SERVICE_URL + '/post/own?page=' + page).then(function (data) {
                 return data.data;
             });
             return promise;
         },
         getContactedPostList: function (page) {
-            var promise = $http.get(SERVICE_URL + '/post/contacted?page='+page).then(function (data) {
+            var promise = $http.get(SERVICE_URL + '/post/contacted?page=' + page).then(function (data) {
                 return data.data;
             });
             return promise;
         },
-        ownPostDeactivate: function (postId,mdToast) {
+        ownPostDeactivate: function (postId, mdToast) {
             $http.post(SERVICE_URL + '/post/close/' + postId).success(function (data) {
                 console.log(data);
-                if(data.success ==true){
-                    document.getElementById(postId).style.display='none';
+                if (data.success == true) {
+                    document.getElementById(postId).style.display = 'none';
                     $mdToast.showSimple('Зар идэвхгүй боллоо');
                 }
-                else if(data.success ==false){
+                else if (data.success == false) {
                     mdToast.showSimple('Амжилтгүй боллоо');
                 }
             }).error(function (data) {
 
                 //console.log('error: ' + data.data);
-            })
+            });
+        },
+        getOwnPost: function (ownPosts) {
+            var promise = $http.get(SERVICE_URL + '/post/get/' + ownPosts.id).then(function (data) {
+                return data.data;
+            });
+            return promise;
         }
     };
 });
