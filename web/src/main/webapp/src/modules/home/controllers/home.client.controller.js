@@ -4,7 +4,7 @@ mainApp.controller('HomeController', ['$rootScope', '$scope', '$http', '$mdDialo
     function ($rootScope, $scope, $http, dialog, AuthService, $location) {
 
         $scope.init = function () {
-            setTimeout(function () {
+            try{
                 var url = window.location.hash.split('/');
                 url = url[url.length - 1];
                 if (url == "index") {
@@ -32,9 +32,12 @@ mainApp.controller('HomeController', ['$rootScope', '$scope', '$http', '$mdDialo
                     document.getElementById('contacted-post').className = "un-select";
                     document.getElementById('about').className = "select";
                 }
-            },100)
+            }catch(e){
+                setInterval(function () {
+                    $scope.init();
+                },100);
+            }
         }
-
 
         $scope.logout = function () {
             AuthService.logout();
