@@ -8,21 +8,33 @@ mainApp.controller('HomeController', ['$rootScope', '$scope', '$http', '$mdDialo
                 var url = window.location.hash.split('/');
                 url = url[url.length - 1];
                 if (url == "index") {
-                    console.log( document.getElementById('index'));
+
                     document.getElementById('index').className = "select";
+                    document.getElementById('own-post').className = "un-select";
+                    document.getElementById('contacted-post').className = "un-select";
+                    document.getElementById('about').className = "un-select";
                 }
                 else if (url == 'own-post') {
+                    document.getElementById('index').className = "un-select";
                     document.getElementById('own-post').className = "select";
+                    document.getElementById('contacted-post').className = "un-select";
+                    document.getElementById('about').className = "un-select";
                 }
                 else if (url == 'contacted-post') {
+                    document.getElementById('index').className = "un-select";
+                    document.getElementById('own-post').className = "un-select";
                     document.getElementById('contacted-post').className = "select";
+                    document.getElementById('about').className = "un-select";
                 }
                 else if (url == 'about') {
+                    document.getElementById('index').className = "un-select";
+                    document.getElementById('own-post').className = "un-select";
+                    document.getElementById('contacted-post').className = "un-select";
                     document.getElementById('about').className = "select";
                 }
-            },500)
-
+            },100)
         }
+
 
         $scope.logout = function () {
             AuthService.logout();
