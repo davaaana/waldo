@@ -1,3 +1,4 @@
+<!--
 <div ng-init="contactedPost()">
     <table>
         <tr ng-repeat="o in contactedPosts">
@@ -5,3 +6,113 @@
         </tr>
     </table>
 </div>
+
+-->
+<div layout="row">
+    <div>
+
+    </div>
+    <div>
+
+    </div>
+</div>
+
+
+<md-content  ng-init="contactedPost()">
+    <md-grid-list
+            md-cols-sm="1" md-cols-gt-sm="2" md-cols-gt-lg="3"
+            md-row-height="210px"
+            md-gutter="6px" md-gutter-gt-sm="3px" flex>
+        <md-grid-tile ng-repeat="contactedPost in contactedPosts"> <!--| orderBy:'-createdDate' | filter:allPostCtrl.filterResult.postType | filter:{to:allPostCtrl.filterResult.toLocation}  | filter:{from:allPostCtrl.filterResult.fromLocation} | filter:{when: allPostCtrl.filterResult.toDate} | filter:{arrive: allPostCtrl.filterResult.fromDate} | filter:allPostCtrl.filterResult.transportationType | orderBy:allPostCtrl.filterResult.quickFilter">-->
+            <md-card layout="column" flex>
+                <div layout="row"
+                     flex
+                     ng-class="{carrier_post : contactedPost.type==='CARRIER', sender_post: contactedPost.type==='SENDER'}">
+
+                    <md-card-content flex="25" layout="column">
+                        <div layout="column" flex layout-align="center center" layout-padding>
+
+                            <img ng-src="ws/profile/image/{{contactedPost.username}}.png"
+                                 class="user-male-icon"/>
+
+                            <div class="user_profile_name">{{ contactedPost.username }}</div>
+                        </div>
+
+                    </md-card-content>
+
+
+                    <md-card-content flex="55" layout="row" layout-align="center center"
+                                     class="post_body">
+                        <div layout="column" flex layout-padding layout-align="center start">
+                            <div layout="row" layout-align="center center">
+                                <div layout="row" class="dim-text" layout-align="center center">
+                                    <md-icon md-svg-icon="crosshairs-gps"></md-icon>
+                                    <span hide show-gt-md>Хаанаас:</span>
+                                </div>
+                                <div layout="row">
+                                    <span class="post_user_data_text">{{contactedPost.from | limitTo: 20 }}</span>
+                                    <span class="dim-text" hide-gt-md>-аас</span>
+                                </div>
+                            </div>
+                            <div layout="row" layout-align="center center">
+                                <div layout="row" layout-padding class="dim-text" layout-align="center center">
+                                    <md-icon md-svg-icon="map-marker"></md-icon>
+                                    <div hide show-gt-md>Хаашаа:</div>
+                                </div>
+                                <div layout="row">
+                                    <span class="post_user_data_text">{{contactedPost.to | limitTo: 20 }}</span>
+                                    <span hide-gt-md>-руу</span>
+                                </div>
+                            </div>
+                            <div layout="row" layout-align="center center">
+                                <div layout="row" layout-padding class="dim-text" layout-align="center center">
+                                    <md-icon md-svg-icon="calendar-blank"></md-icon>
+                                    <div hide show-gt-md>Хэзээ:</div>
+                                </div>
+                                <div layout="row">
+                                    <span class="post_user_data_text"
+                                          ng-bind="convertToDate(contactedPost.when) | date:'yyyy.MM.dd'"></span>-
+                                    <span class="post_user_data_text"
+                                          ng-bind="convertToDate(contactedPost.arrive) | date:'yyyy.MM.dd'"></span>
+                                    <span hide-gt-md>-нд</span>
+                                </div>
+                            </div>
+                        </div>
+                    </md-card-content>
+
+                    <md-card-content flex="20" layout="column" layout-align="center center">
+                        <div layout="column" layout-align="center center"
+                             ng-if="contactedPost.type === 'SENDER'">
+                            <div class="post_type_label">ИЛГЭЭХ</div>
+                            <md-icon md-svg-icon="package" class="sender-icon"></md-icon>
+                        </div>
+
+                        <div layout="column" layout-align="center center"
+                             ng-if="contactedPost.type === 'CARRIER'">
+                            <div class="post_type_label">ТЭЭВЭРЛЭХ</div>
+                            <md-icon md-svg-icon="package-with-hand" class="carrier-icon"></md-icon>
+                        </div>
+                        <div layout="column" layout-align="center center">
+                            <p class="post_date_label">Үүссэн огноо:</p>
+
+                            <p class="post_date dim-text">{{contactedPost.createdDate}}</p>
+                        </div>
+
+                    </md-card-content>
+                </div>
+                <md-divider></md-divider>
+                <md-card-footer layout="row" layout-padding layout-align="space-between center">
+                    <div>
+                        <md-icon md-svg-icon="view"></md-icon>
+                        <span>{{contactedPost.requestNum}}</span>
+                    </div>
+                    <md-button class="md-accent" ng-click="exchangePost2(contactedPost)">Дэлгэрэнгүй...</md-button>
+                </md-card-footer>
+            </md-card>
+
+        </md-grid-tile>
+    </md-grid-list>
+    <div layout="row" flex layout-align="center center">
+        <md-button class="md-accent" ng-click="moreContactedPosts()" ng-show="contactedPostBoolean">Цааш үзэх...</md-button>
+    </div>
+</md-content>
