@@ -8,9 +8,16 @@ mainApp.controller('HomeController', ['$rootScope', '$scope','$http','$mdDialog'
         };
 
         $scope.newPost = function () {
-            dialog.show({
-                templateUrl: './src/modules/dialogs/post-create.client.view.html'
-            });
+            if(AuthService.getAuthentication() == true) {
+                dialog.show({
+                    templateUrl: './src/modules/dialogs/post-create.client.view.html'
+                });
+            }else{
+                dialog.show({
+                    templateUrl: './src/modules/dialogs/login.client.view.html',
+                    controller: 'UserController'
+                });
+            }
         };
 
         $scope.closeDialog = function () {
