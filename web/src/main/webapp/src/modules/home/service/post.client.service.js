@@ -1,8 +1,5 @@
 mainApp.factory('PostService', function ($http) {
     return {
-        signin: function (params) {
-
-        },
         getAllPostData: function () {
             return $http.get(SERVICE_URL + '/post').then(function (posts) {
                 return posts = posts.data;
@@ -43,6 +40,18 @@ mainApp.factory('PostService', function ($http) {
             return $http.get(SERVICE_URL + '/policy').then(function (data) {
                 return data.data;
             });
+        },
+        getOwnPostList: function () {
+            var promise = $http.get(SERVICE_URL + '/post/own').then(function (data) {
+                return data.data;
+            });
+            return promise;
+        },
+        getContactedPostList: function () {
+            var promise = $http.get(SERVICE_URL + '/post/contacted').then(function (data) {
+                return data.data;
+            });
+            return promise;
         }
     };
 });

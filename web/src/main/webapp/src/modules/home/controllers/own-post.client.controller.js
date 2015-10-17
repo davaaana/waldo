@@ -6,13 +6,9 @@ mainApp.controller('OwnPostController', ['$rootScope', '$scope', '$http', '$mdDi
         $scope.auth = AuthService.getAuthentication();
 
         $scope.ownPost = function () {
-            $http.get(SERVICE_URL + '/post/own').success(function (data) {
-                $scope.ownPosts = data.data;
-                $mdToast.showSimple('Миний зар хэсэг сонгогдлоо');
-            }).error(function (data) {
-
-                //console.log('error: ' + data.data);
-            })
+            PostService.getOwnPostList().then(function (res) {
+                $scope.ownPosts = res.data;
+            });
         };
 
         $scope.closeDialog = function () {

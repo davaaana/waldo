@@ -5,14 +5,12 @@ mainApp.controller('ContactedPostController', ['$rootScope', '$scope', '$http', 
 
         $scope.auth = AuthService.getAuthentication();
 
-        $scope.contactedPost = function () {
-            $http.get(SERVICE_URL + '/post/contacted').success(function (data) {
-                $scope.contactedPosts = data.data;
-                $mdToast.showSimple('Холбогдсон зар хэсэг сонгогдлоо');
-            }).error(function (data) {
+        if(!$scope.auth) {window.location.href = '/';}
 
-                //console.log('error: ' + data.data);
-            })
+        $scope.contactedPost = function () {
+            PostService.getContactedPostList().then(function (data) {
+                $scope.contactedPosts = data.data;
+            });
         };
 
         $scope.closeDialog = function () {

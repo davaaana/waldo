@@ -6,7 +6,8 @@ mainApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
             state('home', {
                 url: '/index',
                 abstract: true,
-                templateUrl: 'src/modules/home/views/index.html'
+                templateUrl: 'src/modules/home/views/index.html',
+                controller: 'HomeController'
             }).
             state('home.index', {
                 url: '',
