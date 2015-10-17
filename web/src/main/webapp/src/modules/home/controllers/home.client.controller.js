@@ -1,12 +1,24 @@
 'use strict';
 
-mainApp.controller('HomeController', ['$rootScope', '$scope','$http','$mdDialog', 'UserService','$location',
-    function ($rootScope, $scope,$http,dialog,AuthService,$location) {
+mainApp.controller('HomeController', ['$rootScope', '$scope', '$http', '$mdDialog', 'UserService', '$location',
+    function ($rootScope, $scope, $http, dialog, AuthService, $location) {
 
         $scope.init = function () {
             var url = window.location.hash.split('/');
-            url = url[url.length-1];
-
+            url = url[url.length - 1];
+            if (url == "index") {
+                console.log( document.getElementById('index'));
+                document.getElementById('index').className = "select";
+            }
+            else if (url == 'own-post') {
+                document.getElementById('own-post').className = "select";
+            }
+            else if (url == 'contacted-post') {
+                document.getElementById('contacted-post').className = "select";
+            }
+            else if (url == 'about') {
+                document.getElementById('about').className = "select";
+            }
         }
 
 
@@ -15,11 +27,11 @@ mainApp.controller('HomeController', ['$rootScope', '$scope','$http','$mdDialog'
         };
 
         $scope.newPost = function () {
-            if(AuthService.getAuthentication() == true) {
+            if (AuthService.getAuthentication() == true) {
                 dialog.show({
                     templateUrl: './src/modules/dialogs/post-create.client.view.html'
                 });
-            }else{
+            } else {
                 dialog.show({
                     templateUrl: './src/modules/dialogs/login.client.view.html',
                     controller: 'UserController'
@@ -44,12 +56,12 @@ mainApp.controller('HomeController', ['$rootScope', '$scope','$http','$mdDialog'
         };
 
         $scope.editProfile = function () {
-            if(AuthService.getAuthentication() == true){
+            if (AuthService.getAuthentication() == true) {
                 dialog.show({
                     templateUrl: './src/modules/dialogs/profile-edit.client.view.html',
                     controller: 'UserController'
                 });
-            }else{
+            } else {
                 dialog.show({
                     templateUrl: './src/modules/dialogs/login.client.view.html',
                     controller: 'UserController'

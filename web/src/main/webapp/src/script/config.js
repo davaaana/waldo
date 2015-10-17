@@ -17,3 +17,4 @@ function convertToDate(stringDate) {
     dateOut.setDate(dateOut.getDate() + 1);
     return dateOut;
 }
+
