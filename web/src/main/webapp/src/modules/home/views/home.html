@@ -1,4 +1,4 @@
-<div flex layout="row">
+<div flex layout="row" >
     <div flex="80" layout="row" class="filter-result">
         <div layout="column" class="filter-txt">Шүүлтүүр : </div>
         <div layout="column" class="filter-txt-result">Зарын төрөл,Бүх зар</div>
@@ -13,7 +13,7 @@
 
     </div>
 </div>
-<div id="call_dialog" ng-init="getAllPostData()">
+<div id="call_dialog" ng-init="getAllPostData();init();">
     <md-grid-list
             md-cols-sm="1" md-cols-gt-sm="2" md-cols-gt-lg="2"
             md-row-height="160px"
