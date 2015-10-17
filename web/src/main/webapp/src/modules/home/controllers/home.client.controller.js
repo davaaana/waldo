@@ -3,6 +3,13 @@
 mainApp.controller('HomeController', ['$rootScope', '$scope','$http','$mdDialog', 'UserService','$location',
     function ($rootScope, $scope,$http,dialog,AuthService,$location) {
 
+        $scope.init = function () {
+            var url = window.location.hash.split('/');
+            url = url[url.length-1];
+
+        }
+
+
         $scope.logout = function () {
             AuthService.logout();
         };
@@ -61,5 +68,6 @@ mainApp.controller('HomeController', ['$rootScope', '$scope','$http','$mdDialog'
                 templateUrl: 'src/modules/users/exsiting-user/dialog.profile.html'
             });
         };
+
     }
 ]);

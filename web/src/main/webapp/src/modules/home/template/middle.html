@@ -1,6 +1,6 @@
 <div class="middle-pic">
     <div class="middle">
-        <div class="middle-text">
+        <div class="middle-text" ng-init="init();">
             ХОТ ХООРОНДЫН АЧАА ТЭЭВЭР ЗУУЧЛАЛЫН ЗАРЫН САЙТ
         </div>
         <div class="middle-text2">
@@ -114,22 +114,22 @@
         </div>
 
         <div layout="row" class="middle-menu">
-            <a href="#/index" target="_self">
+            <a href="#/index" target="_self" id="all">
                 <div class="select">
                     Бүх зар
                 </div>
             </a>
-            <a href="#/index/my-post" target="_self" ng-show="auth">
+            <a href="#/index/own-post" target="_self" ng-show="auth" id="own-post" >
                 <div class="un-select">
                     Миний зар
                 </div>
             </a>
-            <a href="#/index/contacted-post" target="_self" ng-show="auth">
+            <a href="#/index/contacted-post" target="_self" ng-show="auth"  id="contacted-post">
                 <div class="un-select">
                     Холбогдсон зар
                 </div>
             </a>
-            <a href="#/index/about" target="_self">
+            <a href="#/index/about" target="_self" id="about" >
                 <div class="un-select">
                     Валдогийн тухай
                 </div>
@@ -137,3 +137,5 @@
         </div>
     </div>
 </div>
+
+
