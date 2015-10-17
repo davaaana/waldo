@@ -4,6 +4,7 @@ mainApp.controller('OwnPostController', ['$rootScope', '$scope', '$http', '$mdDi
     function ($rootScope, $scope, $http, dialog, PostService, $log, $q,$mdToast, AuthService) {
 
         $scope.ownNextBtn = true;
+        $scope.hideOwnAds = true;
         $scope.paging = 0;
         $scope.auth = AuthService.getAuthentication();
 
@@ -64,6 +65,19 @@ mainApp.controller('OwnPostController', ['$rootScope', '$scope', '$http', '$mdDi
                     })
                 } else {
                     $mdToast.showSimple('Мэдээлэл алга байна');
+                }
+            });
+        };
+
+        $scope.hidePostsShow = function(bool){
+            $http.get(SERVICE_URL + '/post/own?closed='+bool).success(function (data) {
+                $scope.ownPosts = data.data;
+                $mdToast.showSimple('Миний зар хэсэг сонгогдлоо');
+                if(bool==true){
+                    $scope.hideOwnAds = false;
+                }
+                if(bool==false){
+                    $scope.hideOwnAds = true;
                 }
             });
         };

@@ -212,9 +212,8 @@
                 </md-grid-item>
 
                 <md-button class="md-accent" ng-click="ownPostPaging()" ng-show="ownNextBtn">Цааш үзэх...</md-button>
-                <md-button class="md-accent" ng-click="hidePostsShow(hideOwnAds)" ng-show="myPostBoolean">Нуусан зар
-                    харах
-                </md-button>
+                <md-button class="md-accent" ng-click="hidePostsShow(hideOwnAds)" ng-show="hideOwnAds">Нуусан зар харах</md-button>
+                <md-button class="md-accent" ng-click="hidePostsShow(hideOwnAds)" ng-hide="hideOwnAds">Зар харах</md-button>
 
         </md-content>
     </div>
