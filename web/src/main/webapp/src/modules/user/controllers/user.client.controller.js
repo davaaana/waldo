@@ -16,7 +16,14 @@ mainApp.controller('UserController', ['$rootScope', '$scope','$http','$mdDialog'
 
         try{
             $scope.user = JSON.parse(window.sessionStorage["userInfo"]);
+            $scope.pro = JSON.parse(window.sessionStorage["userInfo"]);
         }catch (e){}
+
+        $scope.uploadImage = function (file) {
+            UserService.uploadFile(file,$scope).then(function (res) {
+                console.log(res);
+            });
+        };
 
         $scope.signin = function () {
             UserService.loginTo($scope);
@@ -26,10 +33,8 @@ mainApp.controller('UserController', ['$rootScope', '$scope','$http','$mdDialog'
             console.log(el);
         });
 
-        $scope.updateUser = function () {
-            UserService.editProfile($scope).then(function(res){
-                console.log(res);
-            })
+        $scope.updateProfile = function () {
+            UserService.updateProfile($scope)
         }
         $scope.closeDialog = function () {
             dialog.cancel();

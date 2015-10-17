@@ -15,10 +15,10 @@
                 <form method="post" name="profile" enctype="multipart/form-data" flex>
                     <div layout="row">
                         <div flex="20" flex-sm="30">
-                            <img ng-src="ws/profile/image/{{user.username}}.png"
+                            <img ng-src="ws/profile/image/{{pro.username}}.png"
                                  class="edit-photo"/>
                             <input id="image" type="file" name="file" style="position:fixed;top:-100px;"
-                                   onchange="angular.element(this).scope().uploadFile(this.files)"
+                                   onchange="angular.element(this).scope().uploadImage(this.files)"
                                    style="padding-top: 26px;" title=""/>
                             <button id="image_alt" type="button" onclick="document.getElementById('image').click();">Зураг сонгох</button>
                         </div>
@@ -26,40 +26,40 @@
                         <div flex="40" flex-sm="40">
                             <md-input-container>
                                 <label>Хэрэглэгчийн нэр</label>
-                                <input ng-model="user.username" name="username" type="text" disabled>
+                                <input ng-model="pro.username" name="username" type="text" disabled>
                             </md-input-container>
                             <md-input-container>
                                 <label>Овог</label>
-                                <input ng-model="user.firstname" name="firstname" type="text" required>
+                                <input ng-model="pro.firstname" name="firstname" type="text" required>
                             </md-input-container>
                             <md-input-container>
                                 <label>Нэр</label>
-                                <input ng-model="user.lastname" name="lastname" type="text" required>
+                                <input ng-model="pro.lastname" name="lastname" type="text" required>
                             </md-input-container>
                             <md-input-container>
                                 <label>Утас</label>
-                                <input ng-model="user.phone" name="phone" type="tel" required>
+                                <input ng-model="pro.phone" name="phone" type="tel" required>
                             </md-input-container>
                         </div>
                         <md-divider></md-divider>
                         <div flex="40" flex-sm="40">
                             <md-input-container>
                                 <label>И-мэйл</label>
-                                <input ng-model="user.email" name="email" type="email" required>
+                                <input ng-model="pro.email" name="email" type="email" required>
                             </md-input-container>
                             <md-input-container layout-fill>
                                 <label>Хуучин нууц үг</label>
-                                <input ng-model="user.oldPassword" name="oldPassword" type="password">
+                                <input ng-model="pro.oldPassword" name="oldPassword" type="password">
                             </md-input-container>
                             <md-input-container layout-fill>
                                 <label>Шинэ нууц үг</label>
-                                <input ng-model="user.newPassword" name="password" type="password" min="4"
-                                       ng-disabled="!user.oldPassword">
+                                <input ng-model="pro.newPassword" name="password" type="password" min="4"
+                                       ng-disabled="!pro.oldPassword">
                             </md-input-container>
                             <md-input-container layout-fill>
                                 <label>Шинэ нууц үг давтах</label>
-                                <input ng-model="user.confirmPassword" name="confirmPassword" type="password" min="4"
-                                       ng-disabled="!user.oldPassword"
+                                <input ng-model="pro.confirmPassword" name="pro" type="password" min="4"
+                                       ng-disabled="!pro.oldPassword"
                                         >
                             </md-input-container>
                         </div>
@@ -71,7 +71,7 @@
                             Гарах
                         </md-button>
                         <md-button ng-click="updateProfile()" class="md-raised md-accent md-button md-default-theme"
-                                   ng-disabled="profilePass.newPassword!=profilePass.confirmPassword">
+                                   ng-disabled="pro.newPassword!=pro.confirmPassword">
                             Шинчилэх
                         </md-button>
                     </div>

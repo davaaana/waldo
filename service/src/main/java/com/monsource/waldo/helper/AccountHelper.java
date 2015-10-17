@@ -54,8 +54,12 @@ public class AccountHelper {
     }
 
     public static boolean checkPassword(AccountEntity accountEntity, AccountPassword accountPassword) {
-        //todo check password with salt and md5
-        return true;
+        if(accountEntity.getPassword().equals(accountPassword.getOldPassword())){
+            return true;
+        }else{
+            return false;
+        }
+
     }
 
     public static void changePassword(AccountEntity accountEntity, String newPassword) {

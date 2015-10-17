@@ -84,28 +84,17 @@ mainApp.factory('UserService', function ($http) {
             });
         },
         updateProfile: function ($scope) {
-            $http.put(SERVICE_URL + '/profile', $scope.user).success(function (data) {
-                    if (data.success == true) {
-                        //if ($scope.profilePass) {
-
-                            $http.post(SERVICE_URL + '/profile/password', $scope.profilePass).success(function (data) {
-                                if (data.success == true) {
-                                    alert('Нууц үг амжилттай солигдлоо');
-                                }
-                                else {
-                                    console.log('update profile error' + data.message);
-                                }
-                            })
-                        //}
-                        this.getUserInfo();
+            var me = this;
+            $http.put(SERVICE_URL + '/profile', $scope.pro).then(function (data) {
+                    if (data.data.success == true) {
+                        $scope.closeDialog();
+                        me.getUserInfo($scope);
                     }
                     else {
                         console.log('update profile error' + data.message);
                     }
                 }
-            ).
-                error(function (data) {
-                })
+            );
         },
         signup: function ($scope) {
             $http.post(SERVICE_URL + '/profile', $scope.register).success(function (data) {
