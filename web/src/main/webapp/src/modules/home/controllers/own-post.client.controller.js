@@ -27,6 +27,30 @@ mainApp.controller('OwnPostController', ['$rootScope', '$scope', '$http', '$mdDi
             });
         };
 
+        $scope.ownPostDeactivate = function (postId) {
+            PostService.ownPostDeactivate(postId,$mdToast);
+        };
+
+        $scope.ownPostContact = function (postId) {
+            $http.get(SERVICE_URL + '/contact/' + postId).success(function (data) {
+                for (var i = 0; i < $scope.ownPosts.length; i++) {
+                    var ownPosts = $scope.ownPosts[i];
+                    if (ownPosts.id == postId) {
+                        if (ownPosts.ownPostContactBoolean) {
+                            ownPosts.ownPostContactBoolean = false;
+                            break;
+                        }
+                        ownPosts.data = data.data;
+                        ownPosts.ownPostContactBoolean = true;
+                        break;
+                    }
+                }
+            }).error(function (data) {
+
+                //console.log('error: ' + data.data);
+            })
+        };
+
         $scope.closeDialog = function () {
             dialog.cancel();
         }
