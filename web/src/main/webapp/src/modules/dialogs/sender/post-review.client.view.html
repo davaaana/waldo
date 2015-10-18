@@ -1,60 +1,81 @@
 <md-content layout="column" layout-fill>
     <section layout="row" flex layout-padding>
-        <div layout="column" flex class="create-post-back" layout-padding>
-            <h4 style="color:#646054; padding-left: 10px; padding-left: 10px">Зараа та шалгана
-                уу. Хэрэв өөрчлөлт байгаа бол буцах товч дээр дарна уу!</h4>
+        <div layout="column" flex="65" class="create-post-back" layout-padding>
+            <p class="new_post_review_header">Та шинээр үүсгэж буй зараа анхааралтай шалгана
+                уу!
+                <br/>
+                Хэрэв өөрчлөлт хийхээр бол буцах товч дээр дарж өөрчилнө.
+            </p>
 
-            <div layout="row" layout-padding>
-                <div class="dim-text">
-                    <div>
-                        <md-icon md-svg-icon="crosshairs-gps" style="margin:0;"></md-icon>
-                        Хаанаас:
-                    </div>
-                    <div>
-                        <md-icon md-svg-icon="map-marker" style="margin:0;"></md-icon>
-                        Хаашаа:
-                    </div>
-                    <div>
-                        <md-icon md-svg-icon="calendar-blank" style="margin:0;"></md-icon>
-                        Эхлэх:
-                    </div>
-                    <div>
-                        <md-icon md-svg-icon="calendar-blank" style="margin:0;"></md-icon>
-                        Дуусах:
-                    </div>
-                    <div>
-                        <md-icon md-svg-icon="passenger" style="margin:0;"></md-icon>
-                        Зорчигчийн тоо:
-                    </div>
-                    <div>
-                        <md-icon md-svg-icon="carry" style="margin:0;"></md-icon>
-                        Авч явах зүйлс:
-                    </div>
+            <div flex layout="column" layout-align="center start">
 
-                </div>
-                <div>
-                    <div class="post_user_data_text">
+                <div layout-fill layout="row" layout-align="start center"  style="height: 25px">
+                    <div class="dim-text">
+                        <md-icon md-svg-icon="crosshairs-gps"></md-icon>
+                        <span>Хаанаас:</span>
+                    </div>
+                    <div offset="10" flex class="post_user_data_text">
                         {{cityGetName(newPost.fromCityId)}}-{{fromDistrictGetName(newPost.fromDistrictId)}}
                     </div>
-                    <div class="post_user_data_text">
+                </div>
+                <div layout-fill layout="row" layout-align="start center"  style="height: 25px">
+                    <div class="dim-text">
+                        <md-icon md-svg-icon="map-marker"></md-icon>
+                        <span>Хаашаа:</span>
+                    </div>
+                    <div offset="10" flex class="post_user_data_text">
                         {{cityGetName(newPost.toCityId)}}-{{toDistrictGetName(newPost.toDistrictId)}}
                     </div>
-                    <div class="post_user_data_text"> {{newPost.when |
+                </div>
+                <div layout-fill layout="row" layout-align="start center"  style="height: 25px">
+                    <div class="dim-text">
+                        <md-icon md-svg-icon="calendar-blank"></md-icon>
+                        <span>Хөдлөх огноо:</span>
+                    </div>
+                    <div offset="10" flex class="post_user_data_text">
+                        {{newPost.when |
                         date:'yyyy-MM-dd'}}
                     </div>
-                    <div class="post_user_data_text"> {{newPost.arrive |
+                </div>
+                <div layout-fill layout="row" layout-align="start center"  style="height: 25px">
+                    <div class="dim-text">
+                        <md-icon md-svg-icon="calendar-blank"></md-icon>
+                        <span>Очих огноо:</span>
+                    </div>
+                    <div offset="10" flex class="post_user_data_text">
+                        {{newPost.arrive |
                         date:'yyyy-MM-dd'}}
                     </div>
-                    <div class="post_user_data_text"><span
-                            data-ng-show="newPostDataCheck.passanger">{{newPost.passanger}}</span><span
-                            data-ng-hide="newPostDataCheck.passanger">Зорчигч байхгүй</span>
+                </div>
+                <div layout-fill layout="row" layout-align="start center" style="height: 25px">
+                    <div class="dim-text">
+                        <md-icon md-svg-icon="passenger"></md-icon>
+                        <span>Зорчигч:</span>
                     </div>
-                    <div class="post_user_data_text"><span
-                            data-ng-show="newPost.stuff"> {{newPost.stuff}}</span><span
-                            data-ng-show="newPost.animal"> {{newPost.animal}}</span>
+                    <div offset="10" flex class="post_user_data_text">
+                                                    <span data-ng-show="newPostDataCheck.passanger">
+                                                        {{newPost.passanger}}
+                                                    </span>
+                                                    <span data-ng-hide="newPostDataCheck.passanger">
+                                                        Зорчигч авч явахгүй
+                                                    </span>
                     </div>
                 </div>
 
+                <div layout-fill layout="row" layout-align="start center" style="height: 25px">
+                    <div class="dim-text">
+                        <md-icon md-svg-icon="carry"></md-icon>
+                        <span>Ачаа:</span>
+                    </div>
+                    <div offset="10" flex class="post_user_data_text">
+                                                    <span data-ng-show="newPost.stuff">
+                                                        {{newPost.stuff}}
+                                                    </span>
+                                                    <span data-ng-show="newPost.animal">
+                                                        {{newPost.animal}}
+                                                    </span>
+                    </div>
+                </div>
             </div>
         </div>
         <div layout="column" flex>
