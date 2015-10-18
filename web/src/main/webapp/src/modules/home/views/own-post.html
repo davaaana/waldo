@@ -6,7 +6,7 @@
             <div class="filter-title">Зарын төрөл</div>
 
             <md-select data-ng-model="ownFilter.type" ng-change="filterChange()"
-                       class="datepicker-filter-adjust4">
+                       class="datepicker-filter-adjust4"  placeholder="Сонгох">
                 <md-option value="">Бүх зар</md-option>
                 <md-option value="CARRIER">Тээвэрлэх зар</md-option>
                 <md-option value="SENDER">Илгээх зар</md-option>
@@ -16,7 +16,7 @@
             <label class="filter-title">Хөдлөх газар</label>
 
             <md-select class="datepicker-filter-adjust4" data-ng-model="ownFilter.fromCityId"
-                       ng-change="filterChange()">
+                       ng-change="filterChange()"  placeholder="Сонгох">
                 <md-option ng-value="{{city.id}}" ng-repeat="city in cities">{{city.name}}</md-option>
             </md-select>
 
@@ -25,7 +25,7 @@
         <div>
             <label class="filter-title">Очих газар</label>
             <md-select class="datepicker-filter-adjust4" data-ng-model="ownFilter.toCityId"
-                       ng-change="filterChange()">
+                       ng-change="filterChange()"  placeholder="Сонгох">
                 <md-option ng-value="{{city.id}}" ng-repeat="city in cities">{{city.name}}</md-option>
             </md-select>
 
@@ -297,9 +297,9 @@
                     </md-card>
                 </md-grid-title>
             </md-grid-item>
-
-            <md-button class="md-accent" ng-click="ownPostPaging()" ng-show="ownNextBtn">Цааш үзэх...</md-button>
-
+            <center>
+                <md-button class="md-accent" ng-click="ownPostPaging()" ng-show="ownNextBtn">Цааш үзэх...</md-button>
+            </center>
 
         </md-content>
     </div>
