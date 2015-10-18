@@ -84,10 +84,11 @@ public class PostDAO extends DataAccessObject {
             criteria.add(Restrictions.le("when", filter.getToDate()));
         }
 
-        //todo uncomment amaraaaaaaa!!!!!!!!!!!!
         if (filter.getFromDate() == null) {
             if (accountId == null) {
-                criteria.add(Restrictions.ge("when", new Date()));
+                Date date = new Date();
+                date.setDate(date.getDate()-1);
+                criteria.add(Restrictions.ge("when", date));
             }
         }
 
@@ -183,7 +184,9 @@ public class PostDAO extends DataAccessObject {
         //todo uncomment amaraaaaaaa!!!!!!!!!!!!
         if (filter.getFromDate() == null) {
             if (accountId == null) {
-                criteria.add(Restrictions.ge("when", new Date()));
+                Date date = new Date();
+                date.setDate(date.getDate()-1);
+                criteria.add(Restrictions.ge("when", date));
             }
         }
 

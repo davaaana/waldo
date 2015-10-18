@@ -63,8 +63,7 @@ mainApp.controller('PostController', ['$rootScope', '$scope', '$http', '$mdDialo
         
         $scope.getAllPostData = function () {
             PostService.getAllPostData().then(function (posts) {
-                $scope.postsArray = posts.data;
-                $scope.posts = $scope.postsArray;
+                $scope.posts = posts.data;
             });
         }
 
@@ -96,7 +95,7 @@ mainApp.controller('PostController', ['$rootScope', '$scope', '$http', '$mdDialo
             console.log($scope.postType[0]);
             $scope.filter = {};
             $scope.searchTextType = '';
-            $scope.posts = $scope.postsArray;
+            $scope.posts = $scope.posts;
             $scope.searchText = '';
             $scope.searchText1 = '';
         };
@@ -152,7 +151,7 @@ mainApp.controller('PostController', ['$rootScope', '$scope', '$http', '$mdDialo
             PostService.allPostPaging($scope.page).then(function (data) {
 
                 for (var i = 0; i < data.data.length; i++) {
-                    $scope.postsArray.push(data.data[i]);
+                    $scope.posts.push(data.data[i]);
                 }
                 if (data.data.length != 0) {
                     $scope.page++;
