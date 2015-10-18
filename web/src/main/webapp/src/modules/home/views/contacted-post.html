@@ -155,10 +155,10 @@
                                                 ХӨДЛӨХ ГАЗАР
                                             </div>
                                             <div layout="row">
-                                                <span class="post_user_data_text">{{contactedPost.from}}</span>
+                                                <span class="post_user_data_text2">{{contactedPost.from}}</span>
                                             </div>
                                             <div layout="row">
-                                         <span class="post_user_data_text"
+                                         <span class="post_user_data_text2"
                                                ng-bind="convertToDate(contactedPost.when) | date:'yyyy.MM.dd'"></span>
                                             </div>
 
@@ -170,10 +170,10 @@
                                                 ОЧИХ ГАЗАР
                                             </div>
                                             <div layout="row">
-                                                <span class="post_user_data_text">{{contactedPost.to }}</span>
+                                                <span class="post_user_data_text2">{{contactedPost.to }}</span>
                                             </div>
                                             <div  layout="row">
-                                        <span class="post_user_data_text"
+                                        <span class="post_user_data_text2"
                                               ng-bind="convertToDate(contactedPost.arrive) | date:'yyyy.MM.dd'"></span>
                                             </div>
                                         </div>
@@ -206,7 +206,7 @@
                                     <md-icon md-svg-icon="package-with-hand" class="carrier-icon"></md-icon>
                                 </div>
                                 <div layout="column" layout-align="center center">
-                                    <p class="post_date_label">Үүссэн огноо:</p>
+                                    <p class="post_date_label">зар оруулсан</p>
 
                                     <p class="post_date dim-text">{{contactedPost.createdDate}}</p>
                                 </div>
@@ -216,7 +216,7 @@
                         <md-divider></md-divider>
 
                         <md-card-footer layout="row" layout-padding layout-align="space-between center">
-                            <div>
+                            <div class="padding-left-35">
                                 <md-icon md-svg-icon="view"></md-icon>
                                 <span>{{contactedPost.requestNum}}</span>
                             </div>
