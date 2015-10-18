@@ -8,6 +8,11 @@ mainApp.controller('OwnPostController', ['$rootScope', '$scope', '$http', '$mdDi
         $scope.paging = 0;
         $scope.auth = AuthService.getAuthentication();
 
+        $scope.filter = {
+            fromDate: '',
+            toDate: ''
+        };
+
         $scope.ownPost = function () {
             PostService.getOwnPostList($scope.paging).then(function (res) {
                 $scope.ownPosts = res.data;
@@ -80,6 +85,19 @@ mainApp.controller('OwnPostController', ['$rootScope', '$scope', '$http', '$mdDi
                     $scope.hideOwnAds = true;
                 }
             });
+        };
+
+        $scope.hideLine = function (id,codes,ids) {
+            PostService.hideLine(id).then(function (data) {
+                if(data.success ==true){
+                    document.getElementById(codes+"-"+ids).style.display='none';
+                    $mdToast.showSimple('Хэрэглэгч идэвхгүй боллоо');
+                }
+                else if(data.success ==false){
+                    $mdToast.showSimple('Амжилтгүй боллоо');
+                }
+            });
+
         };
 
         $scope.closeDialog = function () {

@@ -73,6 +73,12 @@ mainApp.factory('PostService', function ($http) {
                 return data.data;
             });
             return promise;
+        },
+        hideLine: function (id) {
+            var promise = $http.post(SERVICE_URL + '/contact/hide/' + id).then(function (data) {
+                return data.data;
+            });
+            return promise;
         }
     };
 });
