@@ -4,38 +4,41 @@ mainApp.controller('HomeController', ['$rootScope', '$scope', '$http', '$mdDialo
     function ($rootScope, $scope, $http, dialog, AuthService, $location) {
 
         $scope.init = function () {
-            try{
+            try {
                 var url = window.location.hash.split('/');
                 url = url[url.length - 1];
                 if (url == "index") {
-
                     document.getElementById('index').className = "select";
                     document.getElementById('own-post').className = "un-select";
                     document.getElementById('contacted-post').className = "un-select";
                     document.getElementById('about').className = "un-select";
+                    $scope.filterArea = true;
                 }
                 else if (url == 'own-post') {
                     document.getElementById('index').className = "un-select";
                     document.getElementById('own-post').className = "select";
                     document.getElementById('contacted-post').className = "un-select";
                     document.getElementById('about').className = "un-select";
+                    $scope.filterArea = false;
                 }
                 else if (url == 'contacted-post') {
                     document.getElementById('index').className = "un-select";
                     document.getElementById('own-post').className = "un-select";
                     document.getElementById('contacted-post').className = "select";
                     document.getElementById('about').className = "un-select";
+                    $scope.filterArea = false;
                 }
                 else if (url == 'about') {
                     document.getElementById('index').className = "un-select";
                     document.getElementById('own-post').className = "un-select";
                     document.getElementById('contacted-post').className = "un-select";
                     document.getElementById('about').className = "select";
+                    $scope.filterArea = false;
                 }
-            }catch(e){
+            } catch (e) {
                 setInterval(function () {
                     $scope.init();
-                },100);
+                }, 100);
             }
         }
 
