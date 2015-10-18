@@ -35,6 +35,11 @@ mainApp.controller('OwnPostController', ['$rootScope', '$scope', '$http', '$mdDi
             }catch(e){}
         });
 
+        $scope.clearFilterOwn = function () {
+            $scope.ownFilter = {};
+            $scope.ownPost();
+        }
+
         $scope.ownPost = function () {
             PostService.getOwnPostList($scope.paging).then(function (res) {
                 $scope.ownPosts = res.data;
