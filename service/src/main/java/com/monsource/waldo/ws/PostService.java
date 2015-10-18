@@ -144,16 +144,16 @@ public class PostService {
     }
 
     @RequestMapping(value = "/contacted", method = RequestMethod.GET)
-    public Result getContactedPosts(@RequestParam(value = "page", required = false) Integer page) {
+    public Result getContactedPosts(@ModelAttribute Filter filter) {
         try {
 
-            if (page == null) {
-                page = 0;
+            if (filter.getPage() == null) {
+                filter.setPage(0);
             }
 
             AccountEntity accountEntity = SecurityHelper.getDetails().getAccount();
 
-            List<PostEntity> postEntities = postDAO.findByContactAccountId(accountEntity.getId(), page);
+            List<PostEntity> postEntities = postDAO.findByContactAccountId(accountEntity.getId(), filter);
             List<SimplePost> simplePosts = PostHelper.convertToSimplePost(postEntities, true);
 
             return new Result(true, simplePosts);

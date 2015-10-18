@@ -4,65 +4,27 @@
        
         <div>
             <div class="filter-title">Зарын төрөл</div>
-
-            <md-autocomplete ng-disabled="isDisabledType" md-no-cache="noCacheType"
-                             md-selected-item="selectedItemType"
-                             md-search-text-change="searchTextChangeType(searchTextType)"
-                             md-search-text="searchTextType"
-                             md-selected-item-change="filter.postType = item.value"
-                             md-items="item in querySearchType(searchTextType)"
-                             md-item-text="item.display"
-                             md-min-length="0" placeholder="Зарын төрөл" class="type2">
-                <md-item-template>
-                                    <span md-highlight-text="searchTextType"
-                                          md-highlight-flags="^i">{{item.display}}</span>
-                </md-item-template>
-                <md-not-found>
-                    "{{searchTextType}}" хайлт олдсонгүй.
-                </md-not-found>
-            </md-autocomplete>
-
+            <select data-ng-model="ownFilter.type" ng-change="filterChange()">
+                <option value="">Бүх зар</option>
+                <option value="CARRIER">Тээвэрлэх зар</option>
+                <option value="SENDER">Илгээх зар</option>
+            </select>
         </div>
         <div>
             <label class="filter-title">Хөдлөх газар</label>
-            <md-autocomplete ng-disabled="isDisabled" md-no-cache="noCache"
-                             md-selected-item="selectedItem"
-                             md-search-text-change="searchTextChange(searchText)"
-                             md-search-text="searchText"
-                             md-selected-item-change="filter.fromLocation = item.name"
-                             md-items="item in querySearch(searchText)" md-item-text="item.name"
-                             md-min-length="0" placeholder="Хаанаас" class="type2">
-                <md-item-template>
-                    <span md-highlight-text="searchText" md-highlight-flags="^i">{{item.name}}</span>
-                </md-item-template>
-                <md-not-found>
-                    "{{searchText}}" хайлт олдсонгүй.
-                </md-not-found>
-            </md-autocomplete>
+            <select data-ng-model="ownFilter.fromCityId" ng-change="filterChange()"
+                    ng-options="city.id as city.name for city in cities"></select>
         </div>
         <div>
             <label class="filter-title">Очих газар</label>
-            <md-autocomplete ng-disabled="isDisabled1" md-no-cache="noCache1"
-                             md-selected-item="selectedItem1"
-                             md-search-text-change="searchTextChange1(searchText1)"
-                             md-search-text="searchText1"
-                             md-selected-item-change="filter.toLocation = item.name"
-                             md-items="item in querySearch1(searchText1)" md-item-text="item.name"
-                             md-min-length="0" placeholder="Хаашаа" class="type2">
-                <md-item-template>
-                    <span md-highlight-text="searchText1" md-highlight-flags="^i">{{item.name}}</span>
-                </md-item-template>
-                <md-not-found>
-                    "{{searchText}}" хайлт олдсонгүй
-                </md-not-found>
-            </md-autocomplete>
+            <select data-ng-model="ownFilter.toCityId" ng-change="filterChange()"
+                    ng-options="city.id as city.name for city in cities"></select>
         </div>
         <div>
             <label class="filter-title">Явах огноо эхлэх</label>
 
             <div layout="row">
-                <md-datepicker ng-model="filter.toDate" md-placeholder="Сонгох" format="yyyy.MM.dd"
-                               ng-change="changeValue()"
+                <md-datepicker ng-model="ownFilter.fromDateTime" md-placeholder="Сонгох" date-format="yyyy-MM-dd"
                                class="datepicker-filter-adjust3"></md-datepicker>
             </div>
         </div>
@@ -70,8 +32,7 @@
             <label class="filter-title">Явах огноо дуусах</label>
 
             <div layout="row">
-                <md-datepicker ng-model="filter.fromDate" md-placeholder="Сонгох"
-                               ng-change="changeValue()"
+                <md-datepicker ng-model="ownFilter.toDateTime" md-placeholder="Сонгох" date-format="yyyy-MM-dd"
                                class="datepicker-filter-adjust3" md-min-date="filter.toDate"></md-datepicker>
             </div>
         </div>

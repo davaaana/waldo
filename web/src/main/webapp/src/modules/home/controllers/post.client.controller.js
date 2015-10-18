@@ -3,8 +3,8 @@
 mainApp.controller('PostController', ['$rootScope', '$scope', '$http', '$mdDialog', 'PostService', '$log', '$q','$mdToast', 'UserService', '$location',
     function ($rootScope, $scope, $http, dialog, PostService, $log, $q,$mdToast, AuthService, $location) {
         $scope.filter = {
-            froomDate: '',
-            tooDate: ''
+            fromDate: '',
+            toDate: ''
         };
 
         $scope.simulateQuery = false;
@@ -33,71 +33,34 @@ mainApp.controller('PostController', ['$rootScope', '$scope', '$http', '$mdDialo
         $scope.simulateQueryType = false;
         $scope.isDisabledType = false;
 
-        $scope.querySearchType = function (query) {
-            var results = query ? $scope.postType.filter($scope.createFilterForType(query)) : $scope.postType,
-                deferred;
-            if ($scope.simulateQuery) {
-                deferred = $q.defer();
-                setTimeout(function () {
-                    deferred.resolve(results);
-                }, Math.random() * 1000, false);
-                return deferred.promise;
-            } else {
-                return results;
-            }
-        }
+        $scope.$watch('filter.toDateTime', function (el) {
+            try{
+                var date = new Date(el);
+                date.setDate(date.getDate()-1)
+                $scope.filter.toDate = date.toJSON().slice( 0, 10);
+                PostService.allPostFilter($scope.filter).then(function (data) {
+                    $scope.posts = data.data;
+                });
+            }catch(e){}
+        });
 
-        $scope.createFilterForType = function (query) {
-            return function filterFn(state) {
-                return (state.display.indexOf(query) === 0);
-            };
-        }
+        $scope.$watch('filter.fromDateTime', function (el) {
+            try{
+                var date = new Date(el);
+                date.setDate(date.getDate()-1)
+                $scope.filter.fromDate = date.toJSON().slice( 0, 10);
+                PostService.allPostFilter($scope.filter).then(function (data) {
+                    $scope.posts = data.data;
+                });
+            }catch(e){}
+        });
 
-        $scope.simulateQuery1 = false;
-        $scope.isDisabled1 = false;
-
-        $scope.querySearch = function (query) {
-            var results = query ? $scope.cities.filter($scope.createFilterFor(query)) : $scope.cities,
-                deferred;
-            if ($scope.simulateQuery) {
-                deferred = $q.defer();
-                setTimeout(function () {
-                    deferred.resolve(results);
-                }, Math.random() * 1000, false);
-                return deferred.promise;
-            } else {
-                return results;
-            }
-        }
-
-        $scope.createFilterFor = function (query) {
-            return function filterFn(state) {
-                return (state.name.indexOf(query) === 0);
-            };
-        }
-
-        $scope.simulateQuery1 = false;
-        $scope.isDisabled1 = false;
-
-        $scope.querySearch1 = function (query) {
-            var results = query ? $scope.cities.filter($scope.createFilterFor1(query)) : $scope.cities,
-                deferred;
-            if ($scope.simulateQuery) {
-                deferred = $q.defer();
-                setTimeout(function () {
-                    deferred.resolve(results);
-                }, Math.random() * 1000, false);
-                return deferred.promise;
-            } else {
-                return results;
-            }
-        }
-
-        $scope.createFilterFor1 = function (query) {
-            return function filterFn(state) {
-                return (state.name.indexOf(query) === 0);
-            };
-        }
+        $scope.filterChange = function () {
+            PostService.allPostFilter($scope.filter).then(function (data) {
+                $scope.posts = data.data;
+            });
+        };
+        
         $scope.getAllPostData = function () {
             PostService.getAllPostData().then(function (posts) {
                 $scope.postsArray = posts.data;
@@ -116,52 +79,6 @@ mainApp.controller('PostController', ['$rootScope', '$scope', '$http', '$mdDialo
         $scope.convertToDate = function (string) {
             return convertToDate(string);
         };
-
-        $scope.$watch('filter.toDate', function (el) {
-            $scope.posts = $scope.postsArray
-
-            var date = (new Date(el));
-            date = date.setDate(date.getDate() - 1);
-
-            try {
-                if ($scope.filter.fromDate) {
-                    $scope.posts = $scope.posts.filter(function (els) {
-                        return new Date(els.when) >= date && new Date(els.when) <= new Date($scope.filter.fromDate);
-                    })
-                } else {
-                    if (el) {
-                        $scope.posts = $scope.posts.filter(function (els) {
-                            return new Date(els.when) >= date;
-                        })
-                    }
-                }
-
-            } catch (e) {
-
-            }
-        });
-
-        $scope.$watch('filter.fromDate', function (el) {
-            $scope.posts = $scope.postsArray;
-            var date = (new Date($scope.filter.toDate));
-            date = date.setDate(date.getDate() - 1);
-            try {
-                if ($scope.filter.toDate) {
-                    $scope.posts = $scope.posts.filter(function (els) {
-                        return new Date(els.when) <= new Date(el) && new Date(els.when) >= date;
-                    })
-                } else {
-                    if (el) {
-                        $scope.posts = $scope.posts.filter(function (els) {
-                            return new Date(els.when) <= new Date(el);
-                        })
-                    }
-                }
-
-            } catch (e) {
-
-            }
-        });
 
         $scope.$watch('filter.fromLocation', function (el) {
             $scope.filter.fromLocation = el == 'Бүх аймаг' ? '' : el;

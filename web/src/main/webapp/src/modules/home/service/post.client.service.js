@@ -17,6 +17,11 @@ mainApp.factory('PostService', function ($http) {
                 return data.data;
             })
         },
+        allPostFilter: function (filter) {
+            return $http({url:SERVICE_URL + '/post',method:'GET',params:filter}).then(function (data) {
+                return data.data;
+            })
+        },
         getCity: function () {
             var promise = $http.get(SERVICE_URL + '/location/city').then(function (data) {
                 return data.data;
@@ -53,6 +58,12 @@ mainApp.factory('PostService', function ($http) {
             });
             return promise;
         },
+        getContactedPostListFilter: function (filter) {
+            var promise = $http({url:SERVICE_URL + '/post/contacted',method:'GET',params:filter}).then(function (data) {
+                return data.data;
+            });
+            return promise;
+        },
         ownPostDeactivate: function (postId, mdToast) {
             $http.post(SERVICE_URL + '/post/close/' + postId).success(function (data) {
                 console.log(data);
@@ -70,6 +81,13 @@ mainApp.factory('PostService', function ($http) {
         },
         getOwnPost: function (ownPosts) {
             var promise = $http.get(SERVICE_URL + '/post/get/' + ownPosts.id).then(function (data) {
+                return data.data;
+            });
+            return promise;
+        },
+
+        getOwnPostFilter: function (filter) {
+            var promise = $http({url:SERVICE_URL + '/post/own',method:'GET',params:filter}).then(function (data) {
                 return data.data;
             });
             return promise;

@@ -8,10 +8,32 @@ mainApp.controller('OwnPostController', ['$rootScope', '$scope', '$http', '$mdDi
         $scope.paging = 0;
         $scope.auth = AuthService.getAuthentication();
 
-        $scope.filter = {
+        $scope.ownFilter = {
             fromDate: '',
             toDate: ''
         };
+
+        $scope.$watch('ownFilter.toDateTime', function (el) {
+            try{
+                var date = new Date(el);
+                date.setDate(date.getDate()+1)
+                $scope.ownFilter.toDate = date.toJSON().slice( 0, 10);
+                PostService.getOwnPostFilter($scope.ownFilter).then(function (data) {
+                    $scope.ownPosts = data.data;
+                });
+            }catch(e){}
+        });
+
+        $scope.$watch('ownFilter.fromDateTime', function (el) {
+            try{
+                var date = new Date(el);
+                date.setDate(date.getDate()-1)
+                $scope.ownFilter.fromDate = date.toJSON().slice( 0, 10);
+                PostService.getOwnPostFilter($scope.ownFilter).then(function (data) {
+                    $scope.ownPosts = data.data;
+                });
+            }catch(e){}
+        });
 
         $scope.ownPost = function () {
             PostService.getOwnPostList($scope.paging).then(function (res) {
@@ -98,6 +120,12 @@ mainApp.controller('OwnPostController', ['$rootScope', '$scope', '$http', '$mdDi
                 }
             });
 
+        };
+
+        $scope.filterChange = function () {
+            PostService.getOwnPostFilter($scope.ownFilter).then(function (data) {
+                $scope.ownPosts = data.data;
+            });
         };
 
         $scope.closeDialog = function () {

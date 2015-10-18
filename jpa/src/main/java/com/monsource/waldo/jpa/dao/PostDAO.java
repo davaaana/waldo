@@ -80,7 +80,7 @@ public class PostDAO extends DataAccessObject {
             criteria.add(Restrictions.ge("when", filter.getFromDate()));
         }
 
-        if (filter.getFromDate() != null || filter.getToDate() != null) {
+        if (filter.getToDate() != null) {
             criteria.add(Restrictions.le("when", filter.getToDate()));
         }
 
@@ -136,18 +136,100 @@ public class PostDAO extends DataAccessObject {
         return criteria.list();
     }
 
-    public List<PostEntity> findByContactAccountId(Long accountId, Integer page) {
+    public List<PostEntity> findByContactAccountId(Long accountId,Filter filter) {
         Criteria criteria = this.getSession().createCriteria(PostEntity.class);
 
         criteria.createAlias("postContacts", "postContacts");
         criteria.createAlias("postContacts.account", "pa");
 
-        criteria.add(Restrictions.eq("pa.id", accountId));
+        if (filter.getText() != null && !filter.getText().equals("")) {
+            criteria.add(Restrictions.or(
+                    Restrictions.ilike("description", filter.getText())
+            ));
+        }
+
+        if (filter.getFromCityId() != null) {
+            criteria.createAlias("fromCity", "fromCity");
+            criteria.add(Restrictions.eq("fromCity.id", filter.getFromCityId()));
+        }
+
+        if (filter.getType() != null) {
+            criteria.add(Restrictions.eq("type", filter.getType()));
+        }
+
+        if (filter.getToCityId() != null) {
+            criteria.createAlias("toCity", "toCity");
+            criteria.add(Restrictions.eq("toCity.id", filter.getToCityId()));
+        }
+
+        if (filter.getFromDistrictId() != null) {
+            criteria.createAlias("fromDistrict", "fromDistrict");
+            criteria.add(Restrictions.eq("fromDistrict.id", filter.getFromDistrictId()));
+        }
+
+        if (filter.getToDistrictId() != null) {
+            criteria.createAlias("toDistrict", "toDistrict");
+            criteria.add(Restrictions.eq("toDistrict.id", filter.getToDistrictId()));
+        }
+
+        if (filter.getFromDate() != null) {
+            criteria.add(Restrictions.ge("when", filter.getFromDate()));
+        }
+
+        if (filter.getToDate() != null) {
+            criteria.add(Restrictions.le("when", filter.getToDate()));
+        }
+
+        //todo uncomment amaraaaaaaa!!!!!!!!!!!!
+        if (filter.getFromDate() == null) {
+            if (accountId == null) {
+                criteria.add(Restrictions.ge("when", new Date()));
+            }
+        }
+
+        if (filter.getPassanger() != null) {
+            if (filter.getPassanger()) {
+                criteria.add(Restrictions.ge("passanger", 0));
+            } else {
+                criteria.add(Restrictions.eq("passanger", 0));
+            }
+        }
+
+        if (filter.getStuff() != null) {
+            criteria.add(Restrictions.eq("stuff", filter.getStuff()));
+        }
+
+        if (filter.getAnimal() != null) {
+            criteria.add(Restrictions.eq("animal", filter.getAnimal()));
+        }
+
+        if (filter.getTransportation() != null) {
+            criteria.createAlias("transportation", "transportation");
+            criteria.add(Restrictions.eq("transportation.id", filter.getTransportation()));
+        }
+
+        if (filter.getBestView() != null && filter.getBestView() == true) {
+            criteria.addOrder(Order.desc("requestNum"));
+            criteria.addOrder(Order.desc("createdDate"));
+        } else {
+            criteria.addOrder(Order.desc("createdDate"));
+        }
+
+        if (filter.getClosed() == null || filter.getClosed() == false) {
+            criteria.add(Restrictions.eq("closed", false));
+        } else {
+            criteria.add(Restrictions.eq("closed", true));
+        }
 
         criteria.setMaxResults(MAX_POST_RESULTS);
 
-        criteria.setFirstResult(MAX_POST_RESULTS * page);
+        if (filter.getPage() == null || filter.getPage().equals(0)) {
+            criteria.setFirstResult(0);
+        } else {
+            criteria.setFirstResult(MAX_POST_RESULTS * filter.getPage());
+        }
 
+        criteria.add(Restrictions.eq("pa.id", accountId));
         return criteria.list();
     }
 

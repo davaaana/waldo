@@ -7,6 +7,11 @@ mainApp.controller('ContactedPostController', ['$rootScope', '$scope', '$http', 
         $scope.contactedNextBtn = true;
         $scope.rateStep = 1;
 
+        $scope.conFilter = {
+            fromDate: '',
+            toDate: ''
+        };
+
         $scope.paging = 0;
         if (!$scope.auth) {
             window.location.href = '/';
@@ -14,6 +19,34 @@ mainApp.controller('ContactedPostController', ['$rootScope', '$scope', '$http', 
 
         $scope.contactedPost = function () {
             PostService.getContactedPostList($scope.paging).then(function (data) {
+                $scope.contactedPosts = data.data;
+            });
+        };
+
+        $scope.$watch('conFilter.toDateTime', function (el) {
+            try{
+                var date = new Date(el);
+                date.setDate(date.getDate()-1)
+                $scope.conFilter.toDate = date.toJSON().slice( 0, 10);
+                PostService.getContactedPostListFilter($scope.conFilter).then(function (data) {
+                    $scope.contactedPosts = data.data;
+                });
+            }catch(e){}
+        });
+
+        $scope.$watch('conFilter.fromDateTime', function (el) {
+            try{
+                var date = new Date(el);
+                date.setDate(date.getDate()-1)
+                $scope.conFilter.fromDate = date.toJSON().slice( 0, 10);
+                PostService.getContactedPostListFilter($scope.conFilter).then(function (data) {
+                    $scope.contactedPosts = data.data;
+                });
+            }catch(e){}
+        });
+
+        $scope.filterChangeCon = function () {
+            PostService.getContactedPostListFilter($scope.conFilter).then(function (data) {
                 $scope.contactedPosts = data.data;
             });
         };
