@@ -486,6 +486,13 @@ body > .md-dialog-container {
     text-transform: uppercase;
 }
 
+
+.more-txt2{
+    font-weight: 600;
+    color:rgba(0,0,0,0.54);
+    text-transform: uppercase;
+}
+
 .login-link {
     font-size: 10px;
     margin-right: 5px;
@@ -584,13 +591,43 @@ body > .md-dialog-container {
 }
 
 .datepicker-filter-adjust3 {
+     background-color: rgb(250,250,250);
+     margin-top: 0;
+     padding: 0;
+     width: 235px;
+     height: 40px;
+     box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+
+ }
+
+.datepicker-filter-adjust4 {
     background-color: rgb(250,250,250);
     margin-top: 0;
+    border: 0px;
     padding: 0;
     width: 235px;
     height: 40px;
+
+    margin-bottom: 0px;
     box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
 
+}
+
+.datepicker-filter-adjust5 {
+    background-color: rgb(250,250,250);
+    margin-top: 0;
+    border: 0px;
+    padding-left: 10px;
+    width: 190px;
+    height: 40px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+
+}
+
+.text-left{
+    text-align: left;
 }
 
 .md-datepicker-input-container{
@@ -778,6 +815,10 @@ a.md-button.md-warn.md-raised, a.md-button.md-warn.md-fab, .md-button.md-warn.md
 
 .padding-left-35{
     padding-left: 35px;
+}
+
+.padding-left-20{
+    padding-left: 20px;
 }
 
 .login-title{

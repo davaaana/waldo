@@ -1,24 +1,34 @@
 <div layout="row" flex>
     <div layout="column" flex="25" style="padding: 10px;">
         <div style="font-weight: bold">ШҮҮЛТҮҮР:</div>
-       
+
         <div>
             <div class="filter-title">Зарын төрөл</div>
-            <select data-ng-model="ownFilter.type" ng-change="filterChange()">
-                <option value="">Бүх зар</option>
-                <option value="CARRIER">Тээвэрлэх зар</option>
-                <option value="SENDER">Илгээх зар</option>
-            </select>
+
+            <md-select data-ng-model="ownFilter.type" ng-change="filterChange()"
+                       class="datepicker-filter-adjust4">
+                <md-option value="">Бүх зар</md-option>
+                <md-option value="CARRIER">Тээвэрлэх зар</md-option>
+                <md-option value="SENDER">Илгээх зар</md-option>
+            </md-select>
         </div>
         <div>
             <label class="filter-title">Хөдлөх газар</label>
-            <select data-ng-model="ownFilter.fromCityId" ng-change="filterChange()"
-                    ng-options="city.id as city.name for city in cities"></select>
+
+            <md-select class="datepicker-filter-adjust4" data-ng-model="ownFilter.fromCityId"
+                       ng-change="filterChange()">
+                <md-option ng-value="{{city.id}}" ng-repeat="city in cities">{{city.name}}</md-option>
+            </md-select>
+
+
         </div>
         <div>
             <label class="filter-title">Очих газар</label>
-            <select data-ng-model="ownFilter.toCityId" ng-change="filterChange()"
-                    ng-options="city.id as city.name for city in cities"></select>
+            <md-select class="datepicker-filter-adjust4" data-ng-model="ownFilter.toCityId"
+                       ng-change="filterChange()">
+                <md-option ng-value="{{city.id}}" ng-repeat="city in cities">{{city.name}}</md-option>
+            </md-select>
+
         </div>
         <div>
             <label class="filter-title">Явах огноо эхлэх</label>
@@ -149,15 +159,30 @@
                                         </div>
                                     </div>
 
-                                    <div layout="row" class="more-txt padding-top-5" layout-align="start center">
+                                    <div layout="row" class="more-txt2 padding-top-5" layout-align="start center"
+                                         ng-if="ownPost.animal">
                                         <md-icon md-svg-icon="carry"></md-icon>
-                                        <div>АЧААНЫ ТУХАЙ:</div>
-                                        <div><span
-                                                ng-if="ownPost.animal">{{ownPost.animal}}&nbsp;</span><span
-                                                ng-if="ownPost.stuff">{{ownPost.stuff}}</span><span
-                                                ng-if="!ownPost.stuff && !ownPost.stuff">Байхгүй</span>
+                                        <div>Амьтан:</div>
+                                        <div>{{ownPost.animal}}
                                         </div>
                                     </div>
+
+                                    <div layout="row" class="more-txt2 padding-top-5" layout-align="start center"
+                                         ng-if="ownPost.stuff">
+                                        <md-icon md-svg-icon="carry"></md-icon>
+                                        <div>Ачаа:</div>
+                                        <div>{{ownPost.stuff}}
+                                        </div>
+                                    </div>
+
+                                    <div layout="row" class="more-txt2 padding-top-5" layout-align="start center"
+                                         ng-if="!ownPost.stuff && !ownPost.stuff">
+                                        <md-icon md-svg-icon="carry"></md-icon>
+                                        <div>Ачаа:</div>
+                                        <div>Байхгүй
+                                        </div>
+                                    </div>
+
 
                                 </div>
                             </md-card-content>

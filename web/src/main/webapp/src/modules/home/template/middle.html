@@ -28,26 +28,31 @@
 
             </div>
 
-            <div layout="row" flex="50">
+            <div layout="row" flex="50" class="text-left">
                 <div layout="column">
                     <div layout="row" flex class="middle-filter-area">
                         <div layout="column">
                             <span class="filter-title">Зарын төрөл</span>
-                            <select data-ng-model="filter.type" ng-change="filterChange()">
-                                <option value="">Бүх зар</option>
-                                <option value="CARRIER">Тээвэрлэх зар</option>
-                                <option value="SENDER">Илгээх зар</option>
-                            </select>
+                            <md-select data-ng-model="filter.type" ng-change="filterChange()"
+                                       class="datepicker-filter-adjust5">
+                                <md-option value="">Бүх зар</md-option>
+                                <md-option value="CARRIER">Тээвэрлэх зар</md-option>
+                                <md-option value="SENDER">Илгээх зар</md-option>
+                            </md-select>
                         </div>
                         <div layout="column">
                             <label class="filter-title">Хөдлөх газар</label>
-                            <select data-ng-model="filter.fromCityId" ng-change="filterChange()"
-                                    ng-options="city.id as city.name for city in cities"></select>
+                            <md-select class="datepicker-filter-adjust5" data-ng-model="filter.fromCityId"
+                                       ng-change="filterChange()">
+                                <md-option  ng-value="{{city.id}}" ng-repeat="city in cities">{{city.name}}</md-option>
+                            </md-select>
                         </div>
                         <div layout="column">
                             <label class="filter-title">Очих газар</label>
-                            <select data-ng-model="filter.toCityId" ng-change="filterChange()"
-                                    ng-options="city.id as city.name for city in cities"></select>
+                            <md-select class="datepicker-filter-adjust5" data-ng-model="filter.toCityId"
+                                       ng-change="filterChange()">
+                                <md-option  ng-value="{{city.id}}" ng-repeat="city in cities">{{city.name}}</md-option>
+                            </md-select>
                         </div>
 
                     </div>
