@@ -7,6 +7,10 @@ mainApp.controller('PostController', ['$rootScope', '$scope', '$http', '$mdDialo
             toDate: ''
         };
 
+        PostService.getActivateCountPost().then(function (res) {
+            $scope.activatePostCount = res.data;
+        });
+
         $scope.simulateQuery = false;
         $scope.isDisabled = false;
         $scope.postNextBtn = true;

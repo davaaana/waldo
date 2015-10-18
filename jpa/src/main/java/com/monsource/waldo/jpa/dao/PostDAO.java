@@ -33,6 +33,14 @@ public class PostDAO extends DataAccessObject {
         return (PostEntity) criteria.uniqueResult();
     }
 
+    public Integer activateTotalCount() {
+        Criteria criteria = this.getSession().createCriteria(PostEntity.class);
+        Date date = new Date();
+        date.setDate(date.getDate()-1);
+        criteria.add(Restrictions.ge("when", date));
+        return criteria.list().size();
+    }
+
     public void save(final PostEntity postEntity) {
         this.getSession().merge(postEntity);
         this.getSession().flush();

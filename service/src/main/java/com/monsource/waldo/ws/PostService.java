@@ -93,6 +93,17 @@ public class PostService {
         }
     }
 
+    @RequestMapping(value = "/getActivateCountPost", method = RequestMethod.GET, headers = "Accept=application/json")
+    public Result getActivateCount() {
+        try {
+             return new Result(true,postDAO.activateTotalCount());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Result(false,0);
+        }
+    }
+
+
     @RequestMapping(method = RequestMethod.POST, headers = "Accept=application/json")
     @Transactional
     public Result save(@RequestBody Post post) {
