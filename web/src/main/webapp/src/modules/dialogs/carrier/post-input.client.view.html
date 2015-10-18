@@ -6,10 +6,9 @@
                 <md-checkbox ng-model="newPostDataCheck.stuff"
                              aria-label="stuff_checkbox">Ачаа
                 </md-checkbox>
-                <md-input-container>
+                <md-input-container  ng-show="!newPostDataCheck.stuff">
                     <label>Ачааны шаардлага</label>
                     <textarea ng-model="newPost.stuff" type="text"
-                              ng-disabled="!newPostDataCheck.stuff"
                               md-maxlength="70" maxlength="70"></textarea>
                 </md-input-container>
             </div>
@@ -39,7 +38,6 @@
                               md-maxlength="70" maxlength="70"></textarea>
                 </md-input-container>
             </div>
-
             <!--_________________________________________________ PASSANGER INPUT ________________________________________________-->
             <div layout="row">
                 <md-checkbox ng-model="newPostDataCheck.passanger"
@@ -51,14 +49,11 @@
                 </md-input-container>
             </div>
         </div>
-
-
         </div>
     </div>
     <md-divider></md-divider>
     <div layout="row" flex>
         <div layout="column" flex="50" layout-padding layout-align="center start">
-
             <div layout="row">
                 <div layout="column">
                     <label class="filter-title">Хөдлөх хот/аймаг</label>
@@ -67,7 +62,6 @@
                     </md-select>
                 </div>
             </div>
-
             <div layout="row">
                 <div layout="column">
                     <label class="filter-title">Очих хот/аймаг</label>
@@ -76,7 +70,6 @@
                     </md-select>
                 </div>
             </div>
-
             <div layout="row">
                 <div layout="column">
                     <label class="filter-title">Явах огноо эхлэх</label>
@@ -86,11 +79,8 @@
                 </div>
             </div>
         </div>
-
         <md-divider></md-divider>
-
         <div layout="column" flex="50" layout-padding layout-align="center start">
-
             <div layout="row" flex>
                 <div class="column">
                     <label class="filter-title">Хөдлөх дүүрэг/сум</label>
@@ -120,7 +110,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 
     <div layout="row" layout-align="end center">

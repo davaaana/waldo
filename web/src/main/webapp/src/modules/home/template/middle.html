@@ -28,13 +28,13 @@
 
             </div>
 
-            <div layout="row"class="text-left">
-                <div layout="column"  flex="70" >
+            <div layout="row" class="text-left">
+                <div layout="column" flex="70">
                     <div layout="row" flex class="middle-filter-area">
                         <div layout="column">
                             <span class="filter-title">Зарын төрөл</span>
                             <md-select data-ng-model="filter.type" ng-change="filterChange()"
-                                       class="datepicker-filter-adjust5"  placeholder="Сонгох">
+                                       class="datepicker-filter-adjust5" placeholder="Сонгох">
                                 <md-option value="">Бүх зар</md-option>
                                 <md-option value="CARRIER">Тээвэрлэх зар</md-option>
                                 <md-option value="SENDER">Илгээх зар</md-option>
@@ -44,14 +44,14 @@
                             <label class="filter-title">Хөдлөх газар</label>
                             <md-select class="datepicker-filter-adjust5" data-ng-model="filter.fromCityId"
                                        ng-change="filterChange()" placeholder="Сонгох">
-                                <md-option  ng-value="{{city.id}}" ng-repeat="city in cities">{{city.name}}</md-option>
+                                <md-option ng-value="{{city.id}}" ng-repeat="city in cities">{{city.name}}</md-option>
                             </md-select>
                         </div>
                         <div layout="column">
                             <label class="filter-title">Очих газар</label>
                             <md-select class="datepicker-filter-adjust5" data-ng-model="filter.toCityId"
-                                       ng-change="filterChange()"  placeholder="Сонгох">
-                                <md-option  ng-value="{{city.id}}" ng-repeat="city in cities">{{city.name}}</md-option>
+                                       ng-change="filterChange()" placeholder="Сонгох">
+                                <md-option ng-value="{{city.id}}" ng-repeat="city in cities">{{city.name}}</md-option>
                             </md-select>
                         </div>
 
@@ -74,11 +74,21 @@
                             <span>Цэвэрлэх!</span>
                         </md-button>
                     </div>
-                </div>+
-                <div layout="column"  flex="30">
-                    <a href="#" ng-click="signup()">
-                    <div class="register-btn"></div>
-                    </a>
+                </div>
+                +
+                <div layout="column" flex="30">
+
+                    <div class="register">
+                        <a href="#" ng-click="signup()">
+                            <img src="../../../../image/register-bnt-left.png"/>
+                        </a>
+                        <!--<div  class="register-btn"  ng-click="signup()">
+
+                        </div>-->
+
+
+                    </div>
+
                 </div>
             </div>
 

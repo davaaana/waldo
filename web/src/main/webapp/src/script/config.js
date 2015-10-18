@@ -2,8 +2,8 @@ var mainApp = angular.module('waldoApp', ['ui.router','iconsAndThemes', 'ngMater
 
 mainApp.config(['blockUIConfig',
     function(blockUIConfig) {
-        blockUIConfig.templateUrl = 'src/modules/dialogs/loading.client.view.html';
-        //blockUIConfig.message = 'Ачааллаж байна...';
+        //blockUIConfig.templateUrl = 'src/modules/dialogs/loading.client.view.html';
+        blockUIConfig.message = 'Ачааллаж байна...';
         //blockUIConfig.requestFilter = function (response) {
         //    console.log(response);
         //}

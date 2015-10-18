@@ -42,6 +42,12 @@ mainApp.controller('HomeController', ['$rootScope', '$scope', '$http', '$mdDialo
             }
         }
 
+        $scope.signup = function () {
+            dialog.show({
+                templateUrl: './src/modules/dialogs/signup.client.view.html'
+            });
+        };
+
         $scope.logout = function () {
             AuthService.logout();
         };

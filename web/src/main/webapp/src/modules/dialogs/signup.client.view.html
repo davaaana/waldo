@@ -21,13 +21,14 @@
                                     <label>Хэрэглэгчийн нэр</label>
                                     <input ng-model="register.username" name="username" type="text" required autofocus>
                                 </md-input-container>
-                                <md-input-container>
-                                    <label>Нэр</label>
-                                    <input ng-model="register.firstname" name="firstname" type="text" required>
-                                </md-input-container>
+
                                 <md-input-container>
                                     <label>Овог</label>
                                     <input ng-model="register.lastname" name="lastname" type="text" required>
+                                </md-input-container>
+                                <md-input-container>
+                                    <label>Нэр</label>
+                                    <input ng-model="register.firstname" name="firstname" type="text" required>
                                 </md-input-container>
                                 <md-input-container>
                                     <label>Гар утас</label>
@@ -129,14 +130,13 @@
                     </div>
 
                 </form>
-                <div layout="column" layout-align="space-around center" data-ng-show="formHide">
-                    {{register.username}}
-                    <div>Сайн байна уу</div>
-                    <div>WALDO програмд бүртгүүлсэнд баярлалаа</div>
-                    <md-button ng-click="closeDialog()" class="btn btn-lg  btn-block btn-success">Хаах</md-button>
-                </div>
             </md-content>
-
+            <div layout="column" layout-align="space-around center" data-ng-show="formHide">
+                <div style="font-weight: bold; text-transform: uppercase">{{register.username}}</div>
+                <div>Сайн байна уу</div>
+                <div>WALDO програмд бүртгүүлсэнд баярлалаа</div>
+                <md-button ng-click="closeDialog()" class="btn btn-lg  btn-block btn-success">Хаах</md-button>
+            </div>
 
         </section>
     </md-dialog-content>
