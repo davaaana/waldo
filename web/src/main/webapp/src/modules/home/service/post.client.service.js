@@ -46,6 +46,12 @@ mainApp.factory('PostService', function ($http) {
                 return data.data;
             });
         },
+        getActivateCountPost: function () {
+            var promise = $http.get(SERVICE_URL + '/post/getActivateCountPost').then(function (data) {
+                return data.data;
+            });
+            return promise;
+        },
         getOwnPostList: function (page) {
             var promise = $http.get(SERVICE_URL + '/post/own?page=' + page).then(function (data) {
                 return data.data;
