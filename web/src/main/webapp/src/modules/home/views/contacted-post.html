@@ -70,7 +70,7 @@
             </div>
             <div flex="25" layout="row" class="filter-result">
                 <div  layout="column" class="quick-title">Эрэмблэх:</div>
-                <select ng-model="filter.quickFilter" class="quick-filter2"  layout="column">>
+                <select ng-model="quickFilter" class="quick-filter2"  layout="column">>
                     <option value="-createdDate">Сүүлд орсон</option>
                     <option value=-requestNum>Их үзсэн</option>
                 </select>
@@ -83,7 +83,7 @@
                     md-cols-sm="1" md-cols-gt-sm="1" md-cols-gt-lg="1"
                     md-row-height="165px"
                     md-gutter="6px" md-gutter-gt-sm="3px" flex>
-                <md-grid-title ng-repeat="contactedPost in contactedPosts"> <!--| orderBy:'-createdDate' | filter:allPostCtrl.filterResult.postType | filter:{to:allPostCtrl.filterResult.toLocation}  | filter:{from:allPostCtrl.filterResult.fromLocation} | filter:{when: allPostCtrl.filterResult.toDate} | filter:{arrive: allPostCtrl.filterResult.fromDate} | filter:allPostCtrl.filterResult.transportationType | orderBy:allPostCtrl.filterResult.quickFilter">-->
+                <md-grid-title ng-repeat="contactedPost in contactedPosts | orderBy: quickFilter"> <!--| orderBy:'-createdDate' | filter:allPostCtrl.filterResult.postType | filter:{to:allPostCtrl.filterResult.toLocation}  | filter:{from:allPostCtrl.filterResult.fromLocation} | filter:{when: allPostCtrl.filterResult.toDate} | filter:{arrive: allPostCtrl.filterResult.fromDate} | filter:allPostCtrl.filterResult.transportationType | orderBy:allPostCtrl.filterResult.quickFilter">-->
                     <md-card layout="column" flex>
                         <div layout="row"
                              flex
