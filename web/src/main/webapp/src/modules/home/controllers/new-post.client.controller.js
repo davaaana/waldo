@@ -91,15 +91,15 @@ mainApp.controller('NewPostController', ['$rootScope', '$scope','$http','$mdDial
         }
 
         $scope.$watch('newPost.fromCityId', function (el) {
-            $scope.fromDistricts = {};
             PostService.getDistrict(el).then(function (res) {
+                $scope.fromDistricts = {};
                 $scope.fromDistricts = res;
             });
         });
 
         $scope.$watch('newPost.toCityId', function (el) {
-            $scope.toDistricts = {};
             PostService.getDistrict(el).then(function (res) {
+                $scope.toDistricts = {};
                 $scope.toDistricts = res;
             });
         });
