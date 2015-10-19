@@ -38,6 +38,7 @@ public class PostDAO extends DataAccessObject {
         Date date = new Date();
         date.setDate(date.getDate()-1);
         criteria.add(Restrictions.ge("when", date));
+        criteria.add(Restrictions.eq("closed", false));
         return criteria.list().size();
     }
 
