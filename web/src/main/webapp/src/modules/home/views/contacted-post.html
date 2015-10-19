@@ -7,7 +7,7 @@
         <div>
             <div class="filter-title">Зарын төрөл</div>
 
-            <md-select data-ng-model="conFilter.type" ng-change="filterChange()"
+            <md-select data-ng-model="conFilter.type" ng-change="filterChangeCon()"
                        class="datepicker-filter-adjust4">
                 <md-option value="">Бүх зар</md-option>
                 <md-option value="CARRIER">Тээвэрлэх зар</md-option>
@@ -18,7 +18,7 @@
             <label class="filter-title">Хөдлөх газар</label>
 
             <md-select class="datepicker-filter-adjust4" data-ng-model="conFilter.fromCityId"
-                       ng-change="filterChange()">
+                       ng-change="filterChangeCon()">
                 <md-option ng-value="{{city.id}}" ng-repeat="city in cities">{{city.name}}</md-option>
             </md-select>
 
@@ -27,7 +27,7 @@
         <div>
             <label class="filter-title">Очих газар</label>
             <md-select class="datepicker-filter-adjust4" data-ng-model="conFilter.toCityId"
-                       ng-change="filterChange()">
+                       ng-change="filterChangeCon()">
                 <md-option ng-value="{{city.id}}" ng-repeat="city in cities">{{city.name}}</md-option>
             </md-select>
 
