@@ -2,6 +2,7 @@ mainApp.factory('PostService', function ($http) {
     return {
         getAllPostData: function () {
             return $http.get(SERVICE_URL + '/post').then(function (posts) {
+
                 return posts = posts.data;
 
             });
