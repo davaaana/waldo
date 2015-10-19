@@ -35,6 +35,16 @@ mainApp.controller('UserController', ['$rootScope', '$scope','$http','$mdDialog'
             });
         };
 
+        $scope.signup = function () {
+            dialog.show({
+                templateUrl: './src/modules/dialogs/signup.client.view.html'
+            });
+        };
+
+        $scope.saveSignup = function () {
+            UserService.signup($scope);
+        }
+
         $scope.signin = function () {
             $http({
                 method: 'POST',

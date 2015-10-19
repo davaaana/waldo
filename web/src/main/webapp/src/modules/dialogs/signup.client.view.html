@@ -1,10 +1,10 @@
-<md-dialog aria-label="Sign-un" ng-controller="SignUpController">
+<md-dialog aria-label="Sign-un" ng-controller="UserController">
     <md-toolbar class="md-accent">
         <span class="md-toolbar-tools">
             <md-icon md-svg-icon="account"></md-icon>
             <span>Хэрэглчийн бүртгэл</span>
             <span flex></span>
-            <md-button ng-click="close()" aria-label="Close" class="md-icon-button">
+            <md-button ng-click="closeDialog()" aria-label="Close" class="md-icon-button">
                 <md-icon md-svg-icon="close"></md-icon>
             </md-button>
         </span>
@@ -133,7 +133,7 @@
                     {{register.username}}
                     <div>Сайн байна уу</div>
                     <div>WALDO програмд бүртгүүлсэнд баярлалаа</div>
-                    <md-button ng-click="close()" class="btn btn-lg  btn-block btn-success">Хаах</md-button>
+                    <md-button ng-click="closeDialog()" class="btn btn-lg  btn-block btn-success">Хаах</md-button>
                 </div>
             </md-content>
 
