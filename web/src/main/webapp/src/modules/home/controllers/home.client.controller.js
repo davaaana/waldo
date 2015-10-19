@@ -55,7 +55,10 @@ mainApp.controller('HomeController', ['$rootScope', '$scope', '$http', '$mdDialo
         $scope.newPost = function () {
             if (AuthService.getAuthentication() == true) {
                 dialog.show({
-                    templateUrl: './src/modules/dialogs/post-create.client.view.html'
+                    parent: angular.element(document.body),
+                    scope: $scope.$new(),
+                    templateUrl: './src/modules/dialogs/post-create.client.view.html',
+                    controller: 'NewPostController'
                 });
             } else {
                 dialog.show({

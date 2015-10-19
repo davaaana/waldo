@@ -112,8 +112,9 @@
 
     <div layout="row" layout-align="end center">
         <md-button ng-click="newPostSteps(2)">Буцах</md-button>
-        <md-button ng-click="completePost()" class="md-primary"
-                   ng-disabled="!newPost.policies">Зар хадгалах
+       zar hadgalah tsaash  {{newPost.arrive}}
+        <md-button ng-click="completePost(newPostDataCheck.policyId,newPost)" class="md-primary"
+                   ng-disabled="!newPostDataCheck.policyId">Зар хадгалах
         </md-button>
     </div>
 

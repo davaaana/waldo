@@ -5,7 +5,7 @@ mainApp.controller('NewPostController', ['$rootScope', '$scope','$http','$mdDial
 
         $scope.toDistricts = {};
         $scope.fromDistricts = {};
-
+        $scope.createData = {};
         $scope.init = function () {
             PostService.getTransportation().then(function (res) {
                     $scope.transportation = JSON.parse(angular.toJson(res.data));
@@ -48,9 +48,10 @@ mainApp.controller('NewPostController', ['$rootScope', '$scope','$http','$mdDial
             }
         };
 
-        $scope.completePost = function () {
+        $scope.completePost = function (el) {
+
             for(var i in $scope.policy){
-                if($scope.policy[i].id == $scope.newPostDataCheck.policyId){
+                if($scope.policy[i].id == el){
                     $scope.newPost.policies = [$scope.policy[i]];
                 }
             }
@@ -69,8 +70,46 @@ mainApp.controller('NewPostController', ['$rootScope', '$scope','$http','$mdDial
             if ($scope.newPost.contact == null) {
                 $scope.newPost.contact = "";
             }
+            var data = {};
+            if($scope.newPost.id){
+                data = {
+                    animal:$scope.newPost.animal,
+                    arrive:$scope.newPost.arrive,
+                    contact:$scope.newPost.contact,
+                    description:$scope.newPost.description,
+                    fromCityId:$scope.newPost.fromCityId,
+                    fromDistrictId:$scope.newPost.fromDistrictId,
+                    passanger:$scope.newPost.passanger,
+                    policies:$scope.newPost.policies,
+                    stuff:$scope.newPost.stuff,
+                    toCityId:$scope.newPost.toCityId,
+                    toDistrictId:$scope.newPost.toDistrictId,
+                    transportationId:$scope.newPost.transportationId,
+                    type:$scope.newPost.type,
+                    when:$scope.newPost.when,
+                    id:$scope.newPost.id
+                }
+            }else{
+                data = {
+                    animal:$scope.newPost.animal,
+                    arrive:$scope.newPost.arrive,
+                    contact:$scope.newPost.contact,
+                    description:$scope.newPost.description,
+                    fromCityId:$scope.newPost.fromCityId,
+                    fromDistrictId:$scope.newPost.fromDistrictId,
+                    passanger:$scope.newPost.passanger,
+                    policies:$scope.newPost.policies,
+                    stuff:$scope.newPost.stuff,
+                    toCityId:$scope.newPost.toCityId,
+                    toDistrictId:$scope.newPost.toDistrictId,
+                    transportationId:$scope.newPost.transportationId,
+                    type:$scope.newPost.type,
+                    when:$scope.newPost.when
+                }
+            }
 
-            $http.post(SERVICE_URL + '/post', $scope.newPost).success(function (data) {
+
+            $http.post(SERVICE_URL + '/post', data).success(function (data) {
                 if (data.success == true) {
                     dialog.cancel();
 
@@ -91,17 +130,23 @@ mainApp.controller('NewPostController', ['$rootScope', '$scope','$http','$mdDial
         }
 
         $scope.$watch('newPost.fromCityId', function (el) {
-            PostService.getDistrict(el).then(function (res) {
-                $scope.fromDistricts = {};
-                $scope.fromDistricts = res;
-            });
+            if(el){
+                PostService.getDistrict(el).then(function (res) {
+                    $scope.fromDistricts = {};
+                    $scope.fromDistricts = res;
+                });
+            }
+
         });
 
         $scope.$watch('newPost.toCityId', function (el) {
-            PostService.getDistrict(el).then(function (res) {
-                $scope.toDistricts = {};
-                $scope.toDistricts = res;
-            });
+            if(el){
+                PostService.getDistrict(el).then(function (res) {
+                    $scope.toDistricts = {};
+                    $scope.toDistricts = res;
+                });
+            }
+
         });
 
         $scope.step = 1;
