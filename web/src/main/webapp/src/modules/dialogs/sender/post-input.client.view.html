@@ -1,4 +1,4 @@
-<md-content layout="column" layout-fill>
+<md-content layout="column" layout-fill ng-init="init()">
     <section layout="row" flex>
         <div layout="column" flex="50" layout-padding layout-align="center center">
             <span>Илгээх зүйлс</span>
@@ -10,7 +10,7 @@
                     </md-checkbox>
                     <md-input-container>
                         <label>Ачааны тайлбар</label>
-                        <textarea ng-model="newPostData.stuff" type="text"
+                        <textarea ng-model="newPost.stuff" type="text"
                                   ng-disabled="!newPostDataCheck.stuff"
                                   md-maxlength="70"  maxlength="70"></textarea>
                     </md-input-container>
@@ -22,7 +22,7 @@
                                  aria-label="passanger_checkbox">Зорчигч
                     </md-checkbox>
                     <md-input-container>
-                        <input ng-model="newPostData.passanger" type="number"
+                        <input ng-model="newPost.passanger" type="number"
                                ng-disabled="!newPostDataCheck.passanger" min="1" max="50">
                     </md-input-container>
                 </div>
@@ -33,7 +33,7 @@
                     </md-checkbox>
                     <md-input-container>
                         <label>Амьтаны тайлбар</label>
-                        <textarea ng-model="newPostData.animal" type="text"
+                        <textarea ng-model="newPost.animal" type="text"
                                   ng-disabled="!newPostDataCheck.animal"
                                   md-maxlength="70"  maxlength="70"></textarea>
                     </md-input-container>
@@ -48,13 +48,11 @@
                 <md-input-container layout="column" flex="50">
                     <label>Явах хот аймаг<span class="star-red">*</span></label>
                     <md-select
-                            ng-model="newPostData.fromCityId">
+                            ng-model="newPost.fromCityId">
                         <md-option
-                                ng-selected="{{carrierFromCities.id == newPostData.fromCityId.id}}"
-                                ng-repeat="carrierFromCities in city"
-                                ng-value="{{carrierFromCities}}"
-                                ng-click="district(carrierFromCities.id)">
-                            {{carrierFromCities.name}}
+                                ng-repeat="city in cities"
+                                ng-value="{{city.id}}">
+                            {{city.name}}
                         </md-option>
                     </md-select>
                 </md-input-container>
@@ -62,11 +60,10 @@
                 <md-input-container layout="column" flex="50">
                     <label>Явах дүүрэг сум<span class="star-red">*</span></label>
                     <md-select
-                            ng-model="newPostData.fromDistrictId" flex>
-                        <md-option ng-repeat="carrierFromDistrict in districtdata"
-                                   ng-value="{{carrierFromDistrict}}"
-                                   ng-selected="{{carrierFromDistrict.id == newPostData.fromDistrictId.id}}">
-                            {{carrierFromDistrict.name}}
+                            ng-model="newPost.fromDistrictId" flex>
+                        <md-option ng-repeat="district in fromDistricts"
+                                   ng-value="{{district.id}}">
+                            {{district.name}}
                         </md-option>
                     </md-select>
                 </md-input-container>
@@ -77,13 +74,11 @@
                 <md-input-container layout="column" flex="50">
                     <label>Очих хот аймаг<span class="star-red">*</span></label>
                     <md-select
-                            ng-model="newPostData.toCityId">
+                            ng-model="newPost.toCityId">
 
-                        <md-option ng-repeat="carrierToCities in city"
-                                   ng-value="{{carrierToCities}}"
-                                   ng-click="district2(carrierToCities.id)"
-                                   ng-selected="{{carrierToCities.id == newPostData.toCityId.id}}">
-                            {{carrierToCities.name}}
+                        <md-option ng-repeat="city in cities"
+                                   ng-value="{{city.id}}">
+                            {{city.name}}
                         </md-option>
                     </md-select>
                 </md-input-container>
@@ -91,11 +86,10 @@
                 <md-input-container layout="column" flex="50">
                     <label>Очих дүүрэг сум<span class="star-red">*</span></label>
                     <md-select
-                            ng-model="newPostData.toDistrictId">
-                        <md-option ng-repeat="carrierToDistrict in district2data"
-                                   ng-value="{{carrierToDistrict}}"
-                                   ng-selected="{{carrierToDistrict.id == newPostData.toDistrictId.id}}">
-                            {{carrierToDistrict.name}}
+                            ng-model="newPost.toDistrictId">
+                        <md-option ng-repeat="district in toDistricts"
+                                   ng-value="{{district.id}}">
+                            {{district.name}}
                         </md-option>
                     </md-select>
                 </md-input-container>
@@ -103,13 +97,13 @@
             <div layout="column">
                 <div layout="row" layout-align="center center">
                     <label>Хөдлөх<span class="star-red">*</span></label>
-                    <md-datepicker ng-model="newPostDataCheck.leaveDate"
+                    <md-datepicker ng-model="newPost.when"
                                    md-placeholder="Явах өдөр"></md-datepicker>
                 </div>
 
                 <div layout="row" layout-align="center center">
                     <label>Хүрэх<span class="star-red">*</span></label>
-                    <md-datepicker ng-model="newPostDataCheck.arriveDate"
+                    <md-datepicker ng-model="newPost.arrive"
                                    md-placeholder="Очих өдөр"></md-datepicker>
                 </div>
 
@@ -119,7 +113,7 @@
     <div layout="row" layout-align="end center">
         <md-button ng-click="newPostSteps(1)">Буцах</md-button>
         <md-button ng-click="newPostSteps(5)" class="md-primary"
-                   ng-disabled="!newPostData.toCityId.name || !newPostData.fromCityId.name || !newPostDataCheck.leaveDate || !newPostDataCheck.arriveDate || (!newPostData.stuff && !newPostData.passanger && !newPostData.animal)">
+                   ng-disabled="!newPost.toCityId || !newPost.fromCityId ||  (!newPost.stuff && !newPost.passanger && !newPost.animal)"> <!--!newPostDataCheck.leaveDate || !newPostDataCheck.arriveDate ||-->
             Сүүлчийн алхам
         </md-button>
     </div>

@@ -1,4 +1,4 @@
-<md-content layout="column" layout-fill>
+<md-content layout="column" layout-fill ng-init="init()">
     <div layout="row" flex>
         <div layout="column" flex="50" layout-padding layout-align="center start">
             <!--_________________________________________________ PACKAGE INPUT ________________________________________________-->
@@ -8,7 +8,7 @@
                 </md-checkbox>
                 <md-input-container>
                     <label>Ачааны шаардлага</label>
-                    <textarea ng-model="newPostData.stuffDesc" type="text"
+                    <textarea ng-model="newPost.stuff" type="text"
                               ng-disabled="!newPostDataCheck.stuff"
                               md-maxlength="70" maxlength="70"></textarea>
                 </md-input-container>
@@ -17,11 +17,10 @@
             <md-input-container>
                 <label>Тээврийн хэрэгсэлийн төрөл<span class="star-red">*</span></label>
                 <md-select
-                        ng-model="newPostData.transportationId">
-                    <md-option ng-repeat="carrierTransportations in transportation"
-                               ng-value="{{carrierTransportations}}"
-                               ng-selected="carrierTransportations.id==newPostData.transportationId.id">
-                        {{carrierTransportations.name}}
+                        ng-model="newPost.transportationId">
+                    <md-option ng-repeat="transport in transportation"
+                               ng-value="{{transport.id}}">
+                        {{transport.name}}
                     </md-option>
                 </md-select>
             </md-input-container>
@@ -35,7 +34,7 @@
                 </md-checkbox>
                 <md-input-container>
                     <label>Амьтаны шаардлага</label>
-                    <textarea ng-model="newPostData.animal" type="text"
+                    <textarea ng-model="newPost.animal" type="text"
                               ng-disabled="!newPostDataCheck.animal"
                               md-maxlength="70" maxlength="70"></textarea>
                 </md-input-container>
@@ -47,7 +46,7 @@
                              aria-label="passanger_checkbox">Зорчигч
                 </md-checkbox>
                 <md-input-container>
-                    <input ng-model="newPostData.passanger" type="number" value="1"
+                    <input ng-model="newPost.passanger" type="number" value="1"
                            ng-disabled="!newPostDataCheck.passanger" min="1" max="50">
                 </md-input-container>
             </div>
@@ -63,45 +62,27 @@
             <div layout="row">
                 <div layout="column">
                     <label class="filter-title">Хөдлөх хот/аймаг</label>
-                    <md-autocomplete ng-disabled="isDisabled" md-no-cache="noCache" md-selected-item="selectedItem"
-                                     md-search-text-change="searchTextChange(searchText)" md-search-text="searchText"
-                                     md-selected-item-change="filter.fromLocation = item.name"
-                                     md-items="item in querySearch(searchText)" md-item-text="item.name"
-                                     md-min-length="0" placeholder="Хаанаас" class="adds-filed">
-                        <md-item-template>
-                            <span md-highlight-text="searchText" md-highlight-flags="^i">{{item.name}}</span>
-                        </md-item-template>
-                        <md-not-found>
-                            "{{searchText}}" хайлт олдсонгүй.
-                        </md-not-found>
-                    </md-autocomplete>
+                    <md-select class="datepicker-filter-adjust5" data-ng-model="newPost.fromCityId" placeholder="Сонгох">
+                        <md-option  ng-value="{{city.id}}" ng-repeat="city in cities">{{city.name}}</md-option>
+                    </md-select>
                 </div>
             </div>
 
             <div layout="row">
                 <div layout="column">
                     <label class="filter-title">Очих хот/аймаг</label>
-                    <md-autocomplete ng-disabled="isDisabled" md-no-cache="noCache" md-selected-item="selectedItem"
-                                     md-search-text-change="searchTextChange(searchText)" md-search-text="searchText"
-                                     md-selected-item-change="filter.fromLocation = item.name"
-                                     md-items="item in querySearch(searchText)" md-item-text="item.name"
-                                     md-min-length="0" placeholder="Хаанаас" class="adds-filed">
-                        <md-item-template>
-                            <span md-highlight-text="searchText" md-highlight-flags="^i">{{item.name}}</span>
-                        </md-item-template>
-                        <md-not-found>
-                            "{{searchText}}" хайлт олдсонгүй.
-                        </md-not-found>
-                    </md-autocomplete>
+                    <md-select class="datepicker-filter-adjust5" data-ng-model="newPost.toCityId" placeholder="Сонгох">
+                        <md-option  ng-value="{{city.id}}" ng-repeat="city in cities">{{city.name}}</md-option>
+                    </md-select>
                 </div>
             </div>
 
             <div layout="row">
                 <div layout="column">
                     <label class="filter-title">Явах огноо эхлэх</label>
-                    <md-datepicker ng-model="newPostDataCheck.leaveDate" md-placeholder="Сонгох" format="yyyy.MM.dd"
-
-                                   class="datepicker-filter-adjust2"></md-datepicker>
+                    <md-datepicker ng-model="newPost.when" md-placeholder="Сонгох" format="yyyy.MM.dd"
+                                   class="datepicker-filter-adjust2"
+                                   md-min-date="newPostDataCheck.arriveDate"></md-datepicker>
                 </div>
             </div>
         </div>
@@ -113,38 +94,18 @@
             <div layout="row" flex>
                 <div class="column">
                     <label class="filter-title">Хөдлөх дүүрэг/сум</label>
-                    <md-autocomplete ng-disabled="isDisabled" md-no-cache="noCache" md-selected-item="selectedItem"
-                                     md-search-text-change="searchTextChange(searchText)" md-search-text="searchText"
-                                     md-selected-item-change="filter.fromLocation = item.name"
-                                     md-items="item in querySearch(searchText)" md-item-text="item.name"
-                                     md-min-length="0"
-                                     placeholder="Хаанаас" class="adds-filed">
-                        <md-item-template>
-                            <span md-highlight-text="searchText" md-highlight-flags="^i">{{item.name}}</span>
-                        </md-item-template>
-                        <md-not-found>
-                            "{{searchText}}" хайлт олдсонгүй.
-                        </md-not-found>
-                    </md-autocomplete>
+                    <md-select class="datepicker-filter-adjust5" data-ng-model="newPost.fromDistrictId" placeholder="Сонгох">
+                        <md-option  ng-value="{{district.id}}" ng-repeat="district in fromDistricts">{{district.name}}</md-option>
+                    </md-select>
                 </div>
             </div>
 
             <div layout="row">
                 <div class="column">
                     <label class="filter-title">Очих дүүрэг/сум</label>
-                    <md-autocomplete ng-disabled="isDisabled" md-no-cache="noCache" md-selected-item="selectedItem"
-                                     md-search-text-change="searchTextChange(searchText)" md-search-text="searchText"
-                                     md-selected-item-change="filter.fromLocation = item.name"
-                                     md-items="item in querySearch(searchText)" md-item-text="item.name"
-                                     md-min-length="0"
-                                     placeholder="Хаанаас" class="adds-filed">
-                        <md-item-template>
-                            <span md-highlight-text="searchText" md-highlight-flags="^i">{{item.name}}</span>
-                        </md-item-template>
-                        <md-not-found>
-                            "{{searchText}}" хайлт олдсонгүй.
-                        </md-not-found>
-                    </md-autocomplete>
+                    <md-select class="datepicker-filter-adjust5" data-ng-model="newPost.toDistrictId" placeholder="Сонгох">
+                        <md-option  ng-value="{{district.id}}" ng-repeat="district in toDistricts">{{district.name}}</md-option>
+                    </md-select>
                 </div>
             </div>
 
@@ -152,7 +113,7 @@
 
                 <div layout="column">
                     <label class="filter-title">Явах огноо дуусах</label>
-                    <md-datepicker ng-model="newPostDataCheck.arriveDate" md-placeholder="Сонгох"
+                    <md-datepicker ng-model="newPost.arrive" md-placeholder="Сонгох"
 
                                    class="datepicker-filter-adjust2"
                                    md-min-date="newPostDataCheck.leaveDate"></md-datepicker>
@@ -165,7 +126,7 @@
     <div layout="row" layout-align="end center">
         <md-button ng-click="newPostSteps(1)">Буцах</md-button>
         <md-button ng-click="newPostSteps(4)" class="md-primary"
-                   ng-disabled="!newPostData.toCityId.name || !newPostData.fromCityId.name || !newPostData.transportationId.name || !newPostDataCheck.leaveDate || !newPostDataCheck.arriveDate || (!newPostData.stuff && !newPostData.passanger && !newPostData.animal)">
+                   ng-disabled="!newPost.toCityId || !newPost.fromCityId || !newPost.transportationId || (!newPost.stuff && !newPost.passanger && !newPost.animal)"><!---->
             Сүүлчийн алхам
         </md-button>
     </div>

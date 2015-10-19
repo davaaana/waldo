@@ -1,4 +1,15 @@
-var mainApp = angular.module('waldoApp', ['ui.router','iconsAndThemes', 'ngMaterial']);
+var mainApp = angular.module('waldoApp', ['ui.router','iconsAndThemes', 'ngMaterial','blockUI']);
+
+mainApp.config(['blockUIConfig',
+    function(blockUIConfig) {
+        blockUIConfig.templateUrl = 'src/modules/dialogs/loading.client.view.html';
+        //blockUIConfig.message = 'Ачааллаж байна...';
+        //blockUIConfig.requestFilter = function (response) {
+        //    console.log(response);
+        //}
+        //blockUIConfig.autoBlock  = false;
+    }
+]);
 
 var SERVICE_URL = '/ws';
 

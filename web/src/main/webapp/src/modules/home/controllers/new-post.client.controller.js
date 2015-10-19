@@ -1,11 +1,108 @@
 'use strict';
 
-mainApp.controller('NewPostController', ['$rootScope', '$scope','$http','$mdDialog', 'UserService','$location',
-    function ($rootScope, $scope,$http,dialog,AuthService,$location) {
+mainApp.controller('NewPostController', ['$rootScope', '$scope','$http','$mdDialog','$mdToast', 'UserService','PostService','$location',
+    function ($rootScope, $scope,$http,dialog,$mdToast,UserService,PostService,$location) {
 
-        $scope.closeDialog = function () {
-            dialog.cancel();
+        $scope.toDistricts = {};
+        $scope.fromDistricts = {};
+
+        $scope.init = function () {
+            PostService.getTransportation().then(function (res) {
+                    $scope.transportation = JSON.parse(angular.toJson(res.data));
+            });
+
+            PostService.getCity().then(function (res) {
+                $scope.cities = res;
+            });
+
+            PostService.getPolicy().then(function (res) {
+                $scope.policy = JSON.parse(JSON.stringify(res.data));
+            })
         };
+
+        $scope.toDistrictGetName = function (id) {
+            for(var i in $scope.toDistricts){
+                if($scope.toDistricts[i].id == id)
+                    return $scope.toDistricts[i].name;
+            }
+        };
+
+        $scope.transportGetName = function (id) {
+            for(var i in $scope.transportation){
+                if($scope.transportation[i].id == id)
+                    return $scope.transportation[i].name;
+            }
+        };
+
+        $scope.fromDistrictGetName = function (id) {
+            for(var i in $scope.fromDistricts){
+                if($scope.fromDistricts[i].id == id)
+                    return $scope.fromDistricts[i].name;
+            }
+        };
+
+        $scope.cityGetName = function (id) {
+            for(var i in $scope.cities){
+                if($scope.cities[i].id == id)
+                    return $scope.cities[i].name;
+            }
+        };
+
+        $scope.completePost = function () {
+            for(var i in $scope.policy){
+                if($scope.policy[i].id == $scope.newPostDataCheck.policyId){
+                    $scope.newPost.policies = [$scope.policy[i]];
+                }
+            }
+
+            $scope.newPost.when = $scope.newPost.when.toJSON().slice(0, 10)
+            $scope.newPost.arrive = $scope.newPost.arrive.toJSON().slice(0, 10)
+            if ($scope.newPost.transportationId != null)
+            {
+                $scope.newPost.transportationId;
+            }
+
+            if ($scope.newPost.description == null) {
+                $scope.newPost.description = "";
+            }
+
+            if ($scope.newPost.contact == null) {
+                $scope.newPost.contact = "";
+            }
+
+            $http.post(SERVICE_URL + '/post', $scope.newPost).success(function (data) {
+                if (data.success == true) {
+                    dialog.cancel();
+
+                    setTimeout(function () {
+                        $mdToast.showSimple('Зар амжилттай хадгалагдлаа');
+                    }, 1000);
+
+                    window.location.reload(true);
+                }
+                else {
+                    $mdToast.showSimple('Баазад хадгалхад алдаа өглөө : ' + data);
+                }
+            }).error(function (data, status) {
+
+                //console.log('Баазын хадгалах функ алдаа өглөө : ' + data);
+            });
+            $scope.newPostData2 = null;
+        }
+
+        $scope.$watch('newPost.fromCityId', function (el) {
+            $scope.fromDistricts = {};
+            PostService.getDistrict(el).then(function (res) {
+                $scope.fromDistricts = res;
+            });
+        });
+
+        $scope.$watch('newPost.toCityId', function (el) {
+            $scope.toDistricts = {};
+            PostService.getDistrict(el).then(function (res) {
+                $scope.toDistricts = res;
+            });
+        });
 
         $scope.step = 1;
 
@@ -24,5 +121,9 @@ mainApp.controller('NewPostController', ['$rootScope', '$scope','$http','$mdDial
         $scope.$watch('step', function (el) {
             console.log(el);
         });
+
+        $scope.closeDialog = function () {
+            dialog.cancel();
+        };
     }
 ]);

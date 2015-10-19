@@ -16,7 +16,7 @@
                         <span>Хаанаас:</span>
                     </div>
                     <div offset="10" flex class="post_user_data_text">
-                        {{newPostData.fromCityId.name}}-{{newPostData.fromDistrictId.name}}
+                        {{cityGetName(newPost.fromCityId)}}-{{fromDistrictGetName(newPost.fromDistrictId)}}
                     </div>
                 </div>
                 <div layout-fill layout="row" layout-align="start center"  style="height: 25px">
@@ -25,7 +25,7 @@
                         <span>Хаашаа:</span>
                     </div>
                     <div offset="10" flex class="post_user_data_text">
-                        {{newPostData.toCityId.name}}-{{newPostData.toDistrictId.name}}
+                        {{cityGetName(newPost.toCityId)}}-{{toDistrictGetName(newPost.toDistrictId)}}
                     </div>
                 </div>
                 <div layout-fill layout="row" layout-align="start center"  style="height: 25px">
@@ -34,7 +34,7 @@
                         <span>Хөдлөх огноо:</span>
                     </div>
                     <div offset="10" flex class="post_user_data_text">
-                        {{newPostDataCheck.leaveDate |
+                        {{newPost.when |
                         date:'yyyy-MM-dd'}}
                     </div>
                 </div>
@@ -44,7 +44,7 @@
                         <span>Очих огноо:</span>
                     </div>
                     <div offset="10" flex class="post_user_data_text">
-                        {{newPostDataCheck.arriveDate |
+                        {{newPost.arrive |
                         date:'yyyy-MM-dd'}}
                     </div>
                 </div>
@@ -55,7 +55,7 @@
                     </div>
                     <div offset="10" flex class="post_user_data_text">
                                                     <span data-ng-show="newPostDataCheck.passanger">
-                                                        {{newPostData.passanger}}
+                                                        {{newPost.passanger}}
                                                     </span>
                                                     <span data-ng-hide="newPostDataCheck.passanger">
                                                         Зорчигч авч явахгүй
@@ -68,7 +68,7 @@
                         <span>Унаа:</span>
                     </div>
                     <div offset="10" flex class="post_user_data_text">
-                        {{newPostData.transportationId.name}}
+                        {{transportGetName(newPost.transportationId)}}
                     </div>
                 </div>
                 <div layout-fill layout="row" layout-align="start center" style="height: 25px">
@@ -77,11 +77,11 @@
                         <span>Ачаа:</span>
                     </div>
                     <div offset="10" flex class="post_user_data_text">
-                                                    <span data-ng-show="newPostData.stuff">
-                                                        {{newPostData.stuff}}
+                                                    <span data-ng-show="newPost.stuffDesc">
+                                                        {{newPost.stuffDesc}}
                                                     </span>
-                                                    <span data-ng-show="newPostData.animal">
-                                                        {{newPostData.animal}}
+                                                    <span data-ng-show="newPost.animal">
+                                                        {{newPost.animal}}
                                                     </span>
                     </div>
                 </div>
@@ -89,24 +89,23 @@
         </div>
         <div layout="column" flex="35">
             <md-select placeholder="Миний нөхцөл"
-                       ng-model="newPostData.policies">
+                       ng-model="newPostDataCheck.policyId">
 
-                <md-option ng-repeat="policies in myPolicy"
-                           ng-value="{{policies}}"
-                           ng-selected="{{policies.id == newPostData.policies.id}}">
-                    {{policies.policy}}
+                <md-option ng-repeat="p in policy"
+                           ng-value="{{p.id}}">
+                    {{p.policy}}
                 </md-option>
             </md-select>
 
 
             <md-input-container>
                 <label>Миний дүрэм:</label>
-                <textarea ng-model="newPostData.description" columns="4"></textarea>
+                <textarea ng-model="newPost.description" columns="4"></textarea>
 
             </md-input-container>
             <md-input-container>
                 <label>Холбоо барих мэдээлэл:</label>
-                <textarea ng-model="newPostData.contact" columns="4"></textarea>
+                <textarea ng-model="newPost.contact" columns="4"></textarea>
             </md-input-container>
         </div>
     </section>
@@ -114,7 +113,7 @@
     <div layout="row" layout-align="end center">
         <md-button ng-click="newPostSteps(2)">Буцах</md-button>
         <md-button ng-click="completePost()" class="md-primary"
-                   ng-disabled="!newPostData.policies">Зар үүсгэх
+                   ng-disabled="!newPost.policies">Зар хадгалах
         </md-button>
     </div>
 

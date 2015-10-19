@@ -48,7 +48,7 @@
                         <md-content layout="column" layout-fill>
                             <div class="createPostChoose">
 
-                                <md-radio-group ng-model="newPostData.type" flex>
+                                <md-radio-group ng-model="newPost.type" flex>
                                     <md-radio-button value="CARRIER" class="md-primary">
                                         <md-icon md-svg-icon="package-with-hand" class="carrier-icon"></md-icon>
                                         <span>ТЭЭВЭРЛЭХ ЗАР</span>
@@ -61,8 +61,8 @@
                             </div>
                             <div layout="row" layout-align="end center" layout-margin>
                                 <md-button ng-click="closeDialog()">Цуцлах</md-button>
-                                <md-button ng-click="stepChange(newPostData.type)" class="md-primary"
-                                           ng-disabled="!newPostData.type">Дараагийн алхам
+                                <md-button ng-click="stepChange(newPost.type)" class="md-primary"
+                                           ng-disabled="!newPost.type">Дараагийн алхам
                                 </md-button>
                             </div>
                         </md-content>

@@ -37,9 +37,10 @@ mainApp.factory('PostService', function ($http) {
             }
         },
         getTransportation: function () {
-            return $http.get(SERVICE_URL + '/transportations').then(function (data) {
+            var promise = $http.get(SERVICE_URL + '/transportations').then(function (data) {
                 return data.data;
             });
+            return promise;
         },
         getPolicy: function () {
             return $http.get(SERVICE_URL + '/policy').then(function (data) {

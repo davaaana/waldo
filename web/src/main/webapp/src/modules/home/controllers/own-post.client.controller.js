@@ -8,6 +8,12 @@ mainApp.controller('OwnPostController', ['$rootScope', '$scope', '$http', '$mdDi
         $scope.paging = 0;
         $scope.auth = AuthService.getAuthentication();
 
+        $scope.newPostDataCheck = {
+            animal:null,
+            stuff:null,
+            passanger:null
+        }
+
         $scope.ownFilter = {
             fromDate: '',
             toDate: ''
@@ -88,12 +94,25 @@ mainApp.controller('OwnPostController', ['$rootScope', '$scope', '$http', '$mdDi
             PostService.getOwnPost(ownPosts).then(function (data) {
                 console.log(data);
                 if (data.success == true) {
-                    $scope.newPostData = data.data;
+                    $scope.newPost = data.data;
+                    $scope.newPost.when = new Date($scope.newPost.when);
+                    $scope.newPost.arrive = new Date($scope.newPost.arrive);
+                    $scope.newPostDataCheck.policyId = $scope.newPost.policies[0].id;
+                    if($scope.newPost.passanger){
+                        $scope.newPostDataCheck.passanger = true;
+                    }
+                    if($scope.newPost.animal){
+                        $scope.newPostDataCheck.animal = true;
+                    }
+                    if($scope.newPost.stuff){
+                        $scope.newPostDataCheck.stuff = true;
+                    }
+
                     dialog.show({
                         parent: angular.element(document.body),
                         scope: $scope.$new(),
                         templateUrl: 'src/modules/dialogs/post-create.client.view.html',
-                        controller: 'HomeController'
+                        controller: 'NewPostController'
                     })
                 } else {
                     $mdToast.showSimple('Мэдээлэл алга байна');
