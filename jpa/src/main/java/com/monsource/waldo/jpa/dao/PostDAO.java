@@ -35,7 +35,9 @@ public class PostDAO extends DataAccessObject {
 
     public Integer activateTotalCount() {
         Criteria criteria = this.getSession().createCriteria(PostEntity.class);
-        criteria.add(Restrictions.eq("closed", false));
+        Date date = new Date();
+        date.setDate(date.getDate()-1);
+        criteria.add(Restrictions.ge("when", date));
         return criteria.list().size();
     }
 
