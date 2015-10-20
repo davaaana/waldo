@@ -25,6 +25,7 @@ public class PostContactHelper {
         postContactEntity.setSms(postContact.getSms());
         postContactEntity.setNote(postContact.getNote());
         postContactEntity.setViewed(false);
+        postContactEntity.setHide(false);
         postContactEntity.setCreatedDate(new Timestamp(System.currentTimeMillis()));
 
         return postContactEntity;
