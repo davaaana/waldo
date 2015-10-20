@@ -95,7 +95,7 @@ mainApp.controller('PostController', ['$rootScope', '$scope', '$http', '$mdDialo
         }
 
         $scope.filterClear = function () {
-            console.log($scope.postType[0]);
+            $scope.getAllPostData();
             $scope.filter = {};
             $scope.searchTextType = '';
             $scope.posts = $scope.posts;
