@@ -46,7 +46,7 @@
 
             <div layout="row">
                 <md-datepicker ng-model="conFilter.toDateTime" md-placeholder="Сонгох" date-format="yyyy-MM-dd"
-                               class="datepicker-filter-adjust3" md-min-date="filter.toDate"></md-datepicker>
+                               class="datepicker-filter-adjust3" md-min-date="conFilter.fromDateTime"></md-datepicker>
             </div>
         </div>
         <md-button class="md-raised md-warn md-button md-ink-ripple filter-button"
@@ -175,6 +175,13 @@
                                         <md-icon md-svg-icon="carry"></md-icon>
                                         <div>Ачаа:</div>
                                         <div>Байхгүй
+                                        </div>
+                                    </div>
+
+                                    <div layout="row" class="more-txt2 padding-top-5" layout-align="start center" ng-if="contactedPost.description">
+                                        <md-icon md-svg-icon="carry"></md-icon>
+                                        <div>Миний дүрэм:</div>
+                                        <div>{{contactedPost.description}}
                                         </div>
                                     </div>
 
