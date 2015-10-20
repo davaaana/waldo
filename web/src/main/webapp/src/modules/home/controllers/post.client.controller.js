@@ -16,7 +16,6 @@ mainApp.controller('PostController', ['$rootScope', '$scope', '$http', '$mdDialo
         $scope.postNextBtn = true;
         $scope.auth = AuthService.getAuthentication();
 
-        $scope.ownBool = false;
         $scope.page = 1;
 
         $scope.postType = [
@@ -116,20 +115,6 @@ mainApp.controller('PostController', ['$rootScope', '$scope', '$http', '$mdDialo
                     else if (data.success === true) {
                         $scope.stepExchange = 1;
                         $scope.mpost = data.data;
-                        var user;
-                        try {
-                            user = JSON.parse(window.sessionStorage['userInfo']).username;
-                        } catch (e) {
-                            user = window.sessionStorage['userInfo'].username;
-                        }
-
-                        if (user == $scope.mpost.username) {
-                            $scope.ownBool = false;
-                        }
-                        else {
-                            $scope.ownBool = true;
-                        }
-
                         dialog.show({
                             templateUrl: './src/modules/dialogs/post-more.client.view.html',
                             controller:'PostMoreController',

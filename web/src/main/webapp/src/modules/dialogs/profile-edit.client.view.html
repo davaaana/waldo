@@ -15,7 +15,7 @@
                 <form method="post" name="profile" enctype="multipart/form-data" flex>
                     <div layout="row">
                         <div flex="30" flex-sm="30" class="edit-profile">
-                            <img ng-src="ws/profile/image/{{pro.username}}.png"
+                            <img ng-src="ws/profile/image/{{pro.username}}.png?s={{imageDate}}"
                                  class="edit-photo"/>
                             <center>{{pro.username}}</center>
                             <input id="image" type="file" name="file" style="position:fixed;top:-100px;"

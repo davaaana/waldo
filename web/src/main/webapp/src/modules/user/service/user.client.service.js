@@ -62,7 +62,7 @@ mainApp.factory('UserService', function ($http) {
             fd.append("image", files[0]);
             console.log(fd);
 
-            $http({
+            var promise = $http({
                 url: SERVICE_URL + '/profile/image',
                 method: "POST",
                 data: fd,
@@ -74,11 +74,10 @@ mainApp.factory('UserService', function ($http) {
                     'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
                 },
                 transformRequest: angular.identity
-            }).success(function (response) {
-                $scope.response = response;
-            }).error(function (error) {
-                $scope.error = error;
+            }).then(function (response) {
+                return response;
             });
+            return promise;
         },
         updateProfile: function ($scope) {
             var me = this;

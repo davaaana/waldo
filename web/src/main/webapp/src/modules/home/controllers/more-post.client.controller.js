@@ -3,9 +3,24 @@
 mainApp.controller('PostMoreController', ['$rootScope', '$scope', '$http', '$mdDialog', 'PostService', '$log', '$q','$mdToast', 'UserService',
     function ($rootScope, $scope, $http, dialog, PostService, $log, $q,$mdToast, AuthService) {
 
-        $scope.auth = AuthService.getAuthentication();
         $scope.ownBool = false;
+        $scope.auth = AuthService.getAuthentication();
 
+        var user;
+
+        try {
+            user = JSON.parse(window.sessionStorage['userInfo']).username;
+        } catch (e) {
+            user = window.sessionStorage['userInfo'].username;
+        }
+
+        if (user == $scope.mpost.username) {
+            $scope.ownBool = false;
+        }
+        else {
+            $scope.ownBool = true;
+        }
+        console.log($scope.ownBool);
         $scope.convertToDate = function (string) {
             return convertToDate(string);
         };

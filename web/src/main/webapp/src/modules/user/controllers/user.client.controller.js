@@ -12,6 +12,10 @@ mainApp.controller('UserController', ['$rootScope', '$scope','$http','$mdDialog'
             $mdOpenMenu(ev);
         };
 
+        setInterval(function () {
+            $scope.imageDate = new Date().getTime();
+        },1000);
+
         $scope.auth = UserService.getAuthentication();
 
         try{
@@ -21,7 +25,16 @@ mainApp.controller('UserController', ['$rootScope', '$scope','$http','$mdDialog'
 
         $scope.uploadImage = function (file) {
             UserService.uploadFile(file,$scope).then(function (res) {
-                console.log(res);
+                if(res.status == 200) {
+                    //setTimeout(function () {
+                    //    $scope.$apply(function () {
+                            try{
+                                $scope.pro = {};
+                                $scope.pro = JSON.parse(window.sessionStorage["userInfo"]);
+                            }catch (e){}
+                        //})
+                    //},100)
+                }
             });
         };
 

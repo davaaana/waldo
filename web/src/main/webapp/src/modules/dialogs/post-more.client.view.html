@@ -135,18 +135,19 @@
                         <span>{{mpost.requestNum}}</span></div>
 
 
-                    <md-checkbox ng-hide="mpost.alreadyExchange"
-                                 ng-model="exchangeAgree" ng-show="!ownBool">
+                    <md-checkbox ng-hide="mpost.alreadyExchange || !ownBool"
+                                 ng-model="exchangeAgree">
                         Би өөрийн холбоо барих мэдээллийг явуулахыг зөвшөөрч байна
                     </md-checkbox>
 
                     <span ng-show="mpost.alreadyExchange" class="you-contacted">Та Энэ зартай холбогдсон байна!</span>
+                    <span ng-show="!ownBool" class="you-contacted">Таны өөрийн зар байна!</span>
 
                     <div>
                         <md-button class="md-accent"
                                    ng-click="exchangePost(mpost.id)"
-                                   ng-hide="mpost.alreadyExchange"
-                                   ng-disabled="!exchangeAgree" ng-show="!ownBool">
+                                   ng-hide="mpost.alreadyExchange || !ownBool"
+                                   ng-disabled="!exchangeAgree">
                             Холбоо барих
                         </md-button>
                         <md-button ng-click="closeDialog()">Гарах</md-button>
