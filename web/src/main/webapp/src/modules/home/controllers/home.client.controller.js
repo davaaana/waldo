@@ -3,10 +3,13 @@
 mainApp.controller('HomeController', ['$rootScope', '$scope', '$http', '$mdDialog', 'UserService', '$location',
     function ($rootScope, $scope, $http, dialog, AuthService, $location) {
 
+        AuthService.getUserInfo($scope);
         $scope.init = function () {
+
             try {
                 var url = window.location.hash.split('/');
                 url = url[url.length - 1];
+                console.log(url);
                 if (url == "index") {
                     document.getElementById('index').className = "select";
                     document.getElementById('own-post').className = "un-select";
@@ -32,7 +35,7 @@ mainApp.controller('HomeController', ['$rootScope', '$scope', '$http', '$mdDialo
                     document.getElementById('index').className = "un-select";
                     document.getElementById('own-post').className = "un-select";
                     document.getElementById('contacted-post').className = "un-select";
-                    document.getElementById('about').className = "select";
+                    document.getElementById('abouthttp://localhost:8080/#/index').className = "select";
                     $scope.filterArea = false;
                 }
             } catch (e) {
