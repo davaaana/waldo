@@ -740,7 +740,8 @@ a.md-button.md-warn.md-raised, a.md-button.md-warn.md-fab, .md-button.md-warn.md
 }
 
 .middle-menu {
-    padding-top: 29px;
+    top: 337px;
+    position: absolute;
 }
 
 .middle-menu div {

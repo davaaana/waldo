@@ -1,3 +1,26 @@
+<div layout="row" class="middle-menu">
+    <a href="#/index" target="_self">
+        <div class="select" id="index">
+            Бүх зар
+        </div>
+    </a>
+    <a href="#/index/own-post" target="_self" ng-show="auth">
+        <div class="un-select" id="own-post">
+            Миний зар
+        </div>
+    </a>
+    <a href="#/index/contacted-post" target="_self" ng-show="auth">
+        <div class="un-select" id="contacted-post">
+            Холбогдсон зар
+        </div>
+    </a>
+    <a href="#/index/about" target="_self">
+        <div class="un-select" id="about">
+            Валдогийн тухай
+        </div>
+    </a>
+</div>
+
 <div flex layout="row" >
     <div flex="80" layout="row" class="filter-result">
       <!--  <div layout="column" class="filter-txt">Шүүлтүүр : </div>
@@ -13,7 +36,7 @@
 
     </div>
 </div>
-<div id="call_dialog" ng-init="getAllPostData();init();">
+<div id="call_dialog" ng-init="getAllPostData();">
     <md-grid-list
             md-cols-sm="1" md-cols-gt-sm="2" md-cols-gt-lg="2"
             md-row-height="160px"

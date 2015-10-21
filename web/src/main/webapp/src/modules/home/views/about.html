@@ -1,4 +1,27 @@
-<md-content layout-padding class="about-waldo" ng-init="init();">
+<div layout="row" class="middle-menu">
+    <a href="#/index" target="_self">
+        <div class="un-select" id="index">
+            Бүх зар
+        </div>
+    </a>
+    <a href="#/index/own-post" target="_self" ng-show="auth">
+        <div class="un-select" id="own-post">
+            Миний зар
+        </div>
+    </a>
+    <a href="#/index/contacted-post" target="_self" ng-show="auth">
+        <div class="un-select" id="contacted-post">
+            Холбогдсон зар
+        </div>
+    </a>
+    <a href="#/index/about" target="_self">
+        <div class="select" id="about">
+            Валдогийн тухай
+        </div>
+    </a>
+</div>
+
+<md-content layout-padding class="about-waldo"
     <h2>Валдо сүлжээ гэж юу вэ?</h2>
 
     <p>Валдо сүлжээ нь ачаа бараа илгээх хүсэлтэй, эсвэл ямар нэг чиглэл явахаар унаа
