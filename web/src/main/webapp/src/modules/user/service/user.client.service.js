@@ -47,7 +47,7 @@ mainApp.factory('UserService', function ($http) {
         },
         changePassword: function ($scope,mdToast) {
             $http.post(SERVICE_URL + '/profile/password', $scope.proPass).then(function (data) {
-                if (data.success == true) {
+                if (data.data.success == true) {
                     $scope.closeDialog();
                 }
                 else {

@@ -71,7 +71,7 @@ mainApp.controller('PostController', ['$rootScope', '$scope', '$http', '$mdDialo
         }
 
         PostService.getCity().then(function (data) {
-            var cit = [{id: 0, name: 'Бүх аймаг'}];
+            var cit = [{id: '', name: 'Бүх аймаг'}];
             for (var i = 0; i < data.length - 1; i++) {
                 cit.push(data[i]);
             }

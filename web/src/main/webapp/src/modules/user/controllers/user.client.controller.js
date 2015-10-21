@@ -26,19 +26,20 @@ mainApp.controller('UserController', ['$rootScope', '$scope','$http','$mdDialog'
         $scope.uploadImage = function (file) {
             UserService.uploadFile(file,$scope).then(function (res) {
                 if(res.status == 200) {
-                    //setTimeout(function () {
-                    //    $scope.$apply(function () {
-                            try{
-                                $scope.pro = {};
-                                $scope.pro = JSON.parse(window.sessionStorage["userInfo"]);
-                            }catch (e){}
-                        //})
-                    //},100)
+                    try{
+                        $scope.pro = {};
+                        $scope.pro = JSON.parse(window.sessionStorage["userInfo"]);
+                        $scope.imageDate = new Date().getTime();
+                    }catch (e){}
                 }
             });
         };
 
         $scope.changePassword = function () {
+            if($scope.proPass.oldPassword == '' || $scope.proPass.newPassword==''){
+                $mdToast.showSimple('Нууц үгээ үнэн зөв оруулана уу?');
+                return;
+            }
             UserService.changePassword($scope,$mdToast);
         };
 
