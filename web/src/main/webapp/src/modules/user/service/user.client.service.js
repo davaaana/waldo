@@ -44,7 +44,15 @@ mainApp.factory('UserService', function ($http) {
                 },
                 data: {username: scope.username, password: scope.password}
             }).then(function () {
-                me.getUserInfo(scope);
+                me.getUserInfo(scope).then(function (data) {
+                    if(data.success == true){
+                        window.sessionStorage["userInfo"] = JSON.stringify(data.data);
+                        scope.closeDialog();
+                        window.location.reload();
+                    }else{
+                        scope.auth = false;
+                    }
+                });
                 scope.closeDialog();
             }, function () {
                 scope.errorMessage = "Хэрэглэгчийн нэр эсвэл нууц үг буруу байна!";

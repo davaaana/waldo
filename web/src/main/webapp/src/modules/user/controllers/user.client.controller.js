@@ -82,9 +82,7 @@ mainApp.controller('UserController', ['$rootScope', '$scope','$http','$mdDialog'
             }).then(function () {
                 UserService.getUserInfo($scope).then(function (data) {
                     if(data.success == true){
-                        $scope.auth = true;
-                        $scope.user = data.data;
-                        $scope.closeDialog();
+                        window.sessionStorage["userInfo"] = JSON.stringify(data.data);
                         window.location.reload();
                     }else{
                         $scope.auth = false;

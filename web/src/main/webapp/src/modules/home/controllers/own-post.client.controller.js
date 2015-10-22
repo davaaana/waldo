@@ -3,7 +3,7 @@
 mainApp.controller('OwnPostController', ['$rootScope', '$scope', '$http', '$mdDialog', 'PostService', '$log', '$q','$mdToast', 'UserService',
     function ($rootScope, $scope, $http, dialog, PostService, $log, $q,$mdToast, AuthService) {
 
-        $rootScope.filterArea = false;
+        $scope.$parent.filterArea = false;
 
         AuthService.getUserInfo($scope).then(function (data) {
             if(data.success == true){
