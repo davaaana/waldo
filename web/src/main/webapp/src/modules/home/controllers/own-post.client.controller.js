@@ -3,10 +3,20 @@
 mainApp.controller('OwnPostController', ['$rootScope', '$scope', '$http', '$mdDialog', 'PostService', '$log', '$q','$mdToast', 'UserService',
     function ($rootScope, $scope, $http, dialog, PostService, $log, $q,$mdToast, AuthService) {
 
+        $rootScope.filterArea = false;
+
+        AuthService.getUserInfo($scope).then(function (data) {
+            if(data.success == true){
+                $scope.auth = true;
+                $scope.user = data.data;
+            }else{
+                $scope.auth = false;
+            }
+        });
+
         $scope.ownNextBtn = true;
         $scope.hideOwnAds = true;
         $scope.paging = 0;
-        $scope.auth = AuthService.getAuthentication();
 
         $scope.newPostDataCheck = {
             animal:null,

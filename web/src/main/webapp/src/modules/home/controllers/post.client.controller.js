@@ -7,6 +7,17 @@ mainApp.controller('PostController', ['$rootScope', '$scope', '$http', '$mdDialo
             toDate: ''
         };
 
+        $scope.$parent.filterArea = true;
+
+        AuthService.getUserInfo($scope).then(function (data) {
+            if(data.success == true){
+                $scope.auth = true;
+                $scope.user = data.data;
+            }else{
+                $scope.auth = false;
+            }
+        });
+
         PostService.getActivateCountPost().then(function (res) {
             $scope.activatePostCount = res.data;
         });
@@ -104,7 +115,7 @@ mainApp.controller('PostController', ['$rootScope', '$scope', '$http', '$mdDialo
         };
 
         $scope.more = function (post) {
-            if (AuthService.getAuthentication() == true) {
+            if ($scope.auth == true) {
                 PostService.getPostMore(post).then(function (data) {
                     if (data.success === false) {
                         dialog.show({

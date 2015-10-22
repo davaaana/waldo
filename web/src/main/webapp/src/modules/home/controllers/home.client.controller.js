@@ -3,47 +3,17 @@
 mainApp.controller('HomeController', ['$rootScope', '$scope', '$http', '$mdDialog', 'UserService', '$location',
     function ($rootScope, $scope, $http, dialog, AuthService, $location) {
 
-        AuthService.getUserInfo($scope);
-        $scope.init = function () {
+        $scope.filterArea = true;
 
-            try {
-                var url = window.location.hash.split('/');
-                url = url[url.length - 1];
-                console.log(url);
-                if (url == "index") {
-                    document.getElementById('index').className = "select";
-                    document.getElementById('own-post').className = "un-select";
-                    document.getElementById('contacted-post').className = "un-select";
-                    document.getElementById('about').className = "un-select";
-                    $scope.filterArea = true;
-                }
-                else if (url == 'own-post') {
-                    document.getElementById('index').className = "un-select";
-                    document.getElementById('own-post').className = "select";
-                    document.getElementById('contacted-post').className = "un-select";
-                    document.getElementById('about').className = "un-select";
-                    $scope.filterArea = false;
-                }
-                else if (url == 'contacted-post') {
-                    document.getElementById('index').className = "un-select";
-                    document.getElementById('own-post').className = "un-select";
-                    document.getElementById('contacted-post').className = "select";
-                    document.getElementById('about').className = "un-select";
-                    $scope.filterArea = false;
-                }
-                else if (url == 'about') {
-                    document.getElementById('index').className = "un-select";
-                    document.getElementById('own-post').className = "un-select";
-                    document.getElementById('contacted-post').className = "un-select";
-                    document.getElementById('abouthttp://localhost:8080/#/index').className = "select";
-                    $scope.filterArea = false;
-                }
-            } catch (e) {
-                setInterval(function () {
-                    $scope.init();
-                }, 100);
+        AuthService.getUserInfo($scope).then(function (data) {
+            if(data.success == true){
+                $scope.auth = true;
+                window.sessionStorage["userInfo"] = JSON.stringify(data.data);
+                $scope.user = data.data;
+            }else{
+                $scope.auth = false;
             }
-        }
+        });
 
         $scope.signup = function () {
             dialog.show({
@@ -56,7 +26,7 @@ mainApp.controller('HomeController', ['$rootScope', '$scope', '$http', '$mdDialo
         };
 
         $scope.newPost = function () {
-            if (AuthService.getAuthentication() == true) {
+            if ($scope.auth == true) {
                 dialog.show({
                     parent: angular.element(document.body),
                     scope: $scope.$new(),
@@ -88,7 +58,7 @@ mainApp.controller('HomeController', ['$rootScope', '$scope', '$http', '$mdDialo
         };
 
         $scope.editProfile = function () {
-            if (AuthService.getAuthentication() == true) {
+            if ($scope.auth == true) {
                 dialog.show({
                     templateUrl: './src/modules/dialogs/profile-edit.client.view.html',
                     controller: 'UserController'

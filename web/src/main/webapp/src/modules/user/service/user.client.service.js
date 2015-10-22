@@ -16,15 +16,19 @@ mainApp.factory('UserService', function ($http) {
         },
         getUserInfo: function (scope) {
             var me = this;
-            $http.get(SERVICE_URL + '/profile').success(function (data) {
-                if (data.success == true) {
-                    window.sessionStorage["userInfo"] = JSON.stringify(data.data);
-                    scope.user = data.data;
-                    scope.auth = me.getAuthentication();
-                }else{
-                    window.sessionStorage["userInfo"] = {};
-                }
-            }).then();
+            var promise = $http.get(SERVICE_URL + '/profile').then(function (data) {
+                return data.data;
+                //if (data.success == true) {
+                //
+                //    //scope.user = data.data;
+                //    //scope.auth = me.getAuthentication();
+                //    //window.location.reload();
+                //    return data.data;
+                //}else{
+                //    window.sessionStorage["userInfo"] = {};
+                //}
+            })
+            return promise;
         },
         loginTo: function (scope) {
             var me = this;

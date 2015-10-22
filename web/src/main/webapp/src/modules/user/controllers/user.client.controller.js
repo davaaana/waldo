@@ -5,8 +5,16 @@ mainApp.controller('UserController', ['$rootScope', '$scope','$http','$mdDialog'
 
         $scope.errorMessage = '';
 
-        var originatorEv;
+        UserService.getUserInfo($scope).then(function (data) {
+            if(data.success == true){
+                $scope.auth = true;
+                $scope.user = data.data;
+            }else{
+                $scope.auth = false;
+            }
+        });
 
+        var originatorEv;
         $scope.openMenu = function ($mdOpenMenu, ev) {
             originatorEv = ev;
             $mdOpenMenu(ev);

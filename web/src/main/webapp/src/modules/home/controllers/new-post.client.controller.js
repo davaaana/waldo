@@ -3,6 +3,15 @@
 mainApp.controller('NewPostController', ['$rootScope', '$scope','$http','$mdDialog','$mdToast', 'UserService','PostService','$location',
     function ($rootScope, $scope,$http,dialog,$mdToast,UserService,PostService,$location) {
 
+        UserService.getUserInfo($scope).then(function (data) {
+            if(data.success == true){
+                $scope.auth = true;
+                $scope.user = data.data;
+            }else{
+                $scope.auth = false;
+            }
+        });
+
         $scope.toDistricts = {};
         $scope.fromDistricts = {};
         $scope.createData = {};

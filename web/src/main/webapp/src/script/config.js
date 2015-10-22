@@ -23,6 +23,9 @@ var filterOptions = {
     quickFilter: ''
 }
 
+var auth = false;
+var filterArea = true;
+
 function convertToDate(stringDate) {
     var dateOut = new Date(stringDate);
     dateOut.setDate(dateOut.getDate() + 1);
