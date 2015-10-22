@@ -80,8 +80,17 @@ mainApp.controller('UserController', ['$rootScope', '$scope','$http','$mdDialog'
                 },
                 data: {username: $scope.username, password: $scope.password}
             }).then(function () {
-                UserService.getUserInfo($scope);
-                $scope.closeDialog();
+                UserService.getUserInfo($scope).then(function (data) {
+                    if(data.success == true){
+                        $scope.auth = true;
+                        $scope.user = data.data;
+                        $scope.closeDialog();
+                        window.location.reload();
+                    }else{
+                        $scope.auth = false;
+                    }
+                });
+
             }, function () {
                 alert("Хэрэглэгчийн нэр эсвэл нууц үг буруу байна!");
             })
