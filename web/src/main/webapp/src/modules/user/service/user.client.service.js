@@ -62,6 +62,7 @@ mainApp.factory('UserService', function ($http) {
             $http.post(SERVICE_URL + '/profile/password', $scope.proPass).then(function (data) {
                 if (data.data.success == true) {
                     $scope.closeDialog();
+                    mdToast.showSimple("Нууц үг амжилттай солигдолоо");
                 }
                 else {
                     mdToast.showSimple("Нууц үг солиход алдаа гарлаа");
@@ -92,12 +93,13 @@ mainApp.factory('UserService', function ($http) {
             });
             return promise;
         },
-        updateProfile: function ($scope) {
+        updateProfile: function ($scope, mdToast) {
             var me = this;
             $http.put(SERVICE_URL + '/profile', $scope.pro).then(function (data) {
                     if (data.data.success == true) {
                         $scope.closeDialog();
                         me.getUserInfo($scope);
+                        mdToast.showSimple("Мэдээлэл амжилттай солигдолоо");
                     }
                     else {
                         console.log('update profile error' + data.message);

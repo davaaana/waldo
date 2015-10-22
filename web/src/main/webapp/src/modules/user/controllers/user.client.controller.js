@@ -103,7 +103,7 @@ mainApp.controller('UserController', ['$rootScope', '$scope','$http','$mdDialog'
         });
 
         $scope.updateProfile = function () {
-            UserService.updateProfile($scope)
+            UserService.updateProfile($scope, $mdToast)
         }
         $scope.closeDialog = function () {
             dialog.cancel();
