@@ -95,18 +95,15 @@ mainApp.controller('OwnPostController', ['$rootScope', '$scope', '$http', '$mdDi
                     }
                 }
             }).error(function (data) {
-
-                //console.log('error: ' + data.data);
             })
         };
 
         $scope.getPost = function (ownPosts) {
             PostService.getOwnPost(ownPosts).then(function (data) {
-                console.log(data);
                 if (data.success == true) {
                     $scope.newPost = data.data;
-                    $scope.newPost.when = new Date($scope.newPost.when);
-                    $scope.newPost.arrive = new Date($scope.newPost.arrive);
+                    $scope.newPost.when = '';
+                    $scope.newPost.arrive = '';
                     $scope.newPostDataCheck.policyId = $scope.newPost.policies[0].id;
                     if($scope.newPost.passanger){
                         $scope.newPostDataCheck.passanger = true;

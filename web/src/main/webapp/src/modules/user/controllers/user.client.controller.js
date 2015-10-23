@@ -99,7 +99,6 @@ mainApp.controller('UserController', ['$rootScope', '$scope','$http','$mdDialog'
         };
 
         $scope.$watch('auth', function (el) {
-            console.log(el);
         });
 
         $scope.updateProfile = function () {

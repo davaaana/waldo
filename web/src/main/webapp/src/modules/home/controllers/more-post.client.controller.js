@@ -20,7 +20,6 @@ mainApp.controller('PostMoreController', ['$rootScope', '$scope', '$http', '$mdD
         else {
             $scope.ownBool = true;
         }
-        console.log($scope.ownBool);
         $scope.convertToDate = function (string) {
             return convertToDate(string);
         };
@@ -38,12 +37,8 @@ mainApp.controller('PostMoreController', ['$rootScope', '$scope', '$http', '$mdD
                     $scope.stepExchange = 2;
                     $mdToast.showSimple('Холбоо барих хаяг амжилттай солигдлоо');
                 }
-                else {
-                    console.log('exchangepost:' + data.message);
-                }
             })
                 .error(function (data) {
-                    console.log('exchangepost:' + data.message);
                 });
 
         }

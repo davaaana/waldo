@@ -12,6 +12,8 @@ mainApp.controller('NewPostController', ['$rootScope', '$scope','$http','$mdDial
             }
         });
 
+        $scope.newPostDataCheck;
+
         $scope.toDistricts = {};
         $scope.fromDistricts = {};
         $scope.createData = {};
@@ -173,7 +175,6 @@ mainApp.controller('NewPostController', ['$rootScope', '$scope','$http','$mdDial
         }
 
         $scope.$watch('step', function (el) {
-            console.log(el);
         });
 
         $scope.closeDialog = function () {

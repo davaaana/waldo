@@ -70,12 +70,8 @@ mainApp.factory('UserService', function ($http) {
             });
         },
         uploadFile: function (files, $scope) {
-            console.log(files[0]);
             var fd = new FormData();
-            //Take the first selected file
             fd.append("image", files[0]);
-            console.log(fd);
-
             var promise = $http({
                 url: SERVICE_URL + '/profile/image',
                 method: "POST",
@@ -101,9 +97,6 @@ mainApp.factory('UserService', function ($http) {
                         me.getUserInfo($scope);
                         mdToast.showSimple("Мэдээлэл амжилттай солигдолоо");
                     }
-                    else {
-                        console.log('update profile error' + data.message);
-                    }
                 }
             );
         },
@@ -117,7 +110,6 @@ mainApp.factory('UserService', function ($http) {
                     $scope.errorMessage = data.message;
                 }
             }).error(function (data, status) {
-                //console.log('Бүртгүүлэх хуудасны алдаа : '+data);
             });
         },
         getAuthentication: function () {

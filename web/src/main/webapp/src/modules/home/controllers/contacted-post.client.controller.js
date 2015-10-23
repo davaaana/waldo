@@ -61,7 +61,6 @@ mainApp.controller('ContactedPostController', ['$rootScope', '$scope', '$http', 
         }
 
         $scope.filterChangeCon = function () {
-            console.log($scope.conFilter);
             PostService.getContactedPostListFilter($scope.conFilter).then(function (data) {
                 $scope.contactedPosts = data.data;
             });

@@ -33,7 +33,6 @@ mainApp.controller('FilterController', ['$rootScope', '$scope','$http','PostServ
             filterOptions.fromDate =fromDate;
             filterOptions.transportationType = fromDate;
 
-            console.log('Шүүлт: ' + filterOptions());
 
             function filterOptions() {
                 var options = '';

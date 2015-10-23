@@ -54,6 +54,7 @@ mainApp.controller('PostController', ['$rootScope', '$scope', '$http', '$mdDialo
                 $scope.filter.toDate = date.toJSON().slice( 0, 10);
                 PostService.allPostFilter($scope.filter).then(function (data) {
                     $scope.posts = data.data;
+                    $scope.$$childHead.posts = data.data;
                 });
             }catch(e){}
         });
@@ -65,6 +66,7 @@ mainApp.controller('PostController', ['$rootScope', '$scope', '$http', '$mdDialo
                 $scope.filter.fromDate = date.toJSON().slice( 0, 10);
                 PostService.allPostFilter($scope.filter).then(function (data) {
                     $scope.posts = data.data;
+                    $scope.$$childHead.posts = data.data;
                 });
             }catch(e){}
         });
@@ -72,6 +74,7 @@ mainApp.controller('PostController', ['$rootScope', '$scope', '$http', '$mdDialo
         $scope.filterChange = function () {
             PostService.allPostFilter($scope.filter).then(function (data) {
                 $scope.posts = data.data;
+                $scope.$$childHead.posts = data.data;
             });
         };
         

@@ -250,7 +250,8 @@
                             </a>
 
                             <a href="#" class="postMore" ng-click="ownPostDeactivate(ownPost.id)">
-                                Зарыг идэвхгүй болгох
+                                <span data-ng-show="hideOwnAds">Зарыг идэвхгүй болгох</span>
+                                <span data-ng-hide="hideOwnAds">Зарыг идэвхтэй болгох</span>
                             </a>
                             <a href="#" class="postMore" ng-click="getPost(ownPost)"
                                class="hide-menu">

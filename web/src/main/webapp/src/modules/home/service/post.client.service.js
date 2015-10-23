@@ -74,7 +74,6 @@ mainApp.factory('PostService', function ($http) {
         },
         ownPostDeactivate: function (postId, mdToast) {
             $http.post(SERVICE_URL + '/post/close/' + postId).success(function (data) {
-                console.log(data);
                 if (data.success == true) {
                     document.getElementById(postId).style.display = 'none';
                     $mdToast.showSimple('Зар идэвхгүй боллоо');
@@ -84,7 +83,6 @@ mainApp.factory('PostService', function ($http) {
                 }
             }).error(function (data) {
 
-                //console.log('error: ' + data.data);
             });
         },
         getOwnPost: function (ownPosts) {
