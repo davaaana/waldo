@@ -55,6 +55,7 @@ mainApp.controller('PostController', ['$rootScope', '$scope', '$http', '$mdDialo
                 PostService.allPostFilter($scope.filter).then(function (data) {
                     $scope.posts = data.data;
                     $scope.$$childHead.posts = data.data;
+                    $scope.$$childTail.posts = data.data;
                 });
             }catch(e){}
         });
@@ -67,6 +68,7 @@ mainApp.controller('PostController', ['$rootScope', '$scope', '$http', '$mdDialo
                 PostService.allPostFilter($scope.filter).then(function (data) {
                     $scope.posts = data.data;
                     $scope.$$childHead.posts = data.data;
+                    $scope.$$childTail.posts = data.data;
                 });
             }catch(e){}
         });
@@ -74,13 +76,17 @@ mainApp.controller('PostController', ['$rootScope', '$scope', '$http', '$mdDialo
         $scope.filterChange = function () {
             PostService.allPostFilter($scope.filter).then(function (data) {
                 $scope.posts = data.data;
+                console.log($scope);
                 $scope.$$childHead.posts = data.data;
+                $scope.$$childTail.posts = data.data;
             });
         };
         
         $scope.getAllPostData = function () {
             PostService.getAllPostData().then(function (posts) {
                 $scope.posts = posts.data;
+                $scope.$$childHead.posts = posts.data;
+                $scope.$$childTail.posts = posts.data;
             });
         }
 
