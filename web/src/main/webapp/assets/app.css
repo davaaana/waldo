@@ -470,8 +470,8 @@ body > .md-dialog-container {
 }
 
 .login-field {
-    font-size: 11px;
-    height: 21px;
+    font-size: 12px;
+    height: 34px;
     margin: 1px;
 }
 
@@ -951,4 +951,9 @@ a.md-button.md-warn.md-raised, a.md-button.md-warn.md-fab, .md-button.md-warn.md
     font-weight: 500;
     text-decoration: underline;
     text-transform: uppercase;
+}
+
+.changepass-username{
+    width: 100px;
+    word-wrap: break-word;
 }

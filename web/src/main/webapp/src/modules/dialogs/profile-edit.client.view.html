@@ -17,7 +17,10 @@
                         <div flex="30" flex-sm="30" class="edit-profile">
                             <img ng-src="ws/profile/image/{{pro.username}}.png?s={{imageDate}}"
                                  class="edit-photo"/>
-                            <center>{{pro.username}}</center>
+<center>
+                                <div class="changepass-username">{{pro.username}}
+                            </div>
+</center>
                             <input id="image" type="file" name="file" style="position:fixed;top:-100px;"
                                    onchange="angular.element(this).scope().uploadImage(this.files)"
                                    style="padding-top: 26px;" title=""/>
