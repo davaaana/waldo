@@ -17,6 +17,14 @@
     <title>Waldo</title>
 </head>
 <body layout="column">
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/mn_MN/sdk.js#xfbml=1&version=v2.5&appId=376391122550690";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 <div>
     <!--<div ng-include="'src/modules/layout/header.html'"></div>-->
     <div ui-view flex></div>

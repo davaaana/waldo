@@ -118,7 +118,7 @@
     <div layout="row" layout-align="end center">
         <md-button ng-click="newPostSteps(1,newPostDataCheck)">Буцах</md-button>
         <md-button ng-click="newPostSteps(5,newPostDataCheck)" class="md-primary"
-                   ng-disabled="!newPost.toCityId || !newPost.fromCityId ||  (!newPost.stuff && !newPost.passanger && !newPost.animal)"> <!--!newPostDataCheck.leaveDate || !newPostDataCheck.arriveDate ||-->
+                   ng-disabled="!newPost.toCityId || !newPost.fromCityId || !newPost.arrive ||  !newPost.when || (!newPost.stuff && !newPost.passanger && !newPost.animal)"> <!--!newPostDataCheck.leaveDate || !newPostDataCheck.arriveDate ||-->
             Сүүлчийн алхам
         </md-button>
     </div>
