@@ -34,10 +34,22 @@ mainApp.controller('UserController', ['$rootScope', '$scope','$http','$mdDialog'
         $scope.uploadImage = function (file) {
             UserService.uploadFile(file,$scope).then(function (res) {
                 if(res.status == 200) {
+
+                    UserService.getUserInfo($scope).then(function (data) {
+                        if(data.success == true){
+                            $scope.pro = {};
+                            $scope.pro = data.data;
+                            $scope.imageDate = new Date().getTime();
+                            $scope.user = {};
+                            $scope.user = data.data;
+                            $("#proImage").attr("src", "ws/profile/image/"+$scope.pro.username+".png?s="+$scope.imageDate);
+                        }else{
+                            $scope.auth = false;
+                        }
+                    });
+
                     try{
-                        $scope.pro = {};
-                        $scope.pro = JSON.parse(window.sessionStorage["userInfo"]);
-                        $scope.imageDate = new Date().getTime();
+
                     }catch (e){}
                 }
             });

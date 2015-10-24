@@ -12,8 +12,6 @@ mainApp.controller('NewPostController', ['$rootScope', '$scope','$http','$mdDial
             }
         });
 
-        $scope.newPostDataCheck;
-
         $scope.toDistricts = {};
         $scope.fromDistricts = {};
         $scope.createData = {};
@@ -170,7 +168,9 @@ mainApp.controller('NewPostController', ['$rootScope', '$scope','$http','$mdDial
             }
         }
 
-        $scope.newPostSteps = function (number) {
+        $scope.newPostSteps = function (number,datacheck) {
+            console.log($scope);
+            $scope.newPostDataCheck = datacheck;
             $scope.step = number;
         }
 

@@ -128,8 +128,8 @@
 
 
     <div layout="row" layout-align="end center">
-        <md-button ng-click="newPostSteps(1)">Буцах</md-button>
-        <md-button ng-click="newPostSteps(4)" class="md-primary"
+        <md-button ng-click="newPostSteps(1,newPostDataCheck)">Буцах</md-button>
+        <md-button ng-click="newPostSteps(4,newPostDataCheck)" class="md-primary"
                    ng-disabled="!newPost.toCityId || !newPost.fromCityId || !newPost.transportationId || (!newPost.stuff && !newPost.passanger && !newPost.animal)">
             <!---->
             Сүүлчийн алхам
