@@ -1,10 +1,15 @@
 <md-content layout="column" layout-fill ng-init="init()" layout-padding>
+<div  layout="row" flex>
+    <div class="mini-red" >Та * тэмдэглэсэн хэсгийг заавал бөглөх бөглөнө үү<br/>
+        Та ** тэмдэглэсэн хэсгийн аль нэгийг заавал бөглөнө үү
+    </div>
 
+</div>
     <div layout="row" flex>
         <div layout="column" flex="50" layout-align="center start">
             <div layout="row">
                 <div layout="column">
-                    <label class="filter-title">Хөдлөх хот/аймаг</label>
+                    <label class="filter-title">Хөдлөх хот/аймаг<span class="mini-red">*</span></label>
                     <md-select class="datepicker-filter-adjust6" data-ng-model="newPost.fromCityId"
                                placeholder="Сонгох">
                         <md-option ng-value="{{city.id}}" ng-repeat="city in cities">{{city.name}}</md-option>
@@ -13,7 +18,7 @@
             </div>
             <div layout="row">
                 <div layout="column">
-                    <label class="filter-title">Очих хот/аймаг</label>
+                    <label class="filter-title">Очих хот/аймаг<span class="mini-red">*</span></label>
                     <md-select class="datepicker-filter-adjust6" data-ng-model="newPost.toCityId" placeholder="Сонгох">
                         <md-option ng-value="{{city.id}}" ng-repeat="city in cities">{{city.name}}</md-option>
                     </md-select>
@@ -21,7 +26,7 @@
             </div>
             <div layout="row">
                 <div layout="column">
-                    <label class="filter-title">Явах огноо эхлэх</label>
+                    <label class="filter-title">Явах огноо эхлэх<span class="mini-red">*</span></label>
                     <md-datepicker ng-model="newPost.when" md-placeholder="Сонгох" format="yyyy.MM.dd"
                                    class="datepicker-filter-adjust6"
                                    md-min-date="newPostDataCheck.arriveDate"></md-datepicker>
@@ -32,7 +37,7 @@
         <div layout="column" flex="50" layout-align="center start">
             <div layout="row" flex>
                 <div class="column">
-                    <label class="filter-title">Хөдлөх дүүрэг/сум</label>
+                    <label class="filter-title">Хөдлөх дүүрэг/сум<span class="mini-red">*</span></label>
                     <md-select class="datepicker-filter-adjust6" data-ng-model="newPost.fromDistrictId"
                                placeholder="Сонгох">
                         <md-option ng-value="{{district.id}}" ng-repeat="district in fromDistricts">{{district.name}}
@@ -43,7 +48,7 @@
 
             <div layout="row">
                 <div class="column">
-                    <label class="filter-title">Очих дүүрэг/сум</label>
+                    <label class="filter-title">Очих дүүрэг/сум<span class="mini-red">*</span></label>
                     <md-select class="datepicker-filter-adjust6" data-ng-model="newPost.toDistrictId"
                                placeholder="Сонгох">
                         <md-option ng-value="{{district.id}}" ng-repeat="district in toDistricts">{{district.name}}
@@ -55,7 +60,7 @@
             <div layout="row">
 
                 <div layout="column">
-                    <label class="filter-title">Явах огноо дуусах</label>
+                    <label class="filter-title">Явах огноо дуусах<span class="mini-red">*</span></label>
                     <md-datepicker ng-model="newPost.arrive" md-placeholder="Сонгох"
 
                                    class="datepicker-filter-adjust6"
@@ -69,7 +74,7 @@
         <div layout="column" flex="50">
             <!--_________________________________________________ PACKAGE INPUT ________________________________________________-->
             <div>
-                <label class="filter-title">Тээврийн хэрэгсэлийн төрөл</label>
+                <label class="filter-title">Тээврийн хэрэгсэлийн төрөл<span class="mini-red">*</span></label>
                 <md-select  class="datepicker-filter-adjust6"  placeholder="Сонгох"
                         ng-model="newPost.transportationId">
                     <md-option ng-repeat="transport in transportation"
@@ -81,7 +86,7 @@
 
             <div layout="row">
                 <md-checkbox ng-model="newPostDataCheck.stuff"
-                             aria-label="stuff_checkbox">Ачаа
+                             aria-label="stuff_checkbox">Ачаа<span class="mini-red">**</span>
                 </md-checkbox>
             </div>
             <div layout="row" ng-show="newPostDataCheck.stuff">
@@ -99,7 +104,7 @@
 
             <div layout="row" style="    margin-top: 20px;">
                 <md-checkbox ng-model="newPostDataCheck.passanger"
-                             aria-label="passanger_checkbox">Зорчигч
+                             aria-label="passanger_checkbox">Зорчигч<span class="mini-red">**</span>
                 </md-checkbox>
                 <md-input-container>
                     <input ng-model="newPost.passanger" type="number" value="1"
@@ -109,7 +114,7 @@
 
             <div layout="row">
                 <md-checkbox ng-model="newPostDataCheck.animal"
-                             aria-label="animal_checkbox">Амьтан
+                             aria-label="animal_checkbox">Амьтан<span class="mini-red">**</span>
                 </md-checkbox>
             </div>
 
