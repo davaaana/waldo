@@ -4,17 +4,17 @@
             Бүх зар
         </div>
     </a>
-    <a href="#/index/own-post" target="_self" ng-show="auth">
+    <a href="#/index/own-post" target="_self" ng-show="auth" data-ng-click="$parent.filterClear()">
         <div class="un-select" id="own-post">
             Миний зар
         </div>
     </a>
-    <a href="#/index/contacted-post" target="_self" ng-show="auth">
+    <a href="#/index/contacted-post" target="_self" ng-show="auth" data-ng-click="$parent.filterClear()">
         <div class="un-select" id="contacted-post">
             Холбогдсон зар
         </div>
     </a>
-    <a href="#/index/about" target="_self">
+    <a href="#/index/about" target="_self" data-ng-click="$parent.filterClear()">
         <div class="un-select" id="about">
             Валдогийн тухай
         </div>

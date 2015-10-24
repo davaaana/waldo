@@ -6,7 +6,6 @@ mainApp.controller('PostController', ['$rootScope', '$scope', '$http', '$mdDialo
             fromDate: '',
             toDate: ''
         };
-
         $scope.$parent.filterArea = true;
 
         AuthService.getUserInfo($scope).then(function (data) {
@@ -76,7 +75,6 @@ mainApp.controller('PostController', ['$rootScope', '$scope', '$http', '$mdDialo
         $scope.filterChange = function () {
             PostService.allPostFilter($scope.filter).then(function (data) {
                 $scope.posts = data.data;
-                console.log($scope);
                 $scope.$$childHead.posts = data.data;
                 $scope.$$childTail.posts = data.data;
             });
@@ -85,8 +83,10 @@ mainApp.controller('PostController', ['$rootScope', '$scope', '$http', '$mdDialo
         $scope.getAllPostData = function () {
             PostService.getAllPostData().then(function (posts) {
                 $scope.posts = posts.data;
-                $scope.$$childHead.posts = posts.data;
-                $scope.$$childTail.posts = posts.data;
+                try{
+                    $scope.$$childHead.posts = posts.data;
+                    $scope.$$childTail.posts = posts.data;
+                }catch (e){}
             });
         }
 

@@ -96,6 +96,7 @@ mainApp.factory('UserService', function ($http) {
                         $scope.closeDialog();
                         me.getUserInfo($scope);
                         mdToast.showSimple("Мэдээлэл амжилттай солигдолоо");
+                        window.location.reload();
                     }
                 }
             );

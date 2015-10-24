@@ -8,6 +8,7 @@ mainApp.controller('UserController', ['$rootScope', '$scope','$http','$mdDialog'
         UserService.getUserInfo($scope).then(function (data) {
             if(data.success == true){
                 $scope.auth = true;
+                $scope.pro = data.data;
                 $scope.user = data.data;
             }else{
                 $scope.auth = false;

@@ -5,6 +5,10 @@ mainApp.controller('HomeController', ['$rootScope', '$scope', '$http', '$mdDialo
 
         $scope.filterArea = true;
 
+        $scope.filterClear = function () {
+            $scope.$$childHead.filterClear();
+        }
+
         AuthService.getUserInfo($scope).then(function (data) {
             if(data.success == true){
                 $scope.auth = true;
