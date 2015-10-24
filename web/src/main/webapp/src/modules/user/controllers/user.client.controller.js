@@ -33,7 +33,12 @@ mainApp.controller('UserController', ['$rootScope', '$scope','$http','$mdDialog'
         }catch (e){}
 
         $scope.uploadImage = function (file) {
+            if(file[0].size > 1301577){
+                $mdToast.showSimple("Зургийн хэмжээ хэтэрхий том байна");
+                return;
+            }
             UserService.uploadFile(file,$scope).then(function (res) {
+                console.log(res);
                 if(res.status == 200) {
 
                     UserService.getUserInfo($scope).then(function (data) {
