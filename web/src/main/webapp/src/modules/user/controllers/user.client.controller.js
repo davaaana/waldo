@@ -52,6 +52,8 @@ mainApp.controller('UserController', ['$rootScope', '$scope','$http','$mdDialog'
                     try{
 
                     }catch (e){}
+                }else if(res.status == 413){
+                    $mdToast.showSimple("Зургийн хэмжээ хэтэрхий том байна");
                 }
             });
         };
