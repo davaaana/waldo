@@ -56,16 +56,18 @@
                                            required>
                                 </md-input-container>
                             </div>
-                            <div layout="column" style="width: 347px; height: 200px;  overflow: auto; font-size: 11px; padding-left: 3px">
-                                <h2>Валдо сүлжээ гэж юу вэ?</h2>
+                            <div layout="column"
+                                 style="width: 347px; height: 200px;  overflow: auto; font-size: 11px; padding-left: 3px">
 
-                                <p>Валдо сүлжээ нь ачаа бараа илгээх хүсэлтэй, эсвэл ямар нэг чиглэл явахаар унаа
+
+                                <div style="min-height: 125px">
+                                    <span class="term-title">Валдо сүлжээ гэж юу вэ?</span><br/>
+                                    Валдо сүлжээ нь ачаа бараа илгээх хүсэлтэй, эсвэл ямар нэг чиглэл явахаар унаа
                                     хайж буй хувь хүн болон нөгөө талаас ачааг зөөвөрлөж үйлчилгээ үзүүлэгч нэг
                                     нэгнээ олох, зар үүсгэж, өөр хооронд нь холбож өгөх зориулалттай. Валдо сүлжээ
                                     нь үйлчилгээ үзүүлсэний хөлсийг төлөх төлбөр тооцоо, зөвшилцөлийг хариуцахгүй.
                                     Хэрэглэгч (ачаа бараа илгээч, зорчин явагч эсбэл зөөвөрлөх үйлчилгээ үзүүлэгч)
-                                    өөр хоорондоо үйлчилгээний хөлс болон зөвшилцөлөө тохирно.
-                                </p>
+                                    өөр хоорондоо үйлчилгээний хөлс болон зөвшилцөлөө тохирно.</div>
 
                                 <h3>Үйлчилгээний дүрэм:</h3>
                                 <h4>Валдо сүлжээг ашиглаж эхэлсэнээс энэхүү нөхцөлүүдийг Та зөвшөөрнө </h4>
@@ -113,13 +115,13 @@
                         </div>
                     </div>
 
-                    <div  layout="row" flex>
-                        <md-button  layout="column" flex="20" ng-click="saveSignup()"
-                                    class="btn btn-lg  btn-block btn-success"
-                                    ng-disabled="register.password !=register2.password_confirm || register.email!=register2.email_confirm || !register.username || !register.firstname || !register.email || !register.phone || !register.password || data.cb2!='ЗӨВШӨӨРЧ'">
+                    <div layout="row" flex>
+                        <md-button layout="column" flex="20" ng-click="saveSignup()"
+                                   class="btn btn-lg  btn-block btn-success"
+                                   ng-disabled="register.password !=register2.password_confirm || register.email!=register2.email_confirm || !register.username || !register.firstname || !register.email || !register.phone || !register.password || data.cb2!='ЗӨВШӨӨРЧ'">
                             Бүртгүүлэх
                         </md-button>
-                        <md-checkbox flex="80"  layout="column"
+                        <md-checkbox flex="80" layout="column"
                                      ng-model="data.cb2"
                                      aria-label="Checkbox 2"
                                      ng-true-value="'ЗӨВШӨӨРЧ'"
