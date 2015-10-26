@@ -58,12 +58,12 @@
                     <div layout="row" flex class="middle-filter-area">
                         <div layout="column">
                             <label class="filter-title">Явах огноо эхлэх</label>
-                            <md-datepicker ng-model="filter.fromDateTime" md-placeholder="Сонгох" format="yyyy.MM.dd"
+                            <md-datepicker calendar-header="caHeader" ng-model="filter.fromDateTime" md-placeholder="Сонгох" format="yyyy.MM.dd"
                                            class="datepicker-filter-adjust"></md-datepicker>
                         </div>
                         <div layout="column">
                             <label class="filter-title">Явах огноо дуусах</label>
-                            <md-datepicker ng-model="filter.toDateTime" md-placeholder="Сонгох"
+                            <md-datepicker calendar-header="caHeader" ng-model="filter.toDateTime" md-placeholder="Сонгох"
                                            class="datepicker-filter-adjust" md-min-date="filter.fromDateTime"></md-datepicker>
                         </div>
                         <md-button class="md-raised md-warn md-button md-ink-ripple filter-button"

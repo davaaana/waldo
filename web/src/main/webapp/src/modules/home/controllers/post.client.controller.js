@@ -114,6 +114,16 @@ mainApp.controller('PostController', ['$rootScope', '$scope', '$http', '$mdDialo
             $scope.selectedItemType = item;
         }
 
+        $scope.caHeader =  {
+            monday: 'Да',
+            tuesday: 'Мя',
+            wednesday: 'Лх',
+            thursday: 'Пү',
+            friday: 'Ба',
+            saturday: 'Бя',
+            sunday: 'Ня'
+        }
+
         $scope.filterClear = function () {
             $scope.getAllPostData();
             $scope.filter = {};

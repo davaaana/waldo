@@ -5,8 +5,19 @@ mainApp.controller('HomeController', ['$rootScope', '$scope', '$http', '$mdDialo
 
         $scope.filterArea = true;
 
+        console.log(this);
         $scope.filterClear = function () {
             $scope.$$childHead.filterClear();
+        }
+
+        $scope.caHeader =  {
+            monday: 'Да',
+            tuesday: 'Мя',
+            wednesday: 'Лх',
+            thursday: 'Пү',
+            friday: 'Ба',
+            saturday: 'Бя',
+            sunday: 'Ня'
         }
 
         AuthService.getUserInfo($scope).then(function (data) {
