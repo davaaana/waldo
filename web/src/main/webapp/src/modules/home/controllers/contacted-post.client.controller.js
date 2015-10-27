@@ -6,16 +6,17 @@ mainApp.controller('ContactedPostController', ['$rootScope', '$scope', '$http', 
         $scope.$parent.filterArea = false;
 
         AuthService.getUserInfo($scope).then(function (data) {
-            if(data.success == true){
+            if (data.success == true) {
                 $scope.auth = true;
                 $scope.user = data.data;
-            }else{
+            } else {
                 $scope.auth = false;
             }
         });
 
         $scope.contactedNextBtn = true;
         $scope.rateStep = 1;
+        $scope.hideAds = true;
 
         $scope.conFilter = {
             fromDate: '',
@@ -27,32 +28,68 @@ mainApp.controller('ContactedPostController', ['$rootScope', '$scope', '$http', 
             window.location.href = '/';
         }
 
+        $scope.hideCPostsShow = function (bool) {
+            if (bool == false) {
+                $scope.hideAds = true;
+                $scope.contactedPosts = $scope.parentContacted
+                $scope.contactedPosts = $scope.contactedPosts.filter(function (obj) {
+                    var when = obj.when;
+                    var today = new Date().toJSON().slice(0, 10);
+                    if (new Date(obj.when) >= new Date(today)) {
+                        return true;
+                    }
+                })
+            }
+            if (bool == true) {
+                $scope.hideAds = false;
+                $scope.contactedPosts = $scope.parentContacted
+                $scope.contactedPosts = $scope.contactedPosts.filter(function (obj) {
+                    var when = obj.when;
+                    var today = new Date().toJSON().slice(0, 10);
+                    if (new Date(obj.when) < new Date(today)) {
+                        return true;
+                    }
+                })
+            }
+
+        };
+
         $scope.contactedPost = function () {
             PostService.getContactedPostList($scope.paging).then(function (data) {
-                $scope.contactedPosts = data.data;
+                $scope.parentContacted = data.data;
+                $scope.contactedPosts = $scope.parentContacted
+                $scope.contactedPosts = $scope.contactedPosts.filter(function (obj) {
+                    var when = obj.when;
+                    var today = new Date().toJSON().slice(0, 10);
+                    if (new Date(obj.when) >= new Date(today)) {
+                        return true;
+                    }
+                })
             });
         };
 
         $scope.$watch('conFilter.toDateTime', function (el) {
-            try{
+            try {
                 var date = new Date(el);
-                date.setDate(date.getDate()-1)
-                $scope.conFilter.toDate = date.toJSON().slice( 0, 10);
+                date.setDate(date.getDate() - 1)
+                $scope.conFilter.toDate = date.toJSON().slice(0, 10);
                 PostService.getContactedPostListFilter($scope.conFilter).then(function (data) {
                     $scope.contactedPosts = data.data;
                 });
-            }catch(e){}
+            } catch (e) {
+            }
         });
 
         $scope.$watch('conFilter.fromDateTime', function (el) {
-            try{
+            try {
                 var date = new Date(el);
-                date.setDate(date.getDate()-1)
-                $scope.conFilter.fromDate = date.toJSON().slice( 0, 10);
+                date.setDate(date.getDate() - 1)
+                $scope.conFilter.fromDate = date.toJSON().slice(0, 10);
                 PostService.getContactedPostListFilter($scope.conFilter).then(function (data) {
                     $scope.contactedPosts = data.data;
                 });
-            }catch(e){}
+            } catch (e) {
+            }
         });
 
         $scope.conFilterClear = function () {

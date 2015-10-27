@@ -5,6 +5,7 @@ import com.monsource.waldo.model.Post;
 import com.monsource.waldo.model.PostInfo;
 import com.monsource.waldo.model.Rate;
 import com.monsource.waldo.model.SimplePost;
+import com.monsource.waldo.security.AccountDetails;
 import com.monsource.waldo.security.SecurityHelper;
 
 import java.sql.Timestamp;
@@ -25,6 +26,17 @@ public class PostHelper {
 
         for (PostEntity postEntity : postEntities) {
             SimplePost simplePost = convertToSimplePost(postEntity);
+            AccountDetails details = SecurityHelper.getDetails();
+
+            if (details != null) {
+                for (PostContactEntity postContactEntity : postEntity.getPostContacts()) {
+                    if (postContactEntity.getAccount().getId().equals(details.getAccount().getId())) {
+                        simplePost.setAlreadyExchange(true);
+                        break;
+                    }
+                }
+            }
+
             simplePosts.add(simplePost);
             if (contacted) {
                 Long accountId = SecurityHelper.getDetails().getAccount().getId();
