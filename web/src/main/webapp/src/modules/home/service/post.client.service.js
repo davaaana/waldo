@@ -1,10 +1,8 @@
 mainApp.factory('PostService', function ($http) {
     return {
-        getAllPostData: function () {
-            return $http.get(SERVICE_URL + '/post').then(function (posts) {
-
+        getAllPostData: function (scope) {
+            return $http.get(SERVICE_URL + '/post/gets/'+scope.auth).then(function (posts) {
                 return posts = posts.data;
-
             });
         },
         getPostMore: function (mpost) {
@@ -13,8 +11,8 @@ mainApp.factory('PostService', function ($http) {
             });
             return promise;
         },
-        allPostPaging: function (page) {
-            return $http.get(SERVICE_URL + '/post?page=' + page).then(function (data) {
+        allPostPaging: function (scope,page) {
+            return $http.get(SERVICE_URL + '/post/gets/'+scope.auth+'?page=' + page).then(function (data) {
                 return data.data;
             })
         },

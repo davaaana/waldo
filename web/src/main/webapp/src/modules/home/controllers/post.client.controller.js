@@ -81,7 +81,7 @@ mainApp.controller('PostController', ['$rootScope', '$scope', '$http', '$mdDialo
         };
         
         $scope.getAllPostData = function () {
-            PostService.getAllPostData().then(function (posts) {
+            PostService.getAllPostData($scope).then(function (posts) {
                 $scope.posts = posts.data;
                 try{
                     $scope.$$childHead.posts = posts.data;
@@ -167,7 +167,7 @@ mainApp.controller('PostController', ['$rootScope', '$scope', '$http', '$mdDialo
         }
 
         $scope.paging = function () {
-            PostService.allPostPaging($scope.page).then(function (data) {
+            PostService.allPostPaging($scope,$scope.page).then(function (data) {
 
                 for (var i = 0; i < data.data.length; i++) {
                     $scope.posts.push(data.data[i]);

@@ -34,12 +34,12 @@ public class PostService {
     @Autowired
     AccountDAO accountDAO;
 
-    @RequestMapping(method = RequestMethod.GET, headers = "Accept=application/json")
-    public Result find(@ModelAttribute Filter filter) {
+    @RequestMapping(value = "/gets/{auth}",method = RequestMethod.GET, headers = "Accept=application/json")
+    public Result find(@ModelAttribute Filter filter,@PathVariable("auth") Boolean auth) {
         try {
 
             List<PostEntity> postEntities = postDAO.find(filter);
-            List<SimplePost> simplePosts = PostHelper.convertToSimplePost(postEntities);
+            List<SimplePost> simplePosts = PostHelper.convertToSimplePost(postEntities,auth);
 
             return new Result(true, simplePosts);
         } catch (Exception e) {
@@ -145,7 +145,7 @@ public class PostService {
             AccountEntity accountEntity = SecurityHelper.getDetails().getAccount();
 
             List<PostEntity> postEntities = postDAO.find(filter, accountEntity.getId());
-            List<SimplePost> simplePosts = PostHelper.convertToSimplePost(postEntities);
+            List<SimplePost> simplePosts = PostHelper.convertToSimplePost(postEntities,false);
 
             return new Result(true, simplePosts);
         } catch (Exception e) {

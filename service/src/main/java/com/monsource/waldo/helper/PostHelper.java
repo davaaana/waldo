@@ -17,22 +17,24 @@ import java.util.List;
  * Created by nasanjargal on 5/24/2015.
  */
 public class PostHelper {
-    public static List<SimplePost> convertToSimplePost(List<PostEntity> postEntities) {
-        return convertToSimplePost(postEntities, false);
+    public static List<SimplePost> convertToSimplePost(List<PostEntity> postEntities,boolean auth) {
+        return convertToSimplePost(postEntities, false,auth);
     }
 
-    public static List<SimplePost> convertToSimplePost(List<PostEntity> postEntities, boolean contacted) {
+    public static List<SimplePost> convertToSimplePost(List<PostEntity> postEntities, boolean contacted,boolean auth) {
         List<SimplePost> simplePosts = new ArrayList<SimplePost>();
 
         for (PostEntity postEntity : postEntities) {
             SimplePost simplePost = convertToSimplePost(postEntity);
-            AccountDetails details = SecurityHelper.getDetails();
+            if(auth){
+                AccountDetails details = SecurityHelper.getDetails();
 
-            if (details != null) {
-                for (PostContactEntity postContactEntity : postEntity.getPostContacts()) {
-                    if (postContactEntity.getAccount().getId().equals(details.getAccount().getId())) {
-                        simplePost.setAlreadyExchange(true);
-                        break;
+                if (details != null) {
+                    for (PostContactEntity postContactEntity : postEntity.getPostContacts()) {
+                        if (postContactEntity.getAccount().getId().equals(details.getAccount().getId())) {
+                            simplePost.setAlreadyExchange(true);
+                            break;
+                        }
                     }
                 }
             }
