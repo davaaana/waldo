@@ -16,8 +16,8 @@ mainApp.factory('PostService', function ($http) {
                 return data.data;
             })
         },
-        allPostFilter: function (filter) {
-            return $http({url:SERVICE_URL + '/post',method:'GET',params:filter}).then(function (data) {
+        allPostFilter: function (scope,filter) {
+            return $http({url:SERVICE_URL + '/post/gets/'+scope.auth,method:'GET',params:filter}).then(function (data) {
                 return data.data;
             })
         },

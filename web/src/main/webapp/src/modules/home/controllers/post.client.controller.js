@@ -73,7 +73,7 @@ mainApp.controller('PostController', ['$rootScope', '$scope', '$http', '$mdDialo
         });
 
         $scope.filterChange = function () {
-            PostService.allPostFilter($scope.filter).then(function (data) {
+            PostService.allPostFilter($scope,$scope.filter).then(function (data) {
                 $scope.posts = data.data;
                 $scope.$$childHead.posts = data.data;
                 $scope.$$childTail.posts = data.data;
