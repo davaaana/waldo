@@ -968,3 +968,7 @@ a.md-button.md-warn.md-raised, a.md-button.md-warn.md-fab, .md-button.md-warn.md
     font-size: 16px;
 }
 
+.select{
+    border: 1px solid rgba(255, 0, 0, 0.4);
+}
+
