@@ -10,16 +10,6 @@ mainApp.controller('HomeController', ['$rootScope', '$scope', '$http', '$mdDialo
             $scope.$$childHead.filterClear();
         }
 
-        $scope.caHeader =  {
-            monday: 'Да',
-            tuesday: 'Мя',
-            wednesday: 'Лх',
-            thursday: 'Пү',
-            friday: 'Ба',
-            saturday: 'Бя',
-            sunday: 'Ня'
-        }
-
         AuthService.getUserInfo($scope).then(function (data) {
             if(data.success == true){
                 $scope.auth = true;

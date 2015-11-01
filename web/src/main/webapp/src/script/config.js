@@ -1,10 +1,10 @@
 var mainApp = angular.module('waldoApp', ['ui.router','iconsAndThemes', 'ngMaterial','blockUI']);
 
-mainApp.config(['blockUIConfig','$mdDateLocaleProvider',
-    function(blockUIConfig,$mdDateLocaleProvider) {
-        $mdDateLocaleProvider.formatDate =  $mdDateLocaleProvider.formatDate = function(date) {
-            return moment(date).format('yyyy/MM/dd');
-        };
+mainApp.config(['blockUIConfig',
+    function(blockUIConfig) {
+        //$mdDateLocaleProvider.formatDate =  $mdDateLocaleProvider.formatDate = function(date) {
+        //    return moment().format('YYYY-MM-DD');
+        //};
         //blockUIConfig.templateUrl = 'src/modules/dialogs/loading.client.view.html';
         blockUIConfig.message = 'Ачааллаж байна...';
         //blockUIConfig.requestFilter = function (response) {

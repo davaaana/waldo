@@ -2,10 +2,12 @@
 
 mainApp.controller('PostController', ['$rootScope', '$scope', '$http', '$mdDialog', 'PostService', '$log', '$q','$mdToast', 'UserService', '$location',
     function ($rootScope, $scope, $http, dialog, PostService, $log, $q,$mdToast, AuthService, $location) {
+
         $scope.filter = {
             fromDate: '',
             toDate: ''
         };
+
         $scope.$parent.filterArea = true;
 
         AuthService.getUserInfo($scope).then(function (data) {
@@ -131,6 +133,10 @@ mainApp.controller('PostController', ['$rootScope', '$scope', '$http', '$mdDialo
             $scope.posts = $scope.posts;
             $scope.searchText = '';
             $scope.searchText1 = '';
+            $scope.filter = {
+                fromDate: '',
+                toDate: ''
+            };
         };
 
         $scope.more = function (post) {
