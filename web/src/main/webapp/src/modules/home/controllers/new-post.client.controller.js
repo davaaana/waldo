@@ -3,6 +3,8 @@
 mainApp.controller('NewPostController', ['$rootScope', '$scope','$http','$mdDialog','$mdToast', 'UserService','PostService','$location',
     function ($rootScope, $scope,$http,dialog,$mdToast,UserService,PostService,$location) {
 
+        $scope.newPostProgress = 0;
+
         UserService.getUserInfo($scope).then(function (data) {
             if(data.success == true){
                 $scope.auth = true;
@@ -35,6 +37,17 @@ mainApp.controller('NewPostController', ['$rootScope', '$scope','$http','$mdDial
                     return $scope.toDistricts[i].name;
             }
         };
+
+        $scope.$watch('step', function (el) {
+            switch (el){
+                case 1 : $scope.newPostProgress = 33;break;
+                case 2 : $scope.newPostProgress = 66;break;
+                case 3 : $scope.newPostProgress = 66;break;
+                case 4 : $scope.newPostProgress = 100;break;
+                case 5 : $scope.newPostProgress = 100;break;
+                default :$scope.newPostProgress = 0;break;
+            }
+        });
 
         $scope.transportGetName = function (id) {
             for(var i in $scope.transportation){
