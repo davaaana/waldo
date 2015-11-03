@@ -5,6 +5,8 @@ mainApp.controller('HomeController', ['$rootScope', '$scope', '$http', '$mdDialo
 
         $scope.filterArea = true;
 
+        $scope.minDate = new Date();
+
         console.log(this);
         $scope.filterClear = function () {
             $scope.$$childHead.filterClear();
