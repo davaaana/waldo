@@ -135,6 +135,10 @@
                             <md-card-content flex="70" layout="row" layout-align="center center"
                                              class="post_body">
                                 <div layout="column" flex layout-padding layout-align="center start">
+                                    <div layout="row" >
+                                        <div class="post_user_data_text2">Зарын дугаар : {{contactedPost.id}}</div>
+                                    </div>
+
                                     <div layout="row" class="post-title">
                                         <div ng-if="contactedPost.type==='CARRIER'">
                                             АЧАА ТЭЭВЭРЛЭНЭ: <span class="title-red">{{contactedPost.policy}}</span>
