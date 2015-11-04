@@ -1,7 +1,7 @@
 <md-dialog aria-label="Creating new post" id="postMore" ng-init="stepExchange = 1">
     <md-toolbar class="md-accent">
         <span class="md-toolbar-tools">
-            <span> Зарын дэлгэрэнгүй</span>
+            <span>Зарын дэлгэрэнгүй</span>
         <span flex></span>
         <md-button ng-click="closeDialog()" aria-label="Close" class="md-icon-button">
             <md-icon md-svg-icon="close"></md-icon>
@@ -17,7 +17,6 @@
 
                     <md-card-content flex="20" layout="column" layout-align="center center">
                         <div layout="column" layout-align="center center">
-
                             <img ng-src="ws/profile/image/{{mpost.username}}.png"
                                  class="user-male-icon"/>
 
@@ -28,6 +27,10 @@
                     <md-card-content flex="65" layout="row" layout-align="center center"
                                      class="post_body" style="width: 480px">
                         <div layout="column" flex layout-padding layout-align="center start">
+                          <div layout="row" >
+                              <div class="post_user_data_text2">Зарын дугаар : {{mpost.id}}</div>
+                          </div>
+
                             <div layout="row" class="post-title">
                                 <div ng-if="mpost.type==='CARRIER'">
                                     АЧАА ТЭЭВЭРЛЭНЭ: <span class="title-red">{{mpost.policy}}</span>

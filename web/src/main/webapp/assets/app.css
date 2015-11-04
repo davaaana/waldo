@@ -136,7 +136,7 @@ footer {
 }
 
 .social {
-    padding-right: 8px;
+    padding-left: 8px;
 }
 
 [layout=row] > md-divider {
@@ -970,5 +970,9 @@ a.md-button.md-warn.md-raised, a.md-button.md-warn.md-fab, .md-button.md-warn.md
 
 .select{
     border: 1px solid rgba(255, 0, 0, 0.4);
+}
+
+.align-right{
+    text-align: right;
 }
 
