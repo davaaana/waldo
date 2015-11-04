@@ -8,8 +8,7 @@ mainApp.controller('PostController', ['$rootScope', '$scope', '$http', '$mdDialo
             toDate: ''
         };
         $scope.minDate = new Date();
-
-        console.log($scope.minDate);
+        $scope.minDate.setDate($scope.minDate.getDate()-1);
 
         $scope.$parent.filterArea = true;
 
