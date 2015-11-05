@@ -6,6 +6,9 @@ mainApp.controller('PostMoreController', ['$rootScope', '$scope', '$http', '$mdD
         $scope.ownBool = false;
         $scope.auth = AuthService.getAuthentication();
 
+        $scope.minDate = new Date();
+        $scope.minDate.setDate($scope.minDate.getDate()-1);
+
         var user;
 
         try {

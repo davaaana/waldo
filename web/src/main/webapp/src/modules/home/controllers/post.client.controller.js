@@ -7,6 +7,7 @@ mainApp.controller('PostController', ['$rootScope', '$scope', '$http', '$mdDialo
             fromDate: '',
             toDate: ''
         };
+        $scope.auth = false;
         $scope.minDate = new Date();
         $scope.minDate.setDate($scope.minDate.getDate()-1);
 
@@ -55,7 +56,7 @@ mainApp.controller('PostController', ['$rootScope', '$scope', '$http', '$mdDialo
                 var date = new Date(el);
                 date.setDate(date.getDate()-1)
                 $scope.filter.toDate = date.toJSON().slice( 0, 10);
-                PostService.allPostFilter($scope.filter).then(function (data) {
+                PostService.allPostFilter($scope,$scope.filter).then(function (data) {
                     $scope.posts = data.data;
                     $scope.$$childHead.posts = data.data;
                     $scope.$$childTail.posts = data.data;
@@ -68,7 +69,7 @@ mainApp.controller('PostController', ['$rootScope', '$scope', '$http', '$mdDialo
                 var date = new Date(el);
                 date.setDate(date.getDate()-1)
                 $scope.filter.fromDate = date.toJSON().slice( 0, 10);
-                PostService.allPostFilter($scope.filter).then(function (data) {
+                PostService.allPostFilter($scope,$scope.filter).then(function (data) {
                     $scope.posts = data.data;
                     $scope.$$childHead.posts = data.data;
                     $scope.$$childTail.posts = data.data;
