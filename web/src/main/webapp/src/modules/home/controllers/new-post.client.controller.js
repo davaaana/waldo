@@ -3,8 +3,15 @@
 mainApp.controller('NewPostController', ['$rootScope', '$scope','$http','$mdDialog','$mdToast', 'UserService','PostService','$location',
     function ($rootScope, $scope,$http,dialog,$mdToast,UserService,PostService,$location) {
 
-        $scope.adsType = function(){
-            alert('hello');
+        $scope.adsType = function(type){
+            document.getElementsByClassName('add-ads')[0].style.backgroundColor="";
+            if(type=='sender'){
+                document.getElementsByClassName('add-ads')[0].className += " md-accent";
+            }
+            if(type=='carrier'){
+                document.getElementsByClassName('add-ads')[0].style.backgroundColor="orange";
+        }
+
         }
 
         $scope.newPostProgress = 0;
