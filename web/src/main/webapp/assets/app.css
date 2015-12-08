@@ -249,21 +249,26 @@ form {
 
 .carrier_post .post_type_label {
     color: #ffcc89;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: bold;
 }
 
+.padding-5{
+ padding: 5px 0;
+}
+
 .post_date_label {
-    color: #6b6b6b;
-    font-size: 0.8em;
+    color: gray;
+    font-size: 0.6em;
     padding-top: 0.4em;
     margin: 0;
+    font-weight: bold;
 }
 
 .post_date {
     font-weight: bold;
     color: #6b6b6b;
-    font-size: 0.9em;
+    font-size: 0.78em;
     padding: 0;
     margin: 0;
 }
@@ -674,6 +679,13 @@ a.md-button.md-warn.md-raised, a.md-button.md-warn.md-fab, .md-button.md-warn.md
 .post_user_data_text {
     font-weight: 600;
     font-size: 13px;
+    color: dimgray;
+}
+
+.post_user_data_text-date{
+    font-weight: 500;
+    font-size: 12px;
+    color: darkgray;
 }
 
 .post_user_data_text2 {
@@ -689,10 +701,14 @@ a.md-button.md-warn.md-raised, a.md-button.md-warn.md-fab, .md-button.md-warn.md
 
 .fromTitle {
     color: rgb(255, 152, 0);
+    font-weight: 600;
+    padding-bottom: 5px;
 }
 
 .toTitle {
     color: rgb(68, 138, 255);
+    font-weight: 600;
+    padding-bottom: 5px;
 }
 
 .sender_post .post_body {
@@ -700,7 +716,7 @@ a.md-button.md-warn.md-raised, a.md-button.md-warn.md-fab, .md-button.md-warn.md
 }
 
 .carrier_post .post_body {
-    background-color: #fffbce;
+    background-color: #FFEFDF;
 }
 
 .post-title {
@@ -713,6 +729,7 @@ a.md-button.md-warn.md-raised, a.md-button.md-warn.md-fab, .md-button.md-warn.md
     height: 70px;
     width: 70px;
     padding-top: 5px;
+    border-radius: 50%;
 }
 
 .postMore {
@@ -969,10 +986,15 @@ a.md-button.md-warn.md-raised, a.md-button.md-warn.md-fab, .md-button.md-warn.md
 }
 
 .select{
-    border: 1px solid rgba(255, 0, 0, 0.4);
+    border: 1px solid gray;
 }
 
 .align-right{
     text-align: right;
+}
+
+.ads:hover{
+    cursor: pointer;
+    border: 1px solid black;
 }
 
