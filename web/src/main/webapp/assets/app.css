@@ -524,7 +524,7 @@ body > .md-dialog-container {
 }
 
 .middle-pic {
-    height: 300px;
+    height: 240px;
     border-top: 5px solid rgb(255, 152, 0);
     border-bottom: 2px solid rgb(255, 152, 0);
     background: url("../image/map.jpg") no-repeat;
@@ -565,7 +565,7 @@ body > .md-dialog-container {
 }
 
 .middle-filter-area {
-    padding-left: 40px;
+    padding-left: 5px;
 
 }
 
@@ -639,7 +639,7 @@ body > .md-dialog-container {
     margin-top: 0;
     border: 0px;
     padding-left: 10px;
-    width: 190px;
+    width: 150px;
     height: 40px;
     margin-bottom: 5px;
     margin-right: 5px;
@@ -709,13 +709,13 @@ a.md-button.md-warn.md-raised, a.md-button.md-warn.md-fab, .md-button.md-warn.md
 }
 
 .fromTitle {
-    color: rgb(255, 152, 0);
+    /*color: rgb(255, 152, 0);*/
     font-weight: 600;
     padding-bottom: 5px;
 }
 
 .toTitle {
-    color: rgb(68, 138, 255);
+    /*color: rgb(68, 138, 255);*/
     font-weight: 600;
     padding-bottom: 5px;
 }
@@ -742,7 +742,8 @@ a.md-button.md-warn.md-raised, a.md-button.md-warn.md-fab, .md-button.md-warn.md
 }
 
 .postMore {
-    color: rgb(68, 138, 255);
+    /*color: rgb(68, 138, 255);*/
+    color:dimgray;
     text-decoration: none;
     font-weight: bold;
     text-transform: uppercase;
@@ -766,7 +767,7 @@ a.md-button.md-warn.md-raised, a.md-button.md-warn.md-fab, .md-button.md-warn.md
 }
 
 .middle-menu {
-    top: 338px;
+    top: 277px;
     position: absolute;
 }
 
@@ -1002,9 +1003,14 @@ a.md-button.md-warn.md-raised, a.md-button.md-warn.md-fab, .md-button.md-warn.md
     text-align: right;
 }
 
-.ads:hover{
+.ads_carrier:hover{
     cursor: pointer;
-    border: 1px solid black;
+    border: 2px solid #ffcc89;
+}
+
+.ads_sender:hover{
+    cursor: pointer;
+    border: 2px solid #e2f6ff;
 }
 
 .ads-link{
