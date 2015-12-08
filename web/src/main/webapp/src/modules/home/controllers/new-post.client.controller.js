@@ -4,12 +4,17 @@ mainApp.controller('NewPostController', ['$rootScope', '$scope','$http','$mdDial
     function ($rootScope, $scope,$http,dialog,$mdToast,UserService,PostService,$location) {
 
         $scope.adsType = function(type){
+
             document.getElementsByClassName('add-ads')[0].style.backgroundColor="";
             if(type=='sender'){
                 document.getElementsByClassName('add-ads')[0].className += " md-accent";
+                document.getElementsByClassName('ads-text1')[0].style.color="";
+                document.getElementsByClassName('ads-text2')[0].style.color="rgb(68,138,255)";
             }
             if(type=='carrier'){
                 document.getElementsByClassName('add-ads')[0].style.backgroundColor="orange";
+                document.getElementsByClassName('ads-text2')[0].style.color="";
+                document.getElementsByClassName('ads-text1')[0].style.color="orange";
         }
 
         }

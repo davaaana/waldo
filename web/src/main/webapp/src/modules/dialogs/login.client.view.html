@@ -2,59 +2,71 @@
     <md-toolbar class="md-accent">
         <span class="md-toolbar-tools">
             <md-icon md-svg-icon="account"></md-icon>
-            <span>Нэвтрэх хуудас</span>
+            <span>Валдо сүлжээнд нэвтрэх</span>
             <span flex></span>
             <md-button ng-click="closeDialog()" aria-label="Close" class="md-icon-button">
                 <md-icon md-svg-icon="close"></md-icon>
             </md-button>
         </span>
     </md-toolbar>
-    <md-dialog-content>
-        <section>
-            <div layout="row" layout-align="center center" >
-                <span class="error-text">{{errorMessage}}</span>
-            </div>
-            <md-content layout="row" layout-sm="column" layout-fill>
 
-                <div layout="row">
-                    <form method="post" name="loginForm" flex>
-                        <div layout="column" layout-align="center center" layout-padding>
-                            <md-input-container >
-                                <label>Хэрэглэгчийн нэр</label>
-                                <input ng-model="username" name="username" type="username"  placeholder="Хэрэглэгчийн нэр" required autofocus>
-                            </md-input-container>
-                            <md-input-container >
-                                <label>Нууц үг</label>
-                                <input ng-model="password" name="password" type="password"  placeholder="Нууц үг" required>
-                            </md-input-container>
-                            <md-button class="md-raised md-button md-ink-ripple" ng-click="signins()"
-                                       ng-disabled="!username || !password">Нэвтрэх
-                            </md-button>
+    <section>
+        <div layout="row" layout-align="center center">
+            <span class="error-text">{{errorMessage}}</span>
+        </div>
+        <md-content layout="row" layout-sm="column" layout-fill>
 
+            <div layout="row">
+
+                <form method="post" name="loginForm" flex>
+                    <div layout="column" layout-align="center center" layout-padding>
+                        <div style="color:gray; width: 220px; text-align: center">Хэрэв та манай Валдо сүлжээнд аль
+                            хэдийнэ
+                            бүртгэлтэй бол:
                         </div>
-                    </form>
-                </div>
-
-
-                <md-divider></md-divider>
-                <div layout="column" layout-align="center center" layout-padding>
-
-                    <form id="fbSignIn" name="fbSignIn" action="/ws/signin/facebook" method="post">
-                        <md-button class="md-raised md-accent" type="submit">
-                            <span>Facebook-ээр нэвтрэх</span>
+                        <md-input-container>
+                            <label>Хэрэглэгчийн нэр</label>
+                            <input ng-model="username" name="username" type="username" placeholder="Хэрэглэгчийн нэр"
+                                   required autofocus>
+                        </md-input-container>
+                        <md-input-container>
+                            <label>Нууц үг</label>
+                            <input ng-model="password" name="password" type="password" placeholder="Нууц үг" required>
+                        </md-input-container>
+                        <md-button class="md-raised md-button md-ink-ripple" ng-click="signins()"
+                                   ng-disabled="!username || !password">Нэвтрэх
                         </md-button>
-                    </form>
 
-                    <span class="md-primary">Хэрэв таньд бүртгэл байхгүй бол</span>
-                    <center>
-                        <md-button class="md-primary md-hue-1 md-button md-ink-ripple" ng-click="signup()">
-                            БҮРТГҮҮЛЭХ
-                        </md-button>
-                    </center>
+                    </div>
+                </form>
+            </div>
+
+
+            <md-divider></md-divider>
+            <div layout="column" layout-align="top" layout-padding style="border-left: 1px solid #bfbfbf">
+                <div style="color:gray; width: 255px; text-align: center">Олон нийтийн сүлжээнд бүртгэгдсэн хаягаа
+                    ашиглаж орох бол:
                 </div>
-            </md-content>
-        </section>
-    </md-dialog-content>
+                <form id="fbSignIn" name="fbSignIn" action="/ws/signin/facebook" method="post">
+                    <md-button class="md-raised md-accent" type="submit" style="margin-left: 35px;">
+                        <span>Facebook-ээр нэвтрэх</span>
+                    </md-button>
+                </form>
+
+            </div>
+        </md-content>
+        <md-divider></md-divider>
+        <div style="background: #bfbfbf; width: 100%;  height: 48px;">
+            <div style="float: right; ">
+                Хэрэв та манай сүлжээнд бүртгэлгүй бол:
+                <md-button class="md-raised md-hue-1 md-button md-ink-ripple" ng-click="signup()" style="color:rgb(255, 152, 0)">
+                    БҮРТГҮҮЛЭХ
+                </md-button>
+            </div>
+        </div>
+
+    </section>
+
 </md-dialog>
 
 <!--

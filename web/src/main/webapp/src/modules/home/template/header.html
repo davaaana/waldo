@@ -14,11 +14,13 @@
                     <form method="post" name="loginForm" flex>
                         <div layout="column">
                             <div layout="row">
-                                <input type="text" name="username" placeholder="Нэвтрэх нэр" data-ng-model="username"
-                                       class="login-field"/>
-                                <input type="password" name="password" placeholder="Нууц үг" data-ng-model="password"
-                                       class="login-field"/>
-                                <md-button class="md-raised" data-ng-click="signin()"  layout="column">
+                                <form id="fbSignIn" name="fbSignIn" action="/ws/signin/facebook" method="post">
+                                    <md-button class="md-raised md-accent" type="submit">
+                                        <md-icon md-svg-icon="account"></md-icon>
+                                        <span>-ээр нэвтрэх</span>
+                                    </md-button>
+                                </form>
+                                <md-button class="md-raised" data-ng-click="login()"  layout="column">
                                     <md-icon md-svg-icon="account"></md-icon>
                                     <span hide-sm>Нэвтрэх</span>
                                 </md-button>

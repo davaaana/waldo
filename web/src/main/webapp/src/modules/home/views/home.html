@@ -41,100 +41,102 @@
             md-cols-sm="1" md-cols-gt-sm="2" md-cols-gt-lg="2"
             md-row-height="160px"
             md-gutter="6px" md-gutter-gt-sm="3px" flex>
-        <md-grid-tile
-                ng-repeat="post in posts | filter:filter.postType | filter:filter.toLocation  | filter:filter.fromLocation | filter:{when:filter.tooDate} | filter:{arrive:filter.froomDate} | filter:filter.transportationType | orderBy:filter.quickFilter"
-                ng-class="{carrier_post: post.type==='CARRIER', sender_post: post.type==='SENDER'}">
 
-            <md-card flex
-                     ng-class="{select: post.alreadyExchange===true, select: post.alreadyExchange===true}" class="ads">
-                <div layout="row" flex>
-                    <md-card-content flex="20" layout="column">
-                        <div layout="column" layout-align="center center">
+            <md-grid-tile
+                    ng-repeat="post in posts | filter:filter.postType | filter:filter.toLocation  | filter:filter.fromLocation | filter:{when:filter.tooDate} | filter:{arrive:filter.froomDate} | filter:filter.transportationType | orderBy:filter.quickFilter"
+                    ng-class="{carrier_post: post.type==='CARRIER', sender_post: post.type==='SENDER'}">
+                <a href="#" class="ads-link" ng-click="more(post)">
+                <md-card flex
+                         ng-class="{select: post.alreadyExchange===true, select: post.alreadyExchange===true}"
+                         class="ads">
+                    <div layout="row" flex>
+                        <md-card-content flex="20" layout="column">
+                            <div layout="column" layout-align="center center">
 
-                            <img ng-src="ws/profile/image/{{post.username}}.png"
-                                 class="user-male-icon"/>
+                                <img ng-src="ws/profile/image/{{post.username}}.png"
+                                     class="user-male-icon"/>
 
-                            <div class="user_profile_name">{{post.username}}</div>
-                        </div>
+                                <div class="user_profile_name">{{post.username}}</div>
+                            </div>
 
-                    </md-card-content>
-                    <md-card-content flex="60" layout="row" layout-align="center center"
-                                     class="post_body">
-                        <div layout="column" flex layout-padding layout-align="center start">
-                            <!--  <div layout="row" class="post-title">
-                                  <div ng-if="post.type==='CARRIER'">
-                                      АЧАА ТЭЭВЭРЛЭНЭ: <span class="title-red">{{post.policy}}</span>
+                        </md-card-content>
+                        <md-card-content flex="60" layout="row" layout-align="center center"
+                                         class="post_body">
+                            <div layout="column" flex layout-padding layout-align="center start">
+                                <!--  <div layout="row" class="post-title">
+                                      <div ng-if="post.type==='CARRIER'">
+                                          АЧАА ТЭЭВЭРЛЭНЭ: <span class="title-red">{{post.policy}}</span>
+                                      </div>
+                                      <div ng-if="post.type==='SENDER'">
+                                          АЧАА ТЭЭВЭРЛҮҮЛНЭ: <span class="title-red">{{post.policy}}</span>
+                                      </div>
                                   </div>
-                                  <div ng-if="post.type==='SENDER'">
-                                      АЧАА ТЭЭВЭРЛҮҮЛНЭ: <span class="title-red">{{post.policy}}</span>
-                                  </div>
-                              </div>
-  -->
-                            <!--ХӨДЛӨХ ГАЗРЫН ТУХАЙ-->
-                            <div layout="row" style="width: 300px">
-                                <div layout="column" flex="50">
-                                    <div layout="row" class="fromTitle">
-                                        Хөдлөх:
-                                    </div>
-                                    <div layout="row">
-                                        <span class="post_user_data_text">{{post.from | limitTo: 23 }}</span>
-                                    </div>
-                                    <div layout="row">
-                                        <span class="post_user_data_text padding-top-5">Өнөөдөр гарна</span>
-                                    </div>
-                                    <div layout="row">
+      -->
+                                <!--ХӨДЛӨХ ГАЗРЫН ТУХАЙ-->
+                                <div layout="row" style="width: 300px">
+                                    <div layout="column" flex="50">
+                                        <div layout="row" class="fromTitle">
+                                            Хөдлөх:
+                                        </div>
+                                        <div layout="row">
+                                            <span class="post_user_data_text">{{post.from | limitTo: 23 }}</span>
+                                        </div>
+                                        <div layout="row">
+                                            <span class="post_user_data_text padding-top-5">Өнөөдөр гарна</span>
+                                        </div>
+                                        <div layout="row">
                                          <span class="post_user_data_text-date"
                                                ng-bind="convertToDate(post.when) | date:'(yyyy.MM.dd)'"></span>
+                                        </div>
+
                                     </div>
 
-                                </div>
-
-                                <!--ОЧИХ ГАЗРЫН ТУХАЙ-->
-                                <div layout="column" flex="50">
-                                    <div layout="row" class="toTitle">
-                                        Очих:
-                                    </div>
-                                    <div layout="row">
-                                        <span class="post_user_data_text">{{post.to | limitTo: 23 }}</span>
-                                    </div>
-                                    <div layout="row">
-                                        <span class="post_user_data_text  padding-top-5">3 хоногийн дараа</span>
-                                    </div>
-                                    <div layout="row">
+                                    <!--ОЧИХ ГАЗРЫН ТУХАЙ-->
+                                    <div layout="column" flex="50">
+                                        <div layout="row" class="toTitle">
+                                            Очих:
+                                        </div>
+                                        <div layout="row">
+                                            <span class="post_user_data_text">{{post.to | limitTo: 23 }}</span>
+                                        </div>
+                                        <div layout="row">
+                                            <span class="post_user_data_text  padding-top-5">3 хоногийн дараа</span>
+                                        </div>
+                                        <div layout="row">
                                         <span class="post_user_data_text-date"
                                               ng-bind="convertToDate(post.arrive) | date:'(yyyy.MM.dd)'"></span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </md-card-content>
-                    <md-card-content flex="20" layout="column" layout-align="center center" class="padding-5">
-                        <div layout="column" layout-align="center center"
-                             ng-if="post.type === 'SENDER'">
-                            <div class="post_type_label">ИЛГЭЭХ ЗАР</div>
-                            <md-icon md-svg-icon="package" class="sender-icon"></md-icon>
-                        </div>
+                        </md-card-content>
+                        <md-card-content flex="20" layout="column" layout-align="center center" class="padding-5">
+                            <div layout="column" layout-align="center center"
+                                 ng-if="post.type === 'SENDER'">
+                                <div class="post_type_label">ИЛГЭЭХ ЗАР</div>
+                                <md-icon md-svg-icon="package" class="sender-icon"></md-icon>
+                            </div>
 
-                        <div layout="column" layout-align="center center"
-                             ng-if="post.type === 'CARRIER'">
-                            <div class="post_type_label">ҮЙЛЧЛЭХ ЗАР</div>
-                            <md-icon md-svg-icon="package-with-hand" class="carrier-icon"></md-icon>
-                        </div>
-                        <div layout="column" layout-align="center center">
-                            <p class="post_date_label">зар бүртгэсэн огноо</p>
+                            <div layout="column" layout-align="center center"
+                                 ng-if="post.type === 'CARRIER'">
+                                <div class="post_type_label">ҮЙЛЧЛЭХ ЗАР</div>
+                                <md-icon md-svg-icon="package-with-hand" class="carrier-icon"></md-icon>
+                            </div>
+                            <div layout="column" layout-align="center center">
+                                <p class="post_date_label">зар бүртгэсэн огноо</p>
 
-                            <p class="post_date dim-text">{{post.createdDate}}</p>
-                        </div>
+                                <p class="post_date dim-text">{{post.createdDate}}</p>
+                            </div>
 
-                    </md-card-content>
-                </div>
-                <md-divider></md-divider>
-                <md-card-footer layout="row" layout-padding layout-align="space-between">
-                    <div class="padding-left-20">
-                        <div style="width: 90px; float: left">
-                            <md-icon md-svg-icon="view"></md-icon>
-                            <span>{{post.requestNum}}</span>
-                        </div>
+                        </md-card-content>
+                    </div>
+                    <md-divider></md-divider>
+                    <md-card-footer layout="row" layout-padding layout-align="space-between">
+                        <div class="padding-left-20">
+                            <div style="width: 90px; float: left">
+                                <md-icon md-svg-icon="view"></md-icon>
+                                <span>{{post.requestNum}}</span>
+                            </div>
                         <span>
                             <span data-ng-show="post.alreadyExchange">
                                   <span style="color:#65BDFE; font-weight: bold">Зартай холбогдсон</span>
@@ -143,13 +145,14 @@
                                    <span style="font-weight: bold; color:#878787">Холбогдоогүй</span>
                             </span>
                         </span>
-                    </div>
+                        </div>
 
-                    <a href="#" class="postMore" ng-click="more(post)">ДЭЛГЭРЭНГҮЙ...</a>
-                </md-card-footer>
-            </md-card>
+                        <span class="postMore">ДЭЛГЭРЭНГҮЙ</span>
+                    </md-card-footer>
+                </md-card>
+        </a>
+            </md-grid-tile>
 
-        </md-grid-tile>
     </md-grid-list>
     <div layout="row" flex layout-align="center center">
         <md-button class="md-accent" ng-click="paging()" ng-show="postNextBtn">Цааш үзэх...</md-button>
