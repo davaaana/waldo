@@ -94,6 +94,10 @@ md-toolbar h1 {
     font-weight: 400;
 }
 
+.md-empty{
+    background: gray;
+}
+
 .avatar {
     position: relative;
     width: 128px;
@@ -393,9 +397,14 @@ md-select {
 }
 
 .createPostChoose {
-    padding-top: 4em;
-    padding-bottom: 4em;
-    padding-left: 10em;
+    padding-top: 2em;
+    padding-bottom: 2em;
+margin: auto;
+}
+
+.text-center{
+    text-align: center;
+    font-weight: 600;
 }
 
 .input-container-adjust > md-select {

@@ -3,6 +3,10 @@
 mainApp.controller('NewPostController', ['$rootScope', '$scope','$http','$mdDialog','$mdToast', 'UserService','PostService','$location',
     function ($rootScope, $scope,$http,dialog,$mdToast,UserService,PostService,$location) {
 
+        $scope.adsType = function(){
+            alert('hello');
+        }
+
         $scope.newPostProgress = 0;
 
         $scope.minDate = new Date();
