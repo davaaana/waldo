@@ -6,9 +6,12 @@ mainApp.controller('NewPostController', ['$rootScope', '$scope','$http','$mdDial
         $scope.newPostProgress = 0;
 
         $scope.minDate = new Date();
+
         $scope.minDate.setDate($scope.minDate.getDate()-1);
 
-        UserService.getUserInfo($scope).then(function (data) {
+        console.log($scope.newPost.when);
+
+            UserService.getUserInfo($scope).then(function (data) {
             if(data.success == true){
                 $scope.auth = true;
                 $scope.user = data.data;

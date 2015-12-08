@@ -64,7 +64,7 @@
                     <md-datepicker ng-model="newPost.arrive" md-placeholder="Сонгох"
 
                                    class="datepicker-filter-adjust6"
-                                   md-min-date="newPost.when"></md-datepicker>
+                                   md-min-date="(newPost.when == undefined) ? minDate : newPost.when"></md-datepicker>
                 </div>
             </div>
         </div>

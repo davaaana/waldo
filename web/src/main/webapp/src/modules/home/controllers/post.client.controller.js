@@ -4,12 +4,17 @@ mainApp.controller('PostController', ['$rootScope', '$scope', '$http', '$mdDialo
     function ($rootScope, $scope, $http, dialog, PostService, $log, $q,$mdToast, AuthService, $location) {
 
         $scope.filter = {
-            fromDate: '',
+            fromDate: $scope.minDate,
             toDate: ''
         };
-        $scope.auth = false;
+
         $scope.minDate = new Date();
         $scope.minDate.setDate($scope.minDate.getDate()-1);
+
+        $scope.filter.fromDateTime = $scope.minDate;
+
+        $scope.auth = false;
+
 
         $scope.$parent.filterArea = true;
 
