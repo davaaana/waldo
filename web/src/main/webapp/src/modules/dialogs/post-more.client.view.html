@@ -27,115 +27,149 @@
                     <md-card-content flex="65" layout="row" layout-align="center center"
                                      class="post_body" style="width: 480px">
                         <div layout="column" flex layout-padding layout-align="center start">
-                          <div layout="row" >
-                              <div class="post_user_data_text2">Зарын дугаар : {{mpost.id}}</div>
-                          </div>
-
-                            <div layout="row" class="post-title">
-                                <div ng-if="mpost.type==='CARRIER'">
-                                    АЧАА ТЭЭВЭРЛЭНЭ: <span class="title-red">{{mpost.policy}}</span>
-                                </div>
-                                <div ng-if="mpost.type==='SENDER'">
-                                    АЧАА ТЭЭВЭРЛҮҮЛНЭ: <span class="title-red">{{mpost.policy}}</span>
-                                </div>
-                            </div>
-
-                            <div ng-show="mpost.passanger" layout="row" class="more-txt">
-                                <div>
-                                    <md-icon md-svg-icon="passanger"></md-icon>
-                                    <span>ЗОРЧИГЧ: {{ mpost.passanger }}</span>
-                                </div>
-                            </div>
-
-                            <div layout="row" class="more-txt" ng-if="mpost.type==='CARRIER'"
-                                 layout-align="start center">
-                                <md-icon md-svg-icon="car"></md-icon>
-                                <div>ТЭЭВРИЙН ХЭРЭГСЭЛ:</div>
-                                <div>{{mpost.transportation}}</div>
-                            </div>
 
 
                             <!--ХӨДЛӨХ ГАЗРЫН ТУХАЙ-->
                             <div layout="row" style="width: 100%">
                                 <div layout="column" flex="50">
-                                    <div layout="row" class="fromTitle">
-                                        ХӨДЛӨХ ГАЗАР
+                                    <div layout="row" class="fromTitle-2">
+                                        Хөдлөх:
                                     </div>
                                     <div layout="row">
-                                        <md-icon md-svg-icon="from-location"></md-icon>
-                                        <span class="post_user_data_text2">{{mpost.from }}</span>
+                                        <div layout="row">
+                                            <md-icon md-svg-icon="from-location"></md-icon>
+                                            <span class="post_user_data_text2">{{mpost.from }}</span>
+                                        </div>
                                     </div>
                                     <div layout="row">
-                                        <md-icon md-svg-icon="calendar-blank"></md-icon>
+                                        <div layout="row">
+                                            <md-icon md-svg-icon="calendar-blank"></md-icon>
                                          <span class="post_user_data_text2"
                                                ng-bind="convertToDate(mpost.when) | date:'yyyy.MM.dd'"></span>
+                                        </div>
                                     </div>
+
+                                    <div layout="row" class="fromTitle">
+                                        Ачаа болон зорчигч:
+                                    </div>
+
+                                    <div ng-show="mpost.passanger" layout="row" class="more-txt">
+                                        <div>
+                                            <md-icon md-svg-icon="passanger"></md-icon>
+                                            <span>{{ mpost.passanger }} хүртэлх зорчигч авч явна</span>
+                                        </div>
+                                    </div>
+
+
+                                    <div layout="row" class="more-txt2 padding-top-5" layout-align="start center"
+                                         ng-if="mpost.animal">
+                                        <div layout="row">
+                                            <md-icon md-svg-icon="cow"></md-icon>
+                                            <div>Амьтан:</div>
+                                            <div>{{mpost.animal}}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div layout="row" class="more-txt2 padding-top-5" layout-align="start center"
+                                         ng-if="mpost.stuff">
+                                        <div layout="row">
+                                            <md-icon md-svg-icon="carry"></md-icon>
+                                            <div>{{mpost.stuff}}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div layout="row" class="more-txt2 padding-top-5" layout-align="start center"
+                                         ng-if="!mpost.stuff && !mpost.stuff">
+                                        <div layout="row">
+                                            <md-icon md-svg-icon="carry"></md-icon>
+                                            <div>Ачаа авч явахгүй</div>
+                                        </div>
+                                    </div>
+
+                                    <div layout="row" class="fromTitle" ng-if="mpost.type==='CARRIER'">
+                                        Унаа:
+                                    </div>
+
+                                    <div layout="row" class="more-txt" ng-if="mpost.type==='CARRIER'"
+                                         layout-align="start center">
+                                        <div layout="row">
+                                            <md-icon md-svg-icon="car"></md-icon>
+                                            <div>{{mpost.transportation}}</div>
+                                        </div>
+                                    </div>
+
 
                                 </div>
 
                                 <!--ОЧИХ ГАЗРЫН ТУХАЙ-->
                                 <div layout="column" flex="50">
-                                    <div layout="row" class="toTitle">
-                                        ОЧИХ ГАЗАР
+                                    <div layout="row" class="toTitle-2">
+                                        Очих:
                                     </div>
                                     <div layout="row">
-                                        <md-icon md-svg-icon="to-location"></md-icon>
-                                        <span class="post_user_data_text2">{{mpost.to }}</span>
+                                        <div layout="row">
+                                            <md-icon md-svg-icon="to-location"></md-icon>
+                                            <span class="post_user_data_text2">{{mpost.to }}</span>
+                                        </div>
                                     </div>
                                     <div layout="row">
-                                        <md-icon md-svg-icon="calendar-check"></md-icon>
+                                        <div layout="row">
+                                            <md-icon md-svg-icon="calendar-check"></md-icon>
                                         <span class="post_user_data_text2"
                                               ng-bind="convertToDate(mpost.arrive) | date:'yyyy.MM.dd'"></span>
+                                        </div>
+                                    </div>
+
+                                    <div layout="row" class="toTitle">
+                                        Тооцоо хийх нөхцөл:
+                                    </div>
+
+                                    <div layout="row" class="more-txt2 padding-top-5" layout-align="start center">
+                                        <div layout="row">
+                                            <md-icon md-svg-icon="carry"></md-icon>
+                                            {{mpost.policy}}
+                                        </div>
+                                    </div>
+
+
+
+                                    <div layout="row" class="more-txt2 padding-top-5" layout-align="start center"
+                                         ng-if="mpost.description">
+                                        <div>Миний дүрэм:</div>
+                                        <div>{{mpost.description}}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div layout="row" class="more-txt2 padding-top-5" layout-align="start center" ng-if="mpost.animal">
-                                <md-icon md-svg-icon="cow"></md-icon>
-                                <div>Амьтан:</div>
-                                <div>{{mpost.animal}}
-                                </div>
-                            </div>
-
-                            <div layout="row" class="more-txt2 padding-top-5" layout-align="start center" ng-if="mpost.stuff">
-                                <md-icon md-svg-icon="carry"></md-icon>
-                                <div>Ачаа:</div>
-                                <div>{{mpost.stuff}}
-                                </div>
-                            </div>
-
-                            <div layout="row" class="more-txt2 padding-top-5" layout-align="start center" ng-if="!mpost.stuff && !mpost.stuff">
-                                <md-icon md-svg-icon="carry"></md-icon>
-                                <div>Ачаа:</div>
-                                <div>Байхгүй
-                                </div>
-                            </div>
-
-                            <div layout="row" class="more-txt2 padding-top-5" layout-align="start center" ng-if="mpost.description">
-                                <md-icon md-svg-icon="carry"></md-icon>
-                                <div>Миний дүрэм:</div>
-                                <div>{{mpost.description}}
-                                </div>
-                            </div>
 
                         </div>
+
                     </md-card-content>
                     <md-card-content flex="15" layout="column" layout-align="center center">
                         <div layout="column" layout-align="center center"
                              ng-if="mpost.type === 'SENDER'">
-                            <div class="post_type_label">ИЛГЭЭХ</div>
+                            <div class="post_type_label">Илгээх зар</div>
                             <md-icon md-svg-icon="package" class="sender-icon"></md-icon>
                         </div>
 
                         <div layout="column" layout-align="center center"
                              ng-if="mpost.type === 'CARRIER'">
-                            <div class="post_type_label">ТЭЭВЭРЛЭХ</div>
+                            <div class="post_type_label">Үйлчлэх зар</div>
                             <md-icon md-svg-icon="package-with-hand" class="carrier-icon"></md-icon>
                         </div>
                         <div layout="column" layout-align="center center">
-                            <p class="post_date_label">зар оруулсан</p>
+                            <p class="post_date_label">зар бүртгэсэн огноо</p>
 
                             <p class="post_date dim-text">{{mpost.createdDate}}</p>
+                        </div>
+
+                        <div>
+                            <p class="post_user_data_text2">Зарын дугаар</p>
+
+                            <p>{{mpost.id}}</p>
                         </div>
 
                     </md-card-content>
@@ -194,7 +228,8 @@
                                      class="post_body">
 
                         <div layout="column" flex layout-padding layout-align="center start">
-                            <div layout="row" flex layout-align="center center" style="color:red; font-weight: bold;     text-align: center;">
+                            <div layout="row" flex layout-align="center center"
+                                 style="color:red; font-weight: bold;     text-align: center;">
                                 Мэдээлэлэл амжилттай солилцогдож холбогдсон зар хэсэгт бүртгэгдлээ.
                             </div>
 

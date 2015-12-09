@@ -497,7 +497,7 @@ body > .md-dialog-container {
     font-weight: 600;
     padding-bottom: 8px;
     color: rgba(0, 0, 0, 0.54);
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
 }
 
 .more-txt2 {
@@ -693,6 +693,12 @@ body > .md-dialog-container {
     font-weight: 500;
 }
 
+.filter-title-4{
+    color: rgb(255, 152, 0);
+    font-size: 17px;
+    font-weight: 500;
+}
+
 a.md-button.md-warn.md-raised, a.md-button.md-warn.md-fab, .md-button.md-warn.md-raised, .md-button.md-warn.md-fab {
     background: rgb(255, 152, 0);
 }
@@ -731,11 +737,26 @@ a.md-button.md-warn.md-raised, a.md-button.md-warn.md-fab, .md-button.md-warn.md
     padding-bottom: 5px;
 }
 
+.toTitle-2 {
+    color: rgb(68, 138, 255);
+    font-weight: 600;
+    font-size: 14px;
+    padding-bottom: 5px;
+}
+
+.fromTitle-2 {
+    color: rgb(255, 152, 0);
+    font-weight: 500;
+    font-size: 14px;
+    padding-bottom: 5px;
+}
+
 .toTitle {
     /*color: rgb(68, 138, 255);*/
     font-weight: 600;
     padding-bottom: 5px;
 }
+
 
 .sender_post .post_body {
     background-color: #e2f6ff;

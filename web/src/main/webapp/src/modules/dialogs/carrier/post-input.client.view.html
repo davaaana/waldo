@@ -6,7 +6,7 @@
 
                 <div class="padding-left-10">
                     <md-icon md-svg-icon="view"></md-icon>
-                    <label class="filter-title-3">Хөдлөх</label>
+                        <label class="filter-title-4">Хөдлөх</label>
                 </div>
             </div>
             <div layout="row">
@@ -60,7 +60,7 @@
             <div layout="row">
                 <div class="padding-left-10">
                     <md-icon md-svg-icon="view"></md-icon>
-                    <label class="filter-title-3">Очих</label>
+                    <label class="filter-title-4">Очих</label>
                 </div>
             </div>
             <div layout="row" flex>
@@ -116,7 +116,7 @@
     <md-divider></md-divider>
     <div layout="row" flex style="padding: 0 8px">
         <md-input-container>
-            <label class="filter-title">Хөдлөх дүүрэг/сум</label>
+            <label class="filter-title">Тээврийн хэрэгсэлийн төрөл</label>
             <md-select ng-required="true" name="transportation" class="datepicker-filter-adjust6"
                        placeholder="Тээврийн хэрэгсэлийн төрөл"
                        ng-model="newPost.transportationId">
@@ -133,7 +133,7 @@
 
     </div>
     <div layout="row" flex>
-        <span class="filter-title-3">Ачаа болон зорчигч</span>
+        <span class="filter-title-4">Ачаа болон зорчигч</span>
             <span class="element-hide mini-red" id="tree" style="    padding-top: 5px; padding-left: 5px">
                 <span>(Доорх 3-ын аль нэгийн бөглөнө үү!)</span><img src="/image/error.png"
                                                                      class="error-image">
@@ -196,7 +196,7 @@
     </div>
 
 
-    <div layout="row" layout-align="end center">
+    <div layout="row" layout-align="end center" style="border-top: 1px solid rgb(255, 224, 178)">
         <md-button ng-click="newPostSteps(1,newPostDataCheck)">Буцах</md-button>
         <md-button ng-click="newPostSteps(4,newPostDataCheck);arriveValidation()" class="md-primary"
                 >
