@@ -17,7 +17,7 @@ angular
             .icon("mail", "./assets/svg/icons/mail.svg", 24)
             .icon("car", "./assets/svg/icons/car.svg", 24)
             .icon("carry", "./assets/svg/icons/carry.svg", 24)
-            .icon("view", "./assets/svg/icons/view.svg", 24)
+            .icon("view", "./assets/svg/icons/view.svg", 20)
             .icon("down", "./assets/svg/icons/down.svg", 24)
             .icon("up", "./assets/svg/icons/up.svg", 24)
             .icon("passenger", "./assets/svg/icons/passenger.svg", 24)
