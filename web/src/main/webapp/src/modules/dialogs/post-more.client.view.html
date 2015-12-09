@@ -68,7 +68,7 @@
                                     <div layout="row" class="more-txt2 padding-top-5"
                                          ng-if="!mpost.passanger">
                                         <div layout="row" class="more-css" layout-align="start center">
-                                            <md-icon md-svg-icon="no-paasanger" ng-class="{orange : mpost.type ==='CARRIER', blue: mpost.type ==='SENDER'}"></md-icon>
+                                            <md-icon md-svg-icon="no-paasanger"></md-icon>
                                             <div>Зорчигч авч явахгүй</div>
                                         </div>
                                     </div>
@@ -88,7 +88,7 @@
                                     <div layout="row" class="more-txt2 padding-top-5"
                                          ng-if="!mpost.animal">
                                         <div layout="row" class="more-css" layout-align="start center">
-                                            <md-icon md-svg-icon="no-cow" ng-class="{orange : mpost.type ==='CARRIER', blue: mpost.type ==='SENDER'}"></md-icon>
+                                            <md-icon md-svg-icon="no-cow"></md-icon>
                                             <div>Амьтан авч явахгүй</div>
                                         </div>
                                     </div>
@@ -107,7 +107,7 @@
                                     <div layout="row" class="more-txt2 padding-top-5"
                                          ng-if="!mpost.stuff && !mpost.stuff">
                                         <div layout="row" class="more-css" layout-align="start center">
-                                            <md-icon md-svg-icon="no-stuff" ng-class="{orange : mpost.type ==='CARRIER', blue: mpost.type ==='SENDER'}"></md-icon>
+                                            <md-icon md-svg-icon="no-stuff"></md-icon>
                                             <div>Ачаа авч явахгүй</div>
                                         </div>
                                     </div>
@@ -204,7 +204,7 @@
                     </md-card-content>
                 </div>
 
-                <md-divider></md-divider>
+                <md-divider ng-class="{borderOrange: mpost.type==='CARRIER', borderBlue: mpost.type==='SENDER'}"></md-divider>
 
                 <div class="md-action" layout="row" layout-padding layout-align="space-between center">
                     <div>
