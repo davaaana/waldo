@@ -30,7 +30,6 @@ mainApp.config(['$httpProvider',
                                 }
                                 break;
                         }
-
                         return $q.reject(rejection);
                     }
                 };
@@ -53,6 +52,13 @@ var filterOptions = {
 
 var auth = false;
 var filterArea = true;
+
+function differentDay(from,to){
+    var oneDay = 24*60*60*1000;
+    var firstDate = new Date(from);
+    var secondDate = new Date(to);
+    return Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay)));
+}
 
 function convertToDate(stringDate) {
     var dateOut = new Date(stringDate);

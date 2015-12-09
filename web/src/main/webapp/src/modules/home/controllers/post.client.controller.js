@@ -11,6 +11,10 @@ mainApp.controller('PostController', ['$rootScope', '$scope', '$http', '$mdDialo
         $scope.minDate = new Date();
         $scope.minDate.setDate($scope.minDate.getDate()-1);
 
+        $scope.dayAgo = function (from,to) {
+            return differentDay(from,to);
+        }
+
         $scope.filter.fromDateTime = $scope.minDate;
 
         $scope.auth = false;

@@ -100,7 +100,7 @@
                                             <span class="post_user_data_text">{{post.to | limitTo: 23 }}</span>
                                         </div>
                                         <div layout="row">
-                                            <span class="post_user_data_text  padding-top-5">3 хоногийн дараа</span>
+                                            <span class="post_user_data_text  padding-top-5">{{dayAgo(post.when,post.arrive)}} хоногийн дараа</span>
                                         </div>
                                         <div layout="row">
                                         <span class="post_user_data_text-date"
