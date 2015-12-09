@@ -36,6 +36,10 @@ angular
             .icon("package", "/assets/svg/icons/box49.svg", 44)
             .icon("user-female", "/assets/svg/icons/woman25.svg", 70)
             .icon("user-male", "/assets/svg/icons/male79.svg", 70)
+            .icon("from-location", "/assets/svg/icons/ic_my_location_black_24px.svg", 12)
+            .icon("calendar-check", "/assets/svg/icons/calendar-check.svg", 12)
+            .icon("to-location", "/assets/svg/icons/ic_place_black_24px.svg", 12)
+            .icon("passanger", "/assets/svg/icons/ic_supervisor_account_black_24px.svg", 12)
 
         $mdThemingProvider.theme('default')
             .primaryPalette('orange')

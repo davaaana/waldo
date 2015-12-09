@@ -14,6 +14,31 @@ mainApp.config(['blockUIConfig',
     }
 ]);
 
+mainApp.config(['$httpProvider',
+    function ($httpProvider) {
+        // Set the httpProvider "not authorized" interceptor
+        $httpProvider.interceptors.push(['$q', '$location',
+            function ($q, $location) {
+                return {
+                    responseError: function (rejection) {
+                        switch (rejection.status) {
+                            case 401:
+                                if(window.sessionStorage["userInfo"]){
+                                    sessionStorage.removeItem("isAuth");
+                                    sessionStorage.removeItem("userInfo");
+                                    window.location.reload();
+                                }
+                                break;
+                        }
+
+                        return $q.reject(rejection);
+                    }
+                };
+            }
+        ]);
+    }
+])
+
 var SERVICE_URL = '/ws';
 
 var filterOptions = {

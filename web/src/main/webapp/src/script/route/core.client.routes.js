@@ -1,5 +1,5 @@
-mainApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
-    function ($stateProvider, $urlRouterProvider) {
+mainApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider','$httpProvider',
+    function ($stateProvider, $urlRouterProvider,$httpProvider) {
         $urlRouterProvider.otherwise('/index');
         // Home state routing
         $stateProvider.

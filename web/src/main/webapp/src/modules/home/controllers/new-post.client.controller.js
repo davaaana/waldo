@@ -16,7 +16,6 @@ mainApp.controller('NewPostController', ['$rootScope', '$scope','$http','$mdDial
                 document.getElementsByClassName('ads-text2')[0].style.color="";
                 document.getElementsByClassName('ads-text1')[0].style.color="orange";
         }
-
         }
 
         $scope.newPostProgress = 0;

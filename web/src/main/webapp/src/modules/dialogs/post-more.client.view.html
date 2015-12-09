@@ -42,7 +42,7 @@
 
                             <div ng-show="mpost.passanger" layout="row" class="more-txt">
                                 <div>
-                                    <md-icon md-svg-icon="passenger"></md-icon>
+                                    <md-icon md-svg-icon="passanger"></md-icon>
                                     <span>ЗОРЧИГЧ: {{ mpost.passanger }}</span>
                                 </div>
                             </div>
@@ -62,9 +62,11 @@
                                         ХӨДЛӨХ ГАЗАР
                                     </div>
                                     <div layout="row">
+                                        <md-icon md-svg-icon="from-location"></md-icon>
                                         <span class="post_user_data_text2">{{mpost.from }}</span>
                                     </div>
                                     <div layout="row">
+                                        <md-icon md-svg-icon="calendar-blank"></md-icon>
                                          <span class="post_user_data_text2"
                                                ng-bind="convertToDate(mpost.when) | date:'yyyy.MM.dd'"></span>
                                     </div>
@@ -77,9 +79,11 @@
                                         ОЧИХ ГАЗАР
                                     </div>
                                     <div layout="row">
+                                        <md-icon md-svg-icon="to-location"></md-icon>
                                         <span class="post_user_data_text2">{{mpost.to }}</span>
                                     </div>
                                     <div layout="row">
+                                        <md-icon md-svg-icon="calendar-check"></md-icon>
                                         <span class="post_user_data_text2"
                                               ng-bind="convertToDate(mpost.arrive) | date:'yyyy.MM.dd'"></span>
                                     </div>
@@ -87,7 +91,7 @@
                             </div>
 
                             <div layout="row" class="more-txt2 padding-top-5" layout-align="start center" ng-if="mpost.animal">
-                                <md-icon md-svg-icon="carry"></md-icon>
+                                <md-icon md-svg-icon="cow"></md-icon>
                                 <div>Амьтан:</div>
                                 <div>{{mpost.animal}}
                                 </div>
