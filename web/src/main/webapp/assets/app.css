@@ -510,6 +510,14 @@ body > .md-dialog-container {
     color: #448aff;
 }
 
+.borderOrange{
+    border-top-color:  rgb(255,224,178);
+}
+
+.borderBlue{
+    border-top-color:  rgb(170, 209, 249);
+}
+
 .orange{
     color: rgb(255, 152, 0);
 }

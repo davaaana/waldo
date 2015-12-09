@@ -75,7 +75,7 @@
                                 <!--ХӨДЛӨХ ГАЗРЫН ТУХАЙ-->
                                 <div layout="row" style="width: 280px">
                                     <div layout="column" flex="50">
-                                        <div layout="row" class="fromTitle">
+                                        <div layout="row" class="fromTitle" ng-class="{orange: post.type==='CARRIER', blue: post.type==='SENDER'}">
                                             Хөдлөх:
                                         </div>
                                         <div layout="row">
@@ -93,7 +93,7 @@
 
                                     <!--ОЧИХ ГАЗРЫН ТУХАЙ-->
                                     <div layout="column" flex="50">
-                                        <div layout="row" class="toTitle">
+                                        <div layout="row" class="toTitle" ng-class="{orange: post.type==='CARRIER', blue: post.type==='SENDER'}">
                                             Очих:
                                         </div>
                                         <div layout="row">
@@ -130,7 +130,7 @@
 
                         </md-card-content>
                     </div>
-                    <md-divider></md-divider>
+                    <md-divider ng-class="{borderOrange: post.type==='CARRIER', borderBlue: post.type==='SENDER'}"></md-divider>
                     <md-card-footer layout="row" layout-padding layout-align="space-between">
                         <div class="padding-left-20">
                             <div style="width: 90px; float: left">
@@ -139,8 +139,8 @@
                             </div>
                         <span>
                             <span data-ng-show="post.alreadyExchange">
-                                <md-icon md-svg-icon="poster-contacted"></md-icon>
-                                  <span style="color:#65BDFE; font-weight: bold">Зартай холбогдсон</span>
+                                <md-icon md-svg-icon="poster-contacted"  ng-class="{orange: post.type==='CARRIER', blue: post.type==='SENDER'}"></md-icon>
+                                  <span  ng-class="{orange: post.type==='CARRIER', blue: post.type==='SENDER'}" style="font-weight: bold">Зартай холбогдсон</span>
                             </span>
                             <span data-ng-hide="post.alreadyExchange">
                                 <md-icon md-svg-icon="poster-contacted-off"></md-icon>
