@@ -13,6 +13,11 @@ mainApp.controller('NewPostController', ['$rootScope', '$scope','$http','$mdDial
 
                 document.getElementsByClassName('md-container md-mode-determinate')[0].style.backgroundColor="rgb(170,209,249)";
                 document.getElementsByClassName('md-bar md-bar2')[0].style.backgroundColor="rgb(68,138,255)";
+                document.getElementsByClassName('carrierIcon')[0].style.color="";
+                document.getElementsByClassName('senderIcon')[0].style.color="rgb(68,138,255)";
+
+
+
             }
             if(type=='carrier'){
                 document.getElementsByClassName('add-ads')[0].style.backgroundColor="orange";
@@ -21,6 +26,8 @@ mainApp.controller('NewPostController', ['$rootScope', '$scope','$http','$mdDial
 
                 document.getElementsByClassName('md-container md-mode-determinate')[0].style.backgroundColor="rgb(255,224,178)";
                 document.getElementsByClassName('md-bar md-bar2')[0].style.backgroundColor="rgb(255,152,0)";
+                document.getElementsByClassName('senderIcon')[0].style.color="";
+                document.getElementsByClassName('carrierIcon')[0].style.color="orange";
 
             }
 

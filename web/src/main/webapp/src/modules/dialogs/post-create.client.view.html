@@ -4,15 +4,16 @@
          <span class="md-toolbar-tools">
 
             <span>
+
                 <span ng-show="step === 2 || step === 4">
-                    <md-icon md-svg-icon="package-with-hand" class="new_post_dialog_icon"></md-icon>
-                    ТЭЭВЭРЛЭХ
+                    <md-icon md-svg-icon="carrier-icon" class="new_post_dialog_icon"></md-icon>
+                    ШИНЭ ҮЙЛЧЛЭХ
                 </span>
                 <span ng-show="step === 3 || step === 5">
-                    <md-icon md-svg-icon="package" class="new_post_dialog_icon"></md-icon>
-                    ИЛГЭЭХ
+                    <md-icon md-svg-icon="sender-icon" class="new_post_dialog_icon"></md-icon>
+                    ШИНЭ ИЛГЭЭХ
                 </span>
-                ШИНЭ ЗАР НЭМЭХ</span>
+                 ЗАР НЭМЭХ</span>
             <span flex></span>
             <md-button ng-click="closeDialog()" aria-label="Close" class="md-icon-button">
                 <md-icon md-svg-icon="close"></md-icon>
@@ -50,12 +51,12 @@
 
                                 <md-radio-group ng-model="newPost.type" flex>
                                     <md-radio-button value="CARRIER" class="md-primary; text-center" ng-click="adsType('carrier')">
-                                        <md-icon md-svg-icon="package-with-hand" class="carrier-icon"></md-icon>
+                                        <md-icon md-svg-icon="carrier-icon" class="carrierIcon"></md-icon>
                                         <span class="ads-text1">ҮЙЛЧЛЭХ ЗАР</span>
                                     </md-radio-button>
                                     <div style="width: 300px; text-align: center;     color: gray;">Ачаа бараа болон амьтан эсбэл нэмэлт зорчигч тээвэрлэж үйлчлэх зар</div>
                                     <md-radio-button value="SENDER" class="md-accent;  text-center" ng-click="adsType('sender')">
-                                        <md-icon md-svg-icon="package" class="sender-icon"></md-icon>
+                                        <md-icon md-svg-icon="sender-icon" class="senderIcon"></md-icon>
                                         <span class="ads-text2">ИЛГЭЭХ ЗАР</span>
                                     </md-radio-button>
                                     <div  style="width: 300px; text-align: center;     color: gray;">Эд материал болон амьтан илгээх эсбэл нэмэлт зорчигчоор дайгдах зар үүсгэх</div>

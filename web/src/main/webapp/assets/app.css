@@ -295,6 +295,16 @@ form {
     width: 34px !important;
 }
 
+.carrierIcon{
+    height: 64px;
+    width: 64px;
+}
+
+.senderIcon{
+    height: 64px;
+    width: 64px;
+}
+
 .carrier_post .a {
     color: #ffcc89;
     font-size: 11px;
