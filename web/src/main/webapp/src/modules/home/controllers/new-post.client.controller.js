@@ -10,12 +10,20 @@ mainApp.controller('NewPostController', ['$rootScope', '$scope','$http','$mdDial
                 document.getElementsByClassName('add-ads')[0].className += " md-accent";
                 document.getElementsByClassName('ads-text1')[0].style.color="";
                 document.getElementsByClassName('ads-text2')[0].style.color="rgb(68,138,255)";
+
+                document.getElementsByClassName('md-container md-mode-determinate')[0].style.backgroundColor="rgb(170,209,249)";
+                document.getElementsByClassName('md-bar md-bar2')[0].style.backgroundColor="rgb(68,138,255)";
             }
             if(type=='carrier'){
                 document.getElementsByClassName('add-ads')[0].style.backgroundColor="orange";
                 document.getElementsByClassName('ads-text2')[0].style.color="";
                 document.getElementsByClassName('ads-text1')[0].style.color="orange";
-        }
+
+                document.getElementsByClassName('md-container md-mode-determinate')[0].style.backgroundColor="rgb(255,224,178)";
+                document.getElementsByClassName('md-bar md-bar2')[0].style.backgroundColor="rgb(255,152,0)";
+
+            }
+
         }
 
         $scope.newPostProgress = 0;
