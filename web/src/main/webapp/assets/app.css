@@ -1019,5 +1019,18 @@ a.md-button.md-warn.md-raised, a.md-button.md-warn.md-fab, .md-button.md-warn.md
 }
 
 .md-select-danger{
-    border:1px solid red;
+    border-bottom:1px solid red;
+}
+
+.element-hide{
+    display: none;
+}
+
+.element-show{
+    display: block;
+}
+
+.error-image{
+    height: 9px;
+    margin-left: 5px;
 }

@@ -9,6 +9,9 @@
                                    placeholder="Сонгох">
                             <md-option ng-value="{{city.id}}" ng-repeat="city in cities">{{city.name}}</md-option>
                         </md-select>
+                        <div class="element-hide mini-red" id="fromCity">
+                            <span>Хөдлөх хотоо сонгоно уу</span><img src="/image/error.png" class="error-image">
+                        </div>
                     </div>
                 </div>
                 <div layout="row">
@@ -18,6 +21,9 @@
                                    placeholder="Сонгох">
                             <md-option ng-value="{{city.id}}" ng-repeat="city in cities">{{city.name}}</md-option>
                         </md-select>
+                        <div class="element-hide mini-red" id="toCity">
+                            <span>Очих хотоо сонгоно уу</span><img src="/image/error.png" class="error-image">
+                        </div>
                     </div>
                 </div>
                 <div layout="row">
@@ -26,6 +32,9 @@
                         <md-datepicker ng-required="true" name="when" ng-model="newPost.when" md-placeholder="Сонгох" format="yyyy.MM.dd"
                                        class="datepicker-filter-adjust6"
                                        md-max-date="newPost.arrive" md-min-date="minDate"></md-datepicker>
+                        <div class="element-hide mini-red" id="when">
+                            <span>Явах огноо сонгоно уу</span><img src="/image/error.png" class="error-image">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -40,6 +49,9 @@
                                 {{district.name}}
                             </md-option>
                         </md-select>
+                        <div class="element-hide mini-red" id="fromDistrict">
+                            <span>Хөдлөх дүүрэг/сум сонгоно уу</span><img src="/image/error.png" class="error-image">
+                        </div>
                     </div>
                 </div>
 
@@ -51,6 +63,9 @@
                             <md-option ng-value="{{district.id}}" ng-repeat="district in toDistricts">{{district.name}}
                             </md-option>
                         </md-select>
+                        <div class="element-hide mini-red" id="toDistrict">
+                            <span>Очих дүүрэг/сум сонгоно уу</span><img src="/image/error.png" class="error-image">
+                        </div>
                     </div>
                 </div>
 
@@ -62,6 +77,9 @@
 
                                        class="datepicker-filter-adjust6"
                                        md-min-date="(newPost.when == undefined) ? minDate : newPost.when"></md-datepicker>
+                        <div class="element-hide mini-red" id="arrive">
+                            <span>Явах онгоо сонгоно уу</span><img src="/image/error.png" class="error-image">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -78,6 +96,9 @@
                                    ng-value="{{transport.id}}">
                             {{transport.name}}
                         </md-option>
+                        <div class="element-hide mini-red" id="transportation">
+                            <span>Тээврийн хэрэгсэлийн төрөл сонгоно уу</span><img src="/image/error.png" class="error-image">
+                        </div>
                     </md-select>
                 </div>
 
@@ -99,6 +120,9 @@
             <div layout="column" flex="50">
                 <!--_________________________________________________ DEPARTURE CITY OR PROVINCE ________________________________________________-->
 
+                <div class="element-hide mini-red" id="tree">
+                    <span>Доорх 3-ын аль нэгийн бөглөнө үү</span><img src="/image/error.png" class="error-image">
+                </div>
                 <div layout="row" style="    margin-top: 20px;">
                     <md-checkbox name="passanger" ng-model="newPostDataCheck.passanger"
                                  ng-change="arriveValidation()"

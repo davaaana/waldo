@@ -227,63 +227,95 @@ mainApp.controller('NewPostController', ['$rootScope', '$scope','$http','$mdDial
             var valid = true;
             if(!$scope.newPost.fromDistrictId){
                 $('[name="fromDistrict"]').addClass('md-select-danger');
+                $('#fromDistrict').removeClass('element-hide');
+                $('#fromDistrict').addClass('element-show');
                 valid = false;
             }else{
                 $('[name="fromDistrict"]').removeClass('md-select-danger');
+                $('#fromDistrict').removeClass('element-show');
+                $('#fromDistrict').addClass('element-hide');
             }
 
             if(!$scope.newPost.toDistrictId){
                 $('[name="toDistrict"]').addClass('md-select-danger');
+                $('#toDistrict').removeClass('element-hide');
+                $('#toDistrict').addClass('element-show');
                 valid = false;
             }else{
                 $('[name="toDistrict"]').removeClass('md-select-danger');
+                $('#toDistrict').removeClass('element-show');
+                $('#toDistrict').addClass('element-hide');
             }
 
             if(!$scope.newPost.fromCityId){
                 $('[name="fromCity"]').addClass('md-select-danger');
+                $('#fromCity').removeClass('element-hide');
+                $('#fromCity').addClass('element-show');
                 valid = false;
             }else{
                 $('[name="fromCity"]').removeClass('md-select-danger');
+                $('#fromCity').removeClass('element-show');
+                $('#fromCity').addClass('element-hide');
             }
 
             if(!$scope.newPost.toCityId){
                 $('[name="toCity"]').addClass('md-select-danger');
+                $('#toCity').removeClass('element-hide');
+                $('#toCity').addClass('element-show');
                 valid = false;
             }else{
                 $('[name="toCity"]').removeClass('md-select-danger');
+                $('#toCity').removeClass('element-show');
+                $('#toCity').addClass('element-hide');
             }
             if(!sender){
                 if(!$scope.newPost.transportationId){
                     $('[name="transportation"]').addClass('md-select-danger');
+                    $('#transportation').removeClass('element-hide');
+                    $('#transportation').addClass('element-show');
                     valid = false;
                 }else{
                     $('[name="transportation"]').removeClass('md-select-danger');
+                    $('#transportation').removeClass('element-show');
+                    $('#transportation').addClass('element-hide');
                 }
             }
 
             if(!$scope.newPost.arrive){
                 $('[name="arrive"]').addClass('md-select-danger');
+                $('#arrive').removeClass('element-hide');
+                $('#arrive').addClass('element-show');
                 valid = false;
             }else{
                 $('[name="arrive"]').removeClass('md-select-danger');
+                $('#arrive').removeClass('element-show');
+                $('#arrive').addClass('element-hide');
             }
 
             if(!$scope.newPost.when){
                 $('[name="when"]').addClass('md-select-danger');
+                $('#when').removeClass('element-hide');
+                $('#when').addClass('element-show');
                 valid = false;
             }else{
                 $('[name="when"]').removeClass('md-select-danger');
+                $('#when').removeClass('element-show');
+                $('#when').addClass('element-hide');
             }
 
             if(!$scope.newPost.stuff && !$scope.newPost.passanger && !$scope.newPost.animal){
                 $('[name="stuff"]').css('color','red');
                 $('[name="passanger"]').css('color','red');
                 $('[name="animal"]').css('color','red');
+                $('#tree').removeClass('element-hide');
+                $('#tree').addClass('element-show');
                 valid = false;
             }else{
                 $('[name="stuff"]').css('color','black');
                 $('[name="passanger"]').css('color','black');
                 $('[name="animal"]').css('color','black');
+                $('#tree').removeClass('element-show');
+                $('#tree').addClass('element-hide');
             }
 
             return valid;

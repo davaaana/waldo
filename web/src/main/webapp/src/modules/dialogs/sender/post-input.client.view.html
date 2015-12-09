@@ -9,6 +9,9 @@
                                placeholder="Сонгох">
                         <md-option ng-value="{{city.id}}" ng-repeat="city in cities">{{city.name}}</md-option>
                     </md-select>
+                    <div class="element-hide mini-red" id="fromCity">
+                        <span>Хөдлөх хотоо сонгоно уу</span><img src="/image/error.png" class="error-image">
+                    </div>
                 </div>
             </div>
             <div layout="row">
@@ -17,6 +20,9 @@
                     <md-select name="toCity" class="datepicker-filter-adjust6" data-ng-model="newPost.toCityId" placeholder="Сонгох">
                         <md-option ng-value="{{city.id}}" ng-repeat="city in cities">{{city.name}}</md-option>
                     </md-select>
+                    <div class="element-hide mini-red" id="toCity">
+                        <span>Очих хотоо сонгоно уу</span><img src="/image/error.png" class="error-image">
+                    </div>
                 </div>
             </div>
             <div layout="row">
@@ -25,6 +31,9 @@
                     <md-datepicker name="arrive" ng-model="newPost.when" md-placeholder="Сонгох" format="yyyy.MM.dd"
                                    class="datepicker-filter-adjust6"
                                    md-max-date="newPost.arrive" md-min-date="minDate"></md-datepicker>
+                    <div class="element-hide mini-red" id="arrive">
+                        <span>Явах огноо сонгоно уу</span><img src="/image/error.png" class="error-image">
+                    </div>
                 </div>
             </div>
         </div>
@@ -38,6 +47,9 @@
                         <md-option ng-value="{{district.id}}" ng-repeat="district in fromDistricts">{{district.name}}
                         </md-option>
                     </md-select>
+                    <div class="element-hide mini-red" id="fromDistrict">
+                        <span>Хөдлөх сум/дүүргээ сонгоно уу</span><img src="/image/error.png" class="error-image">
+                    </div>
                 </div>
             </div>
 
@@ -49,6 +61,9 @@
                         <md-option ng-value="{{district.id}}" ng-repeat="district in toDistricts">{{district.name}}
                         </md-option>
                     </md-select>
+                    <div class="element-hide mini-red" id="toDistrict">
+                        <span>Очих сум дүүргээ сонгоно уу</span><img src="/image/error.png" class="error-image">
+                    </div>
                 </div>
             </div>
 
@@ -60,6 +75,9 @@
 
                                    class="datepicker-filter-adjust6"
                                    md-min-date="(newPost.when==undefined) ? minDate : newPost.when"></md-datepicker>
+                    <div class="element-hide mini-red" id="arrive">
+                        <span>Очих огноо сонгоно уу</span><img src="/image/error.png" class="error-image">
+                    </div>
                 </div>
             </div>
         </div>
@@ -67,6 +85,9 @@
     <md-divider></md-divider>
     <div layout="row" flex>
         <div layout="column" flex="50">
+            <div class="element-hide mini-red" id="tree">
+                <span>Доорх 3-ын аль нэгийн бөглөнө үү</span><img src="/image/error.png" class="error-image">
+            </div>
             <!--_________________________________________________ PACKAGE INPUT ________________________________________________-->
             <div layout="row">
                 <md-checkbox ng-model="newPostDataCheck.stuff"
