@@ -24,9 +24,6 @@ mainApp.controller('NewPostController', ['$rootScope', '$scope','$http','$mdDial
         $scope.minDate = new Date();
 
         $scope.minDate.setDate($scope.minDate.getDate()-1);
-
-        console.log($scope.newPost.when);
-
             UserService.getUserInfo($scope).then(function (data) {
             if(data.success == true){
                 $scope.auth = true;
@@ -37,7 +34,6 @@ mainApp.controller('NewPostController', ['$rootScope', '$scope','$http','$mdDial
         });
 
         $scope.carrierChangeForm = function () {
-            console.log($('select'));
             $('select').css("border-bottom-color", "red");
         }
 
@@ -209,10 +205,15 @@ mainApp.controller('NewPostController', ['$rootScope', '$scope','$http','$mdDial
             }
         }
 
-        $scope.newPostSteps = function (number,datacheck) {
-            console.log($scope);
+        $scope.newPostSteps = function (number,datacheck,sender) {
             $scope.newPostDataCheck = datacheck;
-            $scope.step = number;
+            if(number == 4 || number == 5){
+                if($scope.arriveValidation(sender) == true){
+                    $scope.step = number;
+                }
+            }else{
+                $scope.step = number;
+            }
         }
 
         $scope.$watch('step', function (el) {
@@ -221,5 +222,71 @@ mainApp.controller('NewPostController', ['$rootScope', '$scope','$http','$mdDial
         $scope.closeDialog = function () {
             dialog.cancel();
         };
+
+        $scope.arriveValidation = function (sender) {
+            var valid = true;
+            if(!$scope.newPost.fromDistrictId){
+                $('[name="fromDistrict"]').addClass('md-select-danger');
+                valid = false;
+            }else{
+                $('[name="fromDistrict"]').removeClass('md-select-danger');
+            }
+
+            if(!$scope.newPost.toDistrictId){
+                $('[name="toDistrict"]').addClass('md-select-danger');
+                valid = false;
+            }else{
+                $('[name="toDistrict"]').removeClass('md-select-danger');
+            }
+
+            if(!$scope.newPost.fromCityId){
+                $('[name="fromCity"]').addClass('md-select-danger');
+                valid = false;
+            }else{
+                $('[name="fromCity"]').removeClass('md-select-danger');
+            }
+
+            if(!$scope.newPost.toCityId){
+                $('[name="toCity"]').addClass('md-select-danger');
+                valid = false;
+            }else{
+                $('[name="toCity"]').removeClass('md-select-danger');
+            }
+            if(!sender){
+                if(!$scope.newPost.transportationId){
+                    $('[name="transportation"]').addClass('md-select-danger');
+                    valid = false;
+                }else{
+                    $('[name="transportation"]').removeClass('md-select-danger');
+                }
+            }
+
+            if(!$scope.newPost.arrive){
+                $('[name="arrive"]').addClass('md-select-danger');
+                valid = false;
+            }else{
+                $('[name="arrive"]').removeClass('md-select-danger');
+            }
+
+            if(!$scope.newPost.when){
+                $('[name="when"]').addClass('md-select-danger');
+                valid = false;
+            }else{
+                $('[name="when"]').removeClass('md-select-danger');
+            }
+
+            if(!$scope.newPost.stuff && !$scope.newPost.passanger && !$scope.newPost.animal){
+                $('[name="stuff"]').addClass('md-select-danger');
+                $('[name="passanger"]').addClass('md-select-danger');
+                $('[name="animal"]').addClass('md-select-danger');
+                valid = false;
+            }else{
+                $('[name="stuff"]').removeClass('md-select-danger');
+                $('[name="passanger"]').removeClass('md-select-danger');
+                $('[name="animal"]').removeClass('md-select-danger');
+            }
+
+            return valid;
+        }
     }
 ]);
