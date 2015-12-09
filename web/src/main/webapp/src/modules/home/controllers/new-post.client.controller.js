@@ -276,14 +276,14 @@ mainApp.controller('NewPostController', ['$rootScope', '$scope','$http','$mdDial
             }
 
             if(!$scope.newPost.stuff && !$scope.newPost.passanger && !$scope.newPost.animal){
-                $('[name="stuff"]').addClass('md-select-danger');
-                $('[name="passanger"]').addClass('md-select-danger');
-                $('[name="animal"]').addClass('md-select-danger');
+                $('[name="stuff"]').css('color','red');
+                $('[name="passanger"]').css('color','red');
+                $('[name="animal"]').css('color','red');
                 valid = false;
             }else{
-                $('[name="stuff"]').removeClass('md-select-danger');
-                $('[name="passanger"]').removeClass('md-select-danger');
-                $('[name="animal"]').removeClass('md-select-danger');
+                $('[name="stuff"]').css('color','black');
+                $('[name="passanger"]').css('color','black');
+                $('[name="animal"]').css('color','black');
             }
 
             return valid;
