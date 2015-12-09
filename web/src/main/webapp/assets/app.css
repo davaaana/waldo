@@ -1011,3 +1011,6 @@ a.md-button.md-warn.md-raised, a.md-button.md-warn.md-fab, .md-button.md-warn.md
     text-decoration: none;
 }
 
+.md-select-danger{
+    border:1px solid red;
+}
