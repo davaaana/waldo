@@ -4,9 +4,8 @@
         <div layout="column" flex="50" layout-align="center start">
             <div layout="row">
                 <div layout="column">
-                    <label class="filter-title">Хөдлөх хот/аймаг</label>
                     <md-select name="fromCity" class="datepicker-filter-adjust6" data-ng-model="newPost.fromCityId"
-                               placeholder="Сонгох">
+                               placeholder="Хөдлөх хот/аймаг">
                         <md-option ng-value="{{city.id}}" ng-repeat="city in cities">{{city.name}}</md-option>
                     </md-select>
                     <div class="element-hide mini-red" id="fromCity">
@@ -16,8 +15,7 @@
             </div>
             <div layout="row">
                 <div layout="column">
-                    <label class="filter-title">Очих хот/аймаг</label>
-                    <md-select name="toCity" class="datepicker-filter-adjust6" data-ng-model="newPost.toCityId" placeholder="Сонгох">
+                    <md-select name="toCity" class="datepicker-filter-adjust6" data-ng-model="newPost.toCityId" placeholder="Очих хот/аймаг">
                         <md-option ng-value="{{city.id}}" ng-repeat="city in cities">{{city.name}}</md-option>
                     </md-select>
                     <div class="element-hide mini-red" id="toCity">
@@ -27,8 +25,7 @@
             </div>
             <div layout="row">
                 <div layout="column">
-                    <label class="filter-title">Явах огноо эхлэх</label>
-                    <md-datepicker name="arrive" ng-model="newPost.when" md-placeholder="Сонгох" format="yyyy.MM.dd"
+                    <md-datepicker name="arrive" ng-model="newPost.when" md-placeholder="Явах огноо эхлэх" format="yyyy.MM.dd"
                                    class="datepicker-filter-adjust6"
                                    md-max-date="newPost.arrive" md-min-date="minDate"></md-datepicker>
                     <div class="element-hide mini-red" id="arrive">
@@ -41,9 +38,8 @@
         <div layout="column" flex="50" layout-align="center start">
             <div layout="row" flex>
                 <div class="column">
-                    <label class="filter-title">Хөдлөх дүүрэг/сум</label>
                     <md-select name="fromDistrict" class="datepicker-filter-adjust6" data-ng-model="newPost.fromDistrictId"
-                               placeholder="Сонгох">
+                               placeholder="Хөдлөх дүүрэг/сум">
                         <md-option ng-value="{{district.id}}" ng-repeat="district in fromDistricts">{{district.name}}
                         </md-option>
                     </md-select>
@@ -55,9 +51,8 @@
 
             <div layout="row">
                 <div class="column">
-                    <label class="filter-title">Очих дүүрэг/сум</label>
                     <md-select name="toDistrict" class="datepicker-filter-adjust6" data-ng-model="newPost.toDistrictId"
-                               placeholder="Сонгох">
+                               placeholder="Очих дүүрэг/сум">
                         <md-option ng-value="{{district.id}}" ng-repeat="district in toDistricts">{{district.name}}
                         </md-option>
                     </md-select>
@@ -68,10 +63,9 @@
             </div>
 
             <div layout="row">
-
+                <label class="filter-title">Очих хот/аймаг</label>
                 <div layout="column">
-                    <label class="filter-title">Явах огноо дуусах</label>
-                    <md-datepicker name="arrive" ng-model="newPost.arrive" md-placeholder="Сонгох"
+                    <md-datepicker name="arrive" ng-model="newPost.arrive" md-placeholder="Явах огноо дуусах"
 
                                    class="datepicker-filter-adjust6"
                                    md-min-date="(newPost.when==undefined) ? minDate : newPost.when"></md-datepicker>

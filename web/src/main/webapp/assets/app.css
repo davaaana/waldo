@@ -648,16 +648,20 @@ body > .md-dialog-container {
 }
 
 .datepicker-filter-adjust6{
-    background-color: rgb(250, 250, 250);
+    /*background-color: rgb(250, 250, 250);*/
     margin-top: 0;
     border: 0px;
-    padding-left: 10px;
+    /*padding-left: 10px;*/
     width: 225px;
-    height: 40px;
+    /*height: 40px;*/
     margin-bottom: 5px;
     margin-right: 5px;
-    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+    /*box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);*/
 
+}
+
+.padding-left-10{
+    padding-left: 10px;
 }
 
 .text-left {
@@ -670,10 +674,23 @@ body > .md-dialog-container {
 
 .filter-title {
     color: #448aff;
-    font-size: 14px;
+    /*font-size: 13px;*/
+    /*padding-left: 16px;*/
     text-shadow: 0 0 20px #fff, 0 0 20px #fff;
-    font-weight: 500;
+}
 
+.filter-title-2 {
+    color: #448aff;
+    font-size: 12px;
+    padding-left: 72px;
+    padding-top: 8px;
+    text-shadow: 0 0 20px #fff, 0 0 20px #fff;
+}
+
+.filter-title-3{
+    color: #448aff;
+    font-size: 17px;
+    font-weight: 500;
 }
 
 a.md-button.md-warn.md-raised, a.md-button.md-warn.md-fab, .md-button.md-warn.md-raised, .md-button.md-warn.md-fab {
@@ -987,7 +1004,7 @@ a.md-button.md-warn.md-raised, a.md-button.md-warn.md-fab, .md-button.md-warn.md
 }
 
 .mini-red{
-    color: orangered;
+    color: red;
     font-size: 11px;
 }
 
@@ -1028,9 +1045,13 @@ a.md-button.md-warn.md-raised, a.md-button.md-warn.md-fab, .md-button.md-warn.md
 
 .element-show{
     display: block;
+
 }
 
 .error-image{
     height: 9px;
     margin-left: 5px;
+    margin-right: 10px;
+    text-align: right;
+    float: right;
 }
