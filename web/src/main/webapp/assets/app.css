@@ -501,9 +501,21 @@ body > .md-dialog-container {
 }
 
 .more-txt2 {
-    font-weight: 600;
+    /*font-weight: 600;*/
     color: rgba(0, 0, 0, 0.54);
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
+}
+
+.blue{
+    color: #448aff;
+}
+
+.orange{
+    color: rgb(255, 152, 0);
+}
+
+.padding-top-20{
+    padding-top: 20px;
 }
 
 .login-link {
@@ -660,6 +672,10 @@ body > .md-dialog-container {
 
 }
 
+.more-css{
+    padding: 5px 0;
+}
+
 .padding-left-10{
     padding-left: 10px;
 }
@@ -737,17 +753,17 @@ a.md-button.md-warn.md-raised, a.md-button.md-warn.md-fab, .md-button.md-warn.md
     padding-bottom: 5px;
 }
 
-.toTitle-2 {
+.toTitle2 {
     color: rgb(68, 138, 255);
-    font-weight: 600;
-    font-size: 14px;
+    font-weight: 400;
+    font-size: 17px;
     padding-bottom: 5px;
 }
 
-.fromTitle-2 {
+.fromTitle2 {
     color: rgb(255, 152, 0);
-    font-weight: 500;
-    font-size: 14px;
+    font-weight: 400;
+    font-size: 17px;
     padding-bottom: 5px;
 }
 
