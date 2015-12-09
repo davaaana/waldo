@@ -1,143 +1,146 @@
-<md-content layout="column" layout-fill ng-init="init()" layout-padding>
-<div  layout="row" flex>
-    <div class="mini-red" >Та * тэмдэглэсэн хэсгийг заавал бөглөх бөглөнө үү<br/>
-        Та ** тэмдэглэсэн хэсгийн аль нэгийг заавал бөглөнө үү
-    </div>
-
-</div>
+<md-content  layout="column" layout-fill ng-init="init();carrierChangeForm()" layout-padding>
     <div layout="row" flex>
-        <div layout="column" flex="50" layout-align="center start">
-            <div layout="row">
-                <div layout="column">
-                    <label class="filter-title">Хөдлөх хот/аймаг<span class="mini-red">*</span></label>
-                    <md-select class="datepicker-filter-adjust6" data-ng-model="newPost.fromCityId"
-                               placeholder="Сонгох">
-                        <md-option ng-value="{{city.id}}" ng-repeat="city in cities">{{city.name}}</md-option>
-                    </md-select>
+            <div class="mini-red">Та * тэмдэглэсэн хэсгийг заавал бөглөх бөглөнө үү<br/>
+                Та ** тэмдэглэсэн хэсгийн аль нэгийг заавал бөглөнө үү
+            </div>
+
+        </div>
+        <div layout="row" flex>
+            <div layout="column" flex="50" layout-align="center start">
+                <div layout="row">
+                    <div layout="column">
+                        <label class="filter-title" ng-class="{'mini-red':!newPostForm.fromCity.$dirty == true}">Хөдлөх хот/аймаг<span class="mini-red">*</span></label>
+                        <md-select ng-required="true" name="fromCity" class="datepicker-filter-adjust6" style="border-bottom-color: red" data-ng-model="newPost.fromCityId"
+                                   placeholder="Сонгох">
+                            <md-option ng-value="{{city.id}}" ng-repeat="city in cities">{{city.name}}</md-option>
+                        </md-select>
+                    </div>
+                </div>
+                <div layout="row">
+                    <div layout="column">
+                        <label class="filter-title" ng-class="{'mini-red':!newPostForm.toCity.$dirty == true}">Очих хот/аймаг<span class="mini-red">*</span></label>
+                        <md-select ng-required="true" name="toCity" class="datepicker-filter-adjust6" data-ng-model="newPost.toCityId"
+                                   placeholder="Сонгох">
+                            <md-option ng-value="{{city.id}}" ng-repeat="city in cities">{{city.name}}</md-option>
+                        </md-select>
+                    </div>
+                </div>
+                <div layout="row">
+                    <div layout="column">
+                        <label class="filter-title" ng-class="{'mini-red':!newPostForm.when.$dirty == true}">Явах огноо эхлэх<span class="mini-red">*</span></label>
+                        <md-datepicker ng-required="true" name="when" ng-model="newPost.when" md-placeholder="Сонгох" format="yyyy.MM.dd"
+                                       class="datepicker-filter-adjust6"
+                                       md-max-date="newPost.arrive" md-min-date="minDate"></md-datepicker>
+                    </div>
                 </div>
             </div>
-            <div layout="row">
-                <div layout="column">
-                    <label class="filter-title">Очих хот/аймаг<span class="mini-red">*</span></label>
-                    <md-select class="datepicker-filter-adjust6" data-ng-model="newPost.toCityId" placeholder="Сонгох">
-                        <md-option ng-value="{{city.id}}" ng-repeat="city in cities">{{city.name}}</md-option>
-                    </md-select>
+            <md-divider></md-divider>
+            <div layout="column" flex="50" layout-align="center start">
+                <div layout="row" flex>
+                    <div class="column">
+                        <label class="filter-title" ng-class="{'mini-red':!newPostForm.fromDistrict.$dirty == true}">Хөдлөх дүүрэг/сум<span class="mini-red">*</span></label>
+                        <md-select ng-required="true" name="fromDistrict" class="datepicker-filter-adjust6" data-ng-model="newPost.fromDistrictId"
+                                   placeholder="Сонгох">
+                            <md-option ng-value="{{district.id}}" ng-repeat="district in fromDistricts">
+                                {{district.name}}
+                            </md-option>
+                        </md-select>
+                    </div>
                 </div>
-            </div>
-            <div layout="row">
-                <div layout="column">
-                    <label class="filter-title">Явах огноо эхлэх<span class="mini-red">*</span></label>
-                    <md-datepicker ng-model="newPost.when" md-placeholder="Сонгох" format="yyyy.MM.dd"
-                                   class="datepicker-filter-adjust6"
-                                   md-max-date="newPost.arrive" md-min-date="minDate"></md-datepicker>
+
+                <div layout="row">
+                    <div class="column">
+                        <label class="filter-title" ng-class="{'mini-red':!newPostForm.toDistrict.$dirty == true}">Очих дүүрэг/сум<span class="mini-red">*</span></label>
+                        <md-select ng-required="true"  name="toDistrict" class="datepicker-filter-adjust6" data-ng-model="newPost.toDistrictId"
+                                   placeholder="Сонгох">
+                            <md-option ng-value="{{district.id}}" ng-repeat="district in toDistricts">{{district.name}}
+                            </md-option>
+                        </md-select>
+                    </div>
+                </div>
+
+                <div layout="row">
+
+                    <div layout="column">
+                        <label class="filter-title" ng-class="{'mini-red':!newPostForm.arrive.$dirty == true}">Явах огноо дуусах<span class="mini-red">*</span></label>
+                        <md-datepicker ng-required="true" name="arrive" ng-model="newPost.arrive" md-placeholder="Сонгох"
+
+                                       class="datepicker-filter-adjust6"
+                                       md-min-date="(newPost.when == undefined) ? minDate : newPost.when"></md-datepicker>
+                    </div>
                 </div>
             </div>
         </div>
         <md-divider></md-divider>
-        <div layout="column" flex="50" layout-align="center start">
-            <div layout="row" flex>
-                <div class="column">
-                    <label class="filter-title">Хөдлөх дүүрэг/сум<span class="mini-red">*</span></label>
-                    <md-select class="datepicker-filter-adjust6" data-ng-model="newPost.fromDistrictId"
-                               placeholder="Сонгох">
-                        <md-option ng-value="{{district.id}}" ng-repeat="district in fromDistricts">{{district.name}}
+        <div layout="row" flex>
+            <div layout="column" flex="50">
+                <!--_________________________________________________ PACKAGE INPUT ________________________________________________-->
+                <div>
+                    <label class="filter-title" ng-class="{'mini-red':!newPostForm.transportation.$dirty == true}">Тээврийн хэрэгсэлийн төрөл<span class="mini-red">*</span></label>
+                    <md-select ng-required="true" name="transportation" class="datepicker-filter-adjust6" placeholder="Сонгох"
+                               ng-model="newPost.transportationId">
+                        <md-option ng-repeat="transport in transportation"
+                                   ng-value="{{transport.id}}">
+                            {{transport.name}}
                         </md-option>
                     </md-select>
                 </div>
-            </div>
 
-            <div layout="row">
-                <div class="column">
-                    <label class="filter-title">Очих дүүрэг/сум<span class="mini-red">*</span></label>
-                    <md-select class="datepicker-filter-adjust6" data-ng-model="newPost.toDistrictId"
-                               placeholder="Сонгох">
-                        <md-option ng-value="{{district.id}}" ng-repeat="district in toDistricts">{{district.name}}
-                        </md-option>
-                    </md-select>
+                <div layout="row">
+                    <md-checkbox ng-class="{'mini-red':newPostDataCheck.stuff != true && newPostDataCheck.passanger != true && newPostDataCheck.animal != true}" ng-required="true" ng-model="newPostDataCheck.stuff"
+                                 aria-label="stuff_checkbox">Ачаа<span class="mini-red">**</span>
+                    </md-checkbox>
                 </div>
-            </div>
-
-            <div layout="row">
-
-                <div layout="column">
-                    <label class="filter-title">Явах огноо дуусах<span class="mini-red">*</span></label>
-                    <md-datepicker ng-model="newPost.arrive" md-placeholder="Сонгох"
-
-                                   class="datepicker-filter-adjust6"
-                                   md-min-date="(newPost.when == undefined) ? minDate : newPost.when"></md-datepicker>
-                </div>
-            </div>
-        </div>
-    </div>
-    <md-divider></md-divider>
-    <div layout="row" flex>
-        <div layout="column" flex="50">
-            <!--_________________________________________________ PACKAGE INPUT ________________________________________________-->
-            <div>
-                <label class="filter-title">Тээврийн хэрэгсэлийн төрөл<span class="mini-red">*</span></label>
-                <md-select  class="datepicker-filter-adjust6"  placeholder="Сонгох"
-                        ng-model="newPost.transportationId">
-                    <md-option ng-repeat="transport in transportation"
-                               ng-value="{{transport.id}}">
-                        {{transport.name}}
-                    </md-option>
-                </md-select>
-            </div>
-
-            <div layout="row">
-                <md-checkbox ng-model="newPostDataCheck.stuff"
-                             aria-label="stuff_checkbox">Ачаа<span class="mini-red">**</span>
-                </md-checkbox>
-            </div>
-            <div layout="row" ng-show="newPostDataCheck.stuff">
-                <md-input-container style="width:235px">
-                    <label>Ачааны шаардлага</label>
+                <div layout="row" ng-show="newPostDataCheck.stuff">
+                    <md-input-container style="width:235px">
+                        <label>Ачааны шаардлага</label>
                     <textarea ng-model="newPost.stuff" type="text"
                               md-maxlength="70" maxlength="70"></textarea>
-                </md-input-container>
+                    </md-input-container>
+                </div>
+
             </div>
+            <md-divider></md-divider>
+            <div layout="column" flex="50">
+                <!--_________________________________________________ DEPARTURE CITY OR PROVINCE ________________________________________________-->
 
-        </div>
-        <md-divider></md-divider>
-        <div layout="column" flex="50">
-            <!--_________________________________________________ DEPARTURE CITY OR PROVINCE ________________________________________________-->
+                <div layout="row" style="    margin-top: 20px;">
+                    <md-checkbox ng-model="newPostDataCheck.passanger"
+                                 ng-class="{'mini-red':newPostDataCheck.stuff != true && newPostDataCheck.passanger != true && newPostDataCheck.animal != true}"
+                                 aria-label="passanger_checkbox">Зорчигч<span class="mini-red">**</span>
+                    </md-checkbox>
+                    <md-input-container>
+                        <input ng-model="newPost.passanger" type="number" value="1"
+                               ng-disabled="!newPostDataCheck.passanger" min="1" max="50">
+                    </md-input-container>
+                </div>
 
-            <div layout="row" style="    margin-top: 20px;">
-                <md-checkbox ng-model="newPostDataCheck.passanger"
-                             aria-label="passanger_checkbox">Зорчигч<span class="mini-red">**</span>
-                </md-checkbox>
-                <md-input-container>
-                    <input ng-model="newPost.passanger" type="number" value="1"
-                           ng-disabled="!newPostDataCheck.passanger" min="1" max="50">
-                </md-input-container>
-            </div>
+                <div layout="row">
+                    <md-checkbox ng-model="newPostDataCheck.animal"
+                                 ng-class="{'mini-red':newPostDataCheck.stuff != true && newPostDataCheck.passanger != true && newPostDataCheck.animal != true}"
+                                 aria-label="animal_checkbox">Амьтан<span class="mini-red">**</span>
+                    </md-checkbox>
+                </div>
 
-            <div layout="row">
-                <md-checkbox ng-model="newPostDataCheck.animal"
-                             aria-label="animal_checkbox">Амьтан<span class="mini-red">**</span>
-                </md-checkbox>
-            </div>
-
-            <div layout="row" ng-show="newPostDataCheck.animal">
-                <md-input-container  style="width:235px">
-                    <label>Амьтаны шаардлага</label>
+                <div layout="row" ng-show="newPostDataCheck.animal">
+                    <md-input-container style="width:235px">
+                        <label>Амьтаны шаардлага</label>
                     <textarea ng-model="newPost.animal" type="text"
                               md-maxlength="70" maxlength="70"></textarea>
-                </md-input-container>
+                    </md-input-container>
+                </div>
+                <!--_________________________________________________ PASSANGER INPUT ________________________________________________-->
+
             </div>
-            <!--_________________________________________________ PASSANGER INPUT ________________________________________________-->
-
         </div>
-    </div>
 
 
-
-    <div layout="row" layout-align="end center">
-        <md-button ng-click="newPostSteps(1,newPostDataCheck)">Буцах</md-button>
-        <md-button ng-click="newPostSteps(4,newPostDataCheck)" class="md-primary"
-                   ng-disabled="!newPost.toCityId || !newPost.fromCityId || !newPost.transportationId || !newPost.arrive ||  !newPost.when || (!newPost.stuff && !newPost.passanger && !newPost.animal)">
-            <!---->
-            Сүүлчийн алхам
-        </md-button>
-    </div>
+        <div layout="row" layout-align="end center">
+            <md-button ng-click="newPostSteps(1,newPostDataCheck)">Буцах</md-button>
+            <md-button ng-click="newPostSteps(4,newPostDataCheck)" class="md-primary"
+                       ng-disabled="!newPost.toCityId || !newPost.fromCityId || !newPost.transportationId || !newPost.arrive ||  !newPost.when || (!newPost.stuff && !newPost.passanger && !newPost.animal)">
+                <!---->
+                Сүүлчийн алхам
+            </md-button>
+        </div>
 </md-content>

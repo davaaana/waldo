@@ -36,6 +36,12 @@ mainApp.controller('NewPostController', ['$rootScope', '$scope','$http','$mdDial
             }
         });
 
+        $scope.carrierChangeForm = function () {
+            console.log($('select'));
+            $('select').css("border-bottom-color", "red");
+        }
+
+
         $scope.toDistricts = {};
         $scope.fromDistricts = {};
         $scope.createData = {};
