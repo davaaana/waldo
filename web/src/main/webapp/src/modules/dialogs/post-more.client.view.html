@@ -43,8 +43,10 @@
                                         </div>
                                     </div>
                                     <div layout="row">
+                                        <span class="post_user_data_text  padding-top-5">{{dayAgo(minDate,post.when)==0 ? 'Өнөөдөр гарана':dayAgo(minDate,post.arrive)+' хоногийн дараа гарана'}}</span>
                                         <div layout="row" class="more-css" layout-align="start center">
                                             <md-icon md-svg-icon="calendar-blank" ng-class="{orange : mpost.type ==='CARRIER', blue: mpost.type ==='SENDER'}"></md-icon>
+
                                          <span class="post_user_data_text2"
                                                ng-bind="convertToDate(mpost.when) | date:'yyyy.MM.dd'"></span>
                                         </div>
@@ -66,7 +68,7 @@
                                     <div layout="row" class="more-txt2 padding-top-5"
                                          ng-if="!mpost.passanger">
                                         <div layout="row" class="more-css" layout-align="start center">
-                                            <md-icon md-svg-icon="cow"></md-icon>
+                                            <md-icon md-svg-icon="no-paasanger" ng-class="{orange : mpost.type ==='CARRIER', blue: mpost.type ==='SENDER'}"></md-icon>
                                             <div>Зорчигч авч явахгүй</div>
                                         </div>
                                     </div>
@@ -86,7 +88,7 @@
                                     <div layout="row" class="more-txt2 padding-top-5"
                                          ng-if="!mpost.animal">
                                         <div layout="row" class="more-css" layout-align="start center">
-                                            <md-icon md-svg-icon="cow"></md-icon>
+                                            <md-icon md-svg-icon="no-cow" ng-class="{orange : mpost.type ==='CARRIER', blue: mpost.type ==='SENDER'}"></md-icon>
                                             <div>Амьтан авч явахгүй</div>
                                         </div>
                                     </div>
@@ -96,7 +98,7 @@
                                     <div layout="row" class="more-txt2 padding-top-5" layout-align="start center"
                                          ng-if="mpost.stuff">
                                         <div layout="row">
-                                            <md-icon md-svg-icon="carry" ng-class="{orange : mpost.type ==='CARRIER', blue: mpost.type ==='SENDER'}"></md-icon>
+                                            <md-icon md-svg-icon="stuff" ng-class="{orange : mpost.type ==='CARRIER', blue: mpost.type ==='SENDER'}"></md-icon>
                                             <div>{{mpost.stuff}}
                                             </div>
                                         </div>
@@ -105,7 +107,7 @@
                                     <div layout="row" class="more-txt2 padding-top-5"
                                          ng-if="!mpost.stuff && !mpost.stuff">
                                         <div layout="row" class="more-css" layout-align="start center">
-                                            <md-icon md-svg-icon="carry"></md-icon>
+                                            <md-icon md-svg-icon="no-stuff" ng-class="{orange : mpost.type ==='CARRIER', blue: mpost.type ==='SENDER'}"></md-icon>
                                             <div>Ачаа авч явахгүй</div>
                                         </div>
                                     </div>
@@ -140,6 +142,7 @@
                                         </div>
                                     </div>
                                     <div layout="row">
+                                        <span class="post_user_data_text  padding-top-5">{{dayAgo(minDate,post.arrive)==0 ? 'Өнөөдөр очино':dayAgo(post.when,post.arrive)+' хоногийн дараа очино'}}</span>
                                         <div layout="row" class="more-css" layout-align="start center">
                                             <md-icon md-svg-icon="calendar-check" ng-class="{orange : mpost.type ==='CARRIER', blue: mpost.type ==='SENDER'}"></md-icon>
                                         <span class="post_user_data_text2"
@@ -154,7 +157,10 @@
 
                                     <div layout="row" class="more-txt2 padding-top-5" layout-align="start center">
                                         <div layout="row" class="more-css" layout-align="start center">
-                                            <md-icon md-svg-icon="carry" ng-class="{orange : mpost.type ==='CARRIER', blue: mpost.type ==='SENDER'}"></md-icon>
+                                            <md-icon md-svg-icon="cash" data-ng-show="mpost.policy=='Бэлэн мөнгөөр'" ng-class="{orange : mpost.type ==='CARRIER', blue: mpost.type ==='SENDER'}"></md-icon>
+                                            <md-icon md-svg-icon="no-cash" data-ng-show="mpost.policy=='Үнэгүй'" ng-class="{orange : mpost.type ==='CARRIER', blue: mpost.type ==='SENDER'}"></md-icon>
+                                            <md-icon md-svg-icon="compare" data-ng-show="mpost.policy=='Бартер'" ng-class="{orange : mpost.type ==='CARRIER', blue: mpost.type ==='SENDER'}"></md-icon>
+                                            <md-icon md-svg-icon="comment" data-ng-show="mpost.policy=='Тохироно'" ng-class="{orange : mpost.type ==='CARRIER', blue: mpost.type ==='SENDER'}"></md-icon>
                                             {{mpost.policy}}
                                         </div>
                                     </div>
