@@ -82,9 +82,6 @@
                                             <span class="post_user_data_text">{{post.from | limitTo: 23 }}</span>
                                         </div>
                                         <div layout="row">
-                                            <span class="post_user_data_text padding-top-5">Өнөөдөр гарна</span>
-                                        </div>
-                                        <div layout="row">
                                          <span class="post_user_data_text-date"
                                                ng-bind="convertToDate(post.when) | date:'(yyyy.MM.dd)'"></span>
                                         </div>
@@ -100,7 +97,7 @@
                                             <span class="post_user_data_text">{{post.to | limitTo: 23 }}</span>
                                         </div>
                                         <div layout="row">
-                                            <span class="post_user_data_text  padding-top-5">{{dayAgo(post.when,post.arrive)}} хоногийн дараа</span>
+                                            <span class="post_user_data_text  padding-top-5">{{dayAgo(post.when,post.arrive)==0 ? 'Өнөөдөр гарана':dayAgo(post.when,post.arrive)+' хоногийн дараа'}}</span>
                                         </div>
                                         <div layout="row">
                                         <span class="post_user_data_text-date"
