@@ -17,6 +17,10 @@ mainApp.controller('PostMoreController', ['$rootScope', '$scope', '$http', '$mdD
             user = window.sessionStorage['userInfo'].username;
         }
 
+        $scope.dayAgo = function (from,to) {
+            return differentDay(from,to);
+        }
+
         if (user == $scope.mpost.username) {
             $scope.ownBool = false;
         }
