@@ -166,12 +166,12 @@ footer {
 }
 
 .new_post_active {
-    color: orange;
+    color: gray;
     font-weight: bold;
 }
 
 .new_post_active > .step_number {
-    background-color: orange;
+    background-color: gray;
     color: white;
     padding: 5px 10px 5px 10px;
     border-radius: 5px;
