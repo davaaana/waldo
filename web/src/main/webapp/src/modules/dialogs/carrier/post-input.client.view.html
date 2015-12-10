@@ -1,4 +1,4 @@
-<md-content layout="column" layout-fill ng-init="init();carrierChangeForm()" layout-padding>
+<md-content layout="column" layout-fill ng-init="init();carrierChangeForm();submit=false" layout-padding>
 
     <div layout="row" flex style="padding: 0 8px">
         <div layout="column" flex="50" layout-align="center start">
@@ -14,6 +14,7 @@
                     <md-input-container>
                         <label class="filter-title">Хөдлөх хот/аймаг</label>
                         <md-select ng-required="true" name="fromCity" class="datepicker-filter-adjust6"
+                                   ng-change="submit == true ? arriveValidation() : submit"
                                    data-ng-model="newPost.fromCityId"
                                 >
                             <md-option ng-value="{{city.id}}" ng-repeat="city in cities">{{city.name}}</md-option>
@@ -30,6 +31,7 @@
                         <label class="filter-title">Очих хот/аймаг</label>
                         <md-select ng-required="true" name="toCity" class="datepicker-filter-adjust6"
                                    data-ng-model="newPost.toCityId"
+                                   ng-change="submit == true ? arriveValidation() : submit"
                                 >
                             <md-option ng-value="{{city.id}}" ng-repeat="city in cities">{{city.name}}</md-option>
                         </md-select>
@@ -45,6 +47,7 @@
                     <label class="filter-title-2">Хөдлөх өдөр</label>
                     <md-datepicker ng-required="true" name="when" ng-model="newPost.when"
                                    md-placeholder="өдөр сонгох"
+                                   ng-change="submit == true ? arriveValidation() : submit"
                                    format="yyyy.MM.dd"
                                    class="datepicker-filter-adjust6"
                                    md-max-date="newPost.arrive" md-min-date="minDate"></md-datepicker>
@@ -69,6 +72,7 @@
                         <label class="filter-title">Хөдлөх дүүрэг/сум</label>
                         <md-select ng-required="true" name="fromDistrict" class="datepicker-filter-adjust6"
                                    data-ng-model="newPost.fromDistrictId"
+                                   ng-change="submit == true ? arriveValidation() : submit"
                                 >
                             <md-option ng-value="{{district.id}}" ng-repeat="district in fromDistricts">
                                 {{district.name}}
@@ -87,6 +91,7 @@
                         <label class="filter-title">Очих дүүрэг/сум</label>
                         <md-select ng-required="true" name="toDistrict" class="datepicker-filter-adjust6"
                                    data-ng-model="newPost.toDistrictId"
+                                   ng-change="submit == true ? arriveValidation() : submit"
                                 >
                             <md-option ng-value="{{district.id}}" ng-repeat="district in toDistricts">{{district.name}}
                             </md-option>
@@ -103,6 +108,7 @@
                 <div layout="column">
                     <label class="filter-title-2">Очих өдөр</label>
                     <md-datepicker ng-required="true" name="arrive" ng-model="newPost.arrive"
+                                   ng-change="submit == true ? arriveValidation() : submit"
                                    class="datepicker-filter-adjust6" md-placeholder="өдөр сонгох"
                                    md-min-date="(newPost.when == undefined) ? minDate : newPost.when"></md-datepicker>
 
@@ -119,6 +125,7 @@
             <label class="filter-title">Тээврийн хэрэгсэлийн төрөл</label>
             <md-select ng-required="true" name="transportation" class="datepicker-filter-adjust6"
                        placeholder="Тээврийн хэрэгсэлийн төрөл"
+                       ng-change="submit == true ? arriveValidation() : submit"
                        ng-model="newPost.transportationId">
                 <md-option ng-repeat="transport in transportation"
                            ng-value="{{transport.id}}">
@@ -198,7 +205,7 @@
 
     <div layout="row" layout-align="end center" style="border-top: 1px solid rgb(255, 224, 178)">
         <md-button ng-click="newPostSteps(1,newPostDataCheck)">Буцах</md-button>
-        <md-button ng-click="newPostSteps(4,newPostDataCheck);arriveValidation()" class="md-primary"
+        <md-button ng-click="newPostSteps(4,newPostDataCheck);arriveValidation();submit=true" class="md-primary"
                 >
             Сүүлчийн алхам
         </md-button>

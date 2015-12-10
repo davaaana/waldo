@@ -1,4 +1,4 @@
-<md-content layout="column" layout-fill ng-init="init()"  layout-padding>
+<md-content layout="column" layout-fill ng-init="init();submit=false"  layout-padding>
 
     <div layout="row" flex style="padding: 0 8px">
         <div layout="column" flex="50" layout-align="center start">
@@ -14,6 +14,7 @@
                     <md-input-container>
                         <label class="filter-title">Хөдлөх хот/аймаг</label>
                         <md-select ng-required="true" name="fromCity" class="datepicker-filter-adjust6"
+                                   ng-change="submit == true ? arriveValidation() : submit"
                                    data-ng-model="newPost.fromCityId"
                                 >
                             <md-option ng-value="{{city.id}}" ng-repeat="city in cities">{{city.name}}</md-option>
@@ -29,6 +30,7 @@
                     <md-input-container>
                         <label class="filter-title">Очих хот/аймаг</label>
                         <md-select ng-required="true" name="toCity" class="datepicker-filter-adjust6"
+                                   ng-change="submit == true ? arriveValidation() : submit"
                                    data-ng-model="newPost.toCityId"
                                 >
                             <md-option ng-value="{{city.id}}" ng-repeat="city in cities">{{city.name}}</md-option>
@@ -46,6 +48,7 @@
                     <md-datepicker ng-required="true" name="when" ng-model="newPost.when"
                                    md-placeholder="өдөр сонгох"
                                    format="yyyy.MM.dd"
+                                   ng-change="submit == true ? arriveValidation() : submit"
                                    class="datepicker-filter-adjust6"
                                    md-max-date="newPost.arrive" md-min-date="minDate"></md-datepicker>
 
@@ -68,6 +71,7 @@
                     <md-input-container>
                         <label class="filter-title">Хөдлөх дүүрэг/сум</label>
                         <md-select ng-required="true" name="fromDistrict" class="datepicker-filter-adjust6"
+                                   ng-change="submit == true ? arriveValidation() : submit"
                                    data-ng-model="newPost.fromDistrictId"
                                 >
                             <md-option ng-value="{{district.id}}" ng-repeat="district in fromDistricts">
@@ -86,6 +90,7 @@
                     <md-input-container>
                         <label class="filter-title">Очих дүүрэг/сум</label>
                         <md-select ng-required="true" name="toDistrict" class="datepicker-filter-adjust6"
+                                   ng-change="submit == true ? arriveValidation() : submit"
                                    data-ng-model="newPost.toDistrictId"
                                 >
                             <md-option ng-value="{{district.id}}" ng-repeat="district in toDistricts">{{district.name}}
@@ -104,6 +109,7 @@
                     <label class="filter-title-2">Очих өдөр</label>
                     <md-datepicker ng-required="true" name="arrive" ng-model="newPost.arrive"
                                    class="datepicker-filter-adjust6" md-placeholder="өдөр сонгох"
+                                   ng-change="submit == true ? arriveValidation() : submit"
                                    md-min-date="(newPost.when == undefined) ? minDate : newPost.when"></md-datepicker>
 
                     <div class="element-hide mini-red" id="arrive">
@@ -181,7 +187,7 @@
 
     <div layout="row" layout-align="end center" style="border-top: 1px solid rgb(170, 209, 249)">
         <md-button ng-click="newPostSteps(1,newPostDataCheck)">Буцах</md-button>
-        <md-button ng-click="newPostSteps(5,newPostDataCheck,true);" class="md-primary"
+        <md-button ng-click="newPostSteps(5,newPostDataCheck,true);submit=true;" class="md-primary"
                    > <!--!newPostDataCheck.leaveDate || !newPostDataCheck.arriveDate ||-->
             Сүүлчийн алхам
         </md-button>
