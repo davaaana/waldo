@@ -1,5 +1,5 @@
 <md-dialog aria-label="Creating new post" id="postMore" ng-init="stepExchange = 1">
-    <md-toolbar class="md-accent">
+    <md-toolbar ng-class="{orangeBg : mpost.type ==='CARRIER', blueBg: mpost.type ==='SENDER'}">
         <span class="md-toolbar-tools">
             <span>Зарын дэлгэрэнгүй</span>
         <span flex></span>
@@ -15,19 +15,17 @@
                 <div layout="row" flex layout-sm="column" flex
                      ng-class="{carrier_post : mpost.type ==='CARRIER', sender_post: mpost.type ==='SENDER'}">
 
-                    <md-card-content flex="20" layout="column" layout-align="center center">
+                    <md-card-content flex="15" layout="column" layout-align="center center">
                         <div layout="column" layout-align="center center">
                             <img ng-src="ws/profile/image/{{mpost.username}}.png"
                                  class="user-male-icon"/>
 
                             <div class="user_profile_name">{{mpost.username}}</div>
                         </div>
-
                     </md-card-content>
-                    <md-card-content flex="65" layout="row" layout-align="center center"
-                                     class="post_body" style="width: 570px">
+                    <md-card-content flex="70" layout="row" layout-align="center center"
+                                     class="post_body" style="width: 470px">
                         <div layout="column" flex layout-padding layout-align="center start">
-
 
                             <!--ХӨДЛӨХ ГАЗРЫН ТУХАЙ-->
                             <div layout="row" style="width: 100%">
@@ -38,18 +36,21 @@
                                     </div>
                                     <div layout="row">
                                         <div layout="row" class="more-css" layout-align="start center">
-                                            <md-icon md-svg-icon="from-location"  ng-class="{orange : mpost.type ==='CARRIER', blue: mpost.type ==='SENDER'}" ></md-icon>
-                                            <span class="post_user_data_text2">{{mpost.from }}</span>
+                                            <md-icon md-svg-icon="from-location"
+                                                     ng-class="{orange : mpost.type ==='CARRIER', blue: mpost.type ==='SENDER'}"></md-icon>
+                                            <span class="post_user_data_text">{{mpost.from }}</span>
                                         </div>
                                     </div>
                                     <div layout="row">
 
                                         <div layout="row" class="more-css" layout-align="start center">
-                                            <md-icon md-svg-icon="calendar-blank" ng-class="{orange : mpost.type ==='CARRIER', blue: mpost.type ==='SENDER'}"></md-icon>
-
-                                         <span class="post_user_data_text2"
-                                               ng-bind="convertToDate(mpost.when) | date:'yyyy.MM.dd'"></span>
-                                            <span class="post_user_data_text  padding-top-5">{{dayAgo(minDate,mpost.when)==0 ? 'Өнөөдөр гарана':dayAgo(minDate,mpost.arrive)+' хоногийн дараа гарана'}}</span>
+                                            <md-icon md-svg-icon="calendar-blank"
+                                                     ng-class="{orange : mpost.type ==='CARRIER', blue: mpost.type ==='SENDER'}"></md-icon>
+                                            <div>
+                                                <span class="post_user_data_text  padding-top-5">{{dayAgo(minDate,mpost.when)==0 ? 'Өнөөдөр гарана':dayAgo(minDate,mpost.arrive)+' хоногийн дараа гарана'}}</span>
+                                            <span class="post_user_data_text2"
+                                                  ng-bind="convertToDate(mpost.when) | date:'(yyyy.MM.dd)'"></span>
+                                            </div>
                                         </div>
                                     </div>
 
@@ -61,32 +62,33 @@
                                     <!--PASSNEGER BEGIN-->
                                     <div ng-show="mpost.passanger" layout="row" class="more-txt">
                                         <div>
-                                            <md-icon md-svg-icon="passanger" ng-class="{orange : mpost.type ==='CARRIER', blue: mpost.type ==='SENDER'}"></md-icon>
-                                            <span>{{ mpost.passanger }} хүртэлх зорчигч авч явна</span>
+                                            <md-icon md-svg-icon="passanger"
+                                                     ng-class="{orange : mpost.type ==='CARRIER', blue: mpost.type ==='SENDER'}"></md-icon>
+                                            <span class="post_user_data_text">{{ mpost.passanger }} хүртэлх зорчигч авч явна</span>
                                         </div>
                                     </div>
 
-                                    <div layout="row" class="more-txt2 padding-top-5"
+                                    <div layout="row" class="more-txt2"
                                          ng-if="!mpost.passanger">
                                         <div layout="row" class="more-css" layout-align="start center">
                                             <md-icon md-svg-icon="no-passanger"></md-icon>
-                                            <div>Зорчигч авч явахгүй</div>
+                                            <div class="post_user_data_text">Зорчигч авч явахгүй</div>
                                         </div>
                                     </div>
                                     <!--PASSENGEr END-->
 
                                     <!--ANIMAL BEGIN-->
-                                    <div layout="row" class="more-txt2 padding-top-5" layout-align="start center"
+                                    <div layout="row" class="more-txt2" layout-align="start center"
                                          ng-if="mpost.animal">
                                         <div layout="row">
-                                            <md-icon md-svg-icon="cow" ng-class="{orange : mpost.type ==='CARRIER', blue: mpost.type ==='SENDER'}"></md-icon>
-                                            <div>Амьтан:</div>
+                                            <md-icon md-svg-icon="cow"
+                                                     ng-class="{orange : mpost.type ==='CARRIER', blue: mpost.type ==='SENDER'}"></md-icon>
                                             <div>{{mpost.animal}}
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div layout="row" class="more-txt2 padding-top-5"
+                                    <div layout="row" class="more-txt2"
                                          ng-if="!mpost.animal">
                                         <div layout="row" class="more-css" layout-align="start center">
                                             <md-icon md-svg-icon="no-cow"></md-icon>
@@ -96,20 +98,21 @@
                                     <!--ANIMAL END-->
 
                                     <!--PACKAGE BEGIN-->
-                                    <div layout="row" class="more-txt2 padding-top-5" layout-align="start center"
+                                    <div layout="row" class="more-txt2 " layout-align="start center"
                                          ng-if="mpost.stuff">
                                         <div layout="row">
-                                            <md-icon md-svg-icon="stuff" ng-class="{orange : mpost.type ==='CARRIER', blue: mpost.type ==='SENDER'}"></md-icon>
-                                            <div>{{mpost.stuff}}
+                                            <md-icon md-svg-icon="stuff"
+                                                     ng-class="{orange : mpost.type ==='CARRIER', blue: mpost.type ==='SENDER'}"></md-icon>
+                                            <div class="post_user_data_text">{{mpost.stuff}}
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div layout="row" class="more-txt2 padding-top-5"
+                                    <div layout="row" class="more-txt2 "
                                          ng-if="!mpost.stuff && !mpost.stuff">
                                         <div layout="row" class="more-css" layout-align="start center">
                                             <md-icon md-svg-icon="no-stuff"></md-icon>
-                                            <div>Ачаа авч явахгүй</div>
+                                            <div class="post_user_data_text">Ачаа авч явахгүй</div>
                                         </div>
                                     </div>
                                     <!--PACKAGE END-->
@@ -122,7 +125,8 @@
 
                                     <div layout="row" class="more-txt" ng-if="mpost.type==='CARRIER'">
                                         <div layout="row" class="more-css" layout-align="start center">
-                                            <md-icon md-svg-icon="car" ng-class="{orange : mpost.type ==='CARRIER', blue: mpost.type ==='SENDER'}"></md-icon>
+                                            <md-icon md-svg-icon="car"
+                                                     ng-class="{orange : mpost.type ==='CARRIER', blue: mpost.type ==='SENDER'}"></md-icon>
                                             <div>{{mpost.transportation}}</div>
                                         </div>
                                     </div>
@@ -138,17 +142,23 @@
                                     </div>
                                     <div layout="row">
                                         <div layout="row" class="more-css" layout-align="start center">
-                                            <md-icon md-svg-icon="to-location" ng-class="{orange : mpost.type ==='CARRIER', blue: mpost.type ==='SENDER'}"></md-icon>
-                                            <span class="post_user_data_text2">{{mpost.to }}</span>
+                                            <md-icon md-svg-icon="to-location"
+                                                     ng-class="{orange : mpost.type ==='CARRIER', blue: mpost.type ==='SENDER'}"></md-icon>
+                                            <span class="post_user_data_text">{{mpost.to }}</span>
                                         </div>
                                     </div>
                                     <div layout="row">
                                         <div layout="row" class="more-css" layout-align="start center">
-                                            <md-icon md-svg-icon="calendar-check" ng-class="{orange : mpost.type ==='CARRIER', blue: mpost.type ==='SENDER'}"></md-icon>
-                                        <span class="post_user_data_text2"
-                                              ng-bind="convertToDate(mpost.arrive) | date:'yyyy.MM.dd'"></span>
+                                            <md-icon md-svg-icon="calendar-check"
+                                                     ng-class="{orange : mpost.type ==='CARRIER', blue: mpost.type ==='SENDER'}"></md-icon>
+                                            <div>
+                                                <span class="post_user_data_text  padding-top-5">{{dayAgo(minDate,mpost.arrive)==0 ? 'Өнөөдөр очино':dayAgo(mpost.when,mpost.arrive)+' хоногийн дараа очино'}}</span>
+                                            <span class="post_user_data_text2"
+                                                  ng-bind="convertToDate(mpost.arrive) | date:'(yyyy.MM.dd)'"></span>
+                                            </div>
+
                                         </div>
-                                        <span class="post_user_data_text  padding-top-5">{{dayAgo(minDate,mpost.arrive)==0 ? 'Өнөөдөр очино':dayAgo(mpost.when,mpost.arrive)+' хоногийн дараа очино'}}</span>
+
                                     </div>
 
                                     <div layout="row"
@@ -156,18 +166,22 @@
                                         Тооцоо хийх нөхцөл:
                                     </div>
 
-                                    <div layout="row" class="more-txt2 padding-top-5" layout-align="start center">
-                                        <div layout="row" class="more-css" layout-align="start center">
-                                            <md-icon md-svg-icon="cash" data-ng-show="mpost.policy=='Бэлэн мөнгөөр'" ng-class="{orange : mpost.type ==='CARRIER', blue: mpost.type ==='SENDER'}"></md-icon>
-                                            <md-icon md-svg-icon="no-cash" data-ng-show="mpost.policy=='Үнэгүй'" ng-class="{orange : mpost.type ==='CARRIER', blue: mpost.type ==='SENDER'}"></md-icon>
-                                            <md-icon md-svg-icon="compare" data-ng-show="mpost.policy=='Бартер'" ng-class="{orange : mpost.type ==='CARRIER', blue: mpost.type ==='SENDER'}"></md-icon>
-                                            <md-icon md-svg-icon="comment" data-ng-show="mpost.policy=='Тохироно'" ng-class="{orange : mpost.type ==='CARRIER', blue: mpost.type ==='SENDER'}"></md-icon>
+                                    <div layout="row" class="more-txt2" layout-align="start center">
+                                        <div layout="row" class="more-css post_user_data_text" layout-align="start center" >
+                                            <md-icon md-svg-icon="cash" data-ng-show="mpost.policy=='Бэлэн мөнгөөр'"
+                                                     ng-class="{orange : mpost.type ==='CARRIER', blue: mpost.type ==='SENDER'}"></md-icon>
+                                            <md-icon md-svg-icon="no-cash" data-ng-show="mpost.policy=='Үнэгүй'"
+                                                     ng-class="{orange : mpost.type ==='CARRIER', blue: mpost.type ==='SENDER'}"></md-icon>
+                                            <md-icon md-svg-icon="compare" data-ng-show="mpost.policy=='Бартер'"
+                                                     ng-class="{orange : mpost.type ==='CARRIER', blue: mpost.type ==='SENDER'}"></md-icon>
+                                            <md-icon md-svg-icon="comment" data-ng-show="mpost.policy=='Тохироно'"
+                                                     ng-class="{orange : mpost.type ==='CARRIER', blue: mpost.type ==='SENDER'}"></md-icon>
                                             {{mpost.policy}}
                                         </div>
                                     </div>
 
 
-                                    <div layout="row" class="more-txt2 padding-top-5" layout-align="start center"
+                                    <div layout="row" class="more-txt2" layout-align="start center"
                                          ng-if="mpost.description">
                                         <div>{{mpost.description}}
                                         </div>
@@ -182,7 +196,7 @@
                     <md-card-content flex="15" layout="column" layout-align="start center">
                         <div layout="column" layout-align="center center"
                              ng-if="mpost.type === 'SENDER'">
-                            <div class="post_type_label padding-top-20" >ИЛГЭЭХ ЗАР</div>
+                            <div class="post_type_label padding-top-20">ИЛГЭЭХ ЗАР</div>
                             <md-icon md-svg-icon="package" class="sender-icon"></md-icon>
                         </div>
 
@@ -205,7 +219,8 @@
                     </md-card-content>
                 </div>
 
-                <md-divider ng-class="{borderOrange: mpost.type==='CARRIER', borderBlue: mpost.type==='SENDER'}"></md-divider>
+                <md-divider
+                        ng-class="{borderOrange: mpost.type==='CARRIER', borderBlue: mpost.type==='SENDER'}"></md-divider>
 
                 <div class="md-action" layout="row" layout-padding layout-align="space-between center">
                     <div>

@@ -520,6 +520,11 @@ body > .md-dialog-container {
     color: #448aff;
 }
 
+.blueBg{
+    background-color: #448aff;
+}
+
+
 .borderOrange{
     border-top-color:  rgb(255,224,178);
 }
@@ -530,6 +535,10 @@ body > .md-dialog-container {
 
 .orange{
     color: rgb(255, 152, 0);
+}
+
+.orangeBg{
+    background-color: rgb(255, 152, 0);
 }
 
 .padding-top-20{
@@ -743,7 +752,7 @@ a.md-button.md-warn.md-raised, a.md-button.md-warn.md-fab, .md-button.md-warn.md
 }
 
 .post_user_data_text {
-    font-weight: 500;
+    font-weight: 600;
     font-size: 13px;
     color: dimgray;
 }
@@ -751,12 +760,13 @@ a.md-button.md-warn.md-raised, a.md-button.md-warn.md-fab, .md-button.md-warn.md
 .post_user_data_text-date{
     font-weight: 500;
     font-size: 12px;
-    color: darkgray;
+    color: #424242;
 }
 
 .post_user_data_text2 {
-    font-weight: 600;
+    font-weight: 500;
     font-size: 13px;
+    color: #909090;
 }
 
 .you-contacted {
@@ -773,16 +783,18 @@ a.md-button.md-warn.md-raised, a.md-button.md-warn.md-fab, .md-button.md-warn.md
 
 .toTitle2 {
     color: rgb(68, 138, 255);
-    font-weight: 400;
+    font-weight: 500;
     font-size: 17px;
     padding-bottom: 5px;
+    padding-top: 5px;
 }
 
 .fromTitle2 {
     color: rgb(255, 152, 0);
-    font-weight: 400;
+    font-weight: 500;
     font-size: 17px;
     padding-bottom: 5px;
+    padding-top: 5px;
 }
 
 .toTitle {

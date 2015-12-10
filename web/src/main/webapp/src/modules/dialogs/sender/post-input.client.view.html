@@ -132,7 +132,7 @@
     <div layout="row" flex style="padding: 0px;">
         <div layout="row" style="padding: 0px; padding-left: 5px;">
             <md-icon md-svg-icon="passanger" data-ng-show="newPostDataCheck.passanger==true" class="blue"></md-icon>
-            <md-icon md-svg-icon="no-passanger" data-ng-hide="newPostDataCheck.passanger==true" class="blue"></md-icon>
+            <md-icon md-svg-icon="no-passanger" data-ng-hide="newPostDataCheck.passanger==true"></md-icon>
             <md-checkbox name="passanger" ng-model="newPostDataCheck.passanger"
                          aria-label="passanger_checkbox">Зорчигч авч явна
             </md-checkbox>
@@ -147,8 +147,8 @@
             <div layout="row" style="padding: 0px; padding-left: 5px;">
                 <!--_________________________________________________ PACKAGE INPUT ________________________________________________-->
                 <div layout="row">
-                    <md-icon md-svg-icon="no-stuff" data-ng-hide="newPostDataCheck.stuff==true" class="blue"></md-icon>
-                    <md-icon md-svg-icon="stuff" data-ng-show="newPostDataCheck.stuff==true" class="blue"></md-icon>
+                    <md-icon md-svg-icon="no-stuff" data-ng-hide="newPostDataCheck.stuff==true"></md-icon>
+                    <md-icon md-svg-icon="stuff" data-ng-show="newPostDataCheck.stuff==true"  class="blue"></md-icon>
                     <md-checkbox name="stuff" ng-required="true"
                                  ng-model="newPostDataCheck.stuff"
                                  aria-label="stuff_checkbox">Ачаа авч явна
@@ -169,7 +169,7 @@
             <div layout="row" style="padding: 0px; padding-left: 5px;">
                 <div layout="row">
                     <md-icon md-svg-icon="cow" data-ng-show="newPostDataCheck.animal==true" class="blue"></md-icon>
-                    <md-icon md-svg-icon="no-cow" data-ng-hide="newPostDataCheck.animal==true" class="blue"></md-icon>
+                    <md-icon md-svg-icon="no-cow" data-ng-hide="newPostDataCheck.animal==true"></md-icon>
                     <md-checkbox name="animal" ng-model="newPostDataCheck.animal"
                                  aria-label="animal_checkbox">Амьтан авч явна
                     </md-checkbox>
