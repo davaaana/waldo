@@ -40,6 +40,10 @@ angular
             .icon("calendar-check", "/assets/svg/icons/calendar-check.svg", 12)
             .icon("to-location", "/assets/svg/icons/ic_place_black_24px.svg", 12)
             .icon("passanger", "/assets/svg/icons/ic_supervisor_account_black_24px.svg", 12)
+            .icon("carrier-icon", "/assets/svg/icons/delivery22.svg", 12)
+            .icon("sender-icon", "/assets/svg/icons/person279.svg", 12)
+            .icon("poster-contacted", "/assets/svg/icons/link-variant.svg", 12)
+            .icon("poster-contacted-off", "/assets/svg/icons/link-variant-off.svg", 12)
 
         $mdThemingProvider.theme('default')
             .primaryPalette('orange')

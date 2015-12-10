@@ -114,13 +114,13 @@
                             <div layout="column" layout-align="center center"
                                  ng-if="post.type === 'SENDER'">
                                 <div class="post_type_label">ИЛГЭЭХ ЗАР</div>
-                                <md-icon md-svg-icon="package" class="sender-icon"></md-icon>
+                                <md-icon md-svg-icon="sender-icon" class="sender-icon"></md-icon>
                             </div>
 
                             <div layout="column" layout-align="center center"
                                  ng-if="post.type === 'CARRIER'">
                                 <div class="post_type_label">ҮЙЛЧЛЭХ ЗАР</div>
-                                <md-icon md-svg-icon="package-with-hand" class="carrier-icon"></md-icon>
+                                <md-icon md-svg-icon="carrier-icon" class="carrier-icon"></md-icon>
                             </div>
                             <div layout="column" layout-align="center center">
                                 <p class="post_date_label">зар бүртгэсэн огноо</p>
@@ -139,9 +139,11 @@
                             </div>
                         <span>
                             <span data-ng-show="post.alreadyExchange">
+                                <md-icon md-svg-icon="poster-contacted"></md-icon>
                                   <span style="color:#65BDFE; font-weight: bold">Зартай холбогдсон</span>
                             </span>
                             <span data-ng-hide="post.alreadyExchange">
+                                <md-icon md-svg-icon="poster-contacted-off"></md-icon>
                                    <span style="font-weight: bold; color:#878787">Холбогдоогүй</span>
                             </span>
                         </span>
