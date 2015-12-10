@@ -753,6 +753,7 @@ a.md-button.md-warn.md-raised, a.md-button.md-warn.md-fab, .md-button.md-warn.md
 
 .post_user_data_text {
     font-weight: 600;
+    padding-left: 5px;
     font-size: 13px;
     color: dimgray;
 }
@@ -766,11 +767,11 @@ a.md-button.md-warn.md-raised, a.md-button.md-warn.md-fab, .md-button.md-warn.md
 .post_user_data_text2 {
     font-weight: 500;
     font-size: 13px;
+    padding-left: 5px;
     color: #909090;
 }
 
 .you-contacted {
-    color: rgb(255, 152, 0);
     text-transform: uppercase;
     font-weight: 600;
 }

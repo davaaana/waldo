@@ -24,7 +24,7 @@
     </md-toolbar>
 
     <md-dialog-content class="sticky-container">
-        <section layout="row" layout-padding layout-align="space-around center">
+        <section layout="row" layout-padding layout-align="space-around center" >
             <!--========================================= STEPS INDICATION ===============================================-->
             <div ng-class="{new_post_active : step ===1, new_post_done: step > 1}">
                 <span class="step_number">1</span>
@@ -64,7 +64,7 @@
                             </div>
                             <div layout="row" layout-align="end center" layout-margin>
                                 <md-button ng-click="closeDialog()">Цуцлах</md-button>
-                                <md-button ng-click="stepChange(newPost.type)" class="md-primary"
+                                <md-button ng-click="stepChange(newPost.type)" class="nextButton"
                                            ng-disabled="!newPost.type">Дараагийн алхам
                                 </md-button>
                             </div>

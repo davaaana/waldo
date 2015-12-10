@@ -16,6 +16,8 @@ mainApp.controller('NewPostController', ['$rootScope', '$scope','$http','$mdDial
                 document.getElementsByClassName('carrierIcon')[0].style.color="";
                 document.getElementsByClassName('senderIcon')[0].style.color="rgb(68,138,255)";
 
+                document.getElementsByClassName('nextButton')[0].style.color="rgb(68,138,255)";
+
 
 
             }
@@ -28,6 +30,8 @@ mainApp.controller('NewPostController', ['$rootScope', '$scope','$http','$mdDial
                 document.getElementsByClassName('md-bar md-bar2')[0].style.backgroundColor="rgb(255,152,0)";
                 document.getElementsByClassName('senderIcon')[0].style.color="";
                 document.getElementsByClassName('carrierIcon')[0].style.color="orange";
+                
+                document.getElementsByClassName('nextButton')[0].style.color="orange";
 
             }
 
