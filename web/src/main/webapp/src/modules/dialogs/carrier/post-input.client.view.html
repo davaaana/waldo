@@ -149,13 +149,13 @@
     <md-divider></md-divider>
     <div layout="row" flex style="padding: 0px;">
         <div layout="row" style="padding: 0px; padding-left: 5px;">
-            <md-icon md-svg-icon="passanger" class="orange"></md-icon>
+            <md-icon md-svg-icon="passanger" data-ng-show="newPostDataCheck.passanger==true" class="orange"></md-icon>
+            <md-icon md-svg-icon="no-passanger" data-ng-hide="newPostDataCheck.passanger==true" class="orange"></md-icon>
             <md-checkbox name="passanger" ng-model="newPostDataCheck.passanger"
-                         ng-change="arriveValidation()"
                          aria-label="passanger_checkbox">Зорчигч авч явна
             </md-checkbox>
             <md-input-container>
-                <input ng-model="newPost.passanger" ng-change="arriveValidation()" type="number" value="1"
+                <input ng-model="newPost.passanger" ng-change="submit == true ? arriveValidation() : submit" type="number" value="1"
                        ng-disabled="!newPostDataCheck.passanger" min="1" max="50">
             </md-input-container>
         </div>
@@ -165,8 +165,9 @@
             <div layout="row" style="padding: 0px; padding-left: 5px;">
                 <!--_________________________________________________ PACKAGE INPUT ________________________________________________-->
                 <div layout="row">
-                    <md-icon md-svg-icon="stuff"></md-icon>
-                    <md-checkbox ng-change="arriveValidation()" name="stuff" ng-required="true"
+                    <md-icon md-svg-icon="stuff" data-ng-show="newPostDataCheck.stuff==true"></md-icon>
+                    <md-icon md-svg-icon="no-stuff" data-ng-hide="newPostDataCheck.stuff==true"></md-icon>
+                    <md-checkbox name="stuff" ng-required="true"
                                  ng-model="newPostDataCheck.stuff"
                                  aria-label="stuff_checkbox">Ачаа авч явна
                     </md-checkbox>
@@ -175,7 +176,7 @@
             <div layout="row" ng-show="newPostDataCheck.stuff">
                 <md-input-container style="width:235px">
                     <label>Ачааны шаардлага</label>
-                    <textarea ng-change="arriveValidation()" ng-model="newPost.stuff" type="text"
+                    <textarea ng-change="submit == true ? arriveValidation() : submit" ng-model="newPost.stuff" type="text"
                               md-maxlength="70" maxlength="70"></textarea>
                 </md-input-container>
             </div>
@@ -185,9 +186,9 @@
             <!--_________________________________________________ DEPARTURE CITY OR PROVINCE ________________________________________________-->
             <div layout="row" style="padding: 0px; padding-left: 5px;">
                 <div layout="row">
-                    <md-icon md-svg-icon="cow" class="orange"></md-icon>
+                    <md-icon md-svg-icon="cow" data-ng-show="newPostDataCheck.animal==true" class="orange"></md-icon>
+                    <md-icon md-svg-icon="no-cow" data-ng-hide="newPostDataCheck.animal==true" class="orange"></md-icon>
                     <md-checkbox name="animal" ng-model="newPostDataCheck.animal"
-                                 ng-change="arriveValidation()"
                                  aria-label="animal_checkbox">Амьтан авч явна
                     </md-checkbox>
                 </div>
@@ -195,7 +196,7 @@
             <div layout="row" ng-show="newPostDataCheck.animal">
                 <md-input-container style="width:235px">
                     <label>Амьтаны шаардлага</label>
-                    <textarea ng-model="newPost.animal" ng-change="arriveValidation()" type="text"
+                    <textarea ng-model="newPost.animal" ng-change="submit == true ? arriveValidation() : submit" type="text"
                               md-maxlength="70" maxlength="70"></textarea>
                 </md-input-container>
             </div>

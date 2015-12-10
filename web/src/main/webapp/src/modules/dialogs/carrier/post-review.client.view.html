@@ -12,7 +12,7 @@
 
                 <div layout-fill layout="row" layout-align="start center"  style="height: 25px">
                     <div class="dim-text">
-                        <md-icon md-svg-icon="crosshairs-gps"></md-icon>
+                        <md-icon md-svg-icon="from-location"></md-icon>
                         <span>Хаанаас:</span>
                     </div>
                     <div offset="10" flex class="post_user_data_text">
@@ -21,7 +21,7 @@
                 </div>
                 <div layout-fill layout="row" layout-align="start center"  style="height: 25px">
                     <div class="dim-text">
-                        <md-icon md-svg-icon="map-marker"></md-icon>
+                        <md-icon md-svg-icon="to-location"></md-icon>
                         <span>Хаашаа:</span>
                     </div>
                     <div offset="10" flex class="post_user_data_text">
@@ -40,7 +40,7 @@
                 </div>
                 <div layout-fill layout="row" layout-align="start center"  style="height: 25px">
                     <div class="dim-text">
-                        <md-icon md-svg-icon="calendar-blank"></md-icon>
+                        <md-icon md-svg-icon="calendar-check"></md-icon>
                         <span>Очих огноо:</span>
                     </div>
                     <div offset="10" flex class="post_user_data_text">
@@ -50,7 +50,8 @@
                 </div>
                 <div layout-fill layout="row" layout-align="start center" style="height: 25px">
                     <div class="dim-text">
-                        <md-icon md-svg-icon="passenger"></md-icon>
+                        <md-icon md-svg-icon="passenger" data-ng-show="newPostDataCheck.passanger"></md-icon>
+                        <md-icon md-svg-icon="no-passenger" data-ng-hide="newPostDataCheck.passanger"></md-icon>
                         <span>Зорчигч:</span>
                     </div>
                     <div offset="10" flex class="post_user_data_text">
@@ -73,7 +74,7 @@
                 </div>
                 <div layout-fill layout="row" layout-align="start center" style="height: 25px">
                     <div class="dim-text">
-                        <md-icon md-svg-icon="carry"></md-icon>
+                        <md-icon md-svg-icon="stuff"></md-icon>
                         <span>Ачаа:</span>
                     </div>
                     <div offset="10" flex class="post_user_data_text">

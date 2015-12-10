@@ -44,7 +44,7 @@ angular
             .icon("sender-icon", "/assets/svg/icons/person279.svg", 12)
             .icon("poster-contacted", "/assets/svg/icons/link-variant.svg", 12)
             .icon("poster-contacted-off", "/assets/svg/icons/link-variant-off.svg", 12)
-            .icon("no-paasanger", "/assets/svg/icons/no_ic_supervisor_account_black_24px-01.svg", 12)
+            .icon("no-passanger", "/assets/svg/icons/no_ic_supervisor_account_black_24px-01.svg", 12)
             .icon("cow", "/assets/svg/icons/cow.svg", 12)
             .icon("no-cow", "/assets/svg/icons/no-cow.svg", 12)
             .icon("stuff", "/assets/svg/icons/package.svg", 12)
