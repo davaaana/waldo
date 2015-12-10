@@ -43,12 +43,13 @@
                                         </div>
                                     </div>
                                     <div layout="row">
-                                        <span class="post_user_data_text  padding-top-5">{{dayAgo(minDate,mpost.when)==0 ? 'Өнөөдөр гарана':dayAgo(minDate,mpost.arrive)+' хоногийн дараа гарана'}}</span>
+
                                         <div layout="row" class="more-css" layout-align="start center">
                                             <md-icon md-svg-icon="calendar-blank" ng-class="{orange : mpost.type ==='CARRIER', blue: mpost.type ==='SENDER'}"></md-icon>
 
                                          <span class="post_user_data_text2"
                                                ng-bind="convertToDate(mpost.when) | date:'yyyy.MM.dd'"></span>
+                                            <span class="post_user_data_text  padding-top-5">{{dayAgo(minDate,mpost.when)==0 ? 'Өнөөдөр гарана':dayAgo(minDate,mpost.arrive)+' хоногийн дараа гарана'}}</span>
                                         </div>
                                     </div>
 
@@ -142,12 +143,12 @@
                                         </div>
                                     </div>
                                     <div layout="row">
-                                        <span class="post_user_data_text  padding-top-5">{{dayAgo(minDate,mpost.arrive)==0 ? 'Өнөөдөр очино':dayAgo(mpost.when,mpost.arrive)+' хоногийн дараа очино'}}</span>
                                         <div layout="row" class="more-css" layout-align="start center">
                                             <md-icon md-svg-icon="calendar-check" ng-class="{orange : mpost.type ==='CARRIER', blue: mpost.type ==='SENDER'}"></md-icon>
                                         <span class="post_user_data_text2"
                                               ng-bind="convertToDate(mpost.arrive) | date:'yyyy.MM.dd'"></span>
                                         </div>
+                                        <span class="post_user_data_text  padding-top-5">{{dayAgo(minDate,mpost.arrive)==0 ? 'Өнөөдөр очино':dayAgo(mpost.when,mpost.arrive)+' хоногийн дараа очино'}}</span>
                                     </div>
 
                                     <div layout="row"

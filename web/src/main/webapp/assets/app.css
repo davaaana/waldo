@@ -815,7 +815,7 @@ a.md-button.md-warn.md-raised, a.md-button.md-warn.md-fab, .md-button.md-warn.md
 
 .postMore {
     /*color: rgb(68, 138, 255);*/
-    color:dimgray;
+    /*color:dimgray;*/
     text-decoration: none;
     font-weight: bold;
     font-size: 13px;
