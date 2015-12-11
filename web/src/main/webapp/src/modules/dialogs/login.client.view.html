@@ -1,11 +1,11 @@
 <md-dialog aria-label="Sign-in">
     <md-toolbar class="md-accent">
         <span class="md-toolbar-tools">
-            <md-icon md-svg-icon="account"></md-icon>
+            <md-icon md-svg-icon="account-key" style="color: white; height: 48px; width: 48px; padding-right: 8px;"></md-icon>
             <span>Валдо сүлжээнд нэвтрэх</span>
             <span flex></span>
             <md-button ng-click="closeDialog()" aria-label="Close" class="md-icon-button">
-                <md-icon md-svg-icon="close"></md-icon>
+                <md-icon md-svg-icon="close" style="color:white"></md-icon>
             </md-button>
         </span>
     </md-toolbar>
@@ -49,6 +49,7 @@
                 </div>
                 <form id="fbSignIn" name="fbSignIn" action="/ws/signin/facebook" method="post">
                     <md-button class="md-raised md-accent" type="submit" style="margin-left: 35px;">
+                        <md-icon md-svg-icon="facebook-icon"></md-icon>
                         <span>Facebook-ээр нэвтрэх</span>
                     </md-button>
                 </form>
@@ -57,9 +58,10 @@
         </md-content>
         <md-divider></md-divider>
         <div style="background: #bfbfbf; width: 100%;  height: 48px;">
-            <div style="float: right; ">
+            <div style="float: right; color:gray">
                 Хэрэв та манай сүлжээнд бүртгэлгүй бол:
                 <md-button class="md-raised md-hue-1 md-button md-ink-ripple" ng-click="signup()" style="color:rgb(255, 152, 0)">
+                    <md-icon md-svg-icon="account-plus" class="orange"></md-icon>
                     БҮРТГҮҮЛЭХ
                 </md-button>
             </div>

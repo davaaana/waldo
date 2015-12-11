@@ -541,6 +541,14 @@ body > .md-dialog-container {
     background-color: rgb(255, 152, 0);
 }
 
+.borderOrange2{
+    border: 3px solid rgb(255, 152, 0);
+}
+
+.borderBlue2{
+    border: 3px solid  #448aff;
+}
+
 .padding-top-20{
     padding-top: 20px;
 }
@@ -766,13 +774,13 @@ a.md-button.md-warn.md-raised, a.md-button.md-warn.md-fab, .md-button.md-warn.md
 
 .post_user_data_text2 {
     font-weight: 500;
-    font-size: 13px;
+    font-size: 12px;
     padding-left: 5px;
     color: #909090;
 }
 
 .you-contacted {
-    text-transform: uppercase;
+
     font-weight: 600;
 }
 

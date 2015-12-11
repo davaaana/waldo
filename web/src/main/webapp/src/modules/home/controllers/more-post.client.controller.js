@@ -3,6 +3,12 @@
 mainApp.controller('PostMoreController', ['$rootScope', '$scope', '$http', '$mdDialog', 'PostService', '$log', '$q','$mdToast', 'UserService',
     function ($rootScope, $scope, $http, dialog, PostService, $log, $q,$mdToast, AuthService) {
 
+        $scope.adsNumber = function(){
+           var h = document.getElementsByClassName('adsNumber')[0].offsetHeight;
+            document.getElementsByClassName('adsNumberInner')[0].setAttribute("style","height:"+h+"px;  display : table");
+
+        }
+
         $scope.ownBool = false;
         $scope.auth = AuthService.getAuthentication();
 

@@ -53,6 +53,9 @@ angular
             .icon("cash", "/assets/svg/icons/cash.svg", 12)
             .icon("comment", "/assets/svg/icons/comment-multiple-outline.svg", 12)
             .icon("compare", "/assets/svg/icons/ic_compare_arrows_black_24px.svg", 12)
+            .icon("account-plus", "/assets/svg/icons/account-plus.svg", 12)
+            .icon("account-key", "/assets/svg/icons/account-key.svg", 12)
+            .icon("facebook-icon", "/assets/svg/icons/facebook-icon.svg", 12)
 
         $mdThemingProvider.theme('default')
             .primaryPalette('orange')
