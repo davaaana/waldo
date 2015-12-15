@@ -3,80 +3,86 @@
 <!--</div>-->
 
 <div layout="row" class="layout-row" ng-controller="PostController">
-    <md-sidenav md-sidenav
-                class="site-sidenav md-sidenav-left md-whiteframe-z2 md-closed ng-isolate-scope md-locked-open"
-                md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')" tabindex="-1" aria-hidden="false"
-                style="width: 120px;
-                height: 350px;
-                position: absolute;
-                margin-top: 311px;">
 
-        <div layout="row" flex>
-            <div layout="column">
-                <div layout="row">
-                    <md-input-container>
-                        <label class="filter-title">Зарын төрөл</label>
-                        <md-select data-ng-model="filter.type" ng-change="filterChange()"
-                                   class="datepicker-filter-adjust5" placeholder="Зарын төрөл" style="width: 190px;">
-                            <md-option value="" selected="true">Бүх зар</md-option>
-                            <md-option value="CARRIER">Тээвэрлэх зар</md-option>
-                            <md-option value="SENDER">Илгээх зар</md-option>
-                        </md-select>
-                    </md-input-container>
-                </div>
 
-                <div layout="row">
-                    <md-input-container>
-                        <label class="filter-title">Хөдлөх газар</label>
-                        <md-select class="datepicker-filter-adjust5" data-ng-model="filter.fromCityId"
-                                   ng-change="filterChange()" placeholder="Хөдлөх газар"  style="width: 190px;">
-                            <md-option ng-value="{{city.id}}" ng-repeat="city in cities">{{city.name}}</md-option>
-                        </md-select>
-                    </md-input-container>
-                </div>
-                <div layout="row">
-                    <md-input-container>
-                        <label class="filter-title">Очих газар</label>
-                        <md-select class="datepicker-filter-adjust5" data-ng-model="filter.toCityId"
-                                   ng-change="filterChange()" placeholder="Очих газар"  style="width: 190px;">
-                            <md-option ng-value="{{city.id}}" ng-repeat="city in cities">{{city.name}}</md-option>
-                        </md-select>
-                    </md-input-container>
-                </div>
-
-                <div layout="row"  style="padding-top:10px" >
-                    <md-datepicker calendar-header="caHeader" ng-model="filter.fromDateTime"
-                                   md-placeholder="Хөдлөх өдөр"
-                                   format="yyyy.MM.dd"
-                                   class="datepicker-filter-adjust" md-min-date="minDate"
-                                   md-max-date="filter.toDateTime"></md-datepicker>
-                </div>
-
-                <div layout="row" style="padding-top:15px">
-                    <md-datepicker calendar-header="caHeader" ng-model="filter.toDateTime"
-                                   md-placeholder="Очих өдөр"
-                                   class="datepicker-filter-adjust"
-                                   md-min-date="filter.fromDateTime"></md-datepicker>
-                </div>
-
-                <md-button class="md-raised md-warn md-button md-ink-ripple filter-button"
-                           ng-click="filterClear();searchTextType='Бүх зар';selectedItemType = postType[0];searchText1='Бүх аймаг';selectedItem1 = cities[0];searchText='Бүх аймаг';selectedItem = cities[0]">
-                    <md-icon md-svg-icon="filter-remove"></md-icon>
-                    <span>Цэвэрлэх!</span>
-                </md-button>
-            </div>
-        </div>
-    </md-sidenav>
     <div layout="column" tabindex="-1" role="main" flex="" class="layout-column flex" aria-hidden="false">
         <div ng-include="'src/modules/home/template/header.html'"></div>
-        <div>
+
             <div ng-include="'src/modules/home/template/middle.html'"></div>
-            <div id="innerwrap">
-                <div class="container">
-                    <div ui-view=""></div>
+            <div  style="margin: auto">
+                <div layout="column" style="width: 220px; float: left;">
+                     <md-sidenav md-sidenav
+                                 class="site-sidenav md-sidenav-left md-whiteframe-z2 md-closed ng-isolate-scope md-locked-open"
+                                 md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')" tabindex="-1" aria-hidden="false"
+                                 style="min-width: 213px; max-width: 213px;
+padding: 3px;
+                     height: 350px;
+                   ">
+                         <div layout="row" flex>
+                             <div layout="column">
+                                 <div layout="row">
+                                     <md-input-container>
+                                         <label class="filter-title">Зарын төрөл</label>
+                                         <md-select data-ng-model="filter.type" ng-change="filterChange()"
+                                                    class="datepicker-filter-adjust5" placeholder="Зарын төрөл" style="width: 190px;">
+                                             <md-option value="" selected="true">Бүх зар</md-option>
+                                             <md-option value="CARRIER">Тээвэрлэх зар</md-option>
+                                             <md-option value="SENDER">Илгээх зар</md-option>
+                                         </md-select>
+                                     </md-input-container>
+                                 </div>
+
+                                 <div layout="row">
+                                     <md-input-container>
+                                         <label class="filter-title">Хөдлөх газар</label>
+                                         <md-select class="datepicker-filter-adjust5" data-ng-model="filter.fromCityId"
+                                                    ng-change="filterChange()" placeholder="Хөдлөх газар"  style="width: 190px;">
+                                             <md-option ng-value="{{city.id}}" ng-repeat="city in cities">{{city.name}}</md-option>
+                                         </md-select>
+                                     </md-input-container>
+                                 </div>
+                                 <div layout="row">
+                                     <md-input-container>
+                                         <label class="filter-title">Очих газар</label>
+                                         <md-select class="datepicker-filter-adjust5" data-ng-model="filter.toCityId"
+                                                    ng-change="filterChange()" placeholder="Очих газар"  style="width: 190px;">
+                                             <md-option ng-value="{{city.id}}" ng-repeat="city in cities">{{city.name}}</md-option>
+                                         </md-select>
+                                     </md-input-container>
+                                 </div>
+
+                                 <div layout="row"  style="padding-top:10px" >
+                                     <md-datepicker calendar-header="caHeader" ng-model="filter.fromDateTime"
+                                                    md-placeholder="Хөдлөх өдөр"
+                                                    format="yyyy.MM.dd"
+                                                    class="datepicker-filter-adjust" md-min-date="minDate"
+                                                    md-max-date="filter.toDateTime"></md-datepicker>
+                                 </div>
+
+                                 <div layout="row" style="padding-top:15px">
+                                     <md-datepicker calendar-header="caHeader" ng-model="filter.toDateTime"
+                                                    md-placeholder="Очих өдөр"
+                                                    class="datepicker-filter-adjust"
+                                                    md-min-date="filter.fromDateTime"></md-datepicker>
+                                 </div>
+
+                                 <md-button class="md-raised md-warn md-button md-ink-ripple filter-button"
+                                            ng-click="filterClear();searchTextType='Бүх зар';selectedItemType = postType[0];searchText1='Бүх аймаг';selectedItem1 = cities[0];searchText='Бүх аймаг';selectedItem = cities[0]">
+                                     <md-icon md-svg-icon="filter-remove"></md-icon>
+                                     <span>Цэвэрлэх!</span>
+                                 </md-button>
+                             </div>
+                         </div>
+                     </md-sidenav>
+
+                </div>
+                <div id="innerwrap" layout="column">
+                    <div class="container">
+                        <div ui-view=""></div>
+                    </div>
                 </div>
             </div>
-        </div>
+
         <div ng-include="'src/modules/home/template/footer.html'"></div>
     </div>
 </div>

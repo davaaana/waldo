@@ -134,7 +134,7 @@ footer {
 }
 
 .footer {
-    width: 1020px;
+    width: 1200px;
     margin: auto;
     padding-left: 5px;
 }
@@ -488,7 +488,7 @@ body > .md-dialog-container {
 /* Temp end------------------------------------------------------------------------------------------------*/
 
 .header {
-    width: 1020px;
+    width: 1200px;
     margin: auto;
     box-shadow: 0 0 8px #666666;
 }
@@ -578,14 +578,14 @@ body > .md-dialog-container {
 }
 
 #innerwrap {
-    width: 1020px;
-    margin: auto;
+    width: 980px;
+    /*margin: auto;*/
     box-shadow: 0 2px 8px #666666;
     min-height: 530px;
 }
 
 .middle {
-    width: 1020px;
+    width: 1200px;
     margin: auto;
 }
 
