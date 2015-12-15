@@ -12,6 +12,7 @@ public class SimplePost implements Model {
     private String to;
     private Date when;
     private String phone;
+    private String email;
     private Date arrive;
     private PostType type;
     private String transportation;
@@ -24,6 +25,14 @@ public class SimplePost implements Model {
     private boolean alreadyExchange;
     private PostInfo postInfo;
     private String policy;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public String getPhone() {
         return phone;
