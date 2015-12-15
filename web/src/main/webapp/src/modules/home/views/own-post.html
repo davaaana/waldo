@@ -23,6 +23,7 @@
 
 
 <div id="call_dialog" ng-init="ownPost();">
+
     <md-grid-list
             md-cols-sm="1" md-cols-gt-sm="2" md-cols-gt-lg="2"
             md-row-height="170px"
@@ -222,7 +223,7 @@
             </div>
             <div flex="25" layout="row" class="filter-result">
                 <div layout="column" class="quick-title">Эрэмблэх:</div>
-                <select ng-model="quickFilter" class="quick-filter2" layout="column">>
+                <select ng-model="quickFilter" class="quick-filter2" layout="column">
                     <option value="-createdDate">Сүүлд орсон</option>
                     <option value=-requestNum>Их үзсэн</option>
                 </select>

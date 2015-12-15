@@ -1150,3 +1150,9 @@ a.md-button.md-warn.md-raised, a.md-button.md-warn.md-fab, .md-button.md-warn.md
 .ddown{
     color: white;
 }
+
+.dup{
+    color: white;
+    height: 12px;
+    width: 12px;
+}

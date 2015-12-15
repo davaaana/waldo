@@ -25,7 +25,10 @@
 
     <div data-ng-click="about=!about" class="aboutTxt" ng-init="about=true" ng-class="{orangeBack : about == true, grayBack: about ==false}">
       Валдо сүлжээ гэж юу вэ?
-        <div style="float: right"><md-icon md-svg-icon="drop_down" class="ddown"></md-icon></div>
+        <div style="float: right">
+            <md-icon md-svg-icon="drop_down" class="ddown" ng-show="about == false"></md-icon>
+            <md-icon md-svg-icon="up" class="dup" ng-show="about == true"></md-icon>
+        </div>
     </div>
     <ul data-ng-show="about">
         <li>Та арван наймаас дээш настай байх ёстой.</li>
@@ -85,7 +88,10 @@
     </ul>
 
     <div data-ng-click="training=!training" class="aboutTxt" ng-init="training=false" ng-class="{orangeBack : training == true, grayBack: training ==false}">Байнга асуугддаг асуултууд...
-        <div style="float: right"><md-icon md-svg-icon="drop_down" class="ddown"></md-icon></div>
+        <div style="float: right">
+            <md-icon md-svg-icon="drop_down" class="ddown" ng-show="training == false"></md-icon>
+            <md-icon md-svg-icon="up" class="dup" ng-show="training == true"></md-icon>
+        </div>
     </div>
     <ul data-ng-show="training">
         <li>Та арван наймаас дээш настай байх ёстой.</li>
@@ -100,7 +106,10 @@
     </ul>
 
     <div data-ng-click="AQ=!AQ" class="aboutTxt"  ng-init="AQ=false" ng-class="{orangeBack : AQ == true, grayBack: AQ ==false}">Валдо сүлжээ хэрхэн ашиглах вэ? Заавар.
-        <div style="float: right"><md-icon md-svg-icon="drop_down" class="ddown"></md-icon></div>
+        <div style="float: right">
+            <md-icon md-svg-icon="drop_down" class="ddown" ng-show="AQ == false"></md-icon>
+            <md-icon md-svg-icon="up" class="dup" ng-show="AQ == true"></md-icon>
+        </div>
     </div>
     <ul data-ng-show="AQ">
         <li>Та арван наймаас дээш настай байх ёстой.</li>
@@ -115,7 +124,10 @@
     </ul>
 
     <div data-ng-click="terms=!terms" class="aboutTxt"   ng-init="terms=false" ng-class="{orangeBack : terms == true, grayBack: terms ==false}">Үйлчилгээний нөхцөл...
-        <div style="float: right"><md-icon md-svg-icon="drop_down" class="ddown"></md-icon></div>
+        <div style="float: right">
+            <md-icon md-svg-icon="drop_down" class="ddown" ng-show="terms == false"></md-icon>
+            <md-icon md-svg-icon="up" class="dup" ng-show="terms == true"></md-icon>
+        </div>
     </div>
     <ul data-ng-show="terms">
         <li>Та арван наймаас дээш настай байх ёстой.</li>
@@ -130,7 +142,10 @@
     </ul>
 
     <div data-ng-click="contact=!contact" class="aboutTxt"   ng-init="contact=false" ng-class="{orangeBack : contact == true, grayBack: contact ==false}">Бидэнтэй холбоо барих
-        <div style="float: right"><md-icon md-svg-icon="drop_down" class="ddown"></md-icon></div>
+        <div style="float: right">
+            <md-icon md-svg-icon="drop_down" class="ddown" ng-show="contact == false"></md-icon>
+            <md-icon md-svg-icon="up" class="dup" ng-show="contact == true"></md-icon>
+        </div>
     </div>
     <ul data-ng-show="contact">
         <li>Та арван наймаас дээш настай байх ёстой.</li>
