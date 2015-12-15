@@ -21,6 +21,21 @@
     </a>
 </div>
 
+<div flex layout="row">
+    <div flex="80" layout="row" class="filter-result">
+        <!--  <div layout="column" class="filter-txt">Шүүлтүүр : </div>
+          <div layout="column" class="filter-txt-result">Зарын төрөл,Бүх зар</div>-->
+    </div>
+    <div flex="20" layout="row" class="filter-result">
+        <div layout="column" class="quick-title">Эрэмблэх:</div>
+        <select ng-model="filter.quickFilter" class="quick-filter" layout="column">>
+            <option value="-createdDate">Сүүлд орсон</option>
+            <option value=-requestNum>Их үзсэн</option>
+        </select>
+
+
+    </div>
+</div>
 
 <div id="call_dialog" ng-init="contactedPost();">
 
@@ -154,246 +169,257 @@
 
 </div>
 
-<!--<div layout="row" flex>-->
-<!--<div layout="column" flex="25" style="padding: 10px;">-->
-<!--<div style="font-weight: bold">ШҮҮЛТҮҮР:</div>-->
 
 
-<!--<div>-->
-<!--<div class="filter-title">Зарын төрөл</div>-->
-
-<!--<md-select data-ng-model="conFilter.type" ng-change="filterChangeCon()"-->
-<!--class="datepicker-filter-adjust4"  placeholder="Сонгох">-->
-<!--<md-option value="">Бүх зар</md-option>-->
-<!--<md-option value="CARRIER">Тээвэрлэх зар</md-option>-->
-<!--<md-option value="SENDER">Илгээх зар</md-option>-->
-<!--</md-select>-->
-<!--</div>-->
-<!--<div>-->
-<!--<label class="filter-title">Хөдлөх газар</label>-->
-
-<!--<md-select class="datepicker-filter-adjust4" data-ng-model="conFilter.fromCityId"-->
-<!--ng-change="filterChangeCon()"  placeholder="Сонгох">-->
-<!--<md-option ng-value="{{city.id}}" ng-repeat="city in cities">{{city.name}}</md-option>-->
-<!--</md-select>-->
 
 
-<!--</div>-->
-<!--<div>-->
-<!--<label class="filter-title">Очих газар</label>-->
-<!--<md-select class="datepicker-filter-adjust4" data-ng-model="conFilter.toCityId"-->
-<!--ng-change="filterChangeCon()"  placeholder="Сонгох">-->
-<!--<md-option ng-value="{{city.id}}" ng-repeat="city in cities">{{city.name}}</md-option>-->
-<!--</md-select>-->
-
-<!--</div>-->
-
-<!--<div>-->
-<!--<label class="filter-title">Явах огноо эхлэх</label>-->
-
-<!--<div layout="row">-->
-<!--<md-datepicker ng-model="conFilter.fromDateTime" md-placeholder="Сонгох" date-format="yyyy-MM-dd"-->
-<!--class="datepicker-filter-adjust3"  md-max-date="conFilter.toDateTime"></md-datepicker>-->
-<!--</div>-->
-<!--</div>-->
-<!--<div>-->
-<!--<label class="filter-title">Явах огноо дуусах</label>-->
-
-<!--<div layout="row">-->
-<!--<md-datepicker ng-model="conFilter.toDateTime" md-placeholder="Сонгох" date-format="yyyy-MM-dd"-->
-<!--class="datepicker-filter-adjust3" md-min-date="conFilter.fromDateTime"></md-datepicker>-->
-<!--</div>-->
-<!--</div>-->
-<!--<md-button class="md-raised md-warn md-button md-ink-ripple filter-button"-->
-<!--ng-click="conFilterClear();searchTextType='Бүх зар';selectedItemType = postType[0];searchText1='Бүх аймаг';selectedItem1 = cities[0];searchText='Бүх аймаг';selectedItem = cities[0]">-->
-<!--<md-icon md-svg-icon="filter-remove"></md-icon>-->
-<!--<span>Цэвэрлэх!</span>-->
-<!--</md-button>-->
-
-<!--<md-button class="md-accent" ng-click="hideCPostsShow(hideAds)"-->
-<!--ng-show="hideAds">Хугацаа дууссан зарууд-->
-<!--</md-button>-->
-<!--<md-button class="md-accent" ng-click="hideCPostsShow(hideAds)"-->
-<!--ng-hide="hideAds">Идэвхтэй зарууд-->
-<!--</md-button>-->
+<div layout="row" flex>
+    <div layout="column" flex="25" style="padding: 10px;">
+        <div style="font-weight: bold">ШҮҮЛТҮҮР:</div>
 
 
-<!--</div>-->
-<!--<div layout="column" flex="75">-->
-<!--<div flex layout="row" style="    max-height: 30px;">-->
-<!--<div flex="75" layout="row" class="ads-type">-->
-<!--<span ng-show="hideAds">Идэвхтэй зар-->
-<!--</span>-->
-<!--<span ng-hide="hideAds">Хугацаа дууссан зар-->
-<!--</span>-->
-<!--&lt;!&ndash; <div layout="column" class="filter-txt">Шүүлтүүр : </div>-->
-<!--<div layout="column" class="filter-txt-result">Зарын төрөл,Бүх зар</div>&ndash;&gt;-->
-<!--</div>-->
-<!--<div flex="25" layout="row" class="filter-result">-->
-<!--<div  layout="column" class="quick-title">Эрэмблэх:</div>-->
-<!--<select ng-model="quickFilter" class="quick-filter2"  layout="column">>-->
-<!--<option value="-createdDate">Сүүлд орсон</option>-->
-<!--<option value=-requestNum>Их үзсэн</option>-->
-<!--</select>-->
-<!--</div>-->
-<!--</div>-->
-<!---->
-<!--<md-content  ng-init="contactedPost()">-->
-<!--<md-grid-item-->
-<!--md-cols-sm="1" md-cols-gt-sm="1" md-cols-gt-lg="1"-->
-<!--md-row-height="165px"-->
-<!--md-gutter="6px" md-gutter-gt-sm="3px" flex>-->
-<!--<md-grid-title ng-repeat="contactedPost in contactedPosts | orderBy: quickFilter"> &lt;!&ndash;| orderBy:'-createdDate' | filter:allPostCtrl.filterResult.postType | filter:{to:allPostCtrl.filterResult.toLocation}  | filter:{from:allPostCtrl.filterResult.fromLocation} | filter:{when: allPostCtrl.filterResult.toDate} | filter:{arrive: allPostCtrl.filterResult.fromDate} | filter:allPostCtrl.filterResult.transportationType | orderBy:allPostCtrl.filterResult.quickFilter">&ndash;&gt;-->
-<!--<md-card layout="column" flex>-->
-<!--<div layout="row"-->
-<!--flex-->
-<!--ng-class="{carrier_post : contactedPost.type==='CARRIER', sender_post: contactedPost.type==='SENDER'}">-->
+        <div>
+            <div class="filter-title">Зарын төрөл</div>
 
-<!--<md-card-content flex="15" layout="column">-->
-<!--<div layout="column" flex layout-align="center center" layout-padding>-->
+            <md-select data-ng-model="conFilter.type" ng-change="filterChangeCon()"
+                       class="datepicker-filter-adjust4" placeholder="Сонгох">
+                <md-option value="">Бүх зар</md-option>
+                <md-option value="CARRIER">Тээвэрлэх зар</md-option>
+                <md-option value="SENDER">Илгээх зар</md-option>
+            </md-select>
+        </div>
+        <div>
+            <label class="filter-title">Хөдлөх газар</label>
 
-<!--<img ng-src="ws/profile/image/{{contactedPost.username}}.png"-->
-<!--class="user-male-icon"/>-->
-
-<!--<div class="user_profile_name">{{ contactedPost.username }}</div>-->
-<!--</div>-->
-
-<!--</md-card-content>-->
+            <md-select class="datepicker-filter-adjust4" data-ng-model="conFilter.fromCityId"
+                       ng-change="filterChangeCon()" placeholder="Сонгох">
+                <md-option ng-value="{{city.id}}" ng-repeat="city in cities">{{city.name}}</md-option>
+            </md-select>
 
 
-<!--<md-card-content flex="70" layout="row" layout-align="center center"-->
-<!--class="post_body">-->
-<!--<div layout="column" flex layout-padding layout-align="center start">-->
-<!--<div layout="row" >-->
-<!--<div class="post_user_data_text2">Зарын дугаар : {{contactedPost.id}}</div>-->
-<!--</div>-->
+        </div>
+        <div>
+            <label class="filter-title">Очих газар</label>
+            <md-select class="datepicker-filter-adjust4" data-ng-model="conFilter.toCityId"
+                       ng-change="filterChangeCon()" placeholder="Сонгох">
+                <md-option ng-value="{{city.id}}" ng-repeat="city in cities">{{city.name}}</md-option>
+            </md-select>
 
-<!--<div layout="row" class="post-title">-->
-<!--<div ng-if="contactedPost.type==='CARRIER'">-->
-<!--АЧАА ТЭЭВЭРЛЭНЭ: <span class="title-red">{{contactedPost.policy}}</span>-->
-<!--</div>-->
-<!--<div ng-if="contactedPost.type==='SENDER'">-->
-<!--АЧАА ТЭЭВЭРЛҮҮЛНЭ: <span class="title-red">{{contactedPost.policy}}</span>-->
-<!--</div>-->
-<!--</div>-->
+        </div>
 
-<!--<div ng-show="contactedPost.passanger" layout="row" class="more-txt">-->
-<!--<div>-->
-<!--<md-icon md-svg-icon="passenger"></md-icon>-->
-<!--<span>ЗОРЧИГЧ: {{ contactedPost.passanger }}</span>-->
-<!--</div>-->
-<!--</div>-->
+        <div>
+            <label class="filter-title">Явах огноо эхлэх</label>
 
-<!--<div layout="row" class="more-txt" ng-if="contactedPost.type==='CARRIER'"-->
-<!--layout-align="start center">-->
-<!--<md-icon md-svg-icon="car"></md-icon>-->
-<!--<div>ТЭЭВРИЙН ХЭРЭГСЭЛ:</div>-->
-<!--<div>{{contactedPost.transportation}}</div>-->
-<!--</div>-->
+            <div layout="row">
+                <md-datepicker ng-model="conFilter.fromDateTime" md-placeholder="Сонгох" date-format="yyyy-MM-dd"
+                               class="datepicker-filter-adjust3" md-max-date="conFilter.toDateTime"></md-datepicker>
+            </div>
+        </div>
+        <div>
+            <label class="filter-title">Явах огноо дуусах</label>
 
-<!--&lt;!&ndash;ХӨДЛӨХ ГАЗРЫН ТУХАЙ&ndash;&gt;-->
-<!--<div layout="row" style="width: 100%">-->
-<!--<div layout="column" flex="50">-->
-<!--<div layout="row" class="fromTitle">-->
-<!--ХӨДЛӨХ ГАЗАР-->
-<!--</div>-->
-<!--<div layout="row">-->
-<!--<span class="post_user_data_text2">{{contactedPost.from}}</span>-->
-<!--</div>-->
-<!--<div layout="row">-->
-<!--<span class="post_user_data_text2"-->
-<!--ng-bind="convertToDate(contactedPost.when) | date:'yyyy.MM.dd'"></span>-->
-<!--</div>-->
+            <div layout="row">
+                <md-datepicker ng-model="conFilter.toDateTime" md-placeholder="Сонгох" date-format="yyyy-MM-dd"
+                               class="datepicker-filter-adjust3" md-min-date="conFilter.fromDateTime"></md-datepicker>
+            </div>
+        </div>
+        <md-button class="md-raised md-warn md-button md-ink-ripple filter-button"
+                   ng-click="conFilterClear();searchTextType='Бүх зар';selectedItemType = postType[0];searchText1='Бүх аймаг';selectedItem1 = cities[0];searchText='Бүх аймаг';selectedItem = cities[0]">
+            <md-icon md-svg-icon="filter-remove"></md-icon>
+            <span>Цэвэрлэх!</span>
+        </md-button>
 
-<!--</div>-->
-
-<!--&lt;!&ndash;ОЧИХ ГАЗРЫН ТУХАЙ&ndash;&gt;-->
-<!--<div layout="column" flex="50">-->
-<!--<div layout="row" class="toTitle">-->
-<!--ОЧИХ ГАЗАР-->
-<!--</div>-->
-<!--<div layout="row">-->
-<!--<span class="post_user_data_text2">{{contactedPost.to }}</span>-->
-<!--</div>-->
-<!--<div  layout="row">-->
-<!--<span class="post_user_data_text2"-->
-<!--ng-bind="convertToDate(contactedPost.arrive) | date:'yyyy.MM.dd'"></span>-->
-<!--</div>-->
-<!--</div>-->
+        <md-button class="md-accent" ng-click="hideCPostsShow(hideAds)"
+                   ng-show="hideAds">Хугацаа дууссан зарууд
+        </md-button>
+        <md-button class="md-accent" ng-click="hideCPostsShow(hideAds)"
+                   ng-hide="hideAds">Идэвхтэй зарууд
+        </md-button>
 
 
-<!--</div>-->
+    </div>
+    <div layout="column" flex="75">
+        <div flex layout="row" style="    max-height: 30px;">
+            <div flex="75" layout="row" class="ads-type">
+<span ng-show="hideAds">Идэвхтэй зар
+</span>
+<span ng-hide="hideAds">Хугацаа дууссан зар
+</span>
+                <!-- <div layout="column" class="filter-txt">Шүүлтүүр : </div>
+                <div layout="column" class="filter-txt-result">Зарын төрөл,Бүх зар</div>-->
+            </div>
+            <div flex="25" layout="row" class="filter-result">
+                <div layout="column" class="quick-title">Эрэмблэх:</div>
+                <select ng-model="quickFilter" class="quick-filter2" layout="column">>
+                    <option value="-createdDate">Сүүлд орсон</option>
+                    <option value=-requestNum>Их үзсэн</option>
+                </select>
+            </div>
+        </div>
 
-<!--<div layout="row" class="more-txt2 padding-top-5" layout-align="start center" ng-if="contactedPost.animal">-->
-<!--<md-icon md-svg-icon="carry"></md-icon>-->
-<!--<div>Амьтан:</div>-->
-<!--<div>{{contactedPost.animal}}-->
-<!--</div>-->
-<!--</div>-->
+        <md-content ng-init="contactedPost()">
+            <md-grid-item
+                    md-cols-sm="1" md-cols-gt-sm="1" md-cols-gt-lg="1"
+                    md-row-height="165px"
+                    md-gutter="6px" md-gutter-gt-sm="3px" flex>
+                <md-grid-title ng-repeat="contactedPost in contactedPosts | orderBy: quickFilter">
+                    <!--| orderBy:'-createdDate' | filter:allPostCtrl.filterResult.postType | filter:{to:allPostCtrl.filterResult.toLocation}  | filter:{from:allPostCtrl.filterResult.fromLocation} | filter:{when: allPostCtrl.filterResult.toDate} | filter:{arrive: allPostCtrl.filterResult.fromDate} | filter:allPostCtrl.filterResult.transportationType | orderBy:allPostCtrl.filterResult.quickFilter">-->
+                    <md-card layout="column" flex>
+                        <div layout="row"
+                             flex
+                             ng-class="{carrier_post : contactedPost.type==='CARRIER', sender_post: contactedPost.type==='SENDER'}">
 
-<!--<div layout="row" class="more-txt2 padding-top-5" layout-align="start center" ng-if="contactedPost.stuff">-->
-<!--<md-icon md-svg-icon="carry"></md-icon>-->
-<!--<div>Ачаа:</div>-->
-<!--<div>{{contactedPost.stuff}}-->
-<!--</div>-->
-<!--</div>-->
+                            <md-card-content flex="15" layout="column">
+                                <div layout="column" flex layout-align="center center" layout-padding>
 
-<!--<div layout="row" class="more-txt2 padding-top-5" layout-align="start center" ng-if="!contactedPost.stuff && !contactedPost.stuff">-->
-<!--<md-icon md-svg-icon="carry"></md-icon>-->
-<!--<div>Ачаа:</div>-->
-<!--<div>Байхгүй-->
-<!--</div>-->
-<!--</div>-->
+                                    <img ng-src="ws/profile/image/{{contactedPost.username}}.png"
+                                         class="user-male-icon"/>
 
-<!--<div layout="row" class="more-txt2 padding-top-5" layout-align="start center" ng-if="contactedPost.description">-->
-<!--<md-icon md-svg-icon="carry"></md-icon>-->
-<!--<div>Миний дүрэм:</div>-->
-<!--<div>{{contactedPost.description}}-->
-<!--</div>-->
-<!--</div>-->
+                                    <div class="user_profile_name">{{ contactedPost.username }}</div>
+                                </div>
+
+                            </md-card-content>
 
 
-<!--</div>-->
-<!--</md-card-content>-->
+                            <md-card-content flex="70" layout="row" layout-align="center center"
+                                             class="post_body">
+                                <div layout="column" flex layout-padding layout-align="center start">
+                                    <div layout="row">
+                                        <div class="post_user_data_text2">Зарын дугаар : {{contactedPost.id}}</div>
+                                    </div>
 
-<!--<md-card-content flex="15" layout="column" layout-align="center center">-->
-<!--<div layout="column" layout-align="center center"-->
-<!--ng-if="contactedPost.type === 'SENDER'">-->
-<!--<div class="post_type_label">ИЛГЭЭХ</div>-->
-<!--<md-icon md-svg-icon="package" class="sender-icon"></md-icon>-->
-<!--</div>-->
+                                    <div layout="row" class="post-title">
+                                        <div ng-if="contactedPost.type==='CARRIER'">
+                                            АЧАА ТЭЭВЭРЛЭНЭ: <span class="title-red">{{contactedPost.policy}}</span>
+                                        </div>
+                                        <div ng-if="contactedPost.type==='SENDER'">
+                                            АЧАА ТЭЭВЭРЛҮҮЛНЭ: <span class="title-red">{{contactedPost.policy}}</span>
+                                        </div>
+                                    </div>
 
-<!--<div layout="column" layout-align="center center"-->
-<!--ng-if="contactedPost.type === 'CARRIER'">-->
-<!--<div class="post_type_label">ТЭЭВЭРЛЭХ</div>-->
-<!--<md-icon md-svg-icon="package-with-hand" class="carrier-icon"></md-icon>-->
-<!--</div>-->
-<!--<div layout="column" layout-align="center center">-->
-<!--<p class="post_date_label">зар оруулсан</p>-->
+                                    <div ng-show="contactedPost.passanger" layout="row" class="more-txt">
+                                        <div>
+                                            <md-icon md-svg-icon="passenger"></md-icon>
+                                            <span>ЗОРЧИГЧ: {{ contactedPost.passanger }}</span>
+                                        </div>
+                                    </div>
 
-<!--<p class="post_date dim-text">{{contactedPost.createdDate}}</p>-->
-<!--</div>-->
+                                    <div layout="row" class="more-txt" ng-if="contactedPost.type==='CARRIER'"
+                                         layout-align="start center">
+                                        <md-icon md-svg-icon="car"></md-icon>
+                                        <div>ТЭЭВРИЙН ХЭРЭГСЭЛ:</div>
+                                        <div>{{contactedPost.transportation}}</div>
+                                    </div>
 
-<!--</md-card-content>-->
-<!--</div>-->
-<!--<md-divider></md-divider>-->
+                                    <!--ХӨДЛӨХ ГАЗРЫН ТУХАЙ-->
+                                    <div layout="row" style="width: 100%">
+                                        <div layout="column" flex="50">
+                                            <div layout="row" class="fromTitle">
+                                                ХӨДЛӨХ ГАЗАР
+                                            </div>
+                                            <div layout="row">
+                                                <span class="post_user_data_text2">{{contactedPost.from}}</span>
+                                            </div>
+                                            <div layout="row">
+<span class="post_user_data_text2"
+      ng-bind="convertToDate(contactedPost.when) | date:'yyyy.MM.dd'"></span>
+                                            </div>
 
-<!--<md-card-footer layout="row" layout-padding layout-align="space-between center">-->
-<!--<div class="padding-left-35">-->
-<!--<md-icon md-svg-icon="view"></md-icon>-->
-<!--<span>{{contactedPost.requestNum}}</span>-->
-<!--</div>-->
-<!--<a href="#" class="postMore" ng-click="contactedPostReadMore(contactedPost)">ХОЛБОО БАРИХ МЭДЭЭЛЭЛ ХАРАХ...</a>-->
-<!--</md-card-footer>-->
-<!--</md-card>-->
+                                        </div>
 
-<!--</md-grid-title>-->
-<!--</md-grid-item>-->
-<!--<div layout="row" flex layout-align="center center">-->
-<!--<md-button class="md-accent" ng-click="contactedPostPaging()" ng-show="contactedNextBtn">Цааш үзэх...</md-button>-->
-<!--</div>-->
-<!--</md-content>-->
-<!--</div>-->
-<!--</div>-->
+                                        <!--ОЧИХ ГАЗРЫН ТУХАЙ-->
+                                        <div layout="column" flex="50">
+                                            <div layout="row" class="toTitle">
+                                                ОЧИХ ГАЗАР
+                                            </div>
+                                            <div layout="row">
+                                                <span class="post_user_data_text2">{{contactedPost.to }}</span>
+                                            </div>
+                                            <div layout="row">
+<span class="post_user_data_text2"
+      ng-bind="convertToDate(contactedPost.arrive) | date:'yyyy.MM.dd'"></span>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+                                    <div layout="row" class="more-txt2 padding-top-5" layout-align="start center"
+                                         ng-if="contactedPost.animal">
+                                        <md-icon md-svg-icon="carry"></md-icon>
+                                        <div>Амьтан:</div>
+                                        <div>{{contactedPost.animal}}
+                                        </div>
+                                    </div>
+
+                                    <div layout="row" class="more-txt2 padding-top-5" layout-align="start center"
+                                         ng-if="contactedPost.stuff">
+                                        <md-icon md-svg-icon="carry"></md-icon>
+                                        <div>Ачаа:</div>
+                                        <div>{{contactedPost.stuff}}
+                                        </div>
+                                    </div>
+
+                                    <div layout="row" class="more-txt2 padding-top-5" layout-align="start center"
+                                         ng-if="!contactedPost.stuff && !contactedPost.stuff">
+                                        <md-icon md-svg-icon="carry"></md-icon>
+                                        <div>Ачаа:</div>
+                                        <div>Байхгүй
+                                        </div>
+                                    </div>
+
+                                    <div layout="row" class="more-txt2 padding-top-5" layout-align="start center"
+                                         ng-if="contactedPost.description">
+                                        <md-icon md-svg-icon="carry"></md-icon>
+                                        <div>Миний дүрэм:</div>
+                                        <div>{{contactedPost.description}}
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </md-card-content>
+
+                            <md-card-content flex="15" layout="column" layout-align="center center">
+                                <div layout="column" layout-align="center center"
+                                     ng-if="contactedPost.type === 'SENDER'">
+                                    <div class="post_type_label">ИЛГЭЭХ</div>
+                                    <md-icon md-svg-icon="package" class="sender-icon"></md-icon>
+                                </div>
+
+                                <div layout="column" layout-align="center center"
+                                     ng-if="contactedPost.type === 'CARRIER'">
+                                    <div class="post_type_label">ТЭЭВЭРЛЭХ</div>
+                                    <md-icon md-svg-icon="package-with-hand" class="carrier-icon"></md-icon>
+                                </div>
+                                <div layout="column" layout-align="center center">
+                                    <p class="post_date_label">зар оруулсан</p>
+
+                                    <p class="post_date dim-text">{{contactedPost.createdDate}}</p>
+                                </div>
+
+                            </md-card-content>
+                        </div>
+                        <md-divider></md-divider>
+
+                        <md-card-footer layout="row" layout-padding layout-align="space-between center">
+                            <div class="padding-left-35">
+                                <md-icon md-svg-icon="view"></md-icon>
+                                <span>{{contactedPost.requestNum}}</span>
+                            </div>
+                            <a href="#" class="postMore" ng-click="contactedPostReadMore(contactedPost)">ХОЛБОО БАРИХ
+                                МЭДЭЭЛЭЛ ХАРАХ...</a>
+                        </md-card-footer>
+                    </md-card>
+
+                </md-grid-title>
+            </md-grid-item>
+            <div layout="row" flex layout-align="center center">
+                <md-button class="md-accent" ng-click="contactedPostPaging()" ng-show="contactedNextBtn">Цааш үзэх...
+                </md-button>
+            </div>
+        </md-content>
+    </div>
+</div>
 
 

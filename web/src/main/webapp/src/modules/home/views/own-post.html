@@ -20,7 +20,21 @@
         </div>
     </a>
 </div>
+<div flex layout="row">
+    <div flex="80" layout="row" class="filter-result">
+        <!--  <div layout="column" class="filter-txt">Шүүлтүүр : </div>
+          <div layout="column" class="filter-txt-result">Зарын төрөл,Бүх зар</div>-->
+    </div>
+    <div flex="20" layout="row" class="filter-result">
+        <div layout="column" class="quick-title">Эрэмблэх:</div>
+        <select ng-model="filter.quickFilter" class="quick-filter" layout="column">>
+            <option value="-createdDate">Сүүлд орсон</option>
+            <option value=-requestNum>Их үзсэн</option>
+        </select>
 
+
+    </div>
+</div>
 
 <div id="call_dialog" ng-init="ownPost();">
 
