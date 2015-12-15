@@ -5,6 +5,7 @@ mainApp.controller('OwnPostController', ['$rootScope', '$scope', '$http', '$mdDi
 
         $scope.$parent.filterArea = false;
 
+        console.log($scope);
         $scope.minDate = new Date();
         $scope.minDate.setDate($scope.minDate.getDate()-1);
 
@@ -15,6 +16,36 @@ mainApp.controller('OwnPostController', ['$rootScope', '$scope', '$http', '$mdDi
             }else{
                 $scope.auth = false;
             }
+        });
+
+        $scope.$watch('$parent.filter.toDate',function (el) {
+            PostService.getOwnPostFilter($scope.$parent.filter).then(function (data) {
+                $scope.ownPosts = data.data;
+            });
+        });
+
+        $scope.$watch('$parent.filter.fromDate',function (el) {
+            PostService.getOwnPostFilter($scope.$parent.filter).then(function (data) {
+                $scope.ownPosts = data.data;
+            });
+        });
+
+        $scope.$watch('$parent.filter.fromCityId',function (el) {
+            PostService.getOwnPostFilter($scope.$parent.filter).then(function (data) {
+                $scope.ownPosts = data.data;
+            });
+        });
+
+        $scope.$watch('$parent.filter.toCityId',function (el) {
+            PostService.getOwnPostFilter($scope.$parent.filter).then(function (data) {
+                $scope.ownPosts = data.data;
+            });
+        });
+
+        $scope.$watch('$parent.filter.type',function (el) {
+            PostService.getOwnPostFilter($scope.$parent.filter).then(function (data) {
+                $scope.ownPosts = data.data;
+            });
         });
 
         $scope.ownNextBtn = true;

@@ -16,6 +16,36 @@ mainApp.controller('ContactedPostController', ['$rootScope', '$scope', '$http', 
             }
         });
 
+        $scope.$watch('$parent.filter.toDate',function (el) {
+            PostService.getContactedPostListFilter($scope.$parent.filter).then(function (data) {
+                $scope.contactedPosts = data.data;
+            });
+        });
+
+        $scope.$watch('$parent.filter.fromDate',function (el) {
+            PostService.getContactedPostListFilter($scope.$parent.filter).then(function (data) {
+                $scope.contactedPosts = data.data;
+            });
+        });
+
+        $scope.$watch('$parent.filter.fromCityId',function (el) {
+            PostService.getContactedPostListFilter($scope.$parent.filter).then(function (data) {
+                $scope.contactedPosts = data.data;
+            });
+        });
+
+        $scope.$watch('$parent.filter.toCityId',function (el) {
+            PostService.getContactedPostListFilter($scope.$parent.filter).then(function (data) {
+                $scope.contactedPosts = data.data;
+            });
+        });
+
+        $scope.$watch('$parent.filter.type',function (el) {
+            PostService.getContactedPostListFilter($scope.$parent.filter).then(function (data) {
+                $scope.contactedPosts = data.data;
+            });
+        });
+
         $scope.contactedNextBtn = true;
         $scope.rateStep = 1;
         $scope.hideAds = true;
