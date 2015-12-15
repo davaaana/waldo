@@ -59,6 +59,7 @@ angular
             .icon("plus", "/assets/svg/comment-plus-outline.svg", 44)
             .icon("drop_down", "/assets/svg/ic_arrow_drop_down_black_24px.svg", 12)
             .icon("up", "/assets/svg/up.svg", 12)
+            .icon("disconnect", "/assets/svg/plainicon.com-46153-svg.svg", 12)
 
 
         $mdThemingProvider.theme('default')

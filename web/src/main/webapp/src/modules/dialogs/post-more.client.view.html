@@ -62,14 +62,14 @@
                             <div class="user_profile_name">{{mpost.username}}</div>
                         </div>
 
-                        <div layout="column" layout-align="end end">
+                        <div layout="column" layout-align="start center" style="padding-top: 10px;">
                             <div class="row">
                                 <md-icon md-svg-icon="mail"
                                          ng-class="{orange : mpost.type ==='CARRIER', blue: mpost.type ==='SENDER'}"></md-icon>
-                                <span class="post_date dim-text">{{mpost.email}}</span>
+                                <div class="post_date dim-text" style="word-wrap: break-word; width: 85px; float: right; padding-left: 5px">{{mpost.email}}</div>
                             </div>
                         </div>
-                        <div layout="column" layout-align="end end">
+                        <div layout="column" layout-align="start center">
                             <div class="row">
                                 <md-icon md-svg-icon="phone"
                                          ng-class="{orange : mpost.type ==='CARRIER', blue: mpost.type ==='SENDER'}"></md-icon>

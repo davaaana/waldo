@@ -5,7 +5,7 @@ mainApp.controller('PostMoreController', ['$rootScope', '$scope', '$http', '$mdD
 
         $scope.adsNumber = function(){
             setTimeout(function(){
-                var h = document.getElementsByClassName('adsNumber')[0].offsetHeight;
+                var h = document.getElementsByClassName('adsNumber')[0].offsetHeight-10;
                 document.getElementsByClassName('adsNumberInner')[0].setAttribute("style","height:"+h+"px;  display : table");
             }, 100);
         }
