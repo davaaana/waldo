@@ -18,6 +18,35 @@ mainApp.controller('OwnPostController', ['$rootScope', '$scope', '$http', '$mdDi
             }
         });
 
+        $scope.ownMore = function (post) {
+            if ($scope.auth == true) {
+                PostService.getPostMore(post).then(function (data) {
+                    if (data.success === false) {
+                        dialog.show({
+                            templateUrl: './src/modules/dialogs/login.client.view.html',
+                            controller: 'UserController'
+                        });
+                    }
+                    else if (data.success === true) {
+                        $scope.stepExchange = 1;
+                        $scope.mpost = data.data;
+                        $scope.ownPostContact(post.id);
+                        dialog.show({
+                            templateUrl: './src/modules/dialogs/own-more.client.view.html',
+                            controller:'PostMoreController',
+                            scope: $scope.$new()
+                        });
+                    }
+                })
+
+            } else {
+                dialog.show({
+                    templateUrl: './src/modules/dialogs/login.client.view.html',
+                    controller: 'UserController'
+                });
+            }
+        };
+
         $scope.$watch('$parent.filter.toDate',function (el) {
             PostService.getOwnPostFilter($scope.$parent.filter).then(function (data) {
                 $scope.ownPosts = data.data;
@@ -124,6 +153,7 @@ mainApp.controller('OwnPostController', ['$rootScope', '$scope', '$http', '$mdDi
                             break;
                         }
                         ownPosts.data = data.data;
+                        $scope.contactedPosts = data.data;
                         ownPosts.ownPostContactBoolean = true;
                         break;
                     }
