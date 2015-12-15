@@ -156,6 +156,7 @@ public class PostHelper {
 
         simplePost.setId(postEntity.getId());
         simplePost.setUsername(postEntity.getAccount().getUsername());
+        simplePost.setPhone(postEntity.getAccount().getPhone());
         simplePost.setWhen(postEntity.getWhen());
         simplePost.setArrive(postEntity.getArrive());
         simplePost.setType(postEntity.getType());
