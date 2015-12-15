@@ -12,24 +12,26 @@
             <div ng-controller="UserController" flex="40">
                 <div layout="row" ng-hide="auth" layout-sm="column" class="right">
                     <!--<form method="post" name="loginForm" flex>-->
-                        <div layout="column">
-                            <div layout="row">
-                                <form id="fbSignIn" name="fbSignIn" action="/ws/signin/facebook" method="post">
-                                    <md-button class="md-raised md-accent" type="submit">
-                                        <md-icon md-svg-icon="facebook-icon"></md-icon>
-                                        <span>-ээр нэвтрэх</span>
-                                    </md-button>
-                                </form>
-                                <md-button class="md-raised" data-ng-click="login()"  layout="column">
-                                    <md-icon md-svg-icon="account"></md-icon>
-                                    <span hide-sm>Нэвтрэх</span>
-                                </md-button>
-                            </div>
-                            <!--<div layout="row">
-                                <a href="#" class="login-link">Хэрэгчийн нэр мартсан</a><a href="#" class="login-link">Нууц үг
-                                мартсан</a>
-                            </div>-->
+                    <div layout="column">
+                        <div layout="row">
+
+                            <md-button class="md-raised md-accent" data-ng-click="login()" layout="column">
+                                <md-icon md-svg-icon="account"></md-icon>
+                                <span hide-sm>Нэвтрэх</span>
+                            </md-button>
+
+
+                            <md-button class="md-raised md-accent" ng-click="signup()">
+                                <md-icon md-svg-icon="facebook-icon"></md-icon>
+                                <span>Бүртгүүлэх</span>
+                            </md-button>
+                            </form>
                         </div>
+                        <!--<div layout="row">
+                            <a href="#" class="login-link">Хэрэгчийн нэр мартсан</a><a href="#" class="login-link">Нууц үг
+                            мартсан</a>
+                        </div>-->
+                    </div>
 
                     <!--</form>-->
                 </div>

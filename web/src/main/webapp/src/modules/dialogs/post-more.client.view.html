@@ -61,25 +61,19 @@
 
                             <div class="user_profile_name">{{mpost.username}}</div>
                         </div>
-                        <div layout="column" layout-align="end end">
-                            <div class="row">
-                                <md-icon md-svg-icon="from-location"
-                                         ng-class="{orange : mpost.type ==='CARRIER', blue: mpost.type ==='SENDER'}"></md-icon>
-                                <span class="post_date dim-text">{{mpost.createdDate}}</span>
-                            </div>
-                        </div>
+
                         <div layout="column" layout-align="end end">
                             <div class="row">
                                 <md-icon md-svg-icon="mail"
                                          ng-class="{orange : mpost.type ==='CARRIER', blue: mpost.type ==='SENDER'}"></md-icon>
-                                <span class="post_date dim-text">{{mpost.createdDate}}</span>
+                                <span class="post_date dim-text">{{mpost.email}}</span>
                             </div>
                         </div>
                         <div layout="column" layout-align="end end">
                             <div class="row">
                                 <md-icon md-svg-icon="phone"
                                          ng-class="{orange : mpost.type ==='CARRIER', blue: mpost.type ==='SENDER'}"></md-icon>
-                                <span class="post_date dim-text">{{mpost.createdDate}}</span>
+                                <span class="post_date dim-text">{{mpost.phone}}</span>
                             </div>
                         </div>
                     </md-card-content>
@@ -89,7 +83,7 @@
 
                             <!--ХӨДЛӨХ ГАЗРЫН ТУХАЙ-->
                             <div layout="row" style="width: 100%; padding-left: 10px">
-                                <div layout="column" flex="50">
+                                <div layout="column" flex="50" style="padding-right: 5px">
                                     <div layout="row"
                                          ng-class="{fromTitle2 : mpost.type ==='CARRIER', toTitle2: mpost.type ==='SENDER'}">
                                         Хөдлөх:
@@ -140,11 +134,11 @@
                                     <!--ANIMAL BEGIN-->
                                     <div layout="row" class="more-txt2" layout-align="start center"
                                          ng-if="mpost.animal">
-                                        <div layout="row" class="more-css">
+                                        <div layout="row" class="more-css" layout-align="start center">
                                             <md-icon md-svg-icon="cow"
                                                      ng-class="{orange : mpost.type ==='CARRIER', blue: mpost.type ==='SENDER'}"></md-icon>
-                                            <div>{{mpost.animal}}
-                                            </div>
+                                           <span class="post_user_data_text">{{mpost.animal}}
+                                            </span>
                                         </div>
                                     </div>
 
@@ -163,8 +157,8 @@
                                         <div layout="row" layout-align="start center">
                                             <md-icon md-svg-icon="stuff"
                                                      ng-class="{orange : mpost.type ==='CARRIER', blue: mpost.type ==='SENDER'}"></md-icon>
-                                            <div class="post_user_data_text">{{mpost.stuff}}
-                                            </div>
+                                            <span class="post_user_data_text">{{mpost.stuff}}
+                                            </span>
                                         </div>
                                     </div>
 
@@ -187,7 +181,7 @@
                                         <div layout="row" class="more-css" layout-align="start center">
                                             <md-icon md-svg-icon="car"
                                                      ng-class="{orange : mpost.type ==='CARRIER', blue: mpost.type ==='SENDER'}"></md-icon>
-                                            <div>{{mpost.transportation}}</div>
+                                            <span class="post_user_data_text">{{mpost.transportation}}</span>
                                         </div>
                                     </div>
 
@@ -227,7 +221,7 @@
                                     </div>
 
                                     <div layout="row" class="more-txt2" layout-align="start center">
-                                        <div layout="row" class="more-css post_user_data_text"
+                                        <div layout="row" class="more-css"
                                              layout-align="start center">
                                             <md-icon md-svg-icon="cash" data-ng-show="mpost.policy=='Бэлэн мөнгөөр'"
                                                      ng-class="{orange : mpost.type ==='CARRIER', blue: mpost.type ==='SENDER'}"></md-icon>
@@ -237,7 +231,9 @@
                                                      ng-class="{orange : mpost.type ==='CARRIER', blue: mpost.type ==='SENDER'}"></md-icon>
                                             <md-icon md-svg-icon="comment" data-ng-show="mpost.policy=='Тохироно'"
                                                      ng-class="{orange : mpost.type ==='CARRIER', blue: mpost.type ==='SENDER'}"></md-icon>
+                                           <span class="post_user_data_text">
                                             {{mpost.policy}}
+                                           </span>
                                         </div>
                                     </div>
 
@@ -275,7 +271,7 @@
                                 </div>
                             </div>
                             <div style=" display : table-row;  vertical-align : bottom;   height : 1px; text-align: center">
-                                <div class="column" >
+                                <div class="column">
                                     <span class="post_user_data_text2">Зарын дугаар</span>
                                     <span class="post_date">{{mpost.id}}</span>
                                 </div>
@@ -295,7 +291,8 @@
                     </div>
 
                     <div>
-                        <md-icon md-svg-icon="poster-contacted" ng-class="{orange : mpost.type ==='CARRIER', blue: mpost.type ==='SENDER'}"></md-icon>
+                        <md-icon md-svg-icon="poster-contacted"
+                                 ng-class="{orange : mpost.type ==='CARRIER', blue: mpost.type ==='SENDER'}"></md-icon>
                          <span ng-show="mpost.alreadyExchange"
                                class="you-contacted"
                                ng-class="{orange : mpost.type ==='CARRIER', blue: mpost.type ==='SENDER'}">Зартай холбогдсон</span>
