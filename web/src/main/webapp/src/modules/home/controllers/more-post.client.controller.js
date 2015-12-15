@@ -4,9 +4,10 @@ mainApp.controller('PostMoreController', ['$rootScope', '$scope', '$http', '$mdD
     function ($rootScope, $scope, $http, dialog, PostService, $log, $q,$mdToast, AuthService) {
 
         $scope.adsNumber = function(){
-           var h = document.getElementsByClassName('adsNumber')[0].offsetHeight;
-            document.getElementsByClassName('adsNumberInner')[0].setAttribute("style","height:"+h+"px;  display : table");
-
+            setTimeout(function(){
+                var h = document.getElementsByClassName('adsNumber')[0].offsetHeight;
+                document.getElementsByClassName('adsNumberInner')[0].setAttribute("style","height:"+h+"px;  display : table");
+            }, 100);
         }
 
         $scope.ownBool = false;

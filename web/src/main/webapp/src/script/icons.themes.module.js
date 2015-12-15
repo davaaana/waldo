@@ -56,6 +56,9 @@ angular
             .icon("account-plus", "/assets/svg/icons/account-plus.svg", 12)
             .icon("account-key", "/assets/svg/icons/account-key.svg", 12)
             .icon("facebook-icon", "/assets/svg/icons/facebook-icon.svg", 12)
+            .icon("plus", "/assets/svg/comment-plus-outline.svg", 44)
+            .icon("drop_down", "/assets/svg/ic_arrow_drop_down_black_24px.svg", 12)
+
 
         $mdThemingProvider.theme('default')
             .primaryPalette('orange')
