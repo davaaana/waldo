@@ -11,8 +11,7 @@ mainApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider','$ht
             }).
             state('home.index', {
                 url: '',
-                templateUrl: 'src/modules/home/views/home.html',
-                controller: 'PostController'
+                templateUrl: 'src/modules/home/views/home.html'
             })
             .state('home.my-post', {
                 url: '/own-post',
