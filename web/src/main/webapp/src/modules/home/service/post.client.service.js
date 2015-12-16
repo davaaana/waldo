@@ -73,7 +73,6 @@ mainApp.factory('PostService', function ($http) {
         ownPostDeactivate: function (postId, mdToast) {
             $http.post(SERVICE_URL + '/post/close/' + postId).success(function (data) {
                 if (data.success == true) {
-                    document.getElementById(postId).style.display = 'none';
                     $mdToast.showSimple('Зар идэвхгүй боллоо');
                 }
                 else if (data.success == false) {

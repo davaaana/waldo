@@ -204,10 +204,10 @@ mainApp.controller('OwnPostController', ['$rootScope', '$scope', '$http', '$mdDi
             });
         };
 
-        $scope.hideLine = function (id,codes,ids) {
+        $scope.hideLine = function (id,index,ids) {
             PostService.hideLine(id).then(function (data) {
                 if(data.success ==true){
-                    document.getElementById(codes+"-"+ids).style.display='none';
+                    $scope.contactedPosts.splice(index,1);
                     $mdToast.showSimple('Хэрэглэгч идэвхгүй боллоо');
                 }
                 else if(data.success ==false){

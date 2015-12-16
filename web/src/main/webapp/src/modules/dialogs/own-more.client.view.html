@@ -257,11 +257,11 @@
 
             <div style="float: right">
 
-                <md-button class="md-raised  md-primary" ng-click="getPost(ownPost)" data-ng-show="hideOwnAds">
+                <md-button class="md-raised  md-primary" ng-click="getPost(mpost)" data-ng-show="hideOwnAds">
                     <md-icon md-svg-icon="mail" style="margin:0; color: white"></md-icon>
                     <span style="color:white;  font-size: 12px">Зарыг засах</span></md-button>
 
-                <md-button class="md-raised" ng-click="ownPostDeactivate(ownPost.id)" data-ng-show="hideOwnAds" style="background: #b2b2b2">
+                <md-button class="md-raised" ng-click="ownPostDeactivate(mpost.id)" data-ng-show="hideOwnAds" style="background: #b2b2b2">
                     <md-icon md-svg-icon="mail" style="margin:0; color: white"></md-icon>
                      <span style="color:white; font-size: 12px">Идэвхгүй болгох</span>
                 </md-button>
@@ -299,7 +299,7 @@
             </div>
             <div flex="25" class="top5x">
                 <md-button class="md-warn"
-                           ng-click="hideLine(exchange.id,ownPost.id,exchange.username)" style="font-size: 12px">
+                           ng-click="hideLine(exchange.id,$index,exchange.username)" style="font-size: 12px">
                     <md-icon md-svg-icon="disconnect"></md-icon>
                     Холбоо таслах
                 </md-button>
