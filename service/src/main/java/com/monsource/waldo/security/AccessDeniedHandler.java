@@ -22,7 +22,7 @@ public class AccessDeniedHandler implements org.springframework.security.web.acc
 
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         response.setContentType("application/json");
-        Result result = new Result(false,"Access is denied");
+        Result result = new Result(false,"Хандах эрх хүрэхгүй байна");
         objectMapper.writeValue(response.getWriter(), result);
     }
 }

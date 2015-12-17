@@ -70,10 +70,11 @@ mainApp.factory('PostService', function ($http) {
             });
             return promise;
         },
-        ownPostDeactivate: function (postId, mdToast) {
+        ownPostDeactivate: function (postId, mdToast,scope) {
             $http.post(SERVICE_URL + '/post/close/' + postId).success(function (data) {
                 if (data.success == true) {
-                    $mdToast.showSimple('Зар идэвхгүй боллоо');
+                    scope.closeDialog();
+                    scope.ownPost();
                 }
                 else if (data.success == false) {
                     mdToast.showSimple('Амжилтгүй боллоо');

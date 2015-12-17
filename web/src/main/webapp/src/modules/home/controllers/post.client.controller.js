@@ -8,8 +8,28 @@ mainApp.controller('PostController', ['$rootScope', '$scope', '$http', '$mdDialo
             toDate: ''
         };
 
+        $scope.exchangePost2 = function (id) {
+            $scope.contactPost2 = {
+                id: id,
+                call: true,
+                sms: true,
+                note: 'null'
+            };
+            $http.post(SERVICE_URL + '/contact', $scope.contactPost2).success(function (data) {
+                if (data.success == true) {
+                    $scope.contact = data.data;
+                    $scope.getAllPostData();
+                    $scope.$$childTail.stepExchange = 2;
+                    $mdToast.showSimple('Холбоо барих хаяг амжилттай солигдлоо');
+                }
+            })
+                .error(function (data) {
+                });
+
+        }
+
         $scope.minDate = new Date();
-        $scope.minDate.setDate($scope.minDate.getDate()-1);
+        $scope.minDate.setDate($scope.minDate.getDate());
 
         $scope.dayAgo = function (from,to) {
             return differentDay(from,to);
@@ -63,7 +83,7 @@ mainApp.controller('PostController', ['$rootScope', '$scope', '$http', '$mdDialo
         $scope.$watch('filter.toDateTime', function (el) {
             try{
                 var date = new Date(el);
-                date.setDate(date.getDate()-1)
+                date.setDate(date.getDate())
                 $scope.filter.toDate = date.toJSON().slice( 0, 10);
                 PostService.allPostFilter($scope,$scope.filter).then(function (data) {
                     $scope.posts = data.data;
@@ -76,7 +96,7 @@ mainApp.controller('PostController', ['$rootScope', '$scope', '$http', '$mdDialo
         $scope.$watch('filter.fromDateTime', function (el) {
             try{
                 var date = new Date(el);
-                date.setDate(date.getDate()-1)
+                date.setDate(date.getDate())
                 $scope.filter.fromDate = date.toJSON().slice( 0, 10);
                 PostService.allPostFilter($scope,$scope.filter).then(function (data) {
                     $scope.posts = data.data;
@@ -87,7 +107,6 @@ mainApp.controller('PostController', ['$rootScope', '$scope', '$http', '$mdDialo
         });
 
         $scope.filterChange = function () {
-            console.log($scope);
             $scope.$broadcast('filter',$scope.filter);
             PostService.allPostFilter($scope,$scope.filter).then(function (data) {
                 $scope.posts = data.data;
@@ -185,6 +204,8 @@ mainApp.controller('PostController', ['$rootScope', '$scope', '$http', '$mdDialo
         $scope.closeDialog = function () {
             dialog.cancel();
         }
+
+        $scope.filterClear();
 
         $scope.paging = function () {
             PostService.allPostPaging($scope,$scope.page).then(function (data) {

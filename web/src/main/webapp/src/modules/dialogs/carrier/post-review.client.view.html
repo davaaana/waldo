@@ -89,7 +89,7 @@
             </div>
         </div>
         <div layout="column" flex="35">
-            <md-select placeholder="Миний нөхцөл"
+            <md-select placeholder="Миний нөхцөл" name="policy"
                        ng-model="newPostDataCheck.policyId">
 
                 <md-option ng-repeat="p in policy"
@@ -97,6 +97,9 @@
                     {{p.policy}}
                 </md-option>
             </md-select>
+            <div class="element-hide mini-red" id="policy">
+                <span>Очих дүүрэг/сум сонгоно уу</span><img src="/image/error.png" class="error-image">
+            </div>
 
 
             <md-input-container>

@@ -79,29 +79,32 @@
             </div>
         </div>
         <div layout="column" flex>
-            <md-select placeholder="Миний нөхцөл"
+            <md-select class=" md-raised md-accent" name="policy" placeholder="Миний нөхцөл"
                        ng-model="newPostDataCheck.policyId">
 
-                <md-option ng-repeat="p in policy"
+                <md-option class=" md-raised md-accent" ng-repeat="p in policy"
                            ng-value="{{p.id}}">
                     {{p.policy}}
                 </md-option>
             </md-select>
+            <div class="element-hide mini-red" id="policy">
+                <span>Очих дүүрэг/сум сонгоно уу</span><img src="/image/error.png" class="error-image">
+            </div>
             <md-input-container>
                 <label>Миний дүрэм:</label>
-                <textarea ng-model="newPost.description" columns="4"></textarea>
+                <textarea class=" md-raised md-accent" ng-model="newPost.description" columns="4"></textarea>
 
             </md-input-container>
             <md-input-container>
                 <label>Холбоо барих мэдээлэл:</label>
-                <textarea ng-model="newPost.contact" columns="4"></textarea>
+                <textarea class=" md-raised md-accent" ng-model="newPost.contact" columns="4"></textarea>
             </md-input-container>
         </div>
     </section>
     <div layout="row" layout-align="end center">
         <md-button ng-click="newPostSteps(3,newPostDataCheck)">Буцах</md-button>
         <md-button ng-click="completePost(newPostDataCheck.policyId,newPost)" style=" color: #448aff;"
-                   ng-disabled="!newPostDataCheck.policyId">Зар үүсгэх
+                   >Зар үүсгэх
         </md-button>
     </div>
 </md-content>

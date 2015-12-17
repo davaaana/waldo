@@ -41,7 +41,7 @@ angular
             .icon("to-location", "/assets/svg/icons/ic_place_black_24px.svg", 12)
             .icon("passanger", "/assets/svg/icons/ic_supervisor_account_black_24px.svg", 12)
             .icon("carrier-icon", "/assets/svg/icons/delivery22.svg", 12)
-            .icon("sender-icon", "/assets/svg/icons/person279.svg", 12)
+            .icon("sender-icon", "/assets/svg/icons/send_3d-01.svg", 12)
             .icon("poster-contacted", "/assets/svg/icons/link-variant.svg", 12)
             .icon("poster-contacted-off", "/assets/svg/icons/link-variant-off.svg", 12)
             .icon("no-passanger", "/assets/svg/icons/no_ic_supervisor_account_black_24px-01.svg", 12)
@@ -60,7 +60,11 @@ angular
             .icon("drop_down", "/assets/svg/ic_arrow_drop_down_black_24px.svg", 12)
             .icon("up", "/assets/svg/up.svg", 12)
             .icon("disconnect", "/assets/svg/plainicon.com-46153-svg.svg", 12)
-
+            .icon("list", "/assets/svg/icons/list.svg", 12)
+            .icon("tooltip", "/assets/svg/icons/tooltip-edit.svg", 12)
+            .icon("account-network", "/assets/svg/icons/account-network.svg", 12)
+            .icon("close-network", "/assets/svg/icons/close-network.svg", 12)
+            .icon("eye-off", "/assets/svg/icons/eye-off.svg", 12)
 
         $mdThemingProvider.theme('default')
             .primaryPalette('orange')

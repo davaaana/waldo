@@ -90,7 +90,7 @@ public class PostDAO extends DataAccessObject {
         }
 
         if (filter.getToDate() != null) {
-            criteria.add(Restrictions.le("when", filter.getToDate()));
+            criteria.add(Restrictions.le("arrive", filter.getToDate()));
         }
 
         if (filter.getFromDate() == null) {
@@ -187,7 +187,7 @@ public class PostDAO extends DataAccessObject {
         }
 
         if (filter.getToDate() != null) {
-            criteria.add(Restrictions.le("when", filter.getToDate()));
+            criteria.add(Restrictions.le("arrive", filter.getToDate()));
         }
 
         //todo uncomment amaraaaaaaa!!!!!!!!!!!!

@@ -11,13 +11,13 @@
             </div>
             <div layout="row">
                 <div layout="column">
-                    <md-input-container>
+                    <md-input-container class="md-raised md-accent ">
                         <label class="filter-title">Хөдлөх хот/аймаг</label>
-                        <md-select ng-required="true" name="fromCity" class="datepicker-filter-adjust6"
+                        <md-select ng-required="true" name="fromCity" class="datepicker-filter-adjust6 md-raised md-accent"
                                    ng-change="submit == true ? arriveValidation() : submit"
                                    data-ng-model="newPost.fromCityId"
                                 >
-                            <md-option ng-value="{{city.id}}" ng-repeat="city in cities">{{city.name}}</md-option>
+                            <md-option class="md-raised md-accent" ng-value="{{city.id}}" ng-repeat="city in cities">{{city.name}}</md-option>
                         </md-select>
                     </md-input-container>
                     <div class="element-hide mini-red" id="fromCity">
@@ -27,19 +27,20 @@
             </div>
             <div layout="row">
                 <div layout="column">
-                    <md-input-container>
-                        <label class="filter-title">Очих хот/аймаг</label>
-                        <md-select ng-required="true" name="toCity" class="datepicker-filter-adjust6"
+                    <md-input-container  class="md-raised md-accent ">
+                        <label class="filter-title">Хөдлөх дүүрэг/сум</label>
+                        <md-select ng-required="true" name="fromDistrict" class=" md-raised md-accent datepicker-filter-adjust6"
                                    ng-change="submit == true ? arriveValidation() : submit"
-                                   data-ng-model="newPost.toCityId"
+                                   data-ng-model="newPost.fromDistrictId"
                                 >
-                            <md-option ng-value="{{city.id}}" ng-repeat="city in cities">{{city.name}}</md-option>
+                            <md-option class="md-raised md-accent" ng-value="{{district.id}}" ng-repeat="district in fromDistricts">
+                                {{district.name}}
+                            </md-option>
                         </md-select>
                     </md-input-container>
-                    <div class="element-hide mini-red" id="toCity">
-                        <span>Очих хотоо сонгоно уу</span><img src="/image/error.png" class="error-image">
+                    <div class="element-hide mini-red" id="fromDistrict">
+                        <span>Хөдлөх дүүрэг/сум сонгоно уу</span><img src="/image/error.png" class="error-image">
                     </div>
-
                 </div>
             </div>
             <div layout="row">
@@ -49,7 +50,7 @@
                                    md-placeholder="өдөр сонгох"
                                    format="yyyy.MM.dd"
                                    ng-change="submit == true ? arriveValidation() : submit"
-                                   class="datepicker-filter-adjust6"
+                                   class="datepicker-filter-adjust6  md-raised md-accent"
                                    md-max-date="newPost.arrive" md-min-date="minDate"></md-datepicker>
 
                     <div class="element-hide mini-red" id="when">
@@ -68,32 +69,30 @@
             </div>
             <div layout="row" flex>
                 <div class="column">
-                    <md-input-container>
-                        <label class="filter-title">Хөдлөх дүүрэг/сум</label>
-                        <md-select ng-required="true" name="fromDistrict" class="datepicker-filter-adjust6"
+                    <md-input-container  class="md-raised md-accent ">
+                        <label class="filter-title">Очих хот/аймаг</label>
+                        <md-select ng-required="true" name="toCity" class="datepicker-filter-adjust6  md-raised md-accent"
                                    ng-change="submit == true ? arriveValidation() : submit"
-                                   data-ng-model="newPost.fromDistrictId"
+                                   data-ng-model="newPost.toCityId"
                                 >
-                            <md-option ng-value="{{district.id}}" ng-repeat="district in fromDistricts">
-                                {{district.name}}
-                            </md-option>
+                            <md-option ng-value="{{city.id}}" ng-repeat="city in cities" class=" md-raised md-accent">{{city.name}}</md-option>
                         </md-select>
                     </md-input-container>
-                    <div class="element-hide mini-red" id="fromDistrict">
-                        <span>Хөдлөх дүүрэг/сум сонгоно уу</span><img src="/image/error.png" class="error-image">
+                    <div class="element-hide mini-red" id="toCity">
+                        <span>Очих хотоо сонгоно уу</span><img src="/image/error.png" class="error-image">
                     </div>
                 </div>
             </div>
 
             <div layout="row">
                 <div class="column">
-                    <md-input-container>
+                    <md-input-container  class="md-raised md-accent ">
                         <label class="filter-title">Очих дүүрэг/сум</label>
-                        <md-select ng-required="true" name="toDistrict" class="datepicker-filter-adjust6"
+                        <md-select ng-required="true" name="toDistrict" class=" md-raised md-accent datepicker-filter-adjust6"
                                    ng-change="submit == true ? arriveValidation() : submit"
                                    data-ng-model="newPost.toDistrictId"
                                 >
-                            <md-option ng-value="{{district.id}}" ng-repeat="district in toDistricts">{{district.name}}
+                            <md-option class=" md-raised md-accent" ng-value="{{district.id}}" ng-repeat="district in toDistricts">{{district.name}}
                             </md-option>
                         </md-select>
                     </md-input-container>
@@ -108,7 +107,7 @@
                 <div layout="column">
                     <label class="filter-title-2">Очих өдөр</label>
                     <md-datepicker ng-required="true" name="arrive" ng-model="newPost.arrive"
-                                   class="datepicker-filter-adjust6" md-placeholder="өдөр сонгох"
+                                   class=" md-raised md-accent datepicker-filter-adjust6" md-placeholder="өдөр сонгох"
                                    ng-change="submit == true ? arriveValidation() : submit"
                                    md-min-date="(newPost.when == undefined) ? minDate : newPost.when"></md-datepicker>
 
@@ -132,13 +131,13 @@
     <div layout="row" flex style="padding: 0px;">
         <div layout="row" style="padding: 0px; padding-left: 5px;">
             <md-icon md-svg-icon="passanger" data-ng-show="newPostDataCheck.passanger==true" class="blue"></md-icon>
-            <md-icon md-svg-icon="no-passanger" data-ng-hide="newPostDataCheck.passanger==true"></md-icon>
+            <md-icon md-svg-icon="passanger" data-ng-hide="newPostDataCheck.passanger==true"></md-icon>
             <md-checkbox name="passanger" ng-model="newPostDataCheck.passanger"
-                         aria-label="passanger_checkbox">Зорчигч авч явна
+                         aria-label="passanger_checkbox">Зорчигчоор дайрагдах хүний тоо
             </md-checkbox>
-            <md-input-container>
+            <md-input-container class=" md-raised md-accent">
                 <input ng-model="newPost.passanger" ng-change="submit == true ? arriveValidation() : submit" type="number" value="1"
-                       ng-disabled="!newPostDataCheck.passanger" min="1" max="50">
+                      class=" md-raised md-accent" ng-disabled="!newPostDataCheck.passanger" min="1" max="50">
             </md-input-container>
         </div>
     </div>
@@ -147,18 +146,18 @@
             <div layout="row" style="padding: 0px; padding-left: 5px;">
                 <!--_________________________________________________ PACKAGE INPUT ________________________________________________-->
                 <div layout="row">
-                    <md-icon md-svg-icon="no-stuff" data-ng-hide="newPostDataCheck.stuff==true"></md-icon>
+                    <md-icon md-svg-icon="stuff" data-ng-hide="newPostDataCheck.stuff==true"></md-icon>
                     <md-icon md-svg-icon="stuff" data-ng-show="newPostDataCheck.stuff==true"  class="blue"></md-icon>
                     <md-checkbox name="stuff" ng-required="true"
                                  ng-model="newPostDataCheck.stuff"
-                                 aria-label="stuff_checkbox">Ачаа авч явна
+                                 aria-label="stuff_checkbox">Ачаа бараа явуулах
                     </md-checkbox>
                 </div>
             </div>
             <div layout="row" ng-show="newPostDataCheck.stuff">
-                <md-input-container style="width:235px">
+                <md-input-container style="width:235px" class=" md-raised md-accent">
                     <label>Ачааны шаардлага</label>
-                    <textarea ng-change="submit == true ? arriveValidation() : submit" ng-model="newPost.stuff" type="text"
+                    <textarea class=" md-raised md-accent" ng-change="submit == true ? arriveValidation() : submit" ng-model="newPost.stuff" type="text"
                               md-maxlength="70" maxlength="70"></textarea>
                 </md-input-container>
             </div>
@@ -169,16 +168,16 @@
             <div layout="row" style="padding: 0px; padding-left: 5px;">
                 <div layout="row">
                     <md-icon md-svg-icon="cow" data-ng-show="newPostDataCheck.animal==true" class="blue"></md-icon>
-                    <md-icon md-svg-icon="no-cow" data-ng-hide="newPostDataCheck.animal==true"></md-icon>
+                    <md-icon md-svg-icon="cow" data-ng-hide="newPostDataCheck.animal==true"></md-icon>
                     <md-checkbox name="animal" ng-model="newPostDataCheck.animal"
-                                 aria-label="animal_checkbox">Амьтан авч явна
+                                 aria-label="animal_checkbox">Амьтан илгээх
                     </md-checkbox>
                 </div>
             </div>
             <div layout="row" ng-show="newPostDataCheck.animal">
-                <md-input-container style="width:235px">
+                <md-input-container style="width:235px" class=" md-raised md-accent">
                     <label>Амьтаны шаардлага</label>
-                    <textarea ng-model="newPost.animal" ng-change="submit == true ? arriveValidation() : submit" type="text"
+                    <textarea class=" md-raised md-accent" ng-model="newPost.animal" ng-change="submit == true ? arriveValidation() : submit" type="text"
                               md-maxlength="70" maxlength="70"></textarea>
                 </md-input-container>
             </div>

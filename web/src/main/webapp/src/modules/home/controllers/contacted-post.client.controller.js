@@ -5,8 +5,10 @@ mainApp.controller('ContactedPostController', ['$rootScope', '$scope', '$http', 
 
         $scope.$parent.filterArea = false;
 
+        $scope.$parent.filterClear();
+
         $scope.minDate = new Date();
-        $scope.minDate.setDate($scope.minDate.getDate()-1);
+        $scope.minDate.setDate($scope.minDate.getDate());
         AuthService.getUserInfo($scope).then(function (data) {
             if (data.success == true) {
                 $scope.auth = true;

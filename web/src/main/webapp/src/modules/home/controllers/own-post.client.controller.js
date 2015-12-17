@@ -4,7 +4,7 @@ mainApp.controller('OwnPostController', ['$rootScope', '$scope', '$http', '$mdDi
     function ($rootScope, $scope, $http, dialog, PostService, $log, $q,$mdToast, AuthService) {
 
         $scope.$parent.filterArea = false;
-
+        $scope.$parent.filterClear();
         console.log($scope);
         $scope.minDate = new Date();
         $scope.minDate.setDate($scope.minDate.getDate()-1);
@@ -140,7 +140,7 @@ mainApp.controller('OwnPostController', ['$rootScope', '$scope', '$http', '$mdDi
         };
 
         $scope.ownPostDeactivate = function (postId) {
-            PostService.ownPostDeactivate(postId,$mdToast);
+            PostService.ownPostDeactivate(postId,$mdToast,$scope);
         };
 
         $scope.ownPostContact = function (postId) {
@@ -194,13 +194,11 @@ mainApp.controller('OwnPostController', ['$rootScope', '$scope', '$http', '$mdDi
         $scope.hidePostsShow = function(bool){
             $http.get(SERVICE_URL + '/post/own?closed='+bool).success(function (data) {
                 $scope.ownPosts = data.data;
-                $mdToast.showSimple('Миний зар хэсэг сонгогдлоо');
-                if(bool==true){
-                    $scope.hideOwnAds = false;
-                }
-                if(bool==false){
-                    $scope.hideOwnAds = true;
-                }
+                //$mdToast.showSimple('Зарыг амжилттай '+ bool == true?'идэвхитэй болголоо ':'идэвхигүй болголоо ');
+                if(bool==true){$scope.hideOwnAds = false;}
+                if(bool==false){$scope.hideOwnAds = true;}
+                //$scope.closeDialog();
+                //$scope.ownPost();
             });
         };
 

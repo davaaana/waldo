@@ -25,7 +25,7 @@ public class AjaxAuthenticationEntryPoint implements AuthenticationEntryPoint, A
         System.err.println("[COMMENCE] "+request.getRequestURI());
         response.setContentType("application/json");
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-        Result result = new Result(false, "Unauthorized");
+        Result result = new Result(false, "Нэвтрээгүй байна");
         OBJECT_MAPPER.writeValue(response.getWriter(), result);
 //        e.printStackTrace();
     }
@@ -35,7 +35,7 @@ public class AjaxAuthenticationEntryPoint implements AuthenticationEntryPoint, A
         System.err.println("[AUTH FAILURE] "+request.getRequestURI());
         response.setContentType("application/json");
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-        Result result = new Result(false, "Username or Password is not valid!!!");
+        Result result = new Result(false, "Хэрэглэгчийн нэр эсвэл нууц үг буруу байна!!");
         OBJECT_MAPPER.writeValue(response.getWriter(), result);
 //        e.printStackTrace();
     }

@@ -22,25 +22,33 @@
 </div>
 <div flex layout="row">
     <div flex="80" layout="row" class="filter-result">
-        <!--  <div layout="column" class="filter-txt">Шүүлтүүр : </div>
-          <div layout="column" class="filter-txt-result">Зарын төрөл,Бүх зар</div>-->
+        <md-button class="md-raised md-accent" style="margin: 8px 0; font-size: 12px;" ng-click="hidePostsShow(hideOwnAds)"
+                   ng-show="hideOwnAds">Нуусан зар харах
+        </md-button>
+        <md-button class="md-raised md-primary" style="margin: 8px 0; font-size: 12px;" ng-click="hidePostsShow(hideOwnAds)"
+                   ng-hide="hideOwnAds">Идэвхтэй зар харах
+        </md-button>
     </div>
-    <div flex="20" layout="row" class="filter-result">
-        <div layout="column" class="quick-title">Эрэмблэх:</div>
-        <select ng-model="filter.quickFilter" class="quick-filter" layout="column">>
-            <option value="-createdDate">Сүүлд орсон</option>
-            <option value=-requestNum>Их үзсэн</option>
-        </select>
+    <div flex="20" layout="row" class="filter-result" style="padding-right: 7px; padding-bottom: 7px">
+        <md-icon md-svg-icon="list"></md-icon>
+        <md-select ng-model="filter.quickFilter" class="quick-filter" layout="column" style="padding-top: 5px">
+            <md-option value="-createdDate" selected="true">Сүүлд орсон</md-option>
+            <md-option value=-requestNum>Их үзсэн</md-option>
+        </md-select>
 
 
     </div>
 </div>
 
 <div id="call_dialog" ng-init="ownPost();">
-
+    <h4 data-ng-hide="ownPosts.length > 0">
+        <div layout="row" flex layout-align="center center">
+            Гарах өгөгдлөл алга байна
+        </div>
+    </h4>
     <md-grid-list
             md-cols-sm="1" md-cols-gt-sm="2" md-cols-gt-lg="2"
-            md-row-height="170px"
+            md-row-height="165px"
             md-gutter="6px" md-gutter-gt-sm="3px" flex>
 
         <md-grid-tile
@@ -49,7 +57,8 @@
 
             <md-card flex
                      ng-class="{ads_carrier: post.type==='CARRIER', ads_sender: post.type==='SENDER'}"
-                     class="ads" ng-click="ownMore(post)"><!--select: post.alreadyExchange===true, select: post.alreadyExchange===true, -->
+                     class="ads" ng-click="ownMore(post)">
+                <!--select: post.alreadyExchange===true, select: post.alreadyExchange===true, -->
                 <div layout="row" flex>
                     <md-card-content flex="20" layout="column">
                         <div layout="column" layout-align="center center">
@@ -76,7 +85,8 @@
                             <!--ХӨДЛӨХ ГАЗРЫН ТУХАЙ-->
                             <div layout="row" style="width: 280px">
                                 <div layout="column" flex="50">
-                                    <div layout="row" class="fromTitle" ng-class="{orange: post.type==='CARRIER', blue: post.type==='SENDER'}">
+                                    <div layout="row" class="fromTitle"
+                                         ng-class="{orange: post.type==='CARRIER', blue: post.type==='SENDER'}">
                                         Хөдлөх:
                                     </div>
                                     <div layout="row">
@@ -94,7 +104,8 @@
 
                                 <!--ОЧИХ ГАЗРЫН ТУХАЙ-->
                                 <div layout="column" flex="50">
-                                    <div layout="row" class="toTitle" ng-class="{orange: post.type==='CARRIER', blue: post.type==='SENDER'}">
+                                    <div layout="row" class="toTitle"
+                                         ng-class="{orange: post.type==='CARRIER', blue: post.type==='SENDER'}">
                                         Очих:
                                     </div>
                                     <div layout="row">
@@ -131,7 +142,8 @@
 
                     </md-card-content>
                 </div>
-                <md-divider ng-class="{borderOrange: post.type==='CARRIER', borderBlue: post.type==='SENDER'}"></md-divider>
+                <md-divider
+                        ng-class="{borderOrange: post.type==='CARRIER', borderBlue: post.type==='SENDER'}"></md-divider>
                 <md-card-footer layout="row" layout-padding layout-align="space-between">
                     <div class="padding-left-20">
                         <div style="width: 90px; float: left">
@@ -139,14 +151,17 @@
                             <span>{{post.requestNum}}</span>
                         </div>
                         <span>
-                            <span data-ng-show="post.alreadyExchange">
+                            {{}}
+                            <!--<span data-ng-show="post.alreadyExchange">
                                 <md-icon md-svg-icon="poster-contacted"></md-icon>
                                   <span style="font-weight: bold; color:#878787">Зартай холбогдсон</span>
                             </span>
                             <span data-ng-hide="post.alreadyExchange">
-                                <md-icon md-svg-icon="poster-contacted-off"></md-icon>
-                                   <span style="font-weight: bold; color:#878787">Холбогдоогүй</span>
-                            </span>
+                                &lt;!&ndash;<md-icon md-svg-icon="poster-contacted-off"></md-icon>&ndash;&gt;
+                                   &lt;!&ndash;<span style="font-weight: bold; color:#878787">Холбогдоогүй</span>&ndash;&gt;
+                            </span>-->
+                            <!--<span data-ng-show="hideOwnAds" aria-hidden="false">Идэвхитэй зар</span>-->
+                                <!--<span data-ng-hide="hideOwnAds" aria-hidden="true" class="ng-hide">Идэвхигүй зар</span>-->
                         </span>
                     </div>
 

@@ -61,7 +61,7 @@ public class ProfileService {
     public Result signUp(@RequestBody Account account) {
         AccountEntity accountEntity = accountDAO.findByUsername(account.getUsername());
         if (accountEntity != null) {
-            return new Result(false, "Username already registered!!!");
+            return new Result(false, "Хэрэглэгчийн нэр үүссэн байна!");
         }
 
         accountEntity = AccountHelper.convert(account);
@@ -77,7 +77,7 @@ public class ProfileService {
         AccountEntity accountEntity = SecurityHelper.getDetails().getAccount();
 
         if (accountEntity == null) {
-            return new Result(false, "Username not found!!!");
+            return new Result(false, "Хэрэглэгч олдсонгүй");
         }
 
         AccountHelper.update(accountEntity, account);
@@ -93,7 +93,7 @@ public class ProfileService {
         AccountEntity accountEntity = SecurityHelper.getDetails().getAccount();
 
         if (accountEntity == null) {
-            return new Result(false, "Username not found!!!");
+            return new Result(false, "Хэрэглэгч олдсонгүй");
         }
 
         if (AccountHelper.checkPassword(accountEntity, accountPassword)) {

@@ -23,25 +23,34 @@
 
 <div flex layout="row">
     <div flex="80" layout="row" class="filter-result">
-        <!--  <div layout="column" class="filter-txt">Шүүлтүүр : </div>
-          <div layout="column" class="filter-txt-result">Зарын төрөл,Бүх зар</div>-->
+        <md-button style="margin:8px 0; font-size: 12px;" class="md-raised md-accent" ng-click="hideCPostsShow(hideAds)"
+                   ng-show="hideAds">Хугацаа дууссан зарууд
+        </md-button>
+        <md-button style="margin:8px 0; font-size: 12px;" class="md-raised md-primary" ng-click="hideCPostsShow(hideAds)"
+                   ng-hide="hideAds">Идэвхтэй зарууд
+        </md-button>
+
     </div>
-    <div flex="20" layout="row" class="filter-result">
-        <div layout="column" class="quick-title">Эрэмблэх:</div>
-        <select ng-model="filter.quickFilter" class="quick-filter" layout="column">>
-            <option value="-createdDate">Сүүлд орсон</option>
-            <option value=-requestNum>Их үзсэн</option>
-        </select>
+    <div flex="20" layout="row" class="filter-result" style="padding-right: 7px; padding-bottom: 7px">
+        <md-icon md-svg-icon="list"></md-icon>
+        <md-select ng-model="filter.quickFilter" class="quick-filter" layout="column" style="padding-top: 5px">
+            <md-option value="-createdDate" selected="true">Сүүлд орсон</md-option>
+            <md-option value=-requestNum>Их үзсэн</md-option>
+        </md-select>
 
 
     </div>
 </div>
 
 <div id="call_dialog" ng-init="contactedPost();">
-
+    <h4 data-ng-hide="contactedPosts.length > 0">
+        <div layout="row" flex layout-align="center center">
+            Гарах өгөгдлөл алга байна
+        </div>
+    </h4>
     <md-grid-list
             md-cols-sm="1" md-cols-gt-sm="2" md-cols-gt-lg="2"
-            md-row-height="170px"
+            md-row-height="165px"
             md-gutter="6px" md-gutter-gt-sm="3px" flex>
 
         <md-grid-tile
@@ -170,8 +179,7 @@
 </div>
 
 
-
-
+<!--
 
 <div layout="row" flex>
     <div layout="column" flex="25" style="padding: 10px;">
@@ -245,8 +253,8 @@
 </span>
 <span ng-hide="hideAds">Хугацаа дууссан зар
 </span>
-                <!-- <div layout="column" class="filter-txt">Шүүлтүүр : </div>
-                <div layout="column" class="filter-txt-result">Зарын төрөл,Бүх зар</div>-->
+                &lt;!&ndash; <div layout="column" class="filter-txt">Шүүлтүүр : </div>
+                <div layout="column" class="filter-txt-result">Зарын төрөл,Бүх зар</div>&ndash;&gt;
             </div>
             <div flex="25" layout="row" class="filter-result">
                 <div layout="column" class="quick-title">Эрэмблэх:</div>
@@ -263,7 +271,7 @@
                     md-row-height="165px"
                     md-gutter="6px" md-gutter-gt-sm="3px" flex>
                 <md-grid-title ng-repeat="contactedPost in contactedPosts | orderBy: quickFilter">
-                    <!--| orderBy:'-createdDate' | filter:allPostCtrl.filterResult.postType | filter:{to:allPostCtrl.filterResult.toLocation}  | filter:{from:allPostCtrl.filterResult.fromLocation} | filter:{when: allPostCtrl.filterResult.toDate} | filter:{arrive: allPostCtrl.filterResult.fromDate} | filter:allPostCtrl.filterResult.transportationType | orderBy:allPostCtrl.filterResult.quickFilter">-->
+                    &lt;!&ndash;| orderBy:'-createdDate' | filter:allPostCtrl.filterResult.postType | filter:{to:allPostCtrl.filterResult.toLocation}  | filter:{from:allPostCtrl.filterResult.fromLocation} | filter:{when: allPostCtrl.filterResult.toDate} | filter:{arrive: allPostCtrl.filterResult.fromDate} | filter:allPostCtrl.filterResult.transportationType | orderBy:allPostCtrl.filterResult.quickFilter">&ndash;&gt;
                     <md-card layout="column" flex>
                         <div layout="row"
                              flex
@@ -311,7 +319,7 @@
                                         <div>{{contactedPost.transportation}}</div>
                                     </div>
 
-                                    <!--ХӨДЛӨХ ГАЗРЫН ТУХАЙ-->
+                                    &lt;!&ndash;ХӨДЛӨХ ГАЗРЫН ТУХАЙ&ndash;&gt;
                                     <div layout="row" style="width: 100%">
                                         <div layout="column" flex="50">
                                             <div layout="row" class="fromTitle">
@@ -327,7 +335,7 @@
 
                                         </div>
 
-                                        <!--ОЧИХ ГАЗРЫН ТУХАЙ-->
+                                        &lt;!&ndash;ОЧИХ ГАЗРЫН ТУХАЙ&ndash;&gt;
                                         <div layout="column" flex="50">
                                             <div layout="row" class="toTitle">
                                                 ОЧИХ ГАЗАР
@@ -421,5 +429,6 @@
         </md-content>
     </div>
 </div>
+-->
 
 

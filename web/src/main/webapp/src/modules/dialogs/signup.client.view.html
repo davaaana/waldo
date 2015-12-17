@@ -11,10 +11,10 @@
     </md-toolbar>
     <md-dialog-content>
         <section>
+            <div>{{errorMessage}}</div>
             <md-content layout="row" flex style="width:700px;">
                 <form method="post" name="loginForm" data-ng-hide="formHide">
                     <div layout="row" layout-sm="column" flex>
-                        <div>{{errorMessage}}</div>
                         <div layout="row" flex>
                             <div layout="column" style="width:175px;">
                                 <md-input-container>

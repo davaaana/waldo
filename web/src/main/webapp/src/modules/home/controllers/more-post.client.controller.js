@@ -9,12 +9,11 @@ mainApp.controller('PostMoreController', ['$rootScope', '$scope', '$http', '$mdD
                 document.getElementsByClassName('adsNumberInner')[0].setAttribute("style","height:"+h+"px;  display : table");
             }, 100);
         }
-
+        console.log($scope);
         $scope.ownBool = false;
         $scope.auth = AuthService.getAuthentication();
 
         $scope.minDate = new Date();
-        $scope.minDate.setDate($scope.minDate.getDate()-1);
 
         var user;
 

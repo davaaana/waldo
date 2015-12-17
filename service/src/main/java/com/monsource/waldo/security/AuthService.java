@@ -22,7 +22,7 @@ public class AuthService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         AccountEntity account = accountDAO.findByUsername(username);
         if (account == null) {
-            throw new UsernameNotFoundException("user not found : " + username);
+            throw new UsernameNotFoundException("Хэрэглэгч олдсонгүй : " + username);
         }
         return new AccountDetails(account);
     }

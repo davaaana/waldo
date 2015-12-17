@@ -1,10 +1,8 @@
 <md-dialog aria-label="Creating new post" data-ng-controller="NewPostController">
-    <md-toolbar class="add-ads" style="background: #b9b9b9; color: white">
+    <md-toolbar class="add-ads" style="color: white;">
 
          <span class="md-toolbar-tools">
-
             <span>
-
                 <span ng-show="step === 2 || step === 4">
                     <md-icon md-svg-icon="carrier-icon" class="new_post_dialog_icon"></md-icon>
                     ШИНЭ ҮЙЛЧЛЭХ
@@ -24,11 +22,11 @@
     </md-toolbar>
 
     <md-dialog-content class="sticky-container">
-        <section layout="row" layout-padding layout-align="space-around center" >
+        <section layout="row" layout-padding layout-align="space-around center" style="padding: 8px;">
             <!--========================================= STEPS INDICATION ===============================================-->
             <div ng-class="{new_post_active : step ===1, new_post_done: step > 1}">
                 <span class="step_number">1</span>
-                <span class="step_text">Зарын төрөл</spanр нэ>
+                <span class="step_text">Зарын төрөл</span>
             </div>
             <div ng-class="{new_post_inactive: step <3, new_post_active : step ===2 || step ===3, new_post_done: step > 3}">
                 <span class="step_number">2</span>
@@ -39,7 +37,8 @@
                 <span class="step_text">Нятлан шалгах</span>
             </div>
         </section>
-        <md-progress-linear class="progress-color" md-mode="determinate" value="{{newPostProgress}}"></md-progress-linear>
+        <md-progress-linear class="progress-color" md-mode="determinate"
+                            value="{{newPostProgress}}"></md-progress-linear>
 
         <section>
             <form name="newPostForm" novalidate>
@@ -49,17 +48,28 @@
                         <md-content layout="column" layout-fill>
                             <div class="createPostChoose">
 
-                                <md-radio-group ng-model="newPost.type" flex>
-                                    <md-radio-button value="CARRIER" class="md-primary; text-center" ng-click="adsType('carrier')">
+                                <md-radio-group ng-model="newPost.type" flex ng-init="adsType(newPost.type)">
+                                    <md-radio-button value="CARRIER" class="md-primary text-center"
+                                                     ng-click="adsType('CARRIER')" style="margin:0">
                                         <md-icon md-svg-icon="carrier-icon" class="carrierIcon"></md-icon>
                                         <span class="ads-text1">ҮЙЛЧЛЭХ ЗАР</span>
                                     </md-radio-button>
-                                    <div style="width: 300px; text-align: center;     color: gray;">Ачаа бараа болон амьтан эсбэл нэмэлт зорчигч тээвэрлэж үйлчлэх зар</div>
-                                    <md-radio-button value="SENDER" class="md-accent;  text-center" ng-click="adsType('sender')">
+                                    <div style="width: 100%; text-align: center; color: gray;">
+                                        <div style="width: 300px; margin: auto"  style="margin:0">
+                                            Ачаа бараа болон амьтан эсбэл нэмэлт зорчигч тээвэрлэж үйлчлэх зар
+                                        </div>
+                                    </div>
+                                    <md-radio-button value="SENDER" class="md-accent text-center"
+                                                     ng-click="adsType('SENDER')" style="margin:0">
                                         <md-icon md-svg-icon="sender-icon" class="senderIcon"></md-icon>
                                         <span class="ads-text2">ИЛГЭЭХ ЗАР</span>
                                     </md-radio-button>
-                                    <div  style="width: 300px; text-align: center;     color: gray;">Эд материал болон амьтан илгээх эсбэл нэмэлт зорчигчоор дайгдах зар үүсгэх</div>
+                                    <div style="width: 100%; text-align: center;     color: gray;">
+                                        <div style="width: 300px;  margin: auto">
+                                            Эд материал болон амьтан илгээх эсбэл нэмэлт зорчигчоор дайгдах зар үүсгэх
+                                        </div>
+
+                                    </div>
                                 </md-radio-group>
                             </div>
                             <div layout="row" layout-align="end center" layout-margin>

@@ -21,9 +21,9 @@ mainApp.controller('UserController', ['$rootScope', '$scope','$http','$mdDialog'
             $mdOpenMenu(ev);
         };
 
-        setInterval(function () {
+        //setInterval(function () {
             $scope.imageDate = new Date().getTime();
-        },1000);
+        //},1000);
 
         $scope.auth = UserService.getAuthentication();
 
