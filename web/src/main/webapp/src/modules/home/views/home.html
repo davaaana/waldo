@@ -90,7 +90,7 @@
                                         <span class="post_user_data_text">{{post.from | limitTo: 23 }}</span>
                                     </div>
                                     <div layout="row">
-                                        <span class="post_user_data_text  padding-top-5">{{dayAgo(minDate,post.when)==0 ? 'Өнөөдөр гарана':''}}</span>
+                                        <span class="post_user_data_text  padding-top-5">{{dayAgo(minDate,post.when)==0 ? 'Өдөртөө гарана':''}}</span>
                                     </div>
                                     <div layout="row">
                                          <span class="post_user_data_text-date"
@@ -109,7 +109,7 @@
                                         <span class="post_user_data_text">{{post.to | limitTo: 23 }}</span>
                                     </div>
                                     <div layout="row">
-                                        <span class="post_user_data_text  padding-top-5">{{dayAgo(post.when,post.arrive) == 0 ? 'Өнөөдөр очино':dayAgo(post.when,post.arrive)+' хоногийн дараа очино'}}</span>
+                                        <span class="post_user_data_text  padding-top-5">{{dayAgo(post.when,post.arrive) == 0 ? 'Өдөртөө очино':dayAgo(post.when,post.arrive)+' хоногийн дараа очино'}}</span>
                                     </div>
                                     <div layout="row">
                                         <span class="post_user_data_text-date"
