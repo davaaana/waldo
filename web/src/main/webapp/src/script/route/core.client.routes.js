@@ -24,6 +24,9 @@ mainApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider','$ht
             }).state('home.about', {
                 url: '/about',
                 templateUrl: 'src/modules/home/views/about.html'
+            }).state('home.share', {
+                url: '/share/:id',
+                templateUrl: 'src/modules/home/views/share.html'
             });
     }
 ]);
