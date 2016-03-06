@@ -6,7 +6,6 @@
                 md-gutter="6px" md-gutter-gt-sm="3px" flex>
 
             <md-grid-tile
-                    ng-repeat="post in ownPosts | filter:filter.postType | filter:filter.toLocation  | filter:filter.fromLocation | filter:{when:filter.tooDate} | filter:{arrive:filter.froomDate} | filter:filter.transportationType | orderBy:filter.quickFilter"
                     ng-class="{carrier_post: post.type==='CARRIER', sender_post: post.type==='SENDER'}">
 
                 <md-card flex

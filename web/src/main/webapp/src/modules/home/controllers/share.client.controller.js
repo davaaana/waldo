@@ -6,8 +6,15 @@ mainApp.controller('ShareCtrl', ['$stateParams','$rootScope', '$scope', '$http',
         $scope.init = function () {
             $http.get(SERVICE_URL + '/post/' + $stateParams.id).success(function (posts) {
                 console.log(posts);
-                if(posts.success == true)
-                    $scope.post = posts.data;
+                if(posts.success == true){
+                    var data;
+                    try {
+                        data = JSON.parse(posts.data);
+                    } catch (e) {
+                        data = JSON.parse(JSON.stringify(posts.data));
+                    }
+                    $scope.post = data;
+                }
                 else{
                     $scope.error = "Та нэвтрэх шаардлагатай"
                 }
