@@ -2,7 +2,7 @@
     <div ng-init="init()">
 
         <md-card aria-label="Creating new post" id="postMore" ng-init="stepExchange = 1"
-                   ng-class="{borderOrange2 : post.type ==='CARRIER', borderBlue2: post.type ==='SENDER'}">
+                   ng-class="{borderOrange2 : post.type ==='CARRIER', borderBlue2: post.type ==='SENDER'}" ng-show="post.type?true:false">
 
             <md-toolbar class="md-accent md-raised " ng-if="post.type === 'SENDER'">
 
@@ -323,7 +323,7 @@
                                 </div>
                             </div>
 
-                            <md-button ng-click="closeDialog()">Гарах</md-button>
+                       <!--     <md-button ng-click="closeDialog()">Гарах</md-button>-->
                         </div>
 
 
