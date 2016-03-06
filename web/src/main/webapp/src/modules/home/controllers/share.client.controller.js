@@ -3,6 +3,7 @@
 mainApp.controller('ShareCtrl', ['$stateParams','$rootScope', '$scope', '$http', '$mdDialog', 'PostService', '$log', '$q','$mdToast', 'UserService', '$location',
     function ($stateParams,$rootScope, $scope, $http, dialog, PostService, $log, $q,$mdToast, AuthService, $location) {
 
+        $scope.error = false;
         $scope.init = function () {
             $http.get(SERVICE_URL + '/post/' + $stateParams.id).success(function (posts) {
                 console.log(posts);
@@ -14,9 +15,10 @@ mainApp.controller('ShareCtrl', ['$stateParams','$rootScope', '$scope', '$http',
                         data = JSON.parse(JSON.stringify(posts.data));
                     }
                     $scope.post = data;
+                    $scope.error = false;
                 }
                 else{
-                    $scope.error = "Та нэвтрэх шаардлагатай"
+                    $scope.error = true;
                 }
             });
         }
