@@ -7,7 +7,7 @@ mainApp.config(function($locationProvider){
 */
 
 mainApp.run(function($FB){
-    $FB.init('835720119848215');
+    $FB.init('376391122550690');
 });
 
 mainApp.config(['blockUIConfig',
