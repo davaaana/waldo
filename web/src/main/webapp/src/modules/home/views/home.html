@@ -1,20 +1,20 @@
 <div layout="row" class="middle-menu" ng-init="filterArea=true">
-    <a href="#/index" target="_self">
+    <a href="/" target="_self">
         <div class="select" id="index">
             Бүх зар
         </div>
     </a>
-    <a href="#/index/own-post" target="_self" ng-show="auth" data-ng-click="$parent.filterClear()">
+    <a href="#/own-post" target="_self" ng-show="auth" data-ng-click="$parent.filterClear()">
         <div class="un-select" id="own-post">
             Миний зар
         </div>
     </a>
-    <a href="#/index/contacted-post" target="_self" ng-show="auth" data-ng-click="$parent.filterClear()">
+    <a href="#/contacted-post" target="_self" ng-show="auth" data-ng-click="$parent.filterClear()">
         <div class="un-select" id="contacted-post">
             Холбогдсон зар
         </div>
     </a>
-    <a href="#/index/about" target="_self" data-ng-click="$parent.filterClear()">
+    <a href="#/about" target="_self" data-ng-click="$parent.filterClear()">
         <div class="un-select" id="about">
             Валдогийн тухай
         </div>
@@ -54,7 +54,7 @@
 
             <md-card flex
                      ng-class="{ads_carrier: post.type==='CARRIER', ads_sender: post.type==='SENDER'}"
-                     class="ads" ng-click="more(post)">
+                     class="ads">
                 <!--select: post.alreadyExchange===true, select: post.alreadyExchange===true, -->
                 <div layout="row" flex>
                     <md-card-content flex="20" layout="column">
@@ -159,7 +159,9 @@
                         </span>
                     </div>
 
-                    <span style="font-weight: bold; color:#878787">ДЭЛГЭРЭНГҮЙ</span>
+                    <!--<a facebook class="facebookShare" data-url='http://google.com' data-shares='shares'>{{ post }}</a>-->
+                    <a href="" facebook class="facebookShare" ng-click='facebookShare(post)'></a><!--{{ shares }}-->
+                    <span style="font-weight: bold; color:#878787"  ng-click="more(post)">ДЭЛГЭРЭНГҮЙ</span>
                 </md-card-footer>
             </md-card>
 
