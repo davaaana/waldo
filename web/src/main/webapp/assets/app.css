@@ -1105,7 +1105,7 @@ a.md-button.md-warn.md-raised, a.md-button.md-warn.md-fab, .md-button.md-warn.md
     text-align: right;
 }
 
-.ads_carrier:hover {
+/*.ads_carrier:hover {
     cursor: pointer;
     border: 2px solid #ffcc89;
 }
@@ -1113,7 +1113,7 @@ a.md-button.md-warn.md-raised, a.md-button.md-warn.md-fab, .md-button.md-warn.md
 .ads_sender:hover {
     cursor: pointer;
     border: 2px solid #9ff0ff;
-}
+}*/
 
 .ads-link {
     text-decoration: none;
