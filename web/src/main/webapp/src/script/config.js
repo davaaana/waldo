@@ -1,4 +1,14 @@
-var mainApp = angular.module('waldoApp', ['ui.router','iconsAndThemes', 'ngMaterial','blockUI']);
+var mainApp = angular.module('waldoApp', ['ui.router','iconsAndThemes', 'ngMaterial','blockUI','djds4rce.angular-socialshare']);
+/*
+
+mainApp.config(function($locationProvider){
+
+});
+*/
+
+mainApp.run(function($FB){
+    $FB.init('835720119848215');
+});
 
 mainApp.config(['blockUIConfig',
     function(blockUIConfig) {

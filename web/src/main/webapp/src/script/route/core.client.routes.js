@@ -1,10 +1,11 @@
 mainApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider','$httpProvider',
-    function ($stateProvider, $urlRouterProvider,$httpProvider) {
-        $urlRouterProvider.otherwise('/index');
+    function ($stateProvider, $urlRouterProvider,$locationProvider,$httpProvider) {
+
+        $urlRouterProvider.otherwise('/');
         // Home state routing
         $stateProvider.
             state('home', {
-                url: '/index',
+                url: '/',
                 abstract: true,
                 templateUrl: 'src/modules/home/views/index.html',
                 controller: 'HomeController'
@@ -14,7 +15,7 @@ mainApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider','$ht
                 templateUrl: 'src/modules/home/views/home.html'
             })
             .state('home.my-post', {
-                url: '/own-post',
+                url: '/index/own-post',
                 templateUrl: 'src/modules/home/views/own-post.html',
                 controller: 'OwnPostController'
             }).state('home.contacted-post', {
