@@ -74,7 +74,7 @@
                                         <md-icon md-svg-icon="calendar-blank"
                                                  ng-class="{orange : mpost.type ==='CARRIER', blue: mpost.type ==='SENDER'}"></md-icon>
                                         <div>
-                                            <span class="post_user_data_text  padding-top-5">{{dayAgo(minDate,mpost.when)==0 ? 'Өнөөдөр гарана':''}}</span>
+                                            <span class="post_user_data_text  padding-top-5">{{dayAgo(minDate,mpost.when)==0 ? 'Өнөөдөр гарна':''}}</span>
                                             <span class="post_user_data_text2"
                                                   ng-bind="convertToDate(mpost.when) | date:'(yyyy.MM.dd)'"></span>
                                         </div>
@@ -176,7 +176,7 @@
                                         <md-icon md-svg-icon="calendar-check"
                                                  ng-class="{orange : mpost.type ==='CARRIER', blue: mpost.type ==='SENDER'}"></md-icon>
                                         <div>
-                                            <span class="post_user_data_text  padding-top-5">{{dayAgo(mpost.when,mpost.arrive)==0 ? 'Өнөөдөр очино':dayAgo(mpost.when,mpost.arrive) +' хонгийн дараа очино'}}</span>
+                                            <span class="post_user_data_text  padding-top-5">{{dayAgo(mpost.when,mpost.arrive)==0 ? 'Өнөөдөр очно':dayAgo(mpost.when,mpost.arrive) +' хоногийн дараа очно'}}</span>
                                             <span class="post_user_data_text2"
                                                   ng-bind="convertToDate(mpost.arrive) | date:'(yyyy.MM.dd)'"></span>
                                         </div>
@@ -268,7 +268,7 @@
                     <md-button class="md-raised" ng-click="ownPostDeactivate(mpost.id)" data-ng-show="hideOwnAds"
                                style="background: #b2b2b2">
                         <md-icon md-svg-icon="eye-off" style="margin:0; color: white"></md-icon>
-                        <span style="color:white; font-size: 12px">Идэвхгүй болгох</span>
+                        <span style="color:white; font-size: 12px">Зарыг устгах</span>
                     </md-button>
                     <md-button class="md-raised  md-primary" ng-click="ownPostDeactivate(mpost.id)"
                                data-ng-hide="hideOwnAds">

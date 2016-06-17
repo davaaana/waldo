@@ -10,8 +10,9 @@ mainApp.run(function($FB){
     $FB.init('376391122550690');
 });
 
-mainApp.config(['blockUIConfig',
-    function(blockUIConfig) {
+mainApp.config(['blockUIConfig','$locationProvider',
+    function(blockUIConfig,$locationProvider) {
+        //$locationProvider.html5Mode(true);
         //$mdDateLocaleProvider.formatDate =  $mdDateLocaleProvider.formatDate = function(date) {
         //    return moment().format('YYYY-MM-DD');
         //};

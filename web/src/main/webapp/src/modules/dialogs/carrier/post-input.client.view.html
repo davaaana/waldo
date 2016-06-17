@@ -12,7 +12,7 @@
             <div layout="row">
                 <div layout="column">
                     <md-input-container>
-                        <label class="filter-title">Хөдлөх хот/аймаг</label>
+                        <label class="filter-title">Хөдлөх хот/аймаг/улс</label>
                         <md-select ng-required="true" name="fromCity" class="datepicker-filter-adjust6"
                                    ng-change="submit == true ? arriveValidation() : submit"
                                    data-ng-model="newPost.fromCityId"
@@ -154,7 +154,7 @@
                          aria-label="passanger_checkbox"  class="md-raised  md-primary">Зорчигч авч явна
             </md-checkbox>
             <md-input-container>
-                <input ng-model="newPost.passanger" ng-change="submit == true ? arriveValidation() : submit" type="number" value="1"
+                <input ng-init="newPost.passanger = 1" ng-model="newPost.passanger" ng-change="submit == true ? arriveValidation() : submit" type="number" value="1"
                        ng-disabled="!newPostDataCheck.passanger" min="1" max="50">
             </md-input-container>
         </div>

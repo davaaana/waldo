@@ -94,7 +94,7 @@ mainApp.controller('HomeController', ['$rootScope', '$scope', '$http', '$mdDialo
                 {
                     method: 'feed',
                     name: $scope.title,
-                    link: 'http://www.waldo.mn/#/index/share/'+post.id,
+                    link: 'http://www.waldo.mn/#/share/'+post.id,
                     picture: 'http://www.waldo.mn/ws/profile/image/neemiineemii@yahoo.com.png',
                     caption: 'www.waldo.mn',
                     description: post.type=="SENDER"?'явна':'явуулна',

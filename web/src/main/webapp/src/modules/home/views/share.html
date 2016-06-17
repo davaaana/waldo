@@ -1,6 +1,13 @@
-<div ng-controller="ShareCtrl">
+<div layout="row" class="layout-row" ng-controller="ShareCtrl">
+
+
+    <div layout="column" tabindex="-1" role="main" flex="" class="layout-column flex" aria-hidden="false">
+        <div ng-include="'src/modules/home/template/header.html'"></div>
+
+        <div ng-include="'src/modules/home/template/middle.html'"></div>
+<div>
     <div ng-init="init()" ng-show="error">
-        nevter
+        Та програмд нэвтрээгүй эсвэл энэхүү зар хүчингүй болсон байна
     </div>
     <div ng-hide="error">
 
@@ -427,4 +434,7 @@
             </section>
         </md-card>
     </div>
+</div>
+<div ng-include="'src/modules/home/template/footer.html'"></div>
+</div>
 </div>
